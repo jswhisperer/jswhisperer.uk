@@ -34,6 +34,11 @@ export default defineConfig({
 						required: true
 					},
 					{
+						type: 'string',
+						name: 'url',
+						label: 'Url',
+					},
+					{
 						type: 'image',
 						name: 'avatar',
 						label: 'Avatar',

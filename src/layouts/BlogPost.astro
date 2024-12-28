@@ -37,16 +37,16 @@ const articleDate = pubDate.toISOString()
 		thumbnailUrl: heroImage || '/public/open-graph.png',
 		image: {
 			'@type': 'ImageObject',
-			url: heroImage || '/public/open-graph.png',
-			width: heroImage,
-			height: heroImage
+			url: heroImage?.src || '/public/open-graph.png',
+			width: heroImage?.width,
+			height: heroImage?.height
 			// caption: heroImage.alt
 		},
 		author: {
 			'@type': 'Person',
-			name: author
+			name: author,
 			// description: author?.bio,
-			// url: author?.profileUrl
+			url: author?.profileUrl
 		}
 	})}
 />
