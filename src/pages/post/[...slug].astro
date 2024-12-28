@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 		props: post
 	}))
 }
-type Props = CollectionEntry<'blog'> & { slug: string; name: any }
+type Props = CollectionEntry<'blog'> & { slug: string; author:any, name: any }
 
 const post = Astro.props
 const MAX_POSTS = 3

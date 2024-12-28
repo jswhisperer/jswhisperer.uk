@@ -44,9 +44,9 @@ const articleDate = pubDate.toISOString()
 		},
 		author: {
 			'@type': 'Person',
-			name: author,
+			name: author?.name,
 			// description: author?.bio,
-			url: author?.profileUrl
+			url: author?.url
 		}
 	})}
 />
