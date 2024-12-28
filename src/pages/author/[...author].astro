@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+const authors = await getCollection('author')
+
+export async function getStaticPaths() {
+	// const authors = await getAuthor()
+	const authors = await getCollection('author')
+
+	// const disqusEnabled = disqusConfig.enabled authors = Object.values(import.meta.glob('../author/*.md', { eager: true }))
+
+	return authors.map((author: any) => {
+		console.log(author)
+
+		return {
+			params: { author: author.data.name },
+			props: { author }
+		}
+	})
+}
+
+type Props = CollectionEntry<'author'> & { name: string; author: any }
+
+//const name = Astro.params
+const { author } = Astro.props
+
+console.log({ author })
+---
+
+<BaseLayout title='Author'>
+	{author.data.name}
+</BaseLayout>
