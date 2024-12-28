@@ -24,7 +24,7 @@ export const getTags = async () => {
 	posts
 		.filter((post) => !post.data.draft)
 		.forEach((post) => {
-			post.data.tags.forEach((tag) => {
+			post?.data?.tags?.forEach((tag) => {
 				tags.add(tag?.toLowerCase())
 			})
 		})
@@ -38,7 +38,7 @@ export const getPostByTag = async (tag: string) => {
 	return posts
 		.filter((post) => !post.data.draft)
 		.filter((post) => {
-			return post.data.tags.some((postTag) => postTag?.toLowerCase() === lowercaseTag)
+			return post.data?.tags?.some((postTag) => postTag?.toLowerCase() === lowercaseTag)
 		})
 }
 

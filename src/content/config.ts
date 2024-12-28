@@ -14,9 +14,18 @@ const blog = defineCollection({
 				.transform((val) => new Date(val)),
 			heroImage: image().optional(),
 			category: z.enum(CATEGORIES).optional(),
-			tags: z.array(z.string()),
+			tags: z.array(z.string()).optional(),
 			draft: z.boolean().default(false)
 		})
 })
 
-export const collections = { blog }
+const author = defineCollection({
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			avatar: image().optional()
+		})
+})
+
+
+export const collections = { blog, author }

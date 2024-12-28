@@ -22,6 +22,26 @@ export default defineConfig({
 	schema: {
 		collections: [
 			{
+				name: 'author',
+				label: 'Author',
+				path: 'src/content/author',
+				format: 'mdx',
+				fields: [
+					{
+						type: 'string',
+						name: 'name',
+						label: 'Name',
+						required: true
+					},
+					{
+						type: 'image',
+						name: 'avatar',
+						label: 'Avatar',
+						required: true
+					}
+				]
+			},
+			{
 				name: 'post',
 				label: 'Blog Post',
 				path: 'src/content/blog',
@@ -72,13 +92,19 @@ export default defineConfig({
 					{
 						type: 'string',
 						name: 'tags',
-						required: true,
+						required: false,
 						label: 'Tags',
 						description: 'Tags for this post',
 						list: true,
 						ui: {
 							component: 'tags'
 						}
+					},
+					{
+						type: 'reference',
+						name: 'author',
+						label: 'Author',
+						collections: ['author']
 					},
 					{
 						type: 'string',

@@ -6,9 +6,10 @@ description: Let's have a look at NodeGUI, NordVPN and Node.js
 canonical_url: "https://gregbenner.life/scratch-the-surface-of-node-gui/"
 tags: ["nodejs", "nordvpn", "nodegui"]
 cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+author: src/content/author/greg.mdx
 ---
 
-I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it. 
+I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it.
 
 There are some similarities with Proton Native like the layout engine (Yoga flexbox) but right now in my opinion NodeGUI is much more polished and finished. There were a few deal breakers for me with PN also like I wanted an event fired when the window closed so I can clean up any running processes. Luckily NG [provides](https://github.com/nodegui/nodegui/issues/658#event-3640138822).  Again I won’t detail the getting started but cloning this [repo](https://github.com/nodegui/nodegui-starter), installing the dependencies then one shell npm run dev and another npm start. One last point for NG over PN is the final app is around 40mb bundled versus 120mb+.
 
@@ -22,7 +23,7 @@ I’m using some of nordvpn’s [undocumented](https://blog.sleeplessbeastie.eu/
 
 Some of the non-typical React things I’ve got going on are making use of mobx to wrap stateless functional components or whatever they are called now
 
-
+```
     const Toggle = observer(() => (
       <View id="toggleContainer">
         <View id="toggle" style={backgroundToggleStyle()}>
@@ -34,10 +35,11 @@ Some of the non-typical React things I’ve got going on are making use of mobx 
         </View>
       </View>
     ));
+```
 
 I love [mobx](https://mobx.js.org/README.html) because like vue it has elegant computed properties like so
 
-
+```
      @computed
       get isOffline() {
         return (
@@ -45,19 +47,19 @@ I love [mobx](https://mobx.js.org/README.html) because like vue it has elegant c
           this.status.includes("Status: Disconnected")
         );
       }
-
+```
 This isOffline is watching `@observable status` and updating automatically.
 
 With this app I am spinning up and down and all around a lot of child processes, I found this library simplified my life [execa](https://github.com/sindresorhus/execa). Here’s an example
 
 
-    const { stdout } = await execa("nordvpn", ["countries"]);
+``` const { stdout } = await execa("nordvpn", ["countries"]);```
 
 Glorious async/await!
 
 I was doing some more crazy pipping stuff with the [jq](https://stedolan.github.io/jq/) library cleverly invoked with [npx](https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/) but decided to simplify my life
 
-
+```
     function getCountries() {
       return new Promise(async (res, rej) => {
         let countriesArray;
@@ -83,7 +85,7 @@ I was doing some more crazy pipping stuff with the [jq](https://stedolan.github.
         });
       });
     }
-
+```
 To get that little flag at the top I check the status of the connection and if not disconnected I do some dark arts with String manipulation to take
 “Connecting to Japan #547 (jp547.nordvpn.com)” and get the country code “jp”
 

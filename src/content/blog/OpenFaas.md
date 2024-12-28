@@ -5,6 +5,7 @@ pubDate: 'Jul 02 2022'
 description: Serverless Functions, Made Simple."
 tags: ["serverless", "lambda"]
 canonical_url: "https://gregbenner.life/open-faas/"
+author: src/content/author/greg.mdx
 ---
 
 # OpenFaas

@@ -19,14 +19,15 @@ export async function getStaticPaths() {
 		props: post
 	}))
 }
-type Props = CollectionEntry<'blog'> & { slug: string }
+type Props = CollectionEntry<'blog'> & { slug: string; name: any }
 
 const post = Astro.props
 const MAX_POSTS = 3
 const getRelatedPosts = (post: Props) => {
-	const lowercaseTags = post.data.tags.map((tag) => tag.toLowerCase())
+	const lowercaseTags = post?.data?.tags?.map((tag) => tag.toLowerCase())
 	const relatedPosts = posts.filter(
-		(p) => p.slug !== post.slug && p.data.tags.some((t) => lowercaseTags.includes(t.toLowerCase()))
+		(p) =>
+			p.slug !== post.slug && p.data?.tags?.some((t) => lowercaseTags?.includes(t.toLowerCase()))
 	)
 	return relatedPosts.slice(0, MAX_POSTS)
 }
@@ -36,16 +37,16 @@ const relatedPosts = getRelatedPosts(post)
 const { Content, headings, remarkPluginFrontmatter } = await post.render()
 
 const disqusEnabled = disqusConfig.enabled
-
 ---
 
 <BlogPost
 	id={post.id}
-  slug={post.slug}
+	slug={post.slug}
 	data={post.data}
 	headings={headings}
 	readTime={remarkPluginFrontmatter.minutesRead}
 >
+	{post.author?.name} hi
 	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
 		<!-- aside  -->
 		<aside class='md:flex flex-col gap-8 hidden'>

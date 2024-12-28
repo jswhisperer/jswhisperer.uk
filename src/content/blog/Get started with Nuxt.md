@@ -1,5 +1,6 @@
 ---
 title: Get started with Nuxt
+author: src/content/author/greg.mdx
 published: true
 date: 2023-01-01
 pubDate: 'Jul 02 2022'
