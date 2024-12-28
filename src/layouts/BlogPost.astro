@@ -34,12 +34,12 @@ const author = 'greg'
 		datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
-		thumbnailUrl: heroImage?.src,
+		thumbnailUrl: heroImage || '/public/open-graph.png',
 		image: {
 			'@type': 'ImageObject',
-			url: heroImage?.src,
-			width: heroImage?.width,
-			height: heroImage?.height
+			url: heroImage || '/public/open-graph.png',
+			width: heroImage,
+			height: heroImage
 			// caption: heroImage.alt
 		},
 		author: {
@@ -54,7 +54,7 @@ const author = 'greg'
 <BaseLayout
 	title={title}
 	description={description}
-	image={heroImage?.src}
+	image={heroImage || '/public/open-graph.png'}
 	articleDate={articleDate}
 >
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
@@ -81,8 +81,8 @@ const author = 'greg'
 		<>
 			{
 				heroImage && (
-					<Image
-						src={heroImage}
+					<img
+						src={cover_image || '/public/open-graph.png'}
 						width={1000}
 						height={500}
 						quality={100}
