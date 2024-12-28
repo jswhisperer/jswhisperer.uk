@@ -1,0 +1,177 @@
+---
+title: "WebView Apps on your OS"
+date: 2023-01-01
+pubDate: 'Jul 02 2022'
+published: true
+description: "An exploration of webview apps for desktop"
+tags: ["webgap", "electron", "nodegui", "webview"]
+//cover_image: https://direct_url_to_image.jpg
+canonical_url: "https://gregbenner.life/web-view-apps-on-your-os/"
+---
+
+I personally am very excited by the idea of making applications in HTML, css, and js that efficiently run on the desktop. Electron and nw.js are the most mature, robust projects at present. They are both awesome solutions but if you are looking for more of a light weight solution that's what I'm going to explore in this post. The possible downside of both previously mentioned solutions is the package size, it's over 200mb's, this is fine for some modern computers with terabytes of space, I personally have a 200gb harddrive on my AeroBook Plus (an interesting indiegogo laptop I recently backed).
+
+I've previously worked a lot with building native apps through React Native with Expo, it's a pretty pleasant developer experience. This taught me a lot about applications on mobile. What Cordova uses on the mobile applications is a WebView. Of course using a purely native solution over a WebView will benefit from some speed etc; however if you want to display a WebApp / web page you probably want to use a WebView rather than rewrite your WebApp.
+
+Some solutions I've looked at include [Proton Native](https://proton-native.js.org/), [Vuido](https://vuido.mimec.org/), [Electron](https://www.electronjs.org/), [Electroff](https://github.com/WebReflection/electroff), [NodeGUI](https://docs.nodegui.org/), [pkg](https://github.com/vercel/pkg), and DeskGap. Right now I'd say if you want a smaller size than electron and production ready solution use Proton Native. Proton Native makes use of qt, it has a mature react solution, and a partial vue.js solution. The downside as I see it is that Proton Native uses a similar syntax to web standards but has it's own custom caveats to learn. Not a huge deal but if all you want to do is display a WebApp inside WebView there should be a simple solution.
+
+All that said I'm going to explore [DeskGap](https://deskgap.com) in this post, it is very interesting in that it doesn't bundle a browser with your app, just the node.js runtime and your package.json requirements. It has options to cross compile for the major os's including win10, macOs, and linux.
+
+DeskGap makes use of the following WebView's, for macOs webkit (safari), win10: EdgeHTML, and linux webkit (gnome gtk) https://deskgap.com/#supported-platforms this keeps the size of a bundled DeskGap app to around the size of the node binary 22mb plus or take, along with your custom assets, and code.
+
+I'm going to quickly mention [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) progressive web apps as a sidenote. If your WebApp can make do with client side tech and many can these days, you would be better off writing a PWA. What I want to demonstrate in this post is when you really need that extra omph of node.js such as running a command or script.
+
+Where I see a lot of immediate advantage of wrapping webapps in DeskGap are projects that launch on localhost. There are many tooling webapps that are launched from the terminal, but some downsides as i see it: you have to remember the launch command and flags possibly pass a filepath too, the shell is now busy and you will need multiple tabs to do more tasks (or tmux). Some people swear by CLI's only, they are assholes. Sometimes double clicking an icon is more efficient and there is nothing wrong with saying that. Some of these localhost webapps off the top of my head would be things around devtools, like the vue.js ui, or react devtools, or portainer the docker management platform. You can't quite use a PWA unless you have these processes running constantly on every start.
+
+The [Getting Started](https://github.com/patr0nus/DeskGap#getting-started) instructions are sparse but will get you started.
+
+package.json
+
+```js
+{
+  "name": "hello-deskgap",
+  "main": "index.js",
+  "scripts": {
+    "start": "deskgap ."
+  }
+}
+```
+
+index.js
+
+```js
+const { app, BrowserWindow } = require("deskgap");
+
+app.once("ready", () => {
+  const win = new BrowserWindow();
+  win.loadFile("index.html");
+});
+```
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hello DeskGap</title>
+  </head>
+  <body>
+    <h1>Hello DeskGap</h1>
+  </body>
+</html>
+```
+
+run it
+
+```bash
+npm install --save-dev deskgap && npm start
+```
+
+This is pretty powerful already you can imagine you can have you basic HTML call node.js methods like write a file, delete a file, turn off the os, blink an LED, smart device control. Mind blowing type of possibilities. As I mentioned before though let's try something simple but useful such as wrapping a localhost application. I'm choosing the vue.js CLI UI (oxymoron?) since I'm a converted vue.js fanboy.
+
+Simply adjusting a few lines from the example above we can make use of exec from node.js to spawn a child process and run our arbitrary command line code. I also researched the API documents of DeskGap to set a title and icon.
+
+```js
+const { app, BrowserWindow } = require("deskgap");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
+
+async function vueui() {
+  const { stdout, stderr } = await exec("./node_modules/.bin/vue ui -headless");
+  console.log("stdout:", stdout);
+  console.log("stderr:", stderr);
+}
+
+vueui();
+
+app.once("ready", () => {
+  const win = new BrowserWindow({
+    width: 1000,
+    height: 600,
+    title: "Vue CLI",
+    icon: "vue-logo.png",
+    titleBarStyle: "hidden",
+  });
+  win.loadURL("http://localhost:8000");
+});
+```
+
+<img src="https://res.cloudinary.com/https-gregbenner-life/image/upload/v1594764223/Screenshot_from_2020-07-12_21-43-10_luayzl.png" />
+
+All in all at this point I'm feeling pretty happy with myself and the world, everything. The next step ends in a cliffhanger so be forewarned. It's more of an exploration of what I imagine a separates a senior developer from a junior. I'm going to explore the build and package steps of releasing this app as an executable binary (double clickable app).
+
+First up I went to github so see if the repo provided more examples. Many projects will include and arguably should include /examples. This keeps authors honest, sometimes as a library author you, not purposefully, forget a step or a dependency etc. Being able to npm i && npm start something in examples demonstrates your project works before a developer has to invest time into learning your api, project, and requirements. So no examples per se, there is [one app](https://github.com/patr0nus/DeskGap/#pym-a-real-life-app-built-with-deskgap) mentioned on the page it makes use of very little GUI though it is available in a few app stores, I would consider it abandoned at the commits are all from 2 years ago (as a senior developer) Normally not finding examples or real world and current apps is a warning sign that the library might not work all together or might not have enough usage that you will be sucked into rabbit-holes trying to figure things out. Also check the star count as this can illuminate how many people have tried or are keeping an eye on the project.
+
+I've gone ahead and the documention instructions and building instructions as that is what I'm interested in doing now. These are very sparse and maybe not sufficient as of yet. https://deskgap.com/building/ I'm going to follow along with the linux route but there is mentioned Windows and Mac.
+
+Prerequisites CMake and node.js (cmake is generally installed on Ubuntu already, and if you are a node.js developer I'll assume you have it.) Linux specific requirements mention
+
+- `gcc-8` and `g++-8`
+- libgtk-3-dev version 3.18.9 or later
+- libwebkit2gtk-4.0-dev version 2.20.5 later
+  As a senior developer I know that I can't always just apt get install packages verbatem so where do I go for more information? I go to an azurepipelines yaml I saw in the repo. You can often find missing steps in a docker-compose, dockerfile, travis, jenkins, terraform, gitlab-ci etc.
+  // sudo apt-get install -y g++-8
+  // https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L44
+  // sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev
+  // https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L256
+
+Last thing I noticed is my package.json is feeling a bit light from the example and nothing is mentioned in the build steps or anywhere else about additional requirements; so as a senior again I look at the main repo package.json and copy over those requirements. This won't always be the right step for a project as many might be library specific tooling, but if you lack an example it can't hurt to try. There are also some added npm scripts required for building.
+
+package.json
+
+```js
+{
+  "name": "deskgappy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "deskgap .",
+    "webpack": "webpack-cli",
+    "tsd": "tsc -p node/js/tsconfig-d-ts.json --declarationDir tsd"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/cli": "^4.4.6",
+    "deskgap": "^0.2.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.29",
+    "@types/webpack-env": "^1.15.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "es6-promise": "^4.2.8",
+    "events": "^3.1.0",
+    "is-elevated": "^3.0.0",
+    "json-talk": "^0.1.1",
+    "koa": "^2.11.0",
+    "mocha": "^6.2.2",
+    "node-addon-api": "^1.7.1",
+    "raw-loader": "^4.0.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3"
+  }
+}
+```
+
+## Steps[¶](https://deskgap.com/building/#steps "Permanent link")
+
+1.  Download the npm dependencies: `npm ci`
+2.  Generate the buildsystem:
+    - Windows: `cmake -G "Visual Studio 16 2019" -A Win32 -S node -B build`
+    - macOS or Linux: `cmake -G "Unix Makefiles" -S node -B build`
+3.  Build DeskGap: `cmake --build build`
+4.  Test:
+    - macOS: `node node/test/start.js build`
+    - Windows or Linux: `node node/test/start.js build/Release`
+
+I'm going to end the post here for now, there are some issues with creating a finial binary on Ubuntu with DeskGap but stay tuned for a second post exploring what I do next.
+
+If you have comments or questions feel free to reach out on this [tweet](https://twitter.com/cactusanddove/status/1283163158446833664); otherwise if you enjoyed please feel free to like or retweet.

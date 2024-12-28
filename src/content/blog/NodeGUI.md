@@ -1,0 +1,108 @@
+---
+title: Scratch the Surface of NodeGUI
+published: true
+pubDate: 'Jul 02 2022'
+description: Let's have a look at NodeGUI, NordVPN and Node.js
+canonical_url: "https://gregbenner.life/scratch-the-surface-of-node-gui/"
+tags: ["nodejs", "nordvpn", "nodegui"]
+cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+---
+
+I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it. 
+
+There are some similarities with Proton Native like the layout engine (Yoga flexbox) but right now in my opinion NodeGUI is much more polished and finished. There were a few deal breakers for me with PN also like I wanted an event fired when the window closed so I can clean up any running processes. Luckily NG [provides](https://github.com/nodegui/nodegui/issues/658#event-3640138822).  Again I won’t detail the getting started but cloning this [repo](https://github.com/nodegui/nodegui-starter), installing the dependencies then one shell npm run dev and another npm start. One last point for NG over PN is the final app is around 40mb bundled versus 120mb+.
+
+Below is the app I’m hacking together for fun:
+
+
+![](https://paper-attachments.dropbox.com/s_9D48D52E2A41BFE67D2B3925C3967573F29995713F016E8D85C26EA6C7190FB6_1597500816777_Screenshot+from+2020-08-15+10-13-23.png)
+
+
+I’m using some of nordvpn’s [undocumented](https://blog.sleeplessbeastie.eu/2019/02/18/how-to-use-public-nordvpn-api/) APIs and the official CLI tool to muddle this together. Things like connect and disconnect work, also the country flag emoji shows your current country connection. There is a custom icon in the dock and a statusbar icon.
+
+Some of the non-typical React things I’ve got going on are making use of mobx to wrap stateless functional components or whatever they are called now
+
+
+    const Toggle = observer(() => (
+      <View id="toggleContainer">
+        <View id="toggle" style={backgroundToggleStyle()}>
+          <Button
+            id="toggleButton"
+            style={toggleStyle()}
+            on={buttonHandler}
+          ></Button>
+        </View>
+      </View>
+    ));
+
+I love [mobx](https://mobx.js.org/README.html) because like vue it has elegant computed properties like so
+
+
+     @computed
+      get isOffline() {
+        return (
+          this.status.typeof === "string" &&
+          this.status.includes("Status: Disconnected")
+        );
+      }
+
+This isOffline is watching `@observable status` and updating automatically.
+
+With this app I am spinning up and down and all around a lot of child processes, I found this library simplified my life [execa](https://github.com/sindresorhus/execa). Here’s an example
+
+
+    const { stdout } = await execa("nordvpn", ["countries"]);
+
+Glorious async/await!
+
+I was doing some more crazy pipping stuff with the [jq](https://stedolan.github.io/jq/) library cleverly invoked with [npx](https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/) but decided to simplify my life
+
+
+    function getCountries() {
+      return new Promise(async (res, rej) => {
+        let countriesArray;
+        const jqIt = execa(
+          "npx",
+          ["jq", "--raw-output", "[.[].country] | sort | unique | .[]"],
+          { kill: 10000 }
+        );
+        const subprocess = execa("curl", [
+          "--silent",
+          "https://api.nordvpn.com/server",
+        ]);
+        subprocess.stdout.pipe(jqIt.stdin);
+        jqIt.stdout.on("data", function (data) {
+          console.log(data);
+          countriesArray = data;
+        });
+        jqIt.stdout.on("end", () => {
+          const formattedCountries = countriesArray
+            ? countriesArray.toString().trim("").split("\n")
+            : [];
+          res(formattedCountries);
+        });
+      });
+    }
+
+To get that little flag at the top I check the status of the connection and if not disconnected I do some dark arts with String manipulation to take
+“Connecting to Japan #547 (jp547.nordvpn.com)” and get the country code “jp”
+
+
+                .trim("")
+                .replace(/\r?\n|\r/g, "")
+                .replace(/^.*\(|\)/g, "")
+                .substr(0, 2);
+
+I also have buttons with each country listed to allow different connections. I had mapped out sweet emoji flags through more dark arts but for some reason the flag emoji’s don’t work in the body of NodeGUI.
+
+So the only downsides right now I think are missing examples and documentation. The library is typed and that is about all the docs you get for most components. Some are shown well such as [Button](https://react.nodegui.org/docs/api/interfaces/buttonprops) others are a mystery [ScrollArea](https://react.nodegui.org/docs/api/interfaces/scrollareaprops) (it says every prop is optional)
+
+All in all a pretty amazing framework, with the power of node.js and any plugin the sky is the limit.
+
+
+
+
+
+
+
+

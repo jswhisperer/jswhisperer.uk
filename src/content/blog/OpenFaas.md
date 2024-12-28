@@ -1,0 +1,76 @@
+---
+title: "OpenFaas"
+published: true
+pubDate: 'Jul 02 2022'
+description: Serverless Functions, Made Simple."
+tags: ["serverless", "lambda"]
+canonical_url: "https://gregbenner.life/open-faas/"
+---
+
+# OpenFaas
+
+I’m pretty sure many people have heard of aws lambdas, the concept is pretty cool a container and a short lived function something in something out, io. A whole slew of solutions popped up as lambda became more noticed: Google Cloud Function, Azure Functions, Auth0 Webtasks . Many of them can get pricey pretty quickly so I was interested in finding some DIY solutions. I happened upon OpenFaas a long long time ago, funny enough through RaspberryPI channels. I’m going to dive into that this article but wanted to give a shoutout to a newcomer and interesting solution from cloudflare called [Cloudflare Workers](https://www.cloudflareworkers.com/). Worth having a gander at them. Here’s a more extensive list of serverless solutions. [https://github.com/anaibol/awesome-serverless](https://github.com/anaibol/awesome-serverless)
+
+OpenFaas stands for open functions as a service. The functions are anything that fits in a docker.
+
+What kind of problems can faas solve for you? You can go full out microservice style or just have a rag tag band of functions with single purposes. I’ve solved some interesting problems like converting audio files from both android and ios and sending them back, I’ve used [puppeteer](https://github.com/puppeteer/puppeteer) to convert pages of web component widgets into nicely formatted pdf reports. The possibilities are pretty endless, you can crop images, trigger a web hook to slack, tweet something, generate a performance audit on site.
+
+They framework abstracts away the container orchestration which can be [Docker](https://www.docker.com/) Swarm or Kubernetes. The functions communicate with simple HTTP calls. The beauty of using OpenFaas is you are building on the shoulders of giants, that is you are using the industry preferred tech choices for scalable, robust, production ready tools.
+
+There are many, many ways to get started but let’s go with [Kubernetes](https://kubernetes.io/) and this great tool [Arkade](https://docs.openfaas.com/deployment/kubernetes/#a-deploy-with-arkade-fastest-option).
+
+As per the docs (please refer to the official docs for up to date instructions)
+
+(You'll have some feedback in the terminal to action during these commands.)
+
+`# For MacOS / Linux:`
+`curl -SLsf https://dl.get-arkade.dev/ | sudo sh`
+`# For Windows (using Git Bash)`
+`curl -SLsf https://dl.get-arkade.dev/ | sh`
+`arkade get kubectl`
+`arkade get kind`
+`kind create cluster`
+`arkade install openfaas --gateways 2 --load-balancer false`
+`# Get the faas-cli`
+`curl -SLsf https://cli.openfaas.com | sudo sh`
+
+At this point you should follow this [guide](https://itnext.io/kubernetes-apps-the-easy-way-f06d9e5cad3c) for port forwarding and getting your openfaas credentials . Now to deploy an openfaas such as the demo one figlet it’s as easy as
+
+`faas-cli store deploy figlet`
+
+So now comes the fun part making our own functions. Here’s the [official docs](https://docs.openfaas.com/cli/templates/)
+
+Let’s grab the official templates by changing into a directory like ./faas-templates and running
+
+`faas-cli template pull`
+`# now list them`
+`faas-cli template store list`
+`# lets create a node12 with express function`
+`faas-cli new node12func --lang node12`
+
+You will now see two files generate:
+
+`node12func.yml`
+`node12func/`
+`node12func/handler.js`
+
+Let's have a look at the template used to create these files to get an idea of what's going on, [here](https://github.com/openfaas/templates/tree/master/template/node12), or on your machine. You will see a [Dockerfile](https://github.com/openfaas/templates/blob/master/template/node12/Dockerfile) what’s most of interest here is the image it builds from which is node v.12 alpine. If you had a requirement for a different version of node, or say rather than alpine you wanted full ubuntu you could copy this template and create your own. The other very important file is a wrapper around handler [here](https://github.com/openfaas/templates/blob/master/template/node12/index.js). This holds the meat and potatoes of your express server, if you need to debug handler.js is useful to see this file. Again if you wanted to create your own template, maybe add logging to all request with Winston or something else index.js is where you would do it.
+
+So after you make some changes to handler.js (you don’t have to) we need to build the docker image and push it to dockerhub under your username. Make sure you are logged in with the docker by running docker login Now we need to update the yaml, open node12func.yml and update image: add your username and a tag for the docker image such as latest like so image: yourusername/node12func:latest Ok let’s get this deployed run
+
+`faas-cli up -f node12func.yml`
+
+this is running all these commands for you
+
+`- faas-cli build - build an image into the local Docker library`
+`- faas-cli push - push that image to a remote container registry`
+`- faas-cli deploy - deploy your function into a cluster`
+
+To test out your new function head to [http://localhost:8080/ui/](http://localhost:8080/ui/) select the function from the list on the left, and hit invoke! If invoke is grayed out it is either still being deployed, or possibly broken. If it takes more than 5 minutes it’s time to investigate. Hopefully it didn’t break but here’s a useful debugging command to check
+
+`kubectl logs -n openfaas-fn deploy/node12func`
+
+Hopefully you found this whirlwind intro useful, for sure check out the many guides and official docs too!
+
+Comments, likes, questions https://twitter.com/cactusanddove/status/1291399503816396801
+

@@ -1,0 +1,29 @@
+---
+title: "Where are the missing Front End People?"
+published: true
+date: 2023-01-01
+pubDate: 'Jul 02 2022'
+description: "A quest to figure out what makes Front End Developers a rare commodity."
+tags: ['frontend', 'css', 'javascript']
+cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+canonical_url: "https://gregbenner.life/where-are-the-missing-front-end-people/"
+---
+
+(This is a repost of my 2013 <a href="https://medium.com/@gregbenner/where-are-the-missing-front-end-people-d12bbb3ac785">medium</a> article titled the same)
+
+Lately I have been asked the same question over and over, “Do you know of any good Front End Developer’s looking for work?” My answer is simply no.
+
+I have to mention I’m in South Africa, so this will reflect the job scene here. I often reflect how did I become a Front End Dev (referred to as FED from now on, because it sounds cool) How did the other people I know become FED’s? What makes a good FED?
+
+I will start with exploring myself since it’s a topic I know well. I actually studied fine art breifly and then graphic design. This has helped me immensly but at the time I didn’t know what a FED was. I worked doing Graphic Design mostly in a print capacity for almost 3 years, then I started working in a mixed setting where one day my boss asked, “You can make a website right?” I’ve always been brilliant with computers so this sounded like a great experience. This moment was what defined my code addiction, my quest to be the best at something new. Fast forward a few years and now I’d say I’m pretty good at my job. I’ve worked for agencies large and small, done many freelance projects and people are impressed by both my code and results on screen.
+
+If I was to now abstract what the ingredients are that made me into a good FED. I would say for one thing my lack of a Computer Science degree. Personally I don’t know anyone with one that does Front End vs Backend. Secondly I am a computer hobbyist, hacking, trial and error and a large capacity for frustration lead to me enjoying cross browser quirks and melding CSS to my will. I love that feeling of success after an hour of not getting it. I think this one is a bit up to the individual but I think a design background or at least a strong interest in design in nessisary. Look if you don’t care that much or don’t notice down to the minute pixel detail, maybe you should be doing the backend. FED’s are essentially translator’s we take a good designers work, and make it better, then glue it to the backend. I’m biased but I would say we are the most responsable in a project, at the end of the day it isn’t the design your client is testing and it isn’t the database schema neither.
+
+Now if I think about my friends who are FED’s I can see a trend they are also hobby computerists, some have design backgrounds, none have a CS degree. I see a trend. So what makes this combo rare? If you think about it there isn’t a Front End Development degree that I’m aware of, that means in high school you probably aren’t even that aware what it is. You can’t currently go and take a course, but your parents want you to so you, if interested in programming take CS. *Disclaimer* there is nothing wrong with CS, I hope to one day take a degree in it. However you now have been trained analytically for 3-4 years and have little experience working with photoshop or ‘the view layer’. You also probably now realise you can get paid a significant amount more to be a Back End Developer. This may change…
+
+There is no mechanism at this time to create a Front End Developer other than this random act of change I described, that is why we are such a rare sought after breed. I think in the next couple years this will completely flip, thanks to the great work at CodeSchool, TreeHouse, and CodeAcademy. The idea of free university learning is also taking off and as Coursera matures, it will also become a great place to learn FED concepts.
+
+So if you are a business, or you are a guy with a cool app idea, or you’re my Uncle who needs a blog asap, Hopefully this explains why it’s hard to find us; why we are always busy.
+
+follow my twitter https://twitter.com/cactusanddove
+

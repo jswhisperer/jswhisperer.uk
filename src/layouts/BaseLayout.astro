@@ -1,0 +1,47 @@
+---
+import BaseHead from '@/components/BaseHead'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import NewHeader from '@/components/NewHeader'
+import ProviderAnimations from '@/components/ProviderAnimations'
+import ProviderTheme from '@/components/ProviderTheme'
+import TwSizeIndicator from '@/components/TwSizeIndicator'
+import EditBlog from '@/components/editBlog'
+const { title, description, image, articleDate } = Astro.props
+const pageUrl = new URL(Astro.url.pathname, Astro.site)
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: title,
+	url: pageUrl
+}
+---
+
+<html lang='en' class='scroll-smooth'>
+	<head>
+		<script type='application/ld+json' set:html={JSON.stringify(structuredData)} />
+
+		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+		<ProviderTheme />
+		<ProviderAnimations />
+	</head>
+
+	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white mx-0'>
+		<Header />
+		<NewHeader />
+		<main
+			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible'
+		>
+			<slot />
+			<Footer />
+		</main>
+		<TwSizeIndicator />
+		<EditBlog />
+		<style>
+			body {
+				margin-left: calc(100vw - 100%); /* prevent layout shift */
+			}
+		</style>
+	</body>
+</html>
