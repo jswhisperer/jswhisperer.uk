@@ -6,7 +6,7 @@ date: 2023-01-01
 pubDate: 'Jul 02 2022'
 description: This is my goto stack Nuxt.js which is server side rendered framework around vue. It plays on Next.js from the React world. At the end you’ll have a super performant website to build off of.
 tags: [nuxt, node, vue, beginner]
-cover_image: https://gregbenner.life/assets/static/alexandr-podvalny-220262-unsplash.07cc2b7.490343832c4705701e26598c1c374606.jpg
+heroImage: /public/project.png
 ---
 
 # Get started with Nuxt

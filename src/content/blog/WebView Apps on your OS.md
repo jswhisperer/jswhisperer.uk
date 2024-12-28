@@ -5,7 +5,6 @@ pubDate: 'Jul 02 2022'
 published: true
 description: "An exploration of webview apps for desktop"
 tags: ["webgap", "electron", "nodegui", "webview"]
-//cover_image: https://direct_url_to_image.jpg
 canonical_url: "https://gregbenner.life/web-view-apps-on-your-os/"
 ---
 

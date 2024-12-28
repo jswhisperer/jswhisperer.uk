@@ -5,7 +5,7 @@ date: 2023-01-01
 pubDate: 'Jul 02 2022'
 description: "A quest to figure out what makes Front End Developers a rare commodity."
 tags: ['frontend', 'css', 'javascript']
-cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+# heroImage: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
 canonical_url: "https://gregbenner.life/where-are-the-missing-front-end-people/"
 ---
 

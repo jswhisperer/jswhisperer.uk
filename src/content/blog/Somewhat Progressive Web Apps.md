@@ -5,7 +5,6 @@ pubDate: 'Jul 02 2022'
 description: "Continuing with my seemingly obsession with web apps on the desktop, let's explore another few routes to success, their pros and cons."
 tags: ["pwa"]
 canonical_url: "https://gregbenner.life/somewhat-progressive-web-apps/"
-//cover_image: https://direct_url_to_image.jpg
 ---
 
 In my last [post](https://gregbenner.life/web-view-apps-on-your-os/)  I explored a few ideas for using desktop native webviews to contain a webapp. There are some pros and cons to said approach, off the top of my head I'd say the pros are smaller app sizes (than what I'm going to share later in the post) and portability of the app; you can distribute it. A con of that approach might be if you just need a PWA you can open chrome > click more tools > create shortcut. This approach will yield a very small app size, but no portability. 

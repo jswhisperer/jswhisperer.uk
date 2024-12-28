@@ -6,7 +6,8 @@ pubDate: 'Jul 02 2022'
 description: "Take an adventure with me creating a Proton Native app that uses node.js to communicate with cli. Hear about the pros and cons of Proton Native."
 tags: ["backend", "node", "webview", "react"]
 canonical_url: "https://gregbenner.life/proton-native/"
-cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+heroImage: /public/project.png
+# heroImage: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
 ---
 
 I mentioned Proton Native [earlier](https://gregbenner.life/web-view-apps-on-your-os/) but hadn’t tried it extensively until now.

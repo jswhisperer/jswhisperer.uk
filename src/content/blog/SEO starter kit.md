@@ -5,7 +5,7 @@ date: 2023-01-01
 pubDate: 'Jul 02 2022'
 description: what do you need for an effective indexable "google-able" site
 tags: [seo, beginners, html]
-cover_image: https://gregbenner.life/assets/static/alexandr-podvalny-220262-unsplash.07cc2b7.490343832c4705701e26598c1c374606.jpg
+heroImage: /public/project.png
 ---
 
 # SEO starter kit
