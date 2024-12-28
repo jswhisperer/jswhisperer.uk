@@ -5,6 +5,7 @@ description: "Node.js is beautiful and brilliant. It takes a mature developer to
 tags: ["backend", "server", "reverseproxy", "caddy"]
 canonical_url: "https://gregbenner.life/caddy-2-server-the-silver-bullet-of-serving/"
 pubDate: 'Jul 02 2022'
+category: Category 1
 ---
 
 ## Caddy 2 server the silver bullet of serving

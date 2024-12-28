@@ -1,0 +1,34 @@
+---
+import { getAuthor } from '@/utils'
+import { type CollectionEntry, getCollection } from 'astro:content'
+
+const authors = await getCollection('author')
+export async function getStaticPaths() {
+	const authors = await getAuthor()
+
+	return authors.map((author: any) => ({
+		params: { slug: author.name },
+		props: author
+	}))
+}
+type Props = CollectionEntry<'blog'> & { slug: string; author: any; name: any }
+
+const author = Astro.props
+// const MAX_POSTS = 3
+// const getRelatedPosts = (post: Props) => {
+// 	const lowercaseTags = post?.data?.tags?.map((tag) => tag.toLowerCase())
+// 	const relatedPosts = posts.filter(
+// 		(p) =>
+// 			p.slug !== post.slug && p.data?.tags?.some((t) => lowercaseTags?.includes(t.toLowerCase()))
+// 	)
+// 	return relatedPosts.slice(0, MAX_POSTS)
+// }
+
+// const relatedPosts = getRelatedPosts(post)
+
+// const { Content, headings, remarkPluginFrontmatter } = await post.render()
+
+// const disqusEnabled = disqusConfig.enabled
+---
+
+{author.name}

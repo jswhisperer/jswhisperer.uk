@@ -1,0 +1,233 @@
+---
+heroImage: /public/project.png
+category: Category 1
+description: >-
+  Take an adventure with me creating a Proton Native app that uses node.js to
+  communicate with cli. Hear about the pros and cons of Proton Native.
+pubDate: 2022-07-01T23:00:00.000Z
+tags:
+  - backend
+  - node
+  - webview
+  - react
+author: src/content/author/greg.mdx
+title: Proton Native
+---
+
+I mentioned Proton Native [earlier](https://gregbenner.life/web-view-apps-on-your-os/) but hadn’t tried it extensively until now.
+
+So what is it, here are some of the promises
+
+Same syntax & components as React Native
+
+Works with existing React libraries such as Redux
+
+Cross platform
+
+No more Electron
+
+Compatible with all normal Node.js packages
+
+Hot reloading
+
+So PN had a very interesting beginning, it utilized a library called `libui-node` which was kinda neat. In my opinion it wasn’t ready for production; it didn’t even have the ability to include images. I believe Vuido still uses libui-node. Since then the author totally rewrote PN with [QT](https://www.qt.io/) bindings. Here’s a great [post](https://dev.to/kusti8/proton-native-v2-create-cross-platform-desktop-apps-with-react-2fdo) of the changes. There’s a lot of cool features now, like flexbox layout and images.
+
+PN utilizes react as the view layer and allows you to write node.js directly in those files. This library feels like a spiritual successor to now defunct React Native Desktop. I won’t go through the setup that’s [here](https://proton-native.js.org). Right now there is a lack of components but there is enough to get stuff done, numbering in at 9 right now.
+
+Ok some caveets I found was the documentation is pretty sparse again. It took me a lot of reading the source code and exploring issues to figure out some thing. For example there is an `<Image>` component and the extent of the docs is
+
+`props : style, resizeMode, source`
+
+What it doesn’t tell you is that source takes an uri like so
+
+`source={ uri: "image.png" }` another problem is that right now only external url images seem to work, not local. Lastly reading through the issues apparently only .png works on macOs.
+
+Another couple weird issues `border-radius` is really finicky works on mostly square dimension components but not rectangular. Emoji’s are not rendered 😞 .
+
+Ok enough bad mouthing, let’s see some interesting stuff! I am really bored at home right now and lacking work so I’ve been doing lot’s of fun apps and experiments. I use Ubuntu and nordVPN, I like GUI’s for a lot of things and unfortunately there isn’t one. What I decided to try was mapping the nordVPN cli to Proton Native. This isn’t obviously a production ready approach, for that there is an API. I didn’t want to setup and account and read docs all day so I went with my CLI solution. If you want to see a pretty good example of using the API check out [this](https://github.com/AhmedAli7O1/nordvpn).
+
+Way at the bottom of this [page](https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-Elementary-OS-and-Linux-Mint.htm) are the CLI options for nordVPN. on an aside I found out linux is terribly supported even here, there’s no option to connect via a country or anything very useful at all. Here’s a few useless commands they offer
+
+nordvpn countries - See the country list.
+
+nordvpn cities - See the city list.
+
+nordvpn groups - See a list of available server groups.
+
+I mean it just prints out some countries, you can’t use that info in any way though.
+
+Ok some of the useful commands are
+
+nordvpn account - See account information
+
+nordvpn status - See the connection status.
+
+nordvpn login - Log in.
+
+nordvpn connect
+
+Another interesting issue, nordvpn connect does accept a server but you have to give a specific one like `ca1111` why don’t they just accept a country here…
+
+Inside my project I started to link up these features with node.js
+
+```javascript
+
+const { spawn } = require("child_process");
+
+
+
+spawnNord(flag) {
+
+return spawn("nordvpn", [flag]);
+
+}
+
+nordStatus() {
+
+const output = this.spawnNord("status");
+
+output.stdout.on("data", (data) => {
+
+const str = data.toString("utf8");
+
+const sanData = str
+
+.replace(/\r?\n|\r/g, "")
+
+.replace("-", "")
+
+.trim();
+
+this.setState({
+
+status: sanData,
+
+});
+
+});
+
+```
+
+So a spawned child process returns the data in a buffer so I convert that to a string, then do some dark arts to clean up the string. and Voila I have a status state.
+
+Connect was very similar
+
+```javascript
+  nordConnect(country = "") {
+  let server = "";
+
+  if (country) {
+
+  server = serverList.find((x) => x.country === "usa").server;
+
+  }
+
+
+  const connect = spawn("nordvpn", ["connect", server]);
+
+  connect.stdout.on("data", (data) => {
+
+  var loginStd = data.toString("utf8");
+
+  });
+
+  }
+```
+
+I decided I wanted a nifty toggle component so I built it from scratch
+
+```html
+<View
+
+style={
+
+display: "flex",
+
+width: "100%",
+
+height: "80px",
+
+flexDirection: "row",
+
+justifyContent: "space-evenly",
+
+backgroundColor: "#24476f",
+
+}
+
+>
+
+<View
+
+style={
+
+display: "flex",
+
+backgroundColor: this.state.toggled ? "gray" : "#82bc4e",
+
+borderRadius: 20,
+
+height: 45,
+
+width: 75,
+
+marginTop: "10px",
+
+borderTop: "1px solid #333333",
+
+alignItems: this.state.toggled ? "flex-start" : "flex-end",
+
+justifyContent: "center",
+
+}
+
+onPress={this.nordConnect}
+
+>
+
+<TouchableOpacity
+
+style={
+
+borderRadius: 20,
+
+height: 40,
+
+width: 40,
+
+marginTop: "-1px",
+
+marginRight: 5,
+
+marginLeft: 5,
+
+backgroundColor: "white",
+
+borderTop: "1px solid transparent",
+
+}
+
+onPress={this.toggle}
+
+> </TouchableOpacity>
+```
+
+What I ended up with looks like this
+
+![](https://paper-attachments.dropbox.com/s_3634A4010B18F575EA4E5704F6A369894A413DE653479F612FFBDEBE9EE801B6_1597025922101_Screenshot+from+2020-08-09+22-17-14.png)
+
+One more warning about spawn processes, yes it’s super fun, but right now PN doesn’t have a beforeClose event needed to kill those processes.
+
+Ok last step time to [package](https://proton-native.js.org) this bad boy for distribution. I’ll let you read those for yourself but one thing I tripped on was this command
+
+`npx nexe bin/index.js -o out/my-app # Create our binary`
+
+If you are not using one of the available matching prebuilt binaries it tries to build locally, and for me it just failed hard; so check [here](https://github.com/nexe/nexe/releases/) and use nvm to adjust your node.js to a matching one.
+
+So my last surprise was the generated app was 170mb. I’m pretty sure that’s on-par with electron. I tried compiling the example caculator app also just to double check it was some weird dependancy I included. So yes you can get a 170mb calculator if you want.
+
+Stay tuned I’m going to check out nodeGUI next post.
+
+Questions, comments, critisims, likes, whatever?
+
+[https://twitter.com/cactusanddove/status/1292652072001777665](https://twitter.com/cactusanddove/status/1292652072001777665)

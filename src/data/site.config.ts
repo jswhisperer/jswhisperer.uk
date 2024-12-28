@@ -1,6 +1,6 @@
 interface SiteConfig {
 	site: string
-	author: string
+
 	title: string
 	description: string
 	lang: string
@@ -11,7 +11,7 @@ interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
 	site: 'https://jswhisperer.uk/', // Write here your website url
-	author: 'The JavaScript Whisperer', // Site author
+	// author: 'The JavaScript Whisperer', // Site author
 	title: 'JavaScript Whisperer blog', // Site title.
 	description: 'javascripts', // Description to display in the meta tags
 	lang: 'en-GB',

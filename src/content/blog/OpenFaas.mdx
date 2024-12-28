@@ -1,11 +1,13 @@
 ---
-title: "OpenFaas"
-published: true
-pubDate: 'Jul 02 2022'
-description: Serverless Functions, Made Simple."
-tags: ["serverless", "lambda"]
-canonical_url: "https://gregbenner.life/open-faas/"
+heroImage: /src/assets/images/uploads/7b6ld2c3bl65co0l6d5t.png
+category: Category 1
+description: 'Serverless Functions, Made Simple."'
+pubDate: 2022-07-01T23:00:00.000Z
+tags:
+  - serverless
+  - lambda
 author: src/content/author/greg.mdx
+title: OpenFaas
 ---
 
 # OpenFaas
@@ -57,7 +59,7 @@ You will now see two files generate:
 
 Let's have a look at the template used to create these files to get an idea of what's going on, [here](https://github.com/openfaas/templates/tree/master/template/node12), or on your machine. You will see a [Dockerfile](https://github.com/openfaas/templates/blob/master/template/node12/Dockerfile) what’s most of interest here is the image it builds from which is node v.12 alpine. If you had a requirement for a different version of node, or say rather than alpine you wanted full ubuntu you could copy this template and create your own. The other very important file is a wrapper around handler [here](https://github.com/openfaas/templates/blob/master/template/node12/index.js). This holds the meat and potatoes of your express server, if you need to debug handler.js is useful to see this file. Again if you wanted to create your own template, maybe add logging to all request with Winston or something else index.js is where you would do it.
 
-So after you make some changes to handler.js (you don’t have to) we need to build the docker image and push it to dockerhub under your username. Make sure you are logged in with the docker by running docker login Now we need to update the yaml, open node12func.yml and update image: add your username and a tag for the docker image such as latest like so image: yourusername/node12func:latest Ok let’s get this deployed run
+So after you make some changes to handler.js (you don’t have to) we need to build the docker image and push it to dockerhub under your username. Make sure you are logged in with the docker by running docker login Now we need to update the yaml, open node12func.yml and update image: add your username and a tag for the docker image such as latest like so image: yourusername/node12func\:latest Ok let’s get this deployed run
 
 `faas-cli up -f node12func.yml`
 
@@ -73,5 +75,4 @@ To test out your new function head to [http://localhost:8080/ui/](http://localho
 
 Hopefully you found this whirlwind intro useful, for sure check out the many guides and official docs too!
 
-Comments, likes, questions https://twitter.com/cactusanddove/status/1291399503816396801
-
+Comments, likes, questions [https://twitter.com/cactusanddove/status/1291399503816396801](https://twitter.com/cactusanddove/status/1291399503816396801)

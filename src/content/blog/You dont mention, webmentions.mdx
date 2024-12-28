@@ -1,19 +1,21 @@
 ---
-title: "You dont mention, webmentions"
-published: true
-date: 2023-01-01
-pubDate: 'Jul 02 2022'
-description: "A whirlwind intro to webmentions"
-tags: ['frontend', 'webmmention', 'javascript', 'graphql']
-canonical_url: "https://gregbenner.life/you-dont-mention-webmentions/"
+heroImage: /src/assets/images/uploads/7b6ld2c3bl65co0l6d5t.png
+category: Category 1
+description: A whirlwind intro to webmentions
+pubDate: 2022-07-01T23:00:00.000Z
+tags:
+  - frontend
+  - webmmention
+  - javascript
+  - graphql
+title: 'You dont mention, webmentions'
 ---
 
 Perhaps you've heard whispers or mention of them and now you are finally ready to wield the awesome power of <a href="https://webmention.io/">webmentions</a>.
 
 <blockquote>
-    <p>Webmention.io is a hosted service created to easily receive webmentions on any web page.</p>
+  <p>Webmention.io is a hosted service created to easily receive webmentions on any web page.</p>
 </blockquote>
-
 
 Imagine for a second you have a blog, and you also read other blogs. Normally if you wanted to comment on a blog you would be faced with either an email signup and confirmation, or some individually coded social providers, or... Disqus.
 
@@ -21,7 +23,7 @@ That was 2019, now welcome the future. When you link another post from a site, t
 
 Now we can take this another step further by monitoring popular social media sites for mentions of your posts. Sweet so you can basically have a static site with a javascript free commenting and like system.
 
-The basic setup is available on https://webmention.io/ but be forewarned the latter part of the setup may take some time investment; I will try to aid with that. This article is super helpful and you should start there https://pixelhop.io/writing/2020/05/get-started-with-webmentions-in-gridsome/ I will make use of the authors gridsome plugin. 
+The basic setup is available on [https://webmention.io/](https://webmention.io/) but be forewarned the latter part of the setup may take some time investment; I will try to aid with that. This article is super helpful and you should start there [https://pixelhop.io/writing/2020/05/get-started-with-webmentions-in-gridsome/](https://pixelhop.io/writing/2020/05/get-started-with-webmentions-in-gridsome/) I will make use of the authors gridsome plugin.
 
 Here's the end result of my first web mentions from twitter.
 
@@ -43,7 +45,7 @@ add the plugin to your gridsome config
     token: 'your-webmention-io-token', // Your secret webmention token
     },
 },
-``` 
+```
 
 Super cool, let's now fetch and display some webmentions.
 
@@ -85,7 +87,6 @@ Super cool, let's now fetch and display some webmentions.
 </static-query>
 ```
 
-
 ```js
 ...
 computed: {
@@ -103,6 +104,6 @@ computed: {
     }
   }
   ...
-  ```
+```
 
-  That's all for now folks!
+That's all for now folks!
