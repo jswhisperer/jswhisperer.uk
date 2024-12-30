@@ -1,6 +1,6 @@
+import { siteConfig } from '@/site-config'
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
-import { siteConfig } from '@/site-config'
 
 export async function GET(context: any) {
 	const posts = await getCollection('blog')
@@ -10,6 +10,7 @@ export async function GET(context: any) {
 		site: context.site,
 		items: posts.map((post) => ({
 			...post.data,
+			author: post.data.author?.slug || '',
 			link: `post/${post.slug}/`
 		}))
 	})
