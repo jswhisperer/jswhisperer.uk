@@ -1,0 +1,699 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import { Image } from 'astro:assets'
+---
+
+<script src='../js/head.min.js'></script>
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		console.log('DOM fully loaded and parsed')
+		console.log(head)
+		head.js(
+			'/js/jquery.min.js',
+			//"javascripts/tabs.js",
+			'/js/responsiveslides.min.js',
+			'/js/jquery.smooth-scroll.min.js',
+			function () {
+				$('.rslides').responsiveSlides({
+					auto: true,
+					speed: 1000,
+					timeout: 4000,
+					pager: false,
+					nav: true,
+					random: false,
+					pause: true,
+					pauseControls: false,
+					prevText: '&#x005f;',
+					nextText: '&#x0022;',
+					maxwidth: '',
+					controls: '',
+					namespace: 'rslides'
+				})
+				$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+				$('img').each(function (a) {
+					$(this)
+						.delay(800 * a)
+						.animate({ opacity: 1 }, 1000)
+				})
+			}
+		)
+	})
+</script>
+
+<BaseLayout title='Work'>
+	<a href='#top' class='tothetop'><span aria-hidden='true' class='icon-arrow-up'></span></a>
+	<h2>Work <span aria-hidden='true' class='icon-cannon'></span></h2>
+	<ul class='tabs'>
+		<li>
+			<a href='#the-web-dev' class='active'
+				>Web Dev<span class='mobile-hide small-mobile-hide'>elopment</span></a
+			>
+		</li>
+	</ul>
+	<ul class='tabs-content'>
+		<li id='the-web-dev' class='active'>
+			<p>
+				Here are some projects I developed.<br />
+				 (Coded/Sliced only unless otherwise specified.)
+			</p>
+			<ul class='rslides rslides1'>
+				<li
+					class='overlay rslides1_on'
+					id='rslides1_s0'
+					style='display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/angela-jeweller.jpg')}
+						alt='angela jeweller'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>Multilingual</li>
+						<li>
+							<a href='http://angela.co.za/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s1'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/dvmakeup.jpg')}
+						alt='angela jeweller'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>Multilingual</li>
+						<li>
+							<a href='http://dvmakeup.com/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s2'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/freedom-hill-restaurant.jpg')}
+						alt='freedom hill restaurant'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>xhtml, CSS3</li>
+						<li>jQuery</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://freedomhill-live.co.za/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s3'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/mecer-express.jpg')}
+						alt='mecer express'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>Joomla CMS</li>
+						<li>xhtml, CSS3</li>
+						<li>eCommerce</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://mecerexpresstore.co.za/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s4'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/olivari-auret.jpg')}
+						alt='olivari auret'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://olivariauret.com/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s5'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/pxsecurity.jpg')}
+						alt='pxsecurity'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>HTML5, CSS3</li>
+						<li>Design &amp; Development</li>
+						<li>jQuery</li>
+						<li>
+							<a href='http://pxsecurity.co.uk/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s6'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/simapro.jpg')}
+						alt='simapro'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://simapro.co.za/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s7'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/the-green-house.jpg')}
+						alt='the green house'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://tgh.co.za/' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+				<li
+					class='overlay'
+					id='rslides1_s8'
+					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
+				>
+					<Image
+						src={import('../assets/images/portfolio/the-render-room.jpg')}
+						alt='the render room'
+						style='opacity: 1;'
+					/>
+					<ul class='theoverlay'>
+						<li>WordPress CMS</li>
+						<li>HTML5, CSS3</li>
+						<li>jQuery</li>
+						<li>PHP, MySQL</li>
+						<li>
+							<a href='http://renderroom.co.za/v1' target='_blank'>visit site</a>
+						</li>
+					</ul>
+				</li>
+			</ul><a href='#' class='rslides_nav rslides1_nav prev'>_</a><a
+				href='#'
+				class='rslides_nav rslides1_nav next'>"</a
+			>
+		</li>
+	</ul>
+</BaseLayout>
+
+<style>
+	div,
+	span,
+	h2,
+	p,
+	a,
+	img,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	ul {
+		list-style: none;
+	}
+	h2 {
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 10px;
+	}
+	p {
+		margin: 0 0 20px 0;
+	}
+	a,
+	a:visited {
+		color: #444;
+		text-decoration: none;
+		outline: 0;
+	}
+	a:hover,
+	a:focus {
+		color: #555;
+	}
+	ul {
+		margin-bottom: 20px;
+	}
+	ul {
+		list-style: none outside;
+	}
+	ul ul {
+		margin: 4px 0 5px 30px;
+		font-size: 90%;
+	}
+	ul ul li {
+		margin-bottom: 6px;
+	}
+	li {
+		line-height: 1.5em;
+	}
+	li p {
+		line-height: 31px;
+	}
+	ul.tabs {
+		display: block;
+		margin: 0 0 20px 0;
+		padding: 0;
+	}
+	ul.tabs li {
+		display: block;
+		width: 33%;
+		max-width: 150px;
+		height: 30px;
+		padding: 0;
+		float: left;
+		margin-bottom: 0;
+	}
+	ul.tabs li a {
+		font-family: arial;
+		display: block;
+		text-decoration: none;
+		width: auto;
+		height: 29px;
+		padding: 0 20px;
+		line-height: 30px;
+		-webkit-border-radius: 0 10px 0 0;
+		-moz-border-radius: 0 10px 0 0;
+		border-radius: 0 10px 0 0;
+		border-right: solid 1px #aaa;
+		margin: 0;
+		font-size: 13px;
+		text-shadow: 0 2px 3px #fff;
+		background: rgb(0, 0, 0);
+		background: rgba(0, 0, 0, 0.1);
+		background: -moz-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0%, rgba(145, 145, 145, 0.3)),
+			color-stop(92%, rgba(246, 246, 246, 0)),
+			color-stop(100%, rgba(255, 255, 255, 0))
+		);
+		background: -webkit-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -o-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -ms-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -webkit-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -moz-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -ms-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: -o-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		background: linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(246, 246, 246, 0) 92%,
+			rgba(255, 255, 255, 0) 100%
+		);
+	}
+	ul.tabs li a.active {
+		background: rgb(255, 255, 255);
+		background: rgba(255, 255, 255, 0.5);
+		background: -moz-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0%, rgba(145, 145, 145, 0.3)),
+			color-stop(73%, rgba(254, 254, 254, 0.5)),
+			color-stop(74%, rgba(255, 255, 255, 0.5))
+		);
+		background: -webkit-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -o-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -ms-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -webkit-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -moz-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -ms-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: -o-linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+		background: linear-gradient(
+			top,
+			rgba(145, 145, 145, 0.3) 0%,
+			rgba(254, 254, 254, 0.5) 73%,
+			rgba(255, 255, 255, 0.5) 74%
+		);
+	}
+	ul.tabs li:first-child a.active {
+		margin-left: 0;
+	}
+	ul.tabs li:first-child a {
+		border-width: 1px 1px 0 1px;
+		-moz-border-radius-topleft: 2px;
+		-webkit-border-top-left-radius: 2px;
+		border-top-left-radius: 2px;
+	}
+	ul.tabs-content {
+		margin: 0;
+		display: block;
+	}
+	ul.tabs-content > li {
+		display: none;
+	}
+	ul.tabs-content > li.active {
+		display: block;
+	}
+	ul.tabs:before,
+	ul.tabs:after {
+		content: '\0020';
+		display: block;
+		overflow: hidden;
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+	ul.tabs:after {
+		clear: both;
+	}
+	ul.tabs {
+		zoom: 1;
+	}
+	img {
+		opacity: 0;
+		zoom: 1;
+		-ms-filter: 'alpha(opacity=0)';
+		*filter: alpha(opacity=0);
+	}
+	[class^='icon-']:before {
+		font-family: 'gregasaurus';
+		font-style: normal;
+		speak: none;
+	}
+	.icon-cannon:before {
+		content: '\0032';
+	}
+	.icon-arrow-up:before {
+		content: '\0043';
+	}
+	p {
+		letter-spacing: 1px;
+		text-align: justify;
+	}
+	h2 {
+		font-family: 'MuncieRegular';
+		color: #847e70;
+	}
+	h2 {
+		font-size: 45px;
+		margin-bottom: 25px;
+		margin-top: 20px;
+	}
+	* {
+		position: relative;
+	}
+	.container .insidecolumn {
+		border: solid 1px #ccc;
+		-webkit-border-radius: 10px 2px 10px 2px;
+		-moz-border-radius: 10px 2px 10px 2px;
+		border-radius: 10px 2px 10px 2px;
+		background: rgb(255, 255, 255);
+		background: rgba(255, 255, 255, 0.2);
+		padding: 10px 15px;
+		-webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+	.rslides {
+		position: relative;
+		list-style: none;
+		overflow: hidden;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+	.rslides_nav.rslides1_nav.next {
+		float: right;
+	}
+	.rslides li {
+		position: absolute;
+		display: none;
+		width: 100%;
+		left: 0;
+		top: 0;
+	}
+	.rslides > li:first-child {
+		position: relative;
+		display: block;
+		float: left;
+	}
+	.rslides img {
+		display: block;
+		height: auto;
+		float: left;
+		width: 100%;
+		border: 0;
+	}
+	.tothetop {
+		z-index: 2;
+		right: 10px;
+		top: 5px;
+		position: absolute;
+		color: #847e70;
+		opacity: 0.1;
+		zoom: 1;
+		-ms-filter: 'alpha(opacity=10)';
+		*filter: alpha(opacity=10);
+	}
+	.tothetop:hover {
+		color: #847e70;
+		opacity: 0.9;
+		zoom: 1;
+		-ms-filter: 'alpha(opacity=90)';
+		*filter: alpha(opacity=90);
+	}
+	.rslides_nav {
+		font-family: 'gregasaurus';
+	}
+	.rslides_nav {
+		position: relative;
+	}
+	.next {
+		float: right;
+	}
+	.overlay {
+		overflow: hidden;
+	}
+	.overlay:hover .theoverlay {
+		bottom: 0;
+		-webkit-transition: all 1s ease-in-out;
+		-moz-transition: all 1s ease-in-out;
+		-o-transition: all 1s ease-in-out;
+		-ms-transition: all 1s ease-in-out;
+		transition: all 1s ease-in-out;
+	}
+	.theoverlay {
+		height: 40%;
+		background: rgb(0, 0, 0);
+		background: rgba(0, 0, 0, 0.3);
+		bottom: -40%;
+		position: absolute;
+		width: 100%;
+		margin: 0;
+	}
+	.rslides .theoverlay li:first-child {
+		margin-top: 25px;
+	}
+	.rslides .theoverlay li {
+		display: block;
+		position: static;
+		margin: 5px 0 0 2%;
+		color: #fff;
+		font-size: 20px;
+		text-align: center;
+		text-shadow: 1px 1px 5px #000;
+		line-height: 1em;
+	}
+	.theoverlay li a {
+		color: #fff;
+		font-size: 30px;
+		font-style: italic;
+		font-weight: normal;
+		text-shadow: 1px 1px 5px #000;
+	}
+	.theoverlay li a:hover {
+		text-decoration: underline;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+		.rslides .theoverlay li:first-child {
+			margin-top: 5px;
+		}
+	}
+	@media only screen and (max-width: 767px) {
+		.mobile-hide {
+			display: none !important;
+		}
+	}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		p {
+			font-size: 16px;
+			line-height: 26px;
+		}
+	}
+	@media only screen and (max-width: 479px) {
+		.small-mobile-hide {
+			display: none !important;
+		}
+		p {
+			font-size: 14px;
+			line-height: 23px;
+		}
+		.container .insidecolumn {
+			padding-top: 10px;
+		}
+		ul.tabs li a {
+			font-size: 13px;
+			line-height: 1em;
+		}
+		.theoverlay {
+			position: relative;
+			background: none;
+		}
+		.rslides .theoverlay li,
+		.rslides .theoverlay li a {
+			color: #444;
+			font-size: 13px;
+			text-shadow: none;
+		}
+		.rslides_nav {
+			position: absolute;
+			top: 55px;
+		}
+		.rslides_nav.rslides1_nav.next {
+			right: 0;
+		}
+		li p {
+			line-height: 18px;
+		}
+	}
+	/*! CSS Used fontfaces */
+</style>

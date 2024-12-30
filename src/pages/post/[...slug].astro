@@ -8,6 +8,7 @@ import TableOfContents from '@/components/TableOfContents'
 import { disqusConfig } from '@/data/disqus.config'
 import BlogPost from '@/layouts/BlogPost'
 import { getPosts } from '@/utils'
+import { Prism } from '@astrojs/prism'
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 const posts = await getCollection('blog')
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 		props: post
 	}))
 }
-type Props = CollectionEntry<'blog'> & { slug: string; author:any, name: any }
+type Props = CollectionEntry<'blog'> & { slug: string; author: any; name: any }
 
 const post = Astro.props
 const MAX_POSTS = 3
@@ -59,17 +60,18 @@ const disqusEnabled = disqusConfig.enabled
 
 		<!-- post -->
 		<article class='card max-w-full w-full'>
+			<span class='main-content-shadow'></span>
 			<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
-				<Content components={{ pre: Code, SButton }} />
+				<Content components={{ pre: Code, SButton, Prism }} />
+
+				<!-- related posts -->
+				<footer>
+					<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
+					<ListRelatedPosts posts={relatedPosts} />
+				</footer>
 			</div>
-
-			<!-- related posts -->
-			<footer>
-				<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
-				<ListRelatedPosts posts={relatedPosts} />
-			</footer>
 		</article>
-	</div>
 
-	{disqusEnabled && <Disqus />}
+		{disqusEnabled && <Disqus />}
+	</div>
 </BlogPost>

@@ -1,5 +1,7 @@
-import GithubIcon from '@/components/icons/GithubIcon'
+import BlueskyIcon from '@/components/icons/BlueskyIcon'
 import TwitterIcon from '@/components/icons/TwitterIcon'
+
+import GithubIcon from '@/components/icons/GithubIcon'
 
 // ADD YOUR SOCIAL NETWORKS HERE
 export const SOCIALNETWORKS = [
@@ -8,7 +10,11 @@ export const SOCIALNETWORKS = [
 		url: 'https://github.com/jswhisperer',
 		icon: GithubIcon
 	},
-
+	{
+		name: 'Bluesky',
+		url: 'https://bsky.app/profile/jswhisperer.bsky.social',
+		icon: BlueskyIcon
+	},
 	{
 		name: 'Twitter',
 		url: 'https://x.com/jswhisperer',

@@ -22,20 +22,22 @@ This is my goto stack Nuxt.js which is server side rendered framework around vue
 
 Let’s get started!
 
+<Prism lang='js' code={`npx create-nuxt-app <project-name>`} />
+
 `npx create-nuxt-app <project-name>`
 
-Let’s choose (javascript/or ts) , (npm / yarn ),  (tailwind), space bar to select all 3 (axios, content, and pwa), choose the linters you prefer; I like eslint and prettier. Testing will be beyond this article but I recommend trying out jest it will add a sample test you can examine.
+Let’s choose (javascript/or ts) , (npm / yarn ), (tailwind), space bar to select all 3 (axios, content, and pwa), choose the linters you prefer; I like eslint and prettier. Testing will be beyond this article but I recommend trying out jest it will add a sample test you can examine.
 
-* Choose: Rendering mode: Universal (SSR / SSG).
-* Server (Node.js hosting).
-* Static (Static/JAMStack hosting).
-* Development tools: jsconfig.json
-* Version control system: Git
+- Choose: Rendering mode: Universal (SSR / SSG).
+- Server (Node.js hosting).
+- Static (Static/JAMStack hosting).
+- Development tools: jsconfig.json
+- Version control system: Git
 
 let’s `cd <project-name>` and let’s checkout what we get out of the box `npm run generate`
 This will create all our static html for us in the dist folder we could open up [netlify](https://app.netlify.com/) create an app and drag that folder there then open Chrome devTools and run lighthouse to check out performance. Why would we do this? I usually do this at the beginning of using a new framework to set a baseline, this is probably the best score you can get. It should be in the mid to high 90’s which is pretty good.
 
-Ok now we can actually develop with `npm run dev` so if you now navigate to the url it says probably localhost:3000 you will see `pages/index.vue` which is wrapped in `layouts/default.vue`  it contains a `components/Logo.vue` also which was automagically imported by Nuxt but normally would have to be imported in traditional Vue.js.
+Ok now we can actually develop with `npm run dev` so if you now navigate to the url it says probably localhost:3000 you will see `pages/index.vue` which is wrapped in `layouts/default.vue` it contains a `components/Logo.vue` also which was automagically imported by Nuxt but normally would have to be imported in traditional Vue.js.
 
 Some of the other folders are `static/` which is just assets you don’t want webpack to touch, you just want copied as is, to `/dist`. Then `assets/` which is touched by webpack meaning it optimizes some things, it appends a hash to version them and more. There is a `content/` folder since we opted into the content module; more on this later. `middleware/` will be for another day. `store` is for use of vuex a redux like state management library for vue. `plugins` is also for the next post.
 
@@ -153,7 +155,7 @@ To make use of the font in index or layout we would paste this rule and let it c
     }
 ```
 
-Ok we’re making progress on our site, why not through in a markdown powered blog? Let’s move our first post called `hello.md` into a folder called `posts` inside `content/` Now we need a template for our blog create a folder under `pages/` called `blog/` and the dynamic template called `_slug.vue`  copy and paste the below code:
+Ok we’re making progress on our site, why not through in a markdown powered blog? Let’s move our first post called `hello.md` into a folder called `posts` inside `content/` Now we need a template for our blog create a folder under `pages/` called `blog/` and the dynamic template called `_slug.vue` copy and paste the below code:
 
 ```javascript
     <template>

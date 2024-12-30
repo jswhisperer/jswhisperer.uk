@@ -11,8 +11,10 @@ export default defineConfig({
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,
-		shikiConfig: {
-			theme: 'material-theme-palenight',
+		syntaxHighlight: 'prism',
+
+		prism: {
+			theme: 'atom-dark',
 			wrap: true
 		}
 	},
@@ -22,8 +24,8 @@ export default defineConfig({
 			shikiConfig: {
 				experimentalThemes: {
 					light: 'vitesse-light',
-					dark: 'material-theme-palenight',
-				  },
+					dark: 'material-theme-palenight'
+				},
 				wrap: true
 			},
 			drafts: true

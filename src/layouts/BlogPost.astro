@@ -13,8 +13,8 @@ type Props = {
 	data: CollectionEntry<'blog'>['data']
 	headings: MarkdownHeading[]
 	readTime: string
-	slug: string,
-  author: any
+	slug: string
+	author: any
 }
 
 const { data, readTime, headings, id, slug, author } = Astro.props
@@ -44,9 +44,9 @@ const articleDate = pubDate.toISOString()
 		},
 		author: {
 			'@type': 'Person',
-			name: author?.name || "greg",
+			name: author?.name || 'greg',
 			// description: author?.bio,
-			url: author?.url || "jswhisperer.uk"
+			url: author?.url || 'jswhisperer.uk'
 		}
 	})}
 />
@@ -57,8 +57,8 @@ const articleDate = pubDate.toISOString()
 	image={heroImage || '/public/open-graph.png'}
 	articleDate={articleDate}
 >
-{author}
-	<article class=' min-w-full md:py-4 sm:max-w-none md:max-w-none'>
+	<!-- {author.data.name} -->
+	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-2'>
 				<div class='flex items-center justify-center gap-x-1'>
