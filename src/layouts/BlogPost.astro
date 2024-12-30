@@ -49,7 +49,7 @@ const articleDate = pubDate.toISOString()
 		},
 		author: {
 			'@type': 'Person',
-			name: currentAuthor?.name || 'greg',
+			name: currentAuthor?.name,
 			description: currentAuthor?.bio,
 			url: `${Astro.site}/author/${currentAuthor?.slug}`
 		}
