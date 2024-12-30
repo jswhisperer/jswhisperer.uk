@@ -6,19 +6,24 @@ import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
 import { Image } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
+import { getCollection } from 'astro:content'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 type Props = {
 	id: CollectionEntry<'blog'>['id']
 	data: CollectionEntry<'blog'>['data']
+	author: CollectionEntry<'author'>['data']
 	headings: MarkdownHeading[]
 	readTime: string
 	slug: string
 	author: any
 }
 
-const { data, readTime, headings, id, slug, author } = Astro.props
-const { title, description, pubDate, heroImage, tags } = data
+const { data, readTime, headings, id, slug } = Astro.props
+const { title, description, pubDate, heroImage, tags, author } = data
+const authors = await getCollection('author')
+
+const currentAuthor = authors.find((a) => a.name === author.name)
 
 const articleDate = pubDate.toISOString()
 ---
@@ -44,9 +49,9 @@ const articleDate = pubDate.toISOString()
 		},
 		author: {
 			'@type': 'Person',
-			name: author?.name || 'greg',
-			// description: author?.bio,
-			url: author?.url || 'jswhisperer.uk'
+			name: currentAuthor?.name || 'greg',
+			description: currentAuthor?.bio,
+			url: `${Astro.site}/author/${currentAuthor?.slug}`
 		}
 	})}
 />
@@ -57,7 +62,6 @@ const articleDate = pubDate.toISOString()
 	image={heroImage || '/public/open-graph.png'}
 	articleDate={articleDate}
 >
-	<!-- {author.data.name} -->
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-2'>

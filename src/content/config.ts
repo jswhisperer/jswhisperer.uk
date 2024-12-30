@@ -1,5 +1,5 @@
 import { CATEGORIES } from '@/data/categories'
-import { defineCollection, z } from 'astro:content'
+import { defineCollection, reference, z } from 'astro:content'
 
 const blog = defineCollection({
 	// Type-check frontmatter using a schema
@@ -15,7 +15,8 @@ const blog = defineCollection({
 			heroImage: image().optional(),
 			category: z.enum(CATEGORIES).optional(),
 			tags: z.array(z.string()).optional(),
-			draft: z.boolean().default(false)
+			draft: z.boolean().default(false),
+			author: reference('author').optional()
 		})
 })
 
@@ -24,9 +25,8 @@ const author = defineCollection({
 		z.object({
 			name: z.string(),
 			avatar: image().optional(),
-      url: z.string().url().optional(),
+			url: z.string().url().optional()
 		})
 })
-
 
 export const collections = { blog, author }
