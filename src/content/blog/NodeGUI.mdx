@@ -1,13 +1,15 @@
 ---
-title: Scratch the Surface of NodeGUI
-published: true
-pubDate: 'Jul 02 2022'
-description: Let's have a look at NodeGUI, NordVPN and Node.js
-canonical_url: 'https://jswhisperer.uk/post/scratch-the-surface-of-node-gui/'
-tags: ['nodejs', 'nordvpn', 'nodegui']
-heroImage: /public/project.png
-author: greg
+heroImage: >-
+  /src/assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_i_7b6ld2c3bl65co0l6d5t.jpeg
 category: Category 1
+description: "Let's have a look at NodeGUI, NordVPN and Node.js"
+pubDate: 2022-07-01T23:00:00.000Z
+tags:
+  - nodejs
+  - nordvpn
+  - nodegui
+author: greg
+title: Scratch the Surface of NodeGUI
 ---
 
 I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it.
@@ -85,10 +87,10 @@ I was doing some more crazy pipping stuff with the [jq](https://stedolan.github.
 To get that little flag at the top I check the status of the connection and if not disconnected I do some dark arts with String manipulation to take
 “Connecting to Japan #547 (jp547.nordvpn.com)” and get the country code “jp”
 
-                .trim("")
-                .replace(/\r?\n|\r/g, "")
-                .replace(/^.*\(|\)/g, "")
-                .substr(0, 2);
+.trim("")
+.replace(/\r?\n|\r/g, "")
+.replace(/^.\*(|)/g, "")
+.substr(0, 2);
 
 I also have buttons with each country listed to allow different connections. I had mapped out sweet emoji flags through more dark arts but for some reason the flag emoji’s don’t work in the body of NodeGUI.
 

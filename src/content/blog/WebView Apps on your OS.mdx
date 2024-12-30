@@ -1,15 +1,18 @@
 ---
-title: 'WebView Apps on your OS'
-date: 2023-01-01
-pubDate: 'Jul 02 2022'
-published: true
-description: 'An exploration of webview apps for desktop'
-tags: ['webgap', 'electron', 'nodegui', 'webview']
-canonical_url: 'https://jswhisperer.uk/post/web-view-apps-on-your-os/'
+heroImage: >-
+  /src/assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg
 category: Category 1
+description: An exploration of webview apps for desktop
+pubDate: 2022-07-01T23:00:00.000Z
+tags:
+  - webgap
+  - electron
+  - nodegui
+  - webview
+title: WebView Apps on your OS
 ---
 
-I personally am very excited by the idea of making applications in HTML, css, and js that efficiently run on the desktop. Electron and nw.js are the most mature, robust projects at present. They are both awesome solutions but if you are looking for more of a light weight solution that's what I'm going to explore in this post. The possible downside of both previously mentioned solutions is the package size, it's over 200mb's, this is fine for some modern computers with terabytes of space, I personally have a 200gb harddrive on my AeroBook Plus (an interesting indiegogo laptop I recently backed).
+I personally am very excited by the idea of making applications in HTML, css, and js that efficiently run on the desktop. Electron and nw\.js are the most mature, robust projects at present. They are both awesome solutions but if you are looking for more of a light weight solution that's what I'm going to explore in this post. The possible downside of both previously mentioned solutions is the package size, it's over 200mb's, this is fine for some modern computers with terabytes of space, I personally have a 200gb harddrive on my AeroBook Plus (an interesting indiegogo laptop I recently backed).
 
 I've previously worked a lot with building native apps through React Native with Expo, it's a pretty pleasant developer experience. This taught me a lot about applications on mobile. What Cordova uses on the mobile applications is a WebView. Of course using a purely native solution over a WebView will benefit from some speed etc; however if you want to display a WebApp / web page you probably want to use a WebView rather than rewrite your WebApp.
 
@@ -17,7 +20,7 @@ Some solutions I've looked at include [Proton Native](https://proton-native.js.o
 
 All that said I'm going to explore [DeskGap](https://deskgap.com) in this post, it is very interesting in that it doesn't bundle a browser with your app, just the node.js runtime and your package.json requirements. It has options to cross compile for the major os's including win10, macOs, and linux.
 
-DeskGap makes use of the following WebView's, for macOs webkit (safari), win10: EdgeHTML, and linux webkit (gnome gtk) https://deskgap.com/#supported-platforms this keeps the size of a bundled DeskGap app to around the size of the node binary 22mb plus or take, along with your custom assets, and code.
+DeskGap makes use of the following WebView's, for macOs webkit (safari), win10: EdgeHTML, and linux webkit (gnome gtk) [https://deskgap.com/#supported-platforms](https://deskgap.com) this keeps the size of a bundled DeskGap app to around the size of the node binary 22mb plus or take, along with your custom assets, and code.
 
 I'm going to quickly mention [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) progressive web apps as a sidenote. If your WebApp can make do with client side tech and many can these days, you would be better off writing a PWA. What I want to demonstrate in this post is when you really need that extra omph of node.js such as running a command or script.
 
@@ -105,7 +108,7 @@ All in all at this point I'm feeling pretty happy with myself and the world, eve
 
 First up I went to github so see if the repo provided more examples. Many projects will include and arguably should include /examples. This keeps authors honest, sometimes as a library author you, not purposefully, forget a step or a dependency etc. Being able to npm i && npm start something in examples demonstrates your project works before a developer has to invest time into learning your api, project, and requirements. So no examples per se, there is [one app](https://github.com/patr0nus/DeskGap/#pym-a-real-life-app-built-with-deskgap) mentioned on the page it makes use of very little GUI though it is available in a few app stores, I would consider it abandoned at the commits are all from 2 years ago (as a senior developer) Normally not finding examples or real world and current apps is a warning sign that the library might not work all together or might not have enough usage that you will be sucked into rabbit-holes trying to figure things out. Also check the star count as this can illuminate how many people have tried or are keeping an eye on the project.
 
-I've gone ahead and the documention instructions and building instructions as that is what I'm interested in doing now. These are very sparse and maybe not sufficient as of yet. https://deskgap.com/building/ I'm going to follow along with the linux route but there is mentioned Windows and Mac.
+I've gone ahead and the documention instructions and building instructions as that is what I'm interested in doing now. These are very sparse and maybe not sufficient as of yet. [https://deskgap.com/building/](https://deskgap.com/building/) I'm going to follow along with the linux route but there is mentioned Windows and Mac.
 
 Prerequisites CMake and node.js (cmake is generally installed on Ubuntu already, and if you are a node.js developer I'll assume you have it.) Linux specific requirements mention
 
@@ -114,9 +117,9 @@ Prerequisites CMake and node.js (cmake is generally installed on Ubuntu already,
 - libwebkit2gtk-4.0-dev version 2.20.5 later
   As a senior developer I know that I can't always just apt get install packages verbatem so where do I go for more information? I go to an azurepipelines yaml I saw in the repo. You can often find missing steps in a docker-compose, dockerfile, travis, jenkins, terraform, gitlab-ci etc.
   // sudo apt-get install -y g++-8
-  // https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L44
+  // [https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L44](https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L44)
   // sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev
-  // https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L256
+  // [https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L256](https://github.com/patr0nus/DeskGap/blob/master/azure-pipelines.yml#L256)
 
 Last thing I noticed is my package.json is feeling a bit light from the example and nothing is mentioned in the build steps or anywhere else about additional requirements; so as a senior again I look at the main repo package.json and copy over those requirements. This won't always be the right step for a project as many might be library specific tooling, but if you lack an example it can't hurt to try. There are also some added npm scripts required for building.
 
@@ -163,14 +166,14 @@ package.json
 
 ## Steps[¶](https://deskgap.com/building/#steps 'Permanent link')
 
-1.  Download the npm dependencies: `npm ci`
-2.  Generate the buildsystem:
-    - Windows: `cmake -G "Visual Studio 16 2019" -A Win32 -S node -B build`
-    - macOS or Linux: `cmake -G "Unix Makefiles" -S node -B build`
-3.  Build DeskGap: `cmake --build build`
-4.  Test:
-    - macOS: `node node/test/start.js build`
-    - Windows or Linux: `node node/test/start.js build/Release`
+1. Download the npm dependencies: `npm ci`
+2. Generate the buildsystem:
+   - Windows: `cmake -G "Visual Studio 16 2019" -A Win32 -S node -B build`
+   - macOS or Linux: `cmake -G "Unix Makefiles" -S node -B build`
+3. Build DeskGap: `cmake --build build`
+4. Test:
+   - macOS: `node node/test/start.js build`
+   - Windows or Linux: `node node/test/start.js build/Release`
 
 I'm going to end the post here for now, there are some issues with creating a finial binary on Ubuntu with DeskGap but stay tuned for a second post exploring what I do next.
 
