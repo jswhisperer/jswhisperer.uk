@@ -1,9 +1,9 @@
 ---
-title: "Caddy 2 server the silver bullet of serving"
+title: 'Caddy 2 server the silver bullet of serving'
 published: true
-description: "Node.js is beautiful and brilliant. It takes a mature developer to admit where something shines and where it could use some help. With every language, or library the authors make some choices on where it should it shine and what can lag."
-tags: ["backend", "server", "reverseproxy", "caddy"]
-canonical_url: "https://gregbenner.life/caddy-2-server-the-silver-bullet-of-serving/"
+description: 'Node.js is beautiful and brilliant. It takes a mature developer to admit where something shines and where it could use some help. With every language, or library the authors make some choices on where it should it shine and what can lag.'
+tags: ['backend', 'server', 'reverseproxy', 'caddy']
+canonical_url: 'https://jswhisperer.uk/post/caddy-2-server-the-silver-bullet-of-serving/'
 pubDate: 'Jul 02 2022'
 category: Category 1
 ---

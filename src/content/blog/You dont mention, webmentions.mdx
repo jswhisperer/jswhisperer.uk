@@ -14,7 +14,7 @@ title: 'You dont mention, webmentions'
 Perhaps you've heard whispers or mention of them and now you are finally ready to wield the awesome power of <a href="https://webmention.io/">webmentions</a>.
 
 <blockquote>
-  <p>Webmention.io is a hosted service created to easily receive webmentions on any web page.</p>
+	<p>Webmention.io is a hosted service created to easily receive webmentions on any web page.</p>
 </blockquote>
 
 Imagine for a second you have a blog, and you also read other blogs. Normally if you wanted to comment on a blog you would be faced with either an email signup and confirmation, or some individually coded social providers, or... Disqus.
@@ -27,7 +27,7 @@ The basic setup is available on [https://webmention.io/](https://webmention.io/)
 
 Here's the end result of my first web mentions from twitter.
 
-<img src="https://res.cloudinary.com/https-gregbenner-life/image/upload/v1589772655/Screenshot_from_2020-05-17_23-25-44_ikvkih.png" />
+<img src='https://res.cloudinary.com/https-gregbenner-life/image/upload/v1589772655/Screenshot_from_2020-05-17_23-25-44_ikvkih.png' />
 
 Cool so I've added each twutter user image and linked it back to their profile, then tallied up the like and retweets, this is filtered per post.
 
@@ -41,7 +41,7 @@ add the plugin to your gridsome config
 {
     use: '@zefman/gridsome-source-webmention',
     options: {
-    domain: 'gregbenner.life', // Your webmention domain
+    domain: 'jswhisperer.uk', // Your webmention domain
     token: 'your-webmention-io-token', // Your secret webmention token
     },
 },
@@ -51,12 +51,14 @@ Super cool, let's now fetch and display some webmentions.
 
 ```html
 <div class="mentions">
-    <div v-for="edge in $static.mentions.edges" :key="edge.node.wmId">
-    <a :href="edge.node.author.url"><img :alt="edge.node.author.name" :src="edge.node.author.photo" width="50" /></a> <br />
-
-    </div>
-    likes {{likes}}<br />
-    reposts {{reposts}}
+	<div v-for="edge in $static.mentions.edges" :key="edge.node.wmId">
+		<a :href="edge.node.author.url"
+			><img :alt="edge.node.author.name" :src="edge.node.author.photo" width="50"
+		/></a>
+		<br />
+	</div>
+	likes {{likes}}<br />
+	reposts {{reposts}}
 </div>
 ```
 
