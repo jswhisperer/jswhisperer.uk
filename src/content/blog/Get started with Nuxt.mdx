@@ -22,9 +22,9 @@ This is my goto stack Nuxt.js which is server side rendered framework around vue
 
 Let’s get started!
 
-<Prism lang='js' code={`npx create-nuxt-app <project-name>`} />
-
-`npx create-nuxt-app <project-name>`
+```bash
+npx create-nuxt-app <project-name>
+```
 
 Let’s choose (javascript/or ts) , (npm / yarn ), (tailwind), space bar to select all 3 (axios, content, and pwa), choose the linters you prefer; I like eslint and prettier. Testing will be beyond this article but I recommend trying out jest it will add a sample test you can examine.
 
@@ -51,15 +51,15 @@ Here we see how the components are automagically imported as I mentioned earlier
 
 and here we see our modules included and where we could add more
 
-```javascript
-      modules: [
-        // https://go.nuxtjs.dev/axios
-        '@nuxtjs/axios',
-        // https://go.nuxtjs.dev/pwa
-        '@nuxtjs/pwa',
-        // https://go.nuxtjs.dev/content
-        '@nuxt/content',
-      ],
+```js
+modules: [
+	// https://go.nuxtjs.dev/axios
+	'@nuxtjs/axios',
+	// https://go.nuxtjs.dev/pwa
+	'@nuxtjs/pwa',
+	// https://go.nuxtjs.dev/content
+	'@nuxt/content'
+]
 ```
 
 Just by including the [pwa module](https://pwa.nuxtjs.org/) and a 512x512 icon in `static` you already get a fully functioning [Progressive Web App](https://web.dev/progressive-web-apps/); that’s something really special. I can’t tell you the headaches I’ve had trying to do this with [WorkBox](https://developers.google.com/web/tools/workbox) and similar tools. You can of course override all the settings to your hearts content.
@@ -123,7 +123,7 @@ and open `nuxt.config.js` and add this to the `modules`
 
 so it looks like this now
 
-```
+```js
      modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',

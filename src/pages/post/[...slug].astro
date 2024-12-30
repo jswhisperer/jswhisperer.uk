@@ -8,7 +8,8 @@ import TableOfContents from '@/components/TableOfContents'
 import { disqusConfig } from '@/data/disqus.config'
 import BlogPost from '@/layouts/BlogPost'
 import { getPosts } from '@/utils'
-import { Prism } from '@astrojs/prism'
+import { Code } from 'astro:components'
+
 import { type CollectionEntry, getCollection } from 'astro:content'
 
 const posts = await getCollection('blog')
@@ -62,7 +63,7 @@ const disqusEnabled = disqusConfig.enabled
 		<article class='card max-w-full w-full'>
 			<span class='main-content-shadow'></span>
 			<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
-				<Content components={{ pre: Code, SButton, Prism }} />
+				<Content components={{ Code, SButton, Prism }} />
 
 				<!-- related posts -->
 				<footer>

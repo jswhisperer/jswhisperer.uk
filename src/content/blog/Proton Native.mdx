@@ -48,23 +48,27 @@ Ok enough bad mouthing, let’s see some interesting stuff! I am really bored at
 
 Way at the bottom of this [page](https://support.nordvpn.com/Connectivity/Linux/1325531132/Installing-and-using-NordVPN-on-Debian-Ubuntu-Elementary-OS-and-Linux-Mint.htm) are the CLI options for nordVPN. on an aside I found out linux is terribly supported even here, there’s no option to connect via a country or anything very useful at all. Here’s a few useless commands they offer
 
-nordvpn countries - See the country list.
+```bash
+nordvpn countries # - See the country list.
 
-nordvpn cities - See the city list.
+nordvpn cities # - See the city list.
 
-nordvpn groups - See a list of available server groups.
+nordvpn groups # - See a list of available server groups.
+```
 
 I mean it just prints out some countries, you can’t use that info in any way though.
 
 Ok some of the useful commands are
 
-nordvpn account - See account information
+```bash
+nordvpn account # - See account information
 
-nordvpn status - See the connection status.
+nordvpn status # - See the connection status.
 
-nordvpn login - Log in.
+nordvpn login # - Log in.
 
 nordvpn connect
+```
 
 Another interesting issue, nordvpn connect does accept a server but you have to give a specific one like `ca1111` why don’t they just accept a country here…
 
@@ -74,35 +78,26 @@ Inside my project I started to link up these features with node.js
 
 const { spawn } = require("child_process");
 
-
-
 spawnNord(flag) {
-
-return spawn("nordvpn", [flag]);
-
+  return spawn("nordvpn", [flag]);
 }
 
 nordStatus() {
 
-const output = this.spawnNord("status");
+  const output = this.spawnNord("status");
 
-output.stdout.on("data", (data) => {
+  output.stdout.on("data", (data) => {
 
-const str = data.toString("utf8");
+    const str = data.toString("utf8");
 
-const sanData = str
+    const sanData = str
+      .replace(/\r?\n|\r/g, "")
+      .replace("-", "")
+      .trim();
 
-.replace(/\r?\n|\r/g, "")
-
-.replace("-", "")
-
-.trim();
-
-this.setState({
-
-status: sanData,
-
-});
+  this.setState({
+    status: sanData,
+  });
 
 });
 
@@ -136,80 +131,18 @@ Connect was very similar
 
 I decided I wanted a nifty toggle component so I built it from scratch
 
-```html
-<View
+```jsx
+<View style={ display: "flex" , width: "100%" , height: "80px" , flexDirection: "row" , justifyContent: "space-evenly" ,
+    backgroundColor: "#24476f" }>
 
-style={
+    <View style={ display: "flex" , backgroundColor: this.state.toggled ? "gray" : "#82bc4e" , borderRadius: 20, height:
+        45, width: 75, marginTop: "10px" , borderTop: "1px solid #333333" , alignItems: this.state.toggled
+        ? "flex-start" : "flex-end" , justifyContent: "center" , } onPress={this.nordConnect}>
 
-display: "flex",
-
-width: "100%",
-
-height: "80px",
-
-flexDirection: "row",
-
-justifyContent: "space-evenly",
-
-backgroundColor: "#24476f",
-
-}
-
->
-
-<View
-
-style={
-
-display: "flex",
-
-backgroundColor: this.state.toggled ? "gray" : "#82bc4e",
-
-borderRadius: 20,
-
-height: 45,
-
-width: 75,
-
-marginTop: "10px",
-
-borderTop: "1px solid #333333",
-
-alignItems: this.state.toggled ? "flex-start" : "flex-end",
-
-justifyContent: "center",
-
-}
-
-onPress={this.nordConnect}
-
->
-
-<TouchableOpacity
-
-style={
-
-borderRadius: 20,
-
-height: 40,
-
-width: 40,
-
-marginTop: "-1px",
-
-marginRight: 5,
-
-marginLeft: 5,
-
-backgroundColor: "white",
-
-borderTop: "1px solid transparent",
-
-}
-
-onPress={this.toggle}
-
-> </TouchableOpacity>
+        <TouchableOpacity style={ borderRadius: 20, height: 40, width: 40, marginTop: "-1px" , marginRight: 5,
+            marginLeft: 5, backgroundColor: "white" , borderTop: "1px solid transparent" , } onPress={this.toggle}>
+        </TouchableOpacity>
+    </View>
 ```
 
 What I ended up with looks like this
@@ -220,7 +153,9 @@ One more warning about spawn processes, yes it’s super fun, but right now PN d
 
 Ok last step time to [package](https://proton-native.js.org) this bad boy for distribution. I’ll let you read those for yourself but one thing I tripped on was this command
 
-`npx nexe bin/index.js -o out/my-app # Create our binary`
+```bash
+npx nexe bin/index.js -o out/my-app # Create our binary
+```
 
 If you are not using one of the available matching prebuilt binaries it tries to build locally, and for me it just failed hard; so check [here](https://github.com/nexe/nexe/releases/) and use nvm to adjust your node.js to a matching one.
 
@@ -229,5 +164,3 @@ So my last surprise was the generated app was 170mb. I’m pretty sure that’s 
 Stay tuned I’m going to check out nodeGUI next post.
 
 Questions, comments, critisims, likes, whatever?
-
-[https://twitter.com/cactusanddove/status/1292652072001777665](https://twitter.com/cactusanddove/status/1292652072001777665)

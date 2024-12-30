@@ -5,14 +5,18 @@ import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
+
+
 // https://astro.build/config
 export default defineConfig({
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,
-		syntaxHighlight: 'prism',
-
+		shikiConfig: {
+			theme: 'material-theme-palenight',
+			wrap: true
+		},
 		prism: {
 			theme: 'atom-dark',
 			wrap: true
@@ -23,7 +27,7 @@ export default defineConfig({
 			syntaxHighlight: 'shiki',
 			shikiConfig: {
 				experimentalThemes: {
-					light: 'vitesse-light',
+					light: 'dracula',
 					dark: 'material-theme-palenight'
 				},
 				wrap: true
