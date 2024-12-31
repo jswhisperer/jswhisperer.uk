@@ -33,6 +33,6 @@ console.table(author.data.avatar)
 		<p>{author.data.bio}</p>
 		<p>{author.data.url}</p>
 		<p>{author.data.avatar.src}</p>
-		<Image alt='x' src={author.data.avatar} />
+		<Image alt='x' src={author.data.avatar} decoding='async' loading='lazy' />
 	</div>
 </BaseLayout>

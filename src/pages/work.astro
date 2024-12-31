@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 import { Image } from 'astro:assets'
 ---
 
-<script src='../js/head.min.js'></script>
+<script src='../js/head.min.js' async></script>
 <script>
 	window.addEventListener('DOMContentLoaded', (event) => {
 		console.log(head)
@@ -129,6 +129,7 @@ import { Image } from 'astro:assets'
 						src={import('../assets/images/portfolio/mecer-express.jpg')}
 						alt='mecer express'
 						style='opacity: 1;'
+						loading='lazy'
 					/>
 					<ul class='theoverlay'>
 						<li>Joomla CMS</li>
@@ -149,6 +150,7 @@ import { Image } from 'astro:assets'
 						src={import('../assets/images/portfolio/olivari-auret.jpg')}
 						alt='olivari auret'
 						style='opacity: 1;'
+						loading='lazy'
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -169,6 +171,7 @@ import { Image } from 'astro:assets'
 						src={import('../assets/images/portfolio/pxsecurity.jpg')}
 						alt='pxsecurity'
 						style='opacity: 1;'
+						loading='lazy'
 					/>
 					<ul class='theoverlay'>
 						<li>HTML5, CSS3</li>
@@ -247,7 +250,7 @@ import { Image } from 'astro:assets'
 	</ul>
 </BaseLayout>
 
-<style>
+<style lazy>
 	div,
 	span,
 	h2,
