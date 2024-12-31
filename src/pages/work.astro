@@ -53,7 +53,7 @@ import { Image } from 'astro:assets'
 		<li id='the-web-dev' class='active'>
 			<p>
 				Here are some projects I developed.<br />
-				 (Coded/Sliced only unless otherwise specified.)
+				(Coded/Sliced only unless otherwise specified.)
 			</p>
 			<ul class='rslides rslides1'>
 				<li
@@ -65,6 +65,8 @@ import { Image } from 'astro:assets'
 						src={import('../assets/images/portfolio/angela-jeweller.jpg')}
 						alt='angela jeweller'
 						style='opacity: 1;'
+						decoding='async'
+						loading='lazy'
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -85,6 +87,8 @@ import { Image } from 'astro:assets'
 						src={import('../assets/images/portfolio/dvmakeup.jpg')}
 						alt='angela jeweller'
 						style='opacity: 1;'
+						decoding='async'
+						loading='lazy'
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>

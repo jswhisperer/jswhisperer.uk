@@ -36,8 +36,9 @@
 		"@astrojs/prism": "^3.2.0",
 		"@astrojs/rss": "4.0.1",
 		"astro": "4.0.8",
+		"astro-analytics": "^2.7.0",
 		"astro-font": "^0.0.72",
-		"headjs": "^1.0.3"
+		"vite": "5.0"
 	},
 	"devDependencies": {
 		"@astrojs/mdx": "2.0.3",

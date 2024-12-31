@@ -92,6 +92,8 @@ const articleDate = pubDate.toISOString()
 						height={500}
 						class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
 						alt={`img of ${title}`}
+						decoding='async'
+						loading='lazy'
 					/>
 				)
 			}
