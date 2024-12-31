@@ -9,6 +9,14 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
+	prefetch: {
+		prefetchAll: true,
+		defaultStrategy: 'viewport'
+	},
+	experimental: {
+		// responsiveImages: true,
+		clientPrerender: true
+	},
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],

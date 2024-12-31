@@ -35,7 +35,7 @@
 	"dependencies": {
 		"@astrojs/prism": "^3.2.0",
 		"@astrojs/rss": "4.0.1",
-		"astro": "4.0.8",
+		"astro": "4.2.2",
 		"astro-analytics": "^2.7.0",
 		"astro-font": "^0.0.72",
 		"vite": "5.0"
