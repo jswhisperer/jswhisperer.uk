@@ -13,10 +13,10 @@ export default defineConfig({
 		prefetchAll: true,
 		defaultStrategy: 'viewport'
 	},
-	experimental: {
-		// responsiveImages: true,
-		clientPrerender: true
-	},
+	// experimental: {
+	// 	responsiveImages: true,
+	// 	clientPrerender: true
+	// },
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
