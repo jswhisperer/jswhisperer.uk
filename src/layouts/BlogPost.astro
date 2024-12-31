@@ -4,7 +4,7 @@ import FormattedDate from '@/components/FormattedDate'
 import BaseLayout from '@/layouts/BaseLayout'
 import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
-import { Image, Picture } from 'astro:assets'
+import { Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
@@ -109,6 +109,8 @@ const articleDate = pubDate.toISOString()
 </BaseLayout>
 
 <script>
+	import { Image, Picture } from 'astro:assets'
+
 	const fnObserver = () => {
 		function handleIntersection(
 			entries: IntersectionObserverEntry[],

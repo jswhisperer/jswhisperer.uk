@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 import ListPosts from '@/components/ListPosts'
 import TitlePage from '@/components/TitlePage'
 import { getTags, getPostByTag } from '@/utils'
+import { Picture } from 'astro:assets'
 
 export async function getStaticPaths() {
 	const tags = await getTags()
