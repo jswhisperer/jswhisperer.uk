@@ -72,6 +72,47 @@ import { join } from 'path'
 <AstroFont
 	config={[
 		{
+			preload: true,
+			display: 'swap',
+			name: 'MuncieRegular',
+			fallback: 'sans-serif',
+			src: [
+				{
+					weight: '400',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'muncie-webfont.woff')
+				}
+			]
+		},
+		{
+			preload: true,
+			display: 'swap',
+			name: 'gregasaurus',
+			fallback: 'sans-serif',
+			src: [
+				//  {
+				//   weight: '400',
+				// 		style: 'normal',
+				// 		path: join(process.cwd(), 'public', 'fonts', 'gregasaurus.eot')
+				// },
+				{
+					weight: '400',
+					style: 'normal',
+					path: join(process.cwd(), 'public', 'fonts', 'gregasaurus.woff')
+				}
+				//  {
+				//   weight: '400',
+				// 		style: 'normal',
+				// 		path: join(process.cwd(), 'public', 'fonts', 'gregasaurus.svg')
+				// },
+				//  {
+				//   weight: '400',
+				// 		style: 'normal',
+				// 		path: join(process.cwd(), 'public', 'fonts', 'gregasaurus.ttf')
+				// }
+			]
+		},
+		{
 			preload: false,
 			display: 'swap',
 			name: 'Manrope',
