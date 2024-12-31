@@ -123,7 +123,7 @@ import SearchIcon from '@/components/icons/SearchIcon'
 	customElements.define('site-search', SiteSearch)
 </script>
 
-<style is:global>
+<style is:global media='none' onload="if(media!='all')media='all'" loading='lazy'>
 	.dark {
 		--pagefind-ui-primary: #eeeeee;
 		--pagefind-ui-text: #eeeeee;
