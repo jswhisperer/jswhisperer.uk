@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
-import { Image } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
 ---
 
 <script src='../js/head.min.js' async></script>
@@ -61,12 +61,13 @@ import { Image } from 'astro:assets'
 					id='rslides1_s0'
 					style='display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/angela-jeweller.jpg')}
 						alt='angela jeweller'
 						style='opacity: 1;'
 						decoding='async'
 						loading='lazy'
+						formats={['avif', 'webp']}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -83,7 +84,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s1'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/dvmakeup.jpg')}
 						alt='angela jeweller'
 						style='opacity: 1;'
@@ -105,10 +106,11 @@ import { Image } from 'astro:assets'
 					id='rslides1_s2'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/freedom-hill-restaurant.jpg')}
 						alt='freedom hill restaurant'
 						style='opacity: 1;'
+						formats={['avif', 'webp']}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -125,7 +127,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s3'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/mecer-express.jpg')}
 						alt='mecer express'
 						style='opacity: 1;'
@@ -146,7 +148,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s4'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/olivari-auret.jpg')}
 						alt='olivari auret'
 						style='opacity: 1;'
@@ -167,7 +169,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s5'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/pxsecurity.jpg')}
 						alt='pxsecurity'
 						style='opacity: 1;'
@@ -187,7 +189,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s6'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/simapro.jpg')}
 						alt='simapro'
 						style='opacity: 1;'
@@ -207,7 +209,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s7'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/the-green-house.jpg')}
 						alt='the green house'
 						style='opacity: 1;'
@@ -227,7 +229,7 @@ import { Image } from 'astro:assets'
 					id='rslides1_s8'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
-					<Image
+					<Picture
 						src={import('../assets/images/portfolio/the-render-room.jpg')}
 						alt='the render room'
 						style='opacity: 1;'
@@ -250,7 +252,7 @@ import { Image } from 'astro:assets'
 	</ul>
 </BaseLayout>
 
-<style lazy>
+<style media='none' onload="if(media!='all')media='all'" loading='lazy'>
 	div,
 	span,
 	h2,

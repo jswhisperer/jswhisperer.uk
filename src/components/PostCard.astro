@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
 import FormattedDate from '@/components/FormattedDate'
 import ArrowUp from '@/components/icons/ArrowUp'
 
@@ -15,11 +15,11 @@ const {
 	<a class='relative overflow-hidden' href={`/post/${slug}/`}>
 		{
 			heroImage && (
-				<Image
+				<Picture
 					src={heroImage}
 					width={600}
 					height={200}
-					format='webp'
+					formats={['avif', 'webp']}
 					class='h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
 					alt={`img of ${title}`}
 					decoding='async'

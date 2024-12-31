@@ -4,7 +4,7 @@ import FormattedDate from '@/components/FormattedDate'
 import BaseLayout from '@/layouts/BaseLayout'
 import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
-import { Image } from 'astro:assets'
+import { Image, Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
@@ -86,7 +86,7 @@ const articleDate = pubDate.toISOString()
 		<>
 			{
 				heroImage && (
-					<Image
+					<Picture
 						src={heroImage}
 						width={1000}
 						height={500}
@@ -94,6 +94,7 @@ const articleDate = pubDate.toISOString()
 						alt={`img of ${title}`}
 						decoding='async'
 						loading='lazy'
+						formats={['avif', 'webp']}
 					/>
 				)
 			}
