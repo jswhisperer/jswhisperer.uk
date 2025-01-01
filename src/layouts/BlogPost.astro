@@ -9,6 +9,8 @@ import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
+const username = 'jswhisperer'
+
 type Props = {
 	id: CollectionEntry<'blog'>['id']
 	data: CollectionEntry<'blog'>['data']
