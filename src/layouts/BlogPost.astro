@@ -68,18 +68,21 @@ const articleDate = pubDate.toISOString()
 
 			<div class='flex flex-col gap-2'>
 				<div class='flex items-center justify-center gap-x-1'>
-					<p class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-					</p> by <p>
-						Published by <a class='p-author h-card' href={currentAuthor.url}>{currentAuthor.name}</a
-						>
-						<p class='text-center text-sm text-opacity-50 font-bold'>
-							- {readTime}
-						</p>
-					</p>
 					<h1 class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 						{title}
 					</h1>
+					<div>
+						<div class='text-center text-sm text-opacity-50'>
+							Published <FormattedDate date={pubDate} />
+						</div> by <p>
+							Published by <a class='p-author h-card' href={currentAuthor.url}
+								>{currentAuthor.slug}</a
+							>
+							<p class='text-center text-sm text-opacity-50 font-bold'>
+								- {readTime}
+							</p>
+						</p>
+					</div>
 				</div>
 
 				<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
