@@ -64,7 +64,7 @@ const articleDate = pubDate.toISOString()
 >
 	<article class='h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
-			<a class='u-url' href={pageUrl}></a>
+			<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
 
 			<div class='flex flex-col gap-2'>
 				<div class='flex items-center justify-center gap-x-1'>
@@ -75,7 +75,20 @@ const articleDate = pubDate.toISOString()
 						<div class='text-center text-sm text-opacity-50'>
 							Published <FormattedDate date={pubDate} />
 						</div> by <p>
-							Published by <a class='p-author' href={currentAuthor.url}>{currentAuthor.slug}</a>
+							Published by <a class='p-author' rel='author' href={currentAuthor.url}
+								>{currentAuthor.slug}</a
+							>
+							{
+								[
+									`https://github.com/${username}`,
+									`https://www.linkedin.com/in/${username}`,
+									`https://bsky.app/profile/${username}.bsky.social`,
+									`https://www.linkedin.com/in/${username}`,
+									`https://dev.to/${username}`,
+									`mailto:hello@${username}`,
+									`https://x.com/${username}`
+								].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
+							}
 							<img
 								class='u-photo'
 								src='https://jswhisperer.uk/greg.jpeg'
