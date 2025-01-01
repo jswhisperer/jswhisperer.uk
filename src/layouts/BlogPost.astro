@@ -7,7 +7,16 @@ import type { MarkdownHeading } from 'astro'
 import { Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
+import Webmention from '@/components/WebMention'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
+
+const webmentionsUrl =
+	'https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w'
+const response = await fetch(webmentionsUrl)
+const json = await response.json()
+const webmentions = json.children.filter(({ url }) => url.includes(pageUrl))
+
+console.log({ webmentions })
 
 const username = 'jswhisperer'
 
@@ -130,6 +139,7 @@ const articleDate = pubDate.toISOString()
 
 			<div>
 				<slot />
+				<Webmention webmentions={webmentions} />
 			</div>
 		</header>
 	</article>
