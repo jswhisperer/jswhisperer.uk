@@ -29,4 +29,27 @@ const author = defineCollection({
 		})
 })
 
+const webmentionsSchema = z.object({
+	url: z.string(),
+	published: z.coerce.date(),
+	'wm-property': z.string(),
+	'wm-received': z.coerce.date(),
+	content: z
+		.object({
+			text: z.string().optional(),
+			html: z.string().optional()
+		})
+		.optional(),
+	author: z.object({
+		type: z.string(),
+		name: z.string(),
+		photo: z.string(),
+		url: z.string()
+	})
+})
+const webmentions = defineCollection({
+	type: 'data',
+	schema: z.array(webmentionsSchema)
+})
+
 export const collections = { blog, author }
