@@ -82,118 +82,117 @@ const articleDate = pubDate.toISOString()
 					<h1 class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 						{title}
 					</h1>
-					<div class='h-card p-author' rel='author'>
-						<div class='text-center text-sm text-opacity-50'>
-							Published <FormattedDate date={pubDate} />
-						</div> by <p>
-							Published by <a class='' href={currentAuthor.url}>{currentAuthor.slug}</a>
-							{
-								[
-									`https://github.com/${username}`,
-									`https://www.linkedin.com/in/${username}`,
-									`https://bsky.app/profile/${username}.bsky.social`,
-									`https://www.linkedin.com/in/${username}`,
-									`https://dev.to/${username}`,
-									`mailto:hello@${username}`,
-									`https://x.com/${username}`
-								].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
-							}
-							<img
-								class='u-photo'
-								src='https://jswhisperer.uk/greg.jpeg'
-								alt='Gregory Benner'
-								style='display:none;'
-							/>
-							<p class='text-center text-sm text-opacity-50 font-bold'>
-								- {readTime}
-							</p>
+
+					<div class='text-center text-sm text-opacity-50'>
+						Published <FormattedDate date={pubDate} />
+					</div> by <div class='h-card p-author' rel='author'>
+						Published by <a class='' href={currentAuthor.url}>{currentAuthor.slug}</a>
+						{
+							[
+								`https://github.com/${username}`,
+								`https://www.linkedin.com/in/${username}`,
+								`https://bsky.app/profile/${username}.bsky.social`,
+								`https://www.linkedin.com/in/${username}`,
+								`https://dev.to/${username}`,
+								`mailto:hello@${username}`,
+								`https://x.com/${username}`
+							].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
+						}
+						<img
+							class='u-photo'
+							src='https://jswhisperer.uk/greg.jpeg'
+							alt='Gregory Benner'
+							style='display:none;'
+						/>
+						<p class='text-center text-sm text-opacity-50 font-bold'>
+							- {readTime}
 						</p>
 					</div>
 				</div>
-
-				<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
-					{tags?.map((tag) => <Tag tag={tag} />)}
-				</div>
 			</div>
 
-			<>
-				{
-					heroImage && (
-						<Picture
-							src={heroImage}
-							width={1000}
-							height={500}
-							class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
-							alt={`img of ${title}`}
-							decoding='async'
-							loading='lazy'
-							formats={['avif', 'webp']}
-						/>
-					)
-				}
-			</>
-
-			<hr />
-
-			<div>
-				<slot />
-				<WebMention webmentions={webmentions} />
+			<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
+				{tags?.map((tag) => <Tag tag={tag} />)}
 			</div>
 		</header>
+
+		<>
+			{
+				heroImage && (
+					<Picture
+						src={heroImage}
+						width={1000}
+						height={500}
+						class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
+						alt={`img of ${title}`}
+						decoding='async'
+						loading='lazy'
+						formats={['avif', 'webp']}
+					/>
+				)
+			}
+		</>
+
+		<hr />
+
+		<div>
+			<slot />
+			<WebMention webmentions={webmentions} />
+		</div>
 	</article>
+</BaseLayout>
 
-	<script>
-		import { Image, Picture } from 'astro:assets'
+<script>
+	import { Image, Picture } from 'astro:assets'
 
-		const fnObserver = () => {
-			function handleIntersection(
-				entries: IntersectionObserverEntry[],
-				observer: IntersectionObserver
-			) {
-				entries.forEach((entry) => {
-					const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
+	const fnObserver = () => {
+		function handleIntersection(
+			entries: IntersectionObserverEntry[],
+			observer: IntersectionObserver
+		) {
+			entries.forEach((entry) => {
+				const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
 
-					if (entry.isIntersecting) {
-						index?.classList.remove('bg-slate-200', 'dark:bg-slate-800') // remove bg
-						index?.classList.add(
-							'bg-indigo-600',
-							'dark:bg-indigo-700',
-							'text-white',
-							'font-bold',
-							'transition-colors',
-							'duration-200'
-						)
-					} else {
-						index?.classList.add('bg-slate-200', 'dark:bg-slate-800') // add bg
-						index?.classList.remove(
-							'bg-indigo-600',
-							'dark:bg-indigo-700',
-							'text-white',
-							'font-bold',
-							'transition-colors',
-							'duration-200'
-						)
-					}
-				})
-			}
-
-			const headings = document.querySelectorAll(
-				'div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6'
-			)
-
-			const options = {
-				root: null,
-				rootMargin: ' 15% 0px 0% 0px ',
-				threshold: 1
-			}
-
-			const observer = new IntersectionObserver(handleIntersection, options)
-
-			headings.forEach((heading) => {
-				observer.observe(heading)
+				if (entry.isIntersecting) {
+					index?.classList.remove('bg-slate-200', 'dark:bg-slate-800') // remove bg
+					index?.classList.add(
+						'bg-indigo-600',
+						'dark:bg-indigo-700',
+						'text-white',
+						'font-bold',
+						'transition-colors',
+						'duration-200'
+					)
+				} else {
+					index?.classList.add('bg-slate-200', 'dark:bg-slate-800') // add bg
+					index?.classList.remove(
+						'bg-indigo-600',
+						'dark:bg-indigo-700',
+						'text-white',
+						'font-bold',
+						'transition-colors',
+						'duration-200'
+					)
+				}
 			})
 		}
-		fnObserver()
-		document.addEventListener('astro:after-swap', fnObserver)
-	</script>
-</BaseLayout>
+
+		const headings = document.querySelectorAll(
+			'div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6'
+		)
+
+		const options = {
+			root: null,
+			rootMargin: ' 15% 0px 0% 0px ',
+			threshold: 1
+		}
+
+		const observer = new IntersectionObserver(handleIntersection, options)
+
+		headings.forEach((heading) => {
+			observer.observe(heading)
+		})
+	}
+	fnObserver()
+	document.addEventListener('astro:after-swap', fnObserver)
+</script>
