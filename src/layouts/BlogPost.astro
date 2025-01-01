@@ -7,7 +7,7 @@ import type { MarkdownHeading } from 'astro'
 import { Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
-import Webmention from '@/components/WebMention'
+import WebMention from '@/components/WebMentions'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 const webmentionsUrl =
@@ -82,13 +82,11 @@ const articleDate = pubDate.toISOString()
 					<h1 class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 						{title}
 					</h1>
-					<div class='h-card'>
+					<div class='h-card p-author' rel='author'>
 						<div class='text-center text-sm text-opacity-50'>
 							Published <FormattedDate date={pubDate} />
 						</div> by <p>
-							Published by <a class='p-author' rel='author' href={currentAuthor.url}
-								>{currentAuthor.slug}</a
-							>
+							Published by <a class='' href={currentAuthor.url}>{currentAuthor.slug}</a>
 							{
 								[
 									`https://github.com/${username}`,
@@ -139,7 +137,7 @@ const articleDate = pubDate.toISOString()
 
 			<div>
 				<slot />
-				<Webmention webmentions={webmentions} />
+				<WebMention webmentions={webmentions} />
 			</div>
 		</header>
 	</article>
