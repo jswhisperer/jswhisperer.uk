@@ -1,7 +1,6 @@
 ---
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
-// import '../styles/global.css'
 
 export interface Props {
 	title: string
@@ -22,12 +21,19 @@ const username = 'jswhisperer'
 
 import { AstroFont } from 'astro-font'
 import { join } from 'path'
+const siteURL = new URL(Astro.site)
 ---
 
 <!-- Global Metadata -->
 <meta charset='utf-8' />
 <meta name='viewport' content='width=device-width, initial-scale=1' />
-<style is:global media='none' onload="if(media!='all') media='all'" loading='lazy'></style>
+<link
+	media='none'
+	onload="if(media!='all') media='all'"
+	loading='lazy'
+	href={siteURL + 'styles/global.css'}
+	rel='stylesheet'
+/>
 
 <link rel='icon' href='/favicon.ico' />
 <meta name='generator' content={Astro.generator} />
