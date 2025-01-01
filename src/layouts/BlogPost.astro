@@ -71,13 +71,17 @@ const articleDate = pubDate.toISOString()
 					<h1 class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 						{title}
 					</h1>
-					<div>
+					<div class='h-card'>
 						<div class='text-center text-sm text-opacity-50'>
 							Published <FormattedDate date={pubDate} />
 						</div> by <p>
-							Published by <a class='p-author h-card' href={currentAuthor.url}
-								>{currentAuthor.slug}</a
-							>
+							Published by <a class='p-author' href={currentAuthor.url}>{currentAuthor.slug}</a>
+							<img
+								class='u-photo'
+								src='https://jswhisperer.uk/greg.jpeg'
+								alt='Gregory Benner'
+								style='display:none;'
+							/>
 							<p class='text-center text-sm text-opacity-50 font-bold'>
 								- {readTime}
 							</p>
