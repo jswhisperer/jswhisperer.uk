@@ -14,7 +14,12 @@ const posts = await getPosts(MAX_POSTS)
 <div class='p-author h-card' style='display: none;'>
 	<a rel='author' class='p-name u-url' href=`${Astro.site}/author/greg`>Gregory Benner</a>
 
-	<img class='u-photo' src='https://jswhisperer.uk/greg.jpeg' alt='Gregory Benner' />
+	<Picture
+		formats={['avif', 'webp']}
+		class='u-photo'
+		src='https://jswhisperer.uk/greg.jpeg'
+		alt='Gregory Benner'
+	/>
 	<a class='p-org h-card' href='https:/jswhisperer.uk/'>jswhisperer</a>
 </div>
 
