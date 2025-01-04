@@ -98,7 +98,8 @@ const articleDate = pubDate.toISOString()
 								`https://x.com/${username}`
 							].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
 						}
-						<img
+						<Picture
+							formats={['avif', 'webp']}
 							class='u-photo'
 							src='https://jswhisperer.uk/greg.jpeg'
 							alt='Gregory Benner'

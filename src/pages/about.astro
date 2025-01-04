@@ -4,34 +4,71 @@ import { Picture } from 'astro:assets'
 ---
 
 <BaseLayout title='About'>
-	<div class='insidecolumn first'>
-		<a href='#top' class='tothetop small-mobile-hide'
-			><span aria-hidden='true' class='icon-arrow-up'></span></a
-		>
-		<h2>
-			About Greg Benner
-			<span aria-hidden='true' class='icon-tux'></span>
-		</h2>
-		Ahoy, dear reader. <br />
-		<p>
-			I started my life in a small town on the cusp of Toronto, Ontario in 1985. Upon completing
-			high school I moved into the big city where sights, sounds and tastes influenced me to start
-			my adventure in design and development studying Graphic Design. Three years later I headed out
-			into the real world working hard and landing exciting jobs with an amazing agency starting my
-			career off in mainly a print medium.
-		</p>
-		<p>
-			Being that young, I travelled and found myself in Perth, Australia. Design and a fascination
-			for the web never left my side. When I returned home to Canada, a slightly more knowledgable
-			chap, I kept up with the latest technologies by reading and learning as much as I could for a
-			cathartic web experience.
-		</p>
-		<p>
-			I strive for perfection and have a strong belief in providing the best possible work for my
-			clients. I have found myself again on the other side of the world in Cape Town, South Africa
-			living with my kitten and lady. I make craft beer and enjoy the mountains and ocean on my door
-			step. From design to development, my knowledge and experience is vast with my passion lying
-			with coding, design and art. When I grow up, I want to be Don Draper.
-		</p>
+	<div class='card'>
+		<div class='insidecolumn first'>
+			<a href='#top' class='tothetop small-mobile-hide'
+				><span aria-hidden='true' class='icon-arrow-up'></span></a
+			>
+			<h2>
+				About Greg Benner
+				<span aria-hidden='true' class='icon-tux'></span>
+			</h2>
+			Ahoy, dear reader. <br />
+			<p>
+				I started my life in a small town on the cusp of Toronto, Ontario in 1985. Upon completing
+				high school I moved into the big city where sights, sounds and tastes influenced me to start
+				my adventure in design and development studying Graphic Design. Three years later I headed
+				out into the real world working hard and landing exciting jobs with an amazing agency
+				starting my career off in mainly a print medium.
+			</p>
+			<p>
+				Being that young, I travelled and found myself in Perth, Australia. Design and a fascination
+				for the web never left my side. When I returned home to Canada, a slightly more knowledgable
+				chap, I kept up with the latest technologies by reading and learning as much as I could for
+				a cathartic web experience.
+			</p>
+			<p>
+				I strive for perfection and have a strong belief in providing the best possible work for my
+				clients. I have found myself again on the other side of the world in Cape Town, South Africa
+				living with my kitten and lady. I make craft beer and enjoy the mountains and ocean on my
+				door step. From design to development, my knowledge and experience is vast with my passion
+				lying with coding, design and art. When I grow up, I want to be Don Draper.
+			</p>
+		</div>
 	</div>
 </BaseLayout>
+
+<style>
+	/*! CSS Used from: https://gregbenner-classic-2009.netlify.app/stylesheets/mini.min.crush.css */
+	p {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	p {
+		margin: 0 0 20px 0;
+	}
+	p {
+		letter-spacing: 1px;
+		text-align: justify;
+	}
+	* {
+		position: relative;
+	}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		p {
+			font-size: 16px;
+			line-height: 26px;
+		}
+	}
+	@media only screen and (max-width: 479px) {
+		p {
+			font-size: 14px;
+			line-height: 23px;
+		}
+	}
+</style>
