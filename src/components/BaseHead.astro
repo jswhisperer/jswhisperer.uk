@@ -2,7 +2,13 @@
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
 
-const { title, description = siteConfig.description, ogImage, articleDate } = Astro.props
+const {
+	title = siteConfig.title,
+	description = siteConfig.description,
+	ogImage = siteConfig.ogImage,
+	articleDate = new Date()
+} = Astro.props
+
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
@@ -160,7 +166,6 @@ const siteURL = new URL(Astro.site)
 				},
 				{
 					weight: '700',
-					preload: true,
 					style: 'normal',
 					path: join(process.cwd(), 'public', 'fonts', 'Manrope-Bold.woff2')
 				},
