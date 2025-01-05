@@ -10,12 +10,13 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-	site: 'https://jswhisperer.uk/', // Write here your website url
+	site: 'https://jswhisperer.uk', // Write here your website url
 	author: 'The JavaScript Whisperer', // Site author
 	title: 'JavaScript Whisperer blog', // Site title.
-	description: 'javascripts', // Description to display in the meta tags
+	description:
+		'Specialist in performance oriented javascript architecture for web, mobile, client and server side. Passionate about realtime web.', // Description to display in the meta tags
 	lang: 'en-GB',
 	ogLocale: 'en_GB',
 	shareMessage: 'Share this post', // Message to share a post on social media
-	paginationSize: 6 // Number of posts per page
+	paginationSize: 6666 // Number of posts per page
 }
