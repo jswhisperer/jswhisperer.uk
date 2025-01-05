@@ -11,7 +11,7 @@ export async function getStaticPaths({ paginate }: any) {
 	const categories = await getCategories()
 	const allPosts = await getPosts()
 
-	return categories.flatMap((category="Category 1") => {
+	return categories.flatMap((category = 'Category 1') => {
 		const unsluglifyNameCategory = unsluglify(category!.toLowerCase())
 		const filteredPosts = allPosts.filter(
 			(post) => post.data?.category?.toLowerCase() === unsluglifyNameCategory
@@ -28,11 +28,11 @@ export async function getStaticPaths({ paginate }: any) {
 const params = Astro.params
 const { page } = Astro.props
 
-let unsluglifyNameCategory = ""
+let unsluglifyNameCategory = ''
 try {
-  unsluglify(params?.category?.toLowerCase())
+	unsluglify(params?.category?.toLowerCase())
 } catch (error) {
-  unsluglifyNameCategory = "View All"
+	unsluglifyNameCategory = 'View All'
 }
 const posts = page.data
 ---

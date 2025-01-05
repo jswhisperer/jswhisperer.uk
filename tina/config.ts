@@ -36,7 +36,7 @@ export default defineConfig({
 					{
 						type: 'string',
 						name: 'url',
-						label: 'Url',
+						label: 'Url'
 					},
 					{
 						type: 'image',

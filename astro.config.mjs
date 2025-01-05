@@ -5,8 +5,6 @@ import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-
-
 // https://astro.build/config
 export default defineConfig({
 	// experimental: {
