@@ -15,7 +15,7 @@ const {
 	image = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png',
 	articleDate = new Date()
 } = Astro.props
-const pageUrl = new URL(Astro.url.pathname, Astro.site)
+const pageUrl = new URL(Astro.url.pathname, Astro.site) || 'https://jswhisperer.uk'
 
 const structuredData = {
 	'@context': 'https://schema.org',
@@ -47,10 +47,10 @@ const structuredData = {
 		</main>
 		<TwSizeIndicator />
 		<EditBlog />
-		<style media='none' onload="if(media!='all')media='all'" loading='lazy'>
+		<!-- <style media='none' onload="if(media!='all')media='all'" loading='lazy'>
 			body {
 				margin-left: calc(100vw - 100%); /* prevent layout shift */
 			}
-		</style>
+		</style> -->
 	</body>
 </html>

@@ -11,7 +11,7 @@ const posts = await getCollection('blog', { limit: MAX_POSTS })
 ---
 
 <div class='p-author h-card' style='display: none;'>
-	<a rel='author' class='p-name u-url' href=`${Astro.site}/author/greg`>Gregory Benner</a>
+	<a rel='author' class='p-name u-url' href=`https://jswhisperer.uk/author/greg`>Gregory Benner</a>
 
 	<Picture
 		formats={['avif', 'webp']}
@@ -19,7 +19,7 @@ const posts = await getCollection('blog', { limit: MAX_POSTS })
 		src={import('../assets/images/greg.jpeg')}
 		alt='Gregory Benner'
 	/>
-	<a class='p-org h-card' href='https:/jswhisperer.uk/'>jswhisperer</a>
+	<a class='p-org h-card' href='https://jswhisperer.uk/'>jswhisperer</a>
 </div>
 
 <BaseLayout title='Home'>
