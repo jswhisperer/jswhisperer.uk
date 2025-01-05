@@ -7,7 +7,12 @@ import ProviderAnimations from '@/components/ProviderAnimations'
 import ProviderTheme from '@/components/ProviderTheme'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
 import EditBlog from '@/components/editBlog'
-const { title, description, image, articleDate } = Astro.props
+const {
+	title = 'js whisperer',
+	description = 'Specialist in performance oriented javascript architecture for web, mobile, client and server side. Passionate about realtime web.',
+	image = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png',
+	articleDate = new Date()
+} = Astro.props
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 const structuredData = {

@@ -23,7 +23,12 @@ const posts = await getPosts(MAX_POSTS)
 	<a class='p-org h-card' href='https:/jswhisperer.uk/'>jswhisperer</a>
 </div>
 
-<BaseLayout title='Home' description={siteConfig.description}>
+<BaseLayout
+	title='Home'
+	description={siteConfig.description}
+	image={heroImage || '/public/open-graph.png'}
+	articleDate={articleDate}
+>
 	<TitlePage title={siteConfig.title} />
 	<ListCategories />
 
