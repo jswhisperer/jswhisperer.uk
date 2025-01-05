@@ -2,9 +2,9 @@
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
 
-const { title, description = siteConfig?.description, ogImage, articleDate } = Astro.props
-const canonicalURL = new URL(Astro.url?.pathname, Astro.site)
-// const socialImageURL = new URL(ogImage ? ogImage : '/open-graph.png', Astro.url).href
+const { title, description = siteConfig.description, ogImage, articleDate } = Astro.props
+const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
+const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
 export interface Props {
 	title: string
@@ -46,7 +46,7 @@ const siteURL = new URL(Astro.site)
 }
 
 <!-- Canonical URL -->
-<link rel='canonical' href={canonicalURL || ''} />
+<link rel='canonical' href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
@@ -64,15 +64,7 @@ const siteURL = new URL(Astro.site)
 <meta property='og:url' content={Astro.url} />
 <meta property='og:title' content={title} />
 <meta property='og:description' content={description} />
-{
-	socialImageURL && (
-		<>
-			<meta property='og:image' content={socialImageURL} />
-			<meta property='twitter:image' content={socialImageURL} />
-		</>
-	)
-}
-
+<meta property='og:image' content={socialImageURL} />
 {
 	articleDate && (
 		<>
@@ -85,8 +77,9 @@ const siteURL = new URL(Astro.site)
 <!-- Twitter -->
 <meta property='twitter:card' content='summary_large_image' />
 <meta property='twitter:url' content={Astro.url} />
-<meta property='twitter:title' content={siteConfig.title} />
+<meta property='twitter:title' content={title} />
 <meta property='twitter:description' content={description} />
+<meta property='twitter:image' content={socialImageURL} />
 
 <!-- RSS auto-discovery -->
 <link rel='alternate' type='application/rss+xml' title={siteConfig.title} href='/rss.xml' />
