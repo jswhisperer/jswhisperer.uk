@@ -99,3 +99,9 @@ html {
 	text-shadow: none;
 }
 @import './prism.css';
+
+html body {
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-size: 19px;
+    line-height: 31px;
+}
