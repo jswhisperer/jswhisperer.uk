@@ -18,10 +18,6 @@ export default defineConfig({
 		shikiConfig: {
 			theme: 'material-theme-palenight',
 			wrap: true
-		},
-		prism: {
-			theme: 'atom-dark',
-			wrap: true
 		}
 	},
 	integrations: [
@@ -37,6 +33,6 @@ export default defineConfig({
 			drafts: true
 		}),
 		sitemap(),
-		tailwind()
+		// tailwind()
 	]
 })
