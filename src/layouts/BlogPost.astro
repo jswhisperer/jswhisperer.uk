@@ -16,8 +16,6 @@ const response = await fetch(webmentionsUrl)
 const json = await response.json()
 const webmentions = json.children.filter(({ url }) => url.includes(pageUrl))
 
-console.log({ webmentions })
-
 const username = 'jswhisperer'
 
 type Props = {

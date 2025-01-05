@@ -2,16 +2,16 @@
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
 
+const { title, description = siteConfig.description, ogImage, articleDate } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const socialImageURL = new URL(ogImage ? ogImage : '/open-graph.png', Astro.url).href
+
 export interface Props {
 	title: string
 	description?: string
 	ogImage?: string | undefined
 	articleDate?: string | undefined
 }
-
-const { title, description = siteConfig.description, ogImage, articleDate } = Astro.props
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(ogImage ? ogImage : '/open-graph.png', Astro.url).href
 
 const titleSeparator = '•'
 
@@ -27,6 +27,7 @@ const siteURL = new URL(Astro.site)
 <!-- Global Metadata -->
 <meta charset='utf-8' />
 <meta name='viewport' content='width=device-width, initial-scale=1' />
+
 <link
 	media='none'
 	onload="if(media!='all') media='all'"
