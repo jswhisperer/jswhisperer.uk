@@ -7,6 +7,8 @@ import ProviderAnimations from '@/components/ProviderAnimations'
 import ProviderTheme from '@/components/ProviderTheme'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
 import EditBlog from '@/components/editBlog'
+import { Head } from 'astro-capo'
+
 const {
 	title = 'js whisperer',
 	description = 'Specialist in performance oriented javascript architecture for web, mobile, client and server side. Passionate about realtime web.',
@@ -24,13 +26,15 @@ const structuredData = {
 ---
 
 <html lang='en' class='scroll-smooth'>
-	<head>
-		<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<Head>
+		<head>
+			<meta name='viewport' content='width=device-width, initial-scale=1' />
 
-		<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
-		<ProviderTheme />
-		<ProviderAnimations />
-	</head>
+			<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+			<ProviderTheme />
+			<ProviderAnimations />
+		</head>
+	</Head>
 
 	<body class='bg-white text-stone-950 dark:bg-[#0a0910] dark:text-white mx-0'>
 		<Header />

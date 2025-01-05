@@ -7,6 +7,7 @@ interface SiteConfig {
 	ogLocale: string
 	shareMessage: string
 	paginationSize: number
+	ogImage: string
 }
 
 export const siteConfig: SiteConfig = {
@@ -18,5 +19,6 @@ export const siteConfig: SiteConfig = {
 	lang: 'en-GB',
 	ogLocale: 'en_GB',
 	shareMessage: 'Share this post', // Message to share a post on social media
-	paginationSize: 6666 // Number of posts per page
+	paginationSize: 6666, // Number of posts per page,
+	ogImage: 'https://jswhisperer.uk/assets/images/og-image.jpg'
 }
