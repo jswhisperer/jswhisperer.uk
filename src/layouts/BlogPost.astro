@@ -149,7 +149,8 @@ const articleDate = pubDate.toISOString()
 			entries: IntersectionObserverEntry[],
 			observer: IntersectionObserver
 		) {
-			entries.forEach((entry) => {
+			entries?.forEach((entry) => {
+				if (!entry?.isIntersecting) return
 				const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
 
 				if (entry.isIntersecting) {
