@@ -100,7 +100,7 @@ html {
 }
 @import './prism.css';
 
-html body {
+#body, html, body {
     font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
     font-size: 19px;
     line-height: 31px;
