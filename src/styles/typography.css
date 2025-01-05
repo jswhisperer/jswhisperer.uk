@@ -34,3 +34,10 @@ h2 {
 	margin-bottom: 25px;
 	margin-top: 20px;
 }
+
+#body, html, body {
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-size: 19px;
+    line-height: 31px;
+}
+
