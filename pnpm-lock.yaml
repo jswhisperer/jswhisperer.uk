@@ -26,6 +26,9 @@ importers:
       astro-font:
         specifier: ^0.0.72
         version: 0.0.72
+      jquery-smooth-scroll:
+        specifier: ^2.2.0
+        version: 2.2.0
       vite:
         specifier: '5.0'
         version: 5.0.13
@@ -4785,6 +4788,12 @@ packages:
         optional: true
       react:
         optional: true
+
+  jquery-smooth-scroll@2.2.0:
+    resolution: {integrity: sha512-PINtbe5UCBSlQWSCtR+KrCXdFQB+pVVvoUAhBU1u0ewcaroSDXMRbMqc9XuzGnPvGIP0I5JaxuRj/IMfvZq7TQ==}
+
+  jquery@3.7.1:
+    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
 
   js-sha1@0.6.0:
     resolution: {integrity: sha512-01gwBFreYydzmU9BmZxpVk6svJJHrVxEN3IOiGl6VO93bVKYETJ0sIth6DASI6mIFdt7NmfX9UiByRzsYHGU9w==}
@@ -13954,6 +13963,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.2
       react: 18.3.1
+
+  jquery-smooth-scroll@2.2.0:
+    dependencies:
+      jquery: 3.7.1
+
+  jquery@3.7.1: {}
 
   js-sha1@0.6.0: {}
 

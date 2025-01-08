@@ -3,44 +3,17 @@ import { Image, Picture } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout'
 ---
 
-<script src='../js/head.min.js' async></script>
-<script>
-	window.addEventListener('DOMContentLoaded', (event) => {
-		console.log(head)
-		head.js(
-			'../js/jquery.min.js',
-			//"javascripts/tabs.js",
-			'../js/responsiveslides.min.js',
-			'../js/jquery.smooth-scroll.min.js',
-			function () {
-				$('.rslides').responsiveSlides({
-					auto: true,
-					speed: 1000,
-					timeout: 4000,
-					pager: false,
-					nav: true,
-					random: false,
-					pause: true,
-					pauseControls: false,
-					prevText: '&#x005f;',
-					nextText: '&#x0022;',
-					maxwidth: '',
-					controls: '',
-					namespace: 'rslides'
-				})
-				$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
-				$('img').each(function (a) {
-					$(this)
-						.delay(800 * a)
-						.animate({ opacity: 1 }, 1000)
-				})
-			}
-		)
-	})
+<script is:inline src='https://jswhisperer.uk/js/head.min.js'></script>
+<script is:inline>
+	head.js(
+		{ jQuery: 'https://jswhisperer.uk/js/jquery.min.js' },
+		{ responsiveslides: 'https://jswhisperer.uk/js/responsiveslides.min.js' },
+		'https://jswhisperer.uk/js/jquery.smooth-scroll.min.js'
+	)
 </script>
 
 <BaseLayout title='Work'>
-	<a href='#top' class='tothetop'><span aria-hidden='true' class='icon-arrow-up'></span></a>
+	<a href='#top' class='tothetop'> <span aria-hidden='true' class='icon-arrow-up'></span></a>
 	<h2>Work <span aria-hidden='true' class='icon-cannon'></span></h2>
 	<ul class='tabs'>
 		<li>
@@ -246,10 +219,37 @@ import BaseLayout from '@/layouts/BaseLayout'
 				</li>
 			</ul><a href='#' class='rslides_nav rslides1_nav prev'>_</a><a
 				href='#'
-				class='rslides_nav rslides1_nav next'>"</a
+				class='rslides_nav rslides1_nav next'>""</a
 			>
 		</li>
 	</ul>
+	<script is:inline>
+		window.addEventListener('DOMContentLoaded', (event) => {
+			$(document).ready(function () {
+				$('.rslides').responsiveSlides({
+					auto: true,
+					speed: 1000,
+					timeout: 4000,
+					pager: false,
+					nav: true,
+					random: false,
+					pause: true,
+					pauseControls: false,
+					prevText: '&#x005f;',
+					nextText: '&#x0022;',
+					maxwidth: '',
+					controls: '',
+					namespace: 'rslides'
+				})
+				$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+				$('img').each(function (a) {
+					$(this)
+						.delay(800 * a)
+						.animate({ opacity: 1 }, 1000)
+				})
+			})
+		})
+	</script>
 </BaseLayout>
 
 <style media='none' onload="if(media!='all')media='all'" loading='lazy'>

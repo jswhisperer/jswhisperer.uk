@@ -29,7 +29,6 @@ const structuredData = {
 	<Head>
 		<head>
 			<meta name='viewport' content='width=device-width, initial-scale=1' />
-
 			<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 			<ProviderTheme />
 			<ProviderAnimations />
@@ -47,18 +46,14 @@ const structuredData = {
 		</main>
 		<TwSizeIndicator />
 		<EditBlog />
-		<!-- <style media='none' onload="if(media!='all')media='all'" loading='lazy'>
+		<style>
+			#body,
+			html,
 			body {
-				margin-left: calc(100vw - 100%); /* prevent layout shift */
+				font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+				font-size: 19px;
+				line-height: 31px;
 			}
-		</style> -->
-	</body><style>
-		#body,
-		html,
-		body {
-			font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
-			font-size: 19px;
-			line-height: 31px;
-		}
-	</style>
+		</style>
+	</body>
 </html>
