@@ -1,12 +1,13 @@
 ---
 import { Image, Picture } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout'
+// import 'https://jswhisperer.uk/js/head.min.js'
 ---
 
-<script is:inline src='https://jswhisperer.uk/js/head.min.js'></script>
-<script is:inline>
+<script is:raw src='https://jswhisperer.uk/js/head.min.js'></script>
+<script is:raw>
 	head.js(
-		{ jQuery: 'https://jswhisperer.uk/js/jquery.min.js' },
+		'https://jswhisperer.uk/js/jquery.min.js',
 		{ responsiveslides: 'https://jswhisperer.uk/js/responsiveslides.min.js' },
 		'https://jswhisperer.uk/js/jquery.smooth-scroll.min.js'
 	)
@@ -62,7 +63,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 						alt='angela jeweller'
 						style='opacity: 1;'
 						decoding='async'
-						loading='lazy'
+						formats={['avif', 'webp']}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -104,6 +105,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 						src={import('../assets/images/portfolio/mecer-express.jpg')}
 						alt='mecer express'
 						style='opacity: 1;'
+						formats={['avif', 'webp']}
 						loading='lazy'
 					/>
 					<ul class='theoverlay'>
@@ -146,6 +148,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 						src={import('../assets/images/portfolio/pxsecurity.jpg')}
 						alt='pxsecurity'
 						style='opacity: 1;'
+						formats={['avif', 'webp']}
 						loading='lazy'
 					/>
 					<ul class='theoverlay'>
@@ -165,6 +168,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 					<Picture
 						src={import('../assets/images/portfolio/simapro.jpg')}
 						alt='simapro'
+						formats={['avif', 'webp']}
 						style='opacity: 1;'
 					/>
 					<ul class='theoverlay'>
@@ -205,6 +209,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 					<Picture
 						src={import('../assets/images/portfolio/the-render-room.jpg')}
 						alt='the render room'
+						formats={['avif', 'webp']}
 						style='opacity: 1;'
 					/>
 					<ul class='theoverlay'>
@@ -223,30 +228,29 @@ import BaseLayout from '@/layouts/BaseLayout'
 			>
 		</li>
 	</ul>
-	<script is:inline>
-		window.addEventListener('DOMContentLoaded', (event) => {
-			$(document).ready(function () {
-				$('.rslides').responsiveSlides({
-					auto: true,
-					speed: 1000,
-					timeout: 4000,
-					pager: false,
-					nav: true,
-					random: false,
-					pause: true,
-					pauseControls: false,
-					prevText: '&#x005f;',
-					nextText: '&#x0022;',
-					maxwidth: '',
-					controls: '',
-					namespace: 'rslides'
-				})
-				$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
-				$('img').each(function (a) {
-					$(this)
-						.delay(800 * a)
-						.animate({ opacity: 1 }, 1000)
-				})
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			$('.rslides').responsiveSlides({
+				auto: true,
+				speed: 1000,
+				timeout: 4000,
+				pager: false,
+				nav: true,
+				random: false,
+				pause: true,
+				pauseControls: false,
+				prevText: '&#x005f;',
+				nextText: '&#x0022;',
+				maxwidth: '',
+				controls: '',
+				namespace: 'rslides'
+			})
+			$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+			$('img').each(function (a) {
+				$(this)
+					.delay(800 * a)
+					.animate({ opacity: 1 }, 1000)
 			})
 		})
 	</script>
