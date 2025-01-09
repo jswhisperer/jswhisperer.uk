@@ -13,7 +13,7 @@ export default defineConfig({
 	// 	responsiveImages: true,
 	// 	clientPrerender: true
 	// },
-  prefetch: true,
+	prefetch: true,
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
@@ -24,9 +24,47 @@ export default defineConfig({
 		}
 	},
 	integrations: [
-     AstroPWA({
-      /* your pwa options */
-    }),
+		AstroPWA({
+			mode: 'development',
+			base: '/',
+			scope: '/',
+			includeAssets: ['favicon.svg'],
+			registerType: 'autoUpdate',
+			manifest: {
+				name: 'Astro PWA',
+				short_name: 'Astro PWA',
+				theme_color: '#ffffff',
+				icons: [
+					{
+						src: 'pwa-192x192.png',
+						sizes: '192x192',
+						type: 'image/png'
+					},
+					{
+						src: 'pwa-512x512.png',
+						sizes: '512x512',
+						type: 'image/png'
+					},
+					{
+						src: 'pwa-512x512.png',
+						sizes: '512x512',
+						type: 'image/png',
+						purpose: 'any maskable'
+					}
+				]
+			},
+			workbox: {
+				navigateFallback: '/',
+				globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}']
+			},
+			devOptions: {
+				enabled: true,
+				navigateFallbackAllowlist: [/^\//]
+			},
+			experimental: {
+				directoryAndTrailingSlashHandler: true
+			}
+		}),
 		mdx({
 			syntaxHighlight: 'shiki',
 			shikiConfig: {
