@@ -120,12 +120,10 @@ const articleDate = pubDate.toISOString()
 				heroImage && (
 					<Picture
 						src={heroImage}
-						width={1000}
-						height={500}
 						class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
 						alt={`img of ${title}`}
 						decoding='async'
-						loading='lazy'
+						loading='eager'
 						formats={['avif', 'webp']}
 					/>
 				)
@@ -142,8 +140,6 @@ const articleDate = pubDate.toISOString()
 </BaseLayout>
 
 <script>
-	import { Image, Picture } from 'astro:assets'
-
 	const fnObserver = () => {
 		function handleIntersection(
 			entries: IntersectionObserverEntry[],
