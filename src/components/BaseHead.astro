@@ -8,6 +8,8 @@ const {
 	articleDate = new Date()
 } = Astro.props
 
+import { pwaInfo } from 'virtual:pwa-info'
+
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
@@ -86,6 +88,8 @@ import { join } from 'path'
 
 <!-- RSS auto-discovery -->
 <link rel='alternate' type='application/rss+xml' title={siteConfig.title} href='/rss.xml' />
+
+{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 
 <style is:global>
 	@import url('/styles/global.css');

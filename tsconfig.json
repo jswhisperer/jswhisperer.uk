@@ -13,5 +13,12 @@
 			"@/styles": ["src/styles/"]
 		}
 	},
-	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
+	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"node_modules/vite-plugin-pwa/client.d.ts"
+	]
 }
