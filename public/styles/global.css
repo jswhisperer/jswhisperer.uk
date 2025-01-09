@@ -6,20 +6,20 @@
 	/* body {
 		transition: background-color 0.5s ease;
 	} */
-
+/*
 	.prose code {
 		@apply text-base;
-	}
+	} */
 
 	/* prose styles here */
-	.prose h1,
+	/* .prose h1,
 	h2,
 	h3,
 	h4,
 	h5,
 	h6 {
 		@apply text-zinc-800 dark:text-zinc-100   !important;
-	}
+	} */
 
 	html.dark .shiki,
 	html.dark .shiki span {
@@ -100,6 +100,7 @@
     font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
     font-size: 19px;
     line-height: 31px;
+    color: #444;
 }
 
 
@@ -111,4 +112,55 @@ html {
 body {
   min-height: calc(100vh + 200px);
   padding-bottom: 200px;
+}
+main {
+  padding-bottom: 300px;
+  margin-top: 100px;
+}
+h2 {
+      color: #847e70;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	h2 {
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 10px;
+	}
+	[class^='icon-']:before {
+		font-family: 'gregasaurus';
+		font-style: normal;
+		speak: none;
+	}
+	.icon-tux:before {
+		content: '\005b';
+	}
+	h2 {
+		font-family: 'MuncieRegular';
+		color: #847e70;
+	}
+	h2 {
+		font-size: 45px;
+		margin-bottom: 25px;
+		margin-top: 20px;
+	}
+
+  /*! CSS Used from: https://gregbenner-classic-2009.netlify.app/stylesheets/mini.min.crush.css */
+p{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;text-shadow:1px 1px 5px #FFF;}
+p{margin:0 0 20px 0;}
+p{letter-spacing:1px;text-align:justify;}
+*{position:relative;}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+p{font-size:16px;line-height:26px;}
+}
+@media only screen and (max-width: 479px){
+p{font-size:14px;line-height:23px;}
 }
