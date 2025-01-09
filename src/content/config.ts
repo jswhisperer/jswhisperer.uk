@@ -25,7 +25,7 @@ const author: ReturnType<typeof defineCollection> = defineCollection({
 		z.object({
 			name: z.string(),
 			avatar: image().optional(),
-			url: z.string().url().default(author.schema.name)
+			url: z.string().url().default('greg')
 		})
 })
 

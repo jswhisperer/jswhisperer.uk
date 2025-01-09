@@ -6,13 +6,30 @@ import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
-
 // https://astro.build/config
 export default defineConfig({
-	// experimental: {
-	// 	responsiveImages: true,
-	// 	clientPrerender: true
-	// },
+	build: {
+		rollupOptions: {
+			external: ['workbox-window', 'virtual:pwa-register']
+		}
+	},
+	vite: {
+		logLevel: 'info',
+		define: {
+			__DATE__: `'${new Date().toISOString()}'`
+		},
+		server: {
+			fs: {
+				// Allow serving files from hoisted root node_modules
+				allow: ['../..']
+			}
+		},
+		build: {
+			rollupOptions: {
+				external: ['workbox-window', 'virtual:pwa-register']
+			}
+		}
+	},
 	prefetch: true,
 	site: siteConfig.site,
 	markdown: {
@@ -25,14 +42,17 @@ export default defineConfig({
 	},
 	integrations: [
 		AstroPWA({
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'pwa.ts',
-			mode: 'development',
+			strategies: 'injectManifest',
+			srcDir: 'src',
+			filename: 'pwa.ts',
 			base: '/',
 			scope: '/',
 			includeAssets: ['favicon.svg'],
-			registerType: 'autoUpdate',
+			registerType: 'injectManifest',
+			injectRegister: 'auto',
+			injectManifest: {
+				injectionPoint: undefined
+			},
 			manifest: {
 				name: 'Astro PWA',
 				short_name: 'Astro PWA',
@@ -56,6 +76,7 @@ export default defineConfig({
 					}
 				]
 			},
+
 			workbox: {
 				navigateFallback: '/',
 				globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}']
@@ -63,10 +84,10 @@ export default defineConfig({
 			devOptions: {
 				enabled: true,
 				navigateFallbackAllowlist: [/^\//]
-			},
-			experimental: {
-				directoryAndTrailingSlashHandler: true
 			}
+			// experimental: {
+			// 	directoryAndTrailingSlashHandler: true
+			// }
 		}),
 		mdx({
 			syntaxHighlight: 'shiki',
