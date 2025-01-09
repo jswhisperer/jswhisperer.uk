@@ -25,7 +25,10 @@ export default defineConfig({
 	},
 	integrations: [
 		AstroPWA({
-			mode: 'development',
+      strategies: 'injectManifest',
+      srcDir: 'src',
+    filename: 'pwa.ts',
+			// mode: 'development',
 			base: '/',
 			scope: '/',
 			includeAssets: ['favicon.svg'],
