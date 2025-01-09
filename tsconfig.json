@@ -19,8 +19,8 @@
 			"vite-plugin-pwa/client.d.ts"
 		]
 	},
+	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
 	"include": [
-		"node_modules/vite-plugin-pwa/client.d.ts",
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		"src/**/*.astro",

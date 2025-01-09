@@ -8,11 +8,6 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
-	build: {
-		rollupOptions: {
-			external: ['workbox-window', 'virtual:pwa-register']
-		}
-	},
 	vite: {
 		logLevel: 'info',
 		define: {
@@ -44,7 +39,7 @@ export default defineConfig({
 		AstroPWA({
 			strategies: 'injectManifest',
 			srcDir: 'src',
-			filename: 'pwa.ts',
+			filename: 'pwa.js',
 			base: '/',
 			scope: '/',
 			includeAssets: ['favicon.svg'],
@@ -84,10 +79,10 @@ export default defineConfig({
 			devOptions: {
 				enabled: true,
 				navigateFallbackAllowlist: [/^\//]
+			},
+			experimental: {
+				directoryAndTrailingSlashHandler: true
 			}
-			// experimental: {
-			// 	directoryAndTrailingSlashHandler: true
-			// }
 		}),
 		mdx({
 			syntaxHighlight: 'shiki',
