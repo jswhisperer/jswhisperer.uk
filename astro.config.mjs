@@ -11,6 +11,7 @@ export default defineConfig({
 	// 	responsiveImages: true,
 	// 	clientPrerender: true
 	// },
+  prefetch: true,
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
