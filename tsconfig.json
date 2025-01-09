@@ -13,12 +13,17 @@
 			"@/styles": ["src/styles/"]
 		}
 	},
+	"types": [
+		"astro/client",
+		"vite-plugin-pwa/client",
+		"vite-plugin-pwa/vanillajs",
+		"vite-plugin-pwa/info"
+	],
 	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
 	"include": [
+		"node_modules/vite-plugin-pwa/client.d.ts",
 		"src/**/*.ts",
-		"src/**/*.d.ts",
 		"src/**/*.tsx",
-		"src/**/*.vue",
-		"node_modules/vite-plugin-pwa/client.d.ts"
+		"src/**/*.astro"
 	]
 }
