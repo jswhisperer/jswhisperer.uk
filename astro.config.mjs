@@ -27,7 +27,7 @@ export default defineConfig({
 		AstroPWA({
       strategies: 'injectManifest',
       srcDir: 'src',
-    filename: 'pwa.ts',
+      filename: 'pwa.ts',
 			mode: 'development',
       injectManifest: {
   injectionPoint: undefined

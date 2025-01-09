@@ -53,6 +53,8 @@ import { join } from 'path'
 <!-- Canonical URL -->
 <link rel='canonical' href={canonicalURL.toString()} />
 
+{pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
