@@ -35,6 +35,18 @@ importers:
       vite-plugin-pwa:
         specifier: ^0.21.1
         version: 0.21.1(vite@5.0.13(terser@5.37.0))(workbox-build@7.3.0(@types/babel__core@7.20.5))(workbox-window@7.3.0)
+      workbox-build:
+        specifier: ^7.3.0
+        version: 7.3.0(@types/babel__core@7.20.5)
+      workbox-core:
+        specifier: ^7.3.0
+        version: 7.3.0
+      workbox-routing:
+        specifier: ^7.3.0
+        version: 7.3.0
+      workbox-strategies:
+        specifier: ^7.3.0
+        version: 7.3.0
     devDependencies:
       '@astrojs/mdx':
         specifier: 2.0.3
