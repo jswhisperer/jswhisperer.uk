@@ -248,11 +248,11 @@ import BaseLayout from '@/layouts/BaseLayout'
 				namespace: 'rslides'
 			})
 			$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
-			$('img').each(function (a) {
-				$(this)
-					.delay(800 * a)
-					.animate({ opacity: 1 }, 1000)
-			})
+			// $('img').each(function () {
+			// 	$(this)
+			// 		.delay(800)
+			// 		.animate({ opacity: 1 }, 1000)
+			// })
 		})
 	</script>
 </BaseLayout>
