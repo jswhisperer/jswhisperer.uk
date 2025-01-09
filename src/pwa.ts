@@ -29,7 +29,7 @@ function buildStrategy(): Strategy {
 
 				return new Promise((resolve, reject) => {
 					fetchAndCachePutDone.then(resolve).catch((e) => {
-						debug(`Cannot fetch resource: ${request.url}`)
+						debug && console.log(`Cannot fetch resource: ${request.url}`, e)
 					})
 					cacheMatchDone.then((response) => response && resolve(response))
 

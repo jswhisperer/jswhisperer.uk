@@ -28,7 +28,10 @@ export default defineConfig({
       strategies: 'injectManifest',
       srcDir: 'src',
     filename: 'pwa.ts',
-			// mode: 'development',
+			mode: 'development',
+      injectManifest: {
+  injectionPoint: undefined
+},
 			base: '/',
 			scope: '/',
 			includeAssets: ['favicon.svg'],
