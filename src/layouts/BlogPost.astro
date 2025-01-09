@@ -8,6 +8,7 @@ import { Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
 import WebMention from '@/components/WebMentions'
+import { slide } from 'astro:transitions'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 const webmentionsUrl =
@@ -71,7 +72,10 @@ const articleDate = pubDate.toISOString()
 	image={heroImage || '/public/open-graph.png'}
 	articleDate={articleDate}
 >
-	<article class='h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'>
+	<article
+		transition:animate={slide({ duration: '0.5s' })}
+		class='h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
+	>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
 

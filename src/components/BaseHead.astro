@@ -1,7 +1,6 @@
 ---
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
-
 const {
 	title = siteConfig.title,
 	description = siteConfig.description,
@@ -26,6 +25,7 @@ const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 const username = 'jswhisperer'
 
 import { AstroFont } from 'astro-font'
+import type { Fragment } from 'astro/jsx-runtime'
 import { join } from 'path'
 ---
 
@@ -49,7 +49,7 @@ import { join } from 'path'
 }
 
 <!-- Canonical URL -->
-<link rel='canonical' href={canonicalURL} />
+<link rel='canonical' href={canonicalURL.toString()} />
 
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
