@@ -2,7 +2,6 @@
 import ListCategories from '@/components/ListCategories'
 import ListPosts from '@/components/ListPosts'
 import BaseLayout from '@/layouts/BaseLayout'
-import { siteConfig } from '@/site-config'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 
@@ -26,7 +25,7 @@ const posts = await getCollection('blog', { limit: MAX_POSTS })
 	</div>
 
 	<div class='h-feed'>
-		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
+		<h2 class=''>Latest Posts</h2>
 		<ListPosts FirstBig={true} posts={posts} />
 	</div>
 </BaseLayout>

@@ -1,14 +1,13 @@
 ---
-import Disqus from '@/components/Disqus'
 import ListRelatedPosts from '@/components/ListRelatedPosts'
 import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
 import Share from '@/components/Share'
-import { Picture } from 'astro:assets'
 import TableOfContents from '@/components/TableOfContents'
 import { disqusConfig } from '@/data/disqus.config'
 import BlogPost from '@/layouts/BlogPost'
 import { getPosts } from '@/utils'
+import { Picture } from 'astro:assets'
 
 import { type CollectionEntry, getCollection } from 'astro:content'
 
@@ -75,6 +74,6 @@ const disqusEnabled = disqusConfig.enabled
 			</div>
 		</article>
 
-		{disqusEnabled && <Disqus />}
+		<!-- {disqusEnabled && <Disqus />} -->
 	</div>
 </BlogPost>
