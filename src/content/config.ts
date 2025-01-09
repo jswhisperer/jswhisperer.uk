@@ -20,12 +20,12 @@ const blog = defineCollection({
 		})
 })
 
-const author = defineCollection({
+const author: ReturnType<typeof defineCollection> = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			name: z.string(),
 			avatar: image().optional(),
-			url: z.string().url().optional()
+			url: z.string().url().default(author.schema.name)
 		})
 })
 

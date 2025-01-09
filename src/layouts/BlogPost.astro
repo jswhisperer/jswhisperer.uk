@@ -83,30 +83,32 @@ const articleDate = pubDate.toISOString()
 
 					<div class='text-center text-sm text-opacity-50'>
 						Published <FormattedDate date={pubDate} />
-					</div> by <div class='h-card p-author' rel='author'>
-						Published by <a class='' href={currentAuthor.url}>{currentAuthor.slug}</a>
-						{
-							[
-								`https://github.com/${username}`,
-								`https://www.linkedin.com/in/${username}`,
-								`https://bsky.app/profile/${username}.bsky.social`,
-								`https://www.linkedin.com/in/${username}`,
-								`https://dev.to/${username}`,
-								`mailto:hello@${username}`,
-								`https://x.com/${username}`
-							].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
-						}
-						<Picture
-							formats={['avif', 'webp']}
-							class='u-photo'
-							src={import('../assets/images/greg.jpeg')}
-							alt='Gregory Benner'
-							style='display:none;'
-						/>
-						<p class='text-center text-sm text-opacity-50 font-bold'>
-							- {readTime}
-						</p>
-					</div>
+					</div> by <a class='h-card p-author' rel='author' href={currentAuthor?.data.url}>
+						Published by
+						{currentAuthor?.slug}</a
+					>
+					{
+						[
+							`https://github.com/${username}`,
+							`https://www.linkedin.com/in/${username}`,
+							`https://bsky.app/profile/${username}.bsky.social`,
+							`https://www.linkedin.com/in/${username}`,
+							`https://dev.to/${username}`,
+							`mailto:hello@${username}`,
+							`https://x.com/${username}`
+						].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
+					}
+					<Picture
+						formats={['avif', 'webp']}
+						class='u-photo'
+						src={import('../assets/images/greg.jpeg')}
+						alt='Gregory Benner'
+						style='display:none;'
+					/>
+					<p class='text-center text-sm text-opacity-50 font-bold'>
+						- {readTime}
+					</p>
+					<!-- </a> -->
 				</div>
 			</div>
 

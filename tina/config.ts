@@ -26,6 +26,11 @@ export default defineConfig({
 				label: 'Author',
 				path: 'src/content/author',
 				format: 'mdx',
+				defaultItem: function () {
+					return {
+						url: this?.name
+					}
+				},
 				fields: [
 					{
 						type: 'string',
