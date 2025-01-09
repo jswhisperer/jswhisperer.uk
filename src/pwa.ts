@@ -1,4 +1,3 @@
-import debug from 'debug'
 import type { ManifestEntry } from 'workbox-build'
 import { cacheNames, clientsClaim } from 'workbox-core'
 import { registerRoute, setCatchHandler, setDefaultHandler } from 'workbox-routing'
@@ -17,6 +16,8 @@ const data = {
 	fallback: 'index.html'
 }
 
+const { race, debug, credentials, networkTimeoutSeconds, fallback } = data
+
 const cacheName = cacheNames.runtime
 
 function buildStrategy(): Strategy {
@@ -28,7 +29,7 @@ function buildStrategy(): Strategy {
 
 				return new Promise((resolve, reject) => {
 					fetchAndCachePutDone.then(resolve).catch((e) => {
-						if (debug) console.log(`Cannot fetch resource: ${request.url}`, e)
+						debug(`Cannot fetch resource: ${request.url}`)
 					})
 					cacheMatchDone.then((response) => response && resolve(response))
 
