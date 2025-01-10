@@ -38,7 +38,7 @@ export default defineConfig({
 	integrations: [
 		AstroPWA({
 			srcDir: 'src',
-			filename: 'pwa.mjs',
+			// filename: 'pwa.mjs',
 			base: '/',
 			scope: '/',
 			includeAssets: ['**/*'],
