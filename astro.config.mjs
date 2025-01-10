@@ -41,7 +41,7 @@ export default defineConfig({
 			// filename: 'pwa.mjs',
 			base: '/',
 			scope: '/',
-			includeAssets: ['**/*'],
+			includeAssets: ["**/*"],
 			// registerType: 'injectManifest',
 			// injectRegister: 'auto',
 			// injectManifest: {
@@ -73,7 +73,7 @@ export default defineConfig({
 
 			workbox: {
 				navigateFallback: '/',
-				globPatterns: ['**/*.{css,js,html,svg,png,ico,txt}']
+				globPatterns: ['**/*']
 			},
 			devOptions: {
 				enabled: true,
