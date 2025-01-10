@@ -38,15 +38,10 @@ export default defineConfig({
 	integrations: [
 		AstroPWA({
 			srcDir: 'src',
-			// filename: 'pwa.mjs',
 			base: '/',
 			scope: '/',
-			includeAssets: ["**/*"],
-			// registerType: 'injectManifest',
-			// injectRegister: 'auto',
-			// injectManifest: {
-			// 	injectionPoint: undefined
-			// },
+			includeAssets: ['**/*'],
+
 			manifest: {
 				name: 'Astro PWA',
 				short_name: 'Astro PWA',
@@ -72,7 +67,7 @@ export default defineConfig({
 			},
 
 			workbox: {
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
+				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
 				navigateFallback: '/',
 				globPatterns: ['**/*']
 			},
@@ -81,6 +76,7 @@ export default defineConfig({
 				navigateFallbackAllowlist: [/^\//]
 			},
 			experimental: {
+				responsiveImages: true,
 				directoryAndTrailingSlashHandler: true
 			}
 		}),

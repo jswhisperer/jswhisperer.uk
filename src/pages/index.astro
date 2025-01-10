@@ -18,6 +18,7 @@ const posts = await getCollection('blog', { limit: MAX_POSTS })
 		<Picture
 			formats={['avif', 'webp']}
 			class='u-photo'
+			layout='responsive'
 			src={import('../assets/images/greg.jpeg')}
 			alt='Gregory Benner'
 		/>
