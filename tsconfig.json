@@ -14,6 +14,7 @@
 		},
 		"types": [
 			"astro/client",
+			"vite-plugin-pwa/client",
 			"vite-plugin-pwa/vanillajs.d.ts",
 			"vite-plugin-pwa/info.d.ts",
 			"vite-plugin-pwa/client.d.ts"

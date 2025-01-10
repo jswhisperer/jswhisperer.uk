@@ -1,14 +1,14 @@
 ---
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
+import { pwaInfo } from 'virtual:pwa-info'
+
 const {
 	title = siteConfig.title,
 	description = siteConfig.description,
 	ogImage = siteConfig.ogImage,
 	articleDate = new Date()
 } = Astro.props
-
-import { pwaInfo } from 'virtual:pwa-info'
 
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
@@ -53,6 +53,7 @@ import { join } from 'path'
 <link rel='canonical' href={canonicalURL.toString()} />
 
 {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+<!-- <script is:inline src="/pwa.mjs"></script> -->
 
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
@@ -64,6 +65,7 @@ import { join } from 'path'
 <meta name='title' content={siteTitle} />
 <meta name='description' content={description} />
 <meta name='author' content={siteConfig.author} />
+<script is:inline src='/registerSW.js'></script>
 
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />

@@ -37,17 +37,16 @@ export default defineConfig({
 	},
 	integrations: [
 		AstroPWA({
-			strategies: 'injectManifest',
 			srcDir: 'src',
-			filename: 'pwa.js',
+			filename: 'pwa.mjs',
 			base: '/',
 			scope: '/',
-			includeAssets: ['favicon.svg'],
-			registerType: 'injectManifest',
-			injectRegister: 'auto',
-			injectManifest: {
-				injectionPoint: undefined
-			},
+			includeAssets: ['**/*'],
+			// registerType: 'injectManifest',
+			// injectRegister: 'auto',
+			// injectManifest: {
+			// 	injectionPoint: undefined
+			// },
 			manifest: {
 				name: 'Astro PWA',
 				short_name: 'Astro PWA',
