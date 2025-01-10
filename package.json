@@ -32,6 +32,10 @@
 		"pre-commit": "lint-staged",
 		"prepare": "husky install"
 	},
+	"engines": {
+		"node": ">=20",
+		"pnpm": ">=9"
+	},
 	"dependencies": {
 		"@astrojs/prism": "^3.2.0",
 		"@astrojs/rss": "4.0.1",
