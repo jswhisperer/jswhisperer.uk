@@ -72,6 +72,48 @@ const structuredData = {
 				width: calc(var(--w) * 1px);
 				height: calc(var(--h) * 1px);
 			}
+			.tothetop {
+				z-index: 2;
+				right: 10px;
+				top: 5px;
+				position: absolute;
+				color: #847e70;
+				opacity: 0.1;
+			}
+			.tothetop:hover {
+				color: #847e70;
+				opacity: 0.9;
+			}
+			.tothetop {
+				z-index: 2;
+				right: 10px;
+				top: 5px;
+				position: absolute;
+				color: #847e70;
+				opacity: 0.1;
+				zoom: 1;
+				-ms-filter: 'alpha(opacity=10)';
+				*filter: alpha(opacity=10);
+			}
+			.tothetop:hover {
+				color: #847e70;
+				opacity: 0.9;
+				zoom: 1;
+				-ms-filter: 'alpha(opacity=90)';
+				*filter: alpha(opacity=90);
+			}
+
+			[class^='icon-']:before {
+				font-family: 'gregasaurus';
+				font-style: normal;
+				speak: none;
+			}
+			.icon-cannon:before {
+				content: '\0032';
+			}
+			.icon-arrow-up:before {
+				content: '\0043';
+			}
 		</style>
 	</body>
 </html>

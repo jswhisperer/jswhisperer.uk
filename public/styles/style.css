@@ -543,18 +543,7 @@ nav.ribbon > .inside:after {
 #belowmaincontent {
 	border-bottom: 2px solid #bcb9b1;
 }
-.tothetop {
-	z-index: 2;
-	right: 10px;
-	top: 5px;
-	position: absolute;
-	color: #847e70;
-	opacity: 0.1;
-}
-.tothetop:hover {
-	color: #847e70;
-	opacity: 0.9;
-}
+
 .rslides_nav {
 	font-family: 'gregasaurus';
 }
