@@ -53,9 +53,10 @@ import { join } from 'path'
 <link rel='canonical' href={canonicalURL.toString()} />
 
 {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
-<script preload src='https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js'></script>
+<script async preload src='https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js'
+></script>
 
-<script preload src='https://jswhisperer.uk/js/jquery.min.js'></script>
+<script async preload src='https://jswhisperer.uk/js/jquery.min.js'></script>
 
 <script preload>
 	window.head?.js(
