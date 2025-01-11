@@ -5,7 +5,9 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 ---
 
 <BaseLayout title='Work'>
-	<a href='#top' class='tothetop'> <span aria-hidden='true' class='icon-arrow-up'></span></a>
+	<a aria-label='scroll to the top' href='#top' class='top tothetop small-mobile-hide'>
+		<span aria-hidden='true' class='icon-arrow-up'></span></a
+	>
 	<h2>Work <span aria-hidden='true' class='icon-cannon'></span></h2>
 	<h3>OLD WORK UNDER CONSTRUCTION</h3>
 	<ul class='tabs'>
@@ -51,8 +53,9 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
+						layout='responsive'
 						src={import('../assets/images/portfolio/dvmakeup.jpg')}
-						alt='angela jeweller'
+						alt="dvmakeup'"
 						style='opacity: 1;'
 						decoding='async'
 						formats={['avif', 'webp']}
@@ -73,6 +76,7 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
+						layout='responsive'
 						src={import('../assets/images/portfolio/freedom-hill-restaurant.jpg')}
 						alt='freedom hill restaurant'
 						style='opacity: 1;'
@@ -94,6 +98,7 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
+						layout='responsive'
 						src={import('../assets/images/portfolio/mecer-express.jpg')}
 						alt='mecer express'
 						style='opacity: 1;'
@@ -223,22 +228,23 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 </BaseLayout>
 
 <script>
-	$('.rslides').responsiveSlides({
-		auto: true,
-		speed: 1000,
-		timeout: 4000,
-		pager: false,
-		nav: true,
-		random: false,
-		pause: true,
-		pauseControls: false,
-		prevText: '&#x005f;',
-		nextText: '&#x0022;',
-		maxwidth: '',
-		controls: '',
-		namespace: 'rslides'
-	})
-	$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+	setTimeout(() => {
+		$('.rslides').responsiveSlides({
+			auto: true,
+			speed: 1000,
+			timeout: 4000,
+			pager: false,
+			nav: true,
+			random: false,
+			pause: true,
+			pauseControls: false,
+			prevText: '&#x005f;',
+			nextText: '&#x0022;',
+			maxwidth: '',
+			controls: '',
+			namespace: 'rslides'
+		})
+	}, 1000)
 </script>
 
 <style media='none' onload="if(media!='all')media='all'" loading='lazy'>

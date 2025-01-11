@@ -40,6 +40,8 @@ export default defineConfig({
 			srcDir: 'src',
 			base: '/',
 			scope: '/',
+        registerType: 'autoUpdate',
+
 			includeAssets: ['**/*'],
 			manifest: {
 				name: 'Astro PWA',
