@@ -41,7 +41,6 @@ export default defineConfig({
 			base: '/',
 			scope: '/',
 			includeAssets: ['**/*'],
-
 			manifest: {
 				name: 'Astro PWA',
 				short_name: 'Astro PWA',
@@ -65,13 +64,15 @@ export default defineConfig({
 					}
 				]
 			},
-
+injectRegister: 'auto',
 			workbox: {
+				globDirectory: 'dist',
 				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-				navigateFallback: '/',
+				navigateFallback: null,
 				globPatterns: ['**/*']
 			},
 			devOptions: {
+        type: 'module',
 				enabled: true,
 				navigateFallbackAllowlist: [/^\//]
 			},

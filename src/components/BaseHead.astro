@@ -75,6 +75,30 @@ import { join } from 'path'
 <meta name='author' content={siteConfig.author} />
 <!-- <script type='module' src='/sw.js'></script> -->
 
+<!-- <script is:inline>
+    addEventListener("load", () => {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/sw.js")
+          .then(() => {
+            console.log("Service Worker Registered");
+          })
+          .catch((err) => {
+            console.log("Some error occurred while registering service worker");
+            console.log(err);
+          });
+      }
+    });
+  </script> -->
+<script>
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register(
+			import.meta.env.MODE === 'production' ? '/sw.js' : '/dev-sw.js?dev-sw',
+			{ type: import.meta.env.MODE === 'production' ? 'classic' : 'module' }
+		)
+	}
+</script>
+
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />
 <meta property='og:url' content={Astro.url} />
