@@ -220,26 +220,26 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 			>
 		</li>
 	</ul>
-
-	<script>
-		$('.rslides').responsiveSlides({
-			auto: true,
-			speed: 1000,
-			timeout: 4000,
-			pager: false,
-			nav: true,
-			random: false,
-			pause: true,
-			pauseControls: false,
-			prevText: '&#x005f;',
-			nextText: '&#x0022;',
-			maxwidth: '',
-			controls: '',
-			namespace: 'rslides'
-		})
-		$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
-	</script>
 </BaseLayout>
+
+<script>
+	$('.rslides').responsiveSlides({
+		auto: true,
+		speed: 1000,
+		timeout: 4000,
+		pager: false,
+		nav: true,
+		random: false,
+		pause: true,
+		pauseControls: false,
+		prevText: '&#x005f;',
+		nextText: '&#x0022;',
+		maxwidth: '',
+		controls: '',
+		namespace: 'rslides'
+	})
+	$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+</script>
 
 <style media='none' onload="if(media!='all')media='all'" loading='lazy'>
 	div,
