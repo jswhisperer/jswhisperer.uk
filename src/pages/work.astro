@@ -222,7 +222,7 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 	</ul>
 
 	<script>
-		document.addEventListener('load', function () {
+		document.addEventListener('DOMContentLoaded', function () {
 			$('.rslides').responsiveSlides({
 				auto: true,
 				speed: 1000,
@@ -239,6 +239,11 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 				namespace: 'rslides'
 			})
 			$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
+			// $('img').each(function () {
+			// 	$(this)
+			// 		.delay(800)
+			// 		.animate({ opacity: 1 }, 1000)
+			// })
 		})
 	</script>
 </BaseLayout>
