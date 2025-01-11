@@ -77,7 +77,8 @@ export default defineConfig({
 			},
 			experimental: {
 				responsiveImages: true,
-				directoryAndTrailingSlashHandler: true
+				directoryAndTrailingSlashHandler: true,
+				assets: true
 			}
 		}),
 		mdx({
