@@ -1,17 +1,8 @@
 ---
 import { Image, Picture } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout'
-// import 'https://jswhisperer.uk/js/head.min.js'
+import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 ---
-
-<script is:raw src='https://jswhisperer.uk/js/head.min.js'></script>
-<script is:raw>
-	head.js(
-		'https://jswhisperer.uk/js/jquery.min.js',
-		'https://jswhisperer.uk/js/responsiveslides.min.js',
-		'https://jswhisperer.uk/js/jquery.smooth-scroll.min.js'
-	)
-</script>
 
 <BaseLayout title='Work'>
 	<a href='#top' class='tothetop'> <span aria-hidden='true' class='icon-arrow-up'></span></a>
@@ -37,7 +28,7 @@ import BaseLayout from '@/layouts/BaseLayout'
 					style='display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/angela-jeweller.jpg')}
+						src={angela}
 						alt='angela jeweller'
 						style='opacity: 1;'
 						decoding='async'
@@ -230,31 +221,13 @@ import BaseLayout from '@/layouts/BaseLayout'
 		</li>
 	</ul>
 
-	<script is:raw>
-		document.addEventListener('DOMContentLoaded', function () {
-			$('.rslides').responsiveSlides({
-				auto: true,
-				speed: 1000,
-				timeout: 4000,
-				pager: false,
-				nav: true,
-				random: false,
-				pause: true,
-				pauseControls: false,
-				prevText: '&#x005f;',
-				nextText: '&#x0022;',
-				maxwidth: '',
-				controls: '',
-				namespace: 'rslides'
-			})
-			$('a').smoothScroll({ excludeWithin: ['[data-tabs]'] })
-			// $('img').each(function () {
-			// 	$(this)
-			// 		.delay(800)
-			// 		.animate({ opacity: 1 }, 1000)
-			// })
-		})
-	</script>
+	<scrip is:raw>
+		document.addEventListener('load', function () { $('.rslides').responsiveSlides({ auto: true,
+		speed: 1000, timeout: 4000, pager: false, nav: true, random: false, pause: true, pauseControls:
+		false, prevText: '&#x005f;', nextText: '&#x0022;', maxwidth: '', controls: '', namespace:
+		'rslides' }) $('a').smoothScroll({ excludeWithin: ['[data-tabs]'] }) // $('img').each(function
+		() { // $(this) // .delay(800) // .animate({ opacity: 1 }, 1000) // }) })
+	</scrip>
 </BaseLayout>
 
 <style media='none' onload="if(media!='all')media='all'" loading='lazy'>

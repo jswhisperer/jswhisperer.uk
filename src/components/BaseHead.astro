@@ -53,7 +53,15 @@ import { join } from 'path'
 <link rel='canonical' href={canonicalURL.toString()} />
 
 {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
-<!-- <script is:inline src="/pwa.mjs"></script> -->
+<script preload src='https://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.min.js'></script>
+
+<script preload>
+	window.head?.js(
+		'https://jswhisperer.uk/js/jquery.min.js',
+		'https://jswhisperer.uk/js/responsiveslides.min.js',
+		'https://jswhisperer.uk/js/jquery.smooth-scroll.min.js'
+	)
+</script>
 
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
