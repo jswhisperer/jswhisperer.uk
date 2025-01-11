@@ -66,35 +66,10 @@ if (!self.define) {
 		})
 	}
 }
-define(['./workbox-99d8380f'], function (workbox) {
+define(['./workbox-bc42f593'], function (workbox) {
 	'use strict'
 
-	self.addEventListener('message', (event) => {
-		if (event.data && event.data.type === 'SKIP_WAITING') {
-			self.skipWaiting()
-		}
-	})
-
-	/**
-	 * The precacheAndRoute() method efficiently caches and responds to
-	 * requests for URLs in the manifest.
-	 * See https://goo.gl/S9QRab
-	 */
-	workbox.precacheAndRoute(
-		[
-			{
-				url: '/',
-				revision: '0.ce9v1bpvc4o'
-			}
-		],
-		{
-			directoryIndex: 'index.html'
-		}
-	)
-	workbox.cleanupOutdatedCaches()
-	workbox.registerRoute(
-		new workbox.NavigationRoute(workbox.createHandlerBoundToURL('/'), {
-			allowlist: [/^\//]
-		})
-	)
+	self.skipWaiting()
+	workbox.clientsClaim()
+	workbox.registerRoute(/\.(?:png|jpg|jpeg|svg|html|js)$/, new workbox.CacheFirst(), 'GET')
 })

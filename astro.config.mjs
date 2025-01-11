@@ -40,7 +40,7 @@ export default defineConfig({
 			srcDir: 'src',
 			base: '/',
 			scope: '/',
-        registerType: 'autoUpdate',
+			registerType: 'autoUpdate',
 
 			includeAssets: ['**/*'],
 			manifest: {
@@ -66,15 +66,21 @@ export default defineConfig({
 					}
 				]
 			},
-injectRegister: 'auto',
+			injectRegister: 'auto',
 			workbox: {
+				runtimeCaching: [
+					{
+						urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
+						handler: 'CacheFirst'
+					}
+				],
 				globDirectory: 'dist',
 				maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
 				navigateFallback: null,
 				globPatterns: ['**/*']
 			},
 			devOptions: {
-        type: 'module',
+				type: 'module',
 				enabled: true,
 				navigateFallbackAllowlist: [/^\//]
 			},
