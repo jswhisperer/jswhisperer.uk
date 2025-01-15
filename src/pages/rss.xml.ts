@@ -80,7 +80,7 @@ export async function GET(context: any) {
 
 	console.log({ items: await Promise.all(items) })
 
-	return rss({
+	return await rss({
 		// xmlns: {
 		// 	atom: 'http://www.w3.org/2005/Atom'
 		// },
