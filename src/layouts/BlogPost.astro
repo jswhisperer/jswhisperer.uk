@@ -56,13 +56,13 @@ const articleDate = pubDate.toISOString()
 		datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
-		thumbnailUrl: heroImage || '/public/open-graph.png',
+		thumbnailUrl: heroImage?.src || '/public/open-graph.png',
 		image: {
 			'@type': 'ImageObject',
 			url: heroImage?.src,
 			width: heroImage?.width,
-			height: heroImage?.height
-			// caption: heroImage.alt
+			height: heroImage?.height,
+			caption: 'a banner image'
 		},
 		author: {
 			'@type': 'Person',
@@ -81,7 +81,12 @@ const articleDate = pubDate.toISOString()
 >
 	<article
 		transition:animate={slide({ duration: '0.5s' })}
-		class='h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
+		class='post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
+		role='article'
+		itemscope
+		itemtype='http://schema.org/BlogPosting'
+		aria-labelledby={title}
+		-title'
 	>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
