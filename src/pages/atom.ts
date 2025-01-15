@@ -118,7 +118,7 @@ export default async function GET() {
 		items: await Promise.all(items),
 		customData: [
 			'en-us',
-			`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/feed.xml" />`
+			`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
 		].join('')
 		// stylesheet: '/pretty-feed-v3.xsl'
 	})
