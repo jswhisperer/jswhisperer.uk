@@ -34,14 +34,13 @@ type Props = {
 	headings: MarkdownHeading[]
 	readTime: string
 	slug: string
-	author: any
 }
 
 const { data, readTime, headings, id, slug } = Astro.props
 const { title, description, pubDate, heroImage, tags, author, category } = data
 const authors = await getCollection('author')
 
-const currentAuthor = authors.find((a) => a.name === author?.name)
+const currentAuthor = authors.find((a) => a.id === author?.id)
 
 const articleDate = pubDate.toISOString()
 ---
