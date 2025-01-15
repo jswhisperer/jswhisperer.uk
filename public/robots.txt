@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jswhisperer.uk/sitemap-0.xml
+Sitemap: https://jswhisperer.uk/atom.xml
