@@ -142,3 +142,13 @@ async function buildBlogFeed() {
 	const end = +new Date()
 	console.log(`\n    ${output_dir}atom.xml created (+${end - start}ms)\n`)
 }
+
+/*
+ * Run Main Function
+ */
+
+buildBlogFeed().catch((error) => {
+	console.error(error)
+	// quit if error (eg: if output_dir does not exist)
+	process.exit(1)
+})
