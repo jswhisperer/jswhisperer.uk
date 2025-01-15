@@ -9,13 +9,15 @@ const parser = new MarkdownIt()
 export async function GET(context: any) {
 	const posts = await getCollection('blog')
 	const authors = await getCollection('author')
+	const currentAuthor = (post: any) =>
+		authors.find((author) => author.data.name === post.data.author.id)
 	const items = posts.map((post) => ({
 		...post.data,
 		title: post.data.title,
+		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
 		content: sanitizeHtml(parser.render(post.body)),
-		author: authors.find((author) => author.data.name === post.data.author.id)?.data.name,
-		link: `/post/${post.slug}/`
+		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
 	}))
 
 	console.log({ items: await Promise.all(items) })
