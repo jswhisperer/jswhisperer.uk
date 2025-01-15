@@ -24,6 +24,6 @@ export async function GET(context: any) {
 		title: siteConfig.title,
 		description: siteConfig.description,
 		site: context.site,
-		items: items
+		items: await Promise.all(items)
 	})
 }
