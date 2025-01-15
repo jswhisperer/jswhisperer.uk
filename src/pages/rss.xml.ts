@@ -42,9 +42,6 @@ export async function GET(context: any) {
 
 	await atom(items)
 	return await rss({
-		// xmlns: {
-		// 	atom: 'http://www.w3.org/2005/Atom'
-		// },
 		title: siteConfig.title,
 		description: siteConfig.description,
 		site: context.site,
