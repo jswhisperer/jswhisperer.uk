@@ -16,7 +16,7 @@ const blog = defineCollection({
 			category: z.enum(CATEGORIES).optional(),
 			tags: z.array(z.string()).optional(),
 			draft: z.boolean().default(false),
-			author: reference('author').optional()
+			author: reference('author')
 		})
 })
 
@@ -24,6 +24,7 @@ const author: ReturnType<typeof defineCollection> = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			name: z.string(),
+			email: z.string().email().default('hello@jswhisperer.uk'),
 			avatar: image().optional(),
 			url: z.string().url().default('greg')
 		})
