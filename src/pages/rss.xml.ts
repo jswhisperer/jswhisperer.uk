@@ -12,13 +12,20 @@ export async function GET(context: any) {
 		...post.data,
 		title: post.data.title,
 		categories: post.data.tags,
-		link: '/', //`/post/${post.slug}/`,
+		xmlns: {
+			atom: 'http://www.w3.org/2005/Atom'
+		},
+		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
 		//content: sanitizeHtml(parser.render(post.body)),
+		customData: [
+			'en-us',
+			`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/feed.xml" />`
+		].join(''),
 		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
 	}))
 
-	await atom(items)
+	await atom()
 	return await rss({
 		title: siteConfig.title,
 		description: siteConfig.description,

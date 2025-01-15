@@ -25,23 +25,6 @@ const createSlug = function (title: string) {
 	)
 }
 
-import { type FeedOptions } from 'feed'
-
-const options: FeedOptions = {
-	title: siteConfig.title,
-	description: siteConfig.description,
-	id: siteConfig.url + '/',
-	link: siteConfig.url + '/',
-	language: 'en',
-	copyright: `copyright  greg all rights reserved`,
-	author: {
-		name: siteConfig.author,
-		link: siteConfig.url
-	},
-	favicon: siteConfig.url + '/favicon.svg',
-	image: siteConfig.url + '/media/images/social.png'
-}
-
 import MarkdownIt from 'markdown-it'
 const parser = new MarkdownIt()
 
@@ -112,7 +95,7 @@ const markdown = MarkdownIt({
 // Generate feed
 //const feed = new Feed(options)
 
-export default async function GET(context: any) {
+export default async function GET() {
 	const posts = await getCollection('blog')
 	const authors = await getCollection('author')
 	const currentAuthor = (post: any) =>
