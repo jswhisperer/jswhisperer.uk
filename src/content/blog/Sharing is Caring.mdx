@@ -1,0 +1,63 @@
+---
+cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
+
+heroImage: >-
+  /src/assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg
+category: Category 1
+description: 'Quick tip to add awesome sharing to your app'
+pubDate: 2023-01-01T00:00:00.000Z
+tags: ['frontend', 'webshare', 'javascript', 'pwa']
+title: 'Sharing is caring'
+author: greg
+canonical_url: 'https://jswhisperer.uk/post/sharing-is-caring/'
+---
+
+Wouldn't it be grand to click a button and have your mobile's native share dialog come up?
+This used to take funky third party js widgets, or registering for all the various site api's individual; I remember it could take a week to get it right with SEO back in the golden days.
+
+Well friends fear no more check out the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share">webshare</a> api
+
+Now hypothetically say you have a fullscreened progressive web app, looks slick don't it? The problem though is the missing url bar.
+
+Example:
+
+![Image Alt](https://res.cloudinary.com/https-gregbenner-life/image/upload/v1597043661/share_nw2ssb.jpg)
+
+Here's your solution in the form of a method. One caveat is this must be called on a user action like click.
+
+```js
+share() {
+      if (navigator.share) {
+        navigator
+          .share({
+            title: 'title',
+            text: 'description',
+            url: `url`
+          })
+          .catch(err => {
+            console.log(`Couldn't share because of`, err.message);
+          });
+      } else {
+        console.log("web share not supported");
+      }
+    }
+```
+
+```html
+<a class="show-mobile" href="#" @click.prevent="share">🔗 share</a>
+```
+
+Oh one more thing, this is only supported on mobile devices. I find this solution better than the user agent sniffing dark arts.
+
+```css
+.show-mobile {
+	display: none;
+}
+@media (pointer: coarse) {
+	.show-mobile {
+		display: inline-block;
+	}
+}
+```
+
+Why not fire up your cellular device and give it a try with this article, how meta would that be?

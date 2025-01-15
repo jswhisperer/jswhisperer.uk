@@ -22,6 +22,7 @@ export const siteConfig: SiteConfig = {
 	ogLocale: 'en_GB',
 	shareMessage: 'Share this post', // Message to share a post on social media
 	paginationSize: 6666, // Number of posts per page,
+	// webmentions:
 	ogImage: 'https://jswhisperer.uk/assets/images/og-image.jpg'
 }
 

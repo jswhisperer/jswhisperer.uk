@@ -66,7 +66,7 @@ if (!self.define) {
 		})
 	}
 }
-define(['./workbox-bc42f593'], function (workbox) {
+define(['./workbox-627753d5'], function (workbox) {
 	'use strict'
 
 	self.skipWaiting()

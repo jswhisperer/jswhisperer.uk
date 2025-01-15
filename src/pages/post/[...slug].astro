@@ -4,7 +4,6 @@ import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
 import Share from '@/components/Share'
 import TableOfContents from '@/components/TableOfContents'
-import { disqusConfig } from '@/data/disqus.config'
 import BlogPost from '@/layouts/BlogPost'
 import { getPosts } from '@/utils'
 import { Picture } from 'astro:assets'
@@ -37,7 +36,30 @@ const relatedPosts = getRelatedPosts(post)
 
 const { Content, headings, remarkPluginFrontmatter } = await post.render()
 
-const disqusEnabled = disqusConfig.enabled
+import sanitizeHTML from 'sanitize-html'
+
+function getWebmentionsForUrl(webmentions: any[], url: any) {
+	console.log({ url })
+	const allowedTypes = ['mention-of', 'in-reply-to']
+
+	const hasRequiredFields = (entry: { author: any; published: any; content: any }) => {
+		const { author, published, content } = entry
+		return author.name && published && content
+	}
+	const sanitize = (entry: { content: any }) => {
+		const { content } = entry
+		if (content['content-type'] === 'text/html') {
+			content.value = sanitizeHTML(content.value)
+		}
+		return entry
+	}
+
+	return webmentions
+		.filter((entry: { [x: string]: any }) => entry['wm-target'] === url)
+		.filter((entry: { [x: string]: string }) => allowedTypes.includes(entry['wm-property']))
+		.filter(hasRequiredFields)
+		.map(sanitize)
+}
 ---
 
 <BlogPost
@@ -48,6 +70,15 @@ const disqusEnabled = disqusConfig.enabled
 	readTime={remarkPluginFrontmatter.minutesRead}
 	author={post.author}
 >
+	<a href='https://brid.gy/publish/github'>x</a>
+	{
+		console.log({
+			webby: getWebmentionsForUrl(
+				[],
+				`https://webmention.io/api/mentions.jf2?domain=https://jswhisperer.uk/post/${post.slug}&token=S41J_UI23sPl4N4QtVtN8w`
+			)
+		})
+	}
 	{post.author?.name}
 	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
 		<!-- aside  -->
@@ -73,7 +104,14 @@ const disqusEnabled = disqusConfig.enabled
 				</footer>
 			</div>
 		</article>
-
+		<form action='https://indielogin.com/auth' method='get'>
+			<label for='url'>Web Address:</label>
+			<input id='url' type='text' name='me' placeholder='yourdomain.com' />
+			<p><button type='submit'>Sign In</button></p>
+			<input type='hidden' name='client_id' value='https://jswhisperer.uk/' />
+			<input type='hidden' name='redirect_uri' value='https://jswhisperer.uk/redirect' />
+			<input type='hidden' name='state' value='jwiusuerujs' />
+		</form>
 		<!-- {disqusEnabled && <Disqus />} -->
 	</div>
 </BlogPost>

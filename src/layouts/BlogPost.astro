@@ -40,7 +40,7 @@ const { data, readTime, headings, id, slug } = Astro.props
 const { title, description, pubDate, heroImage, tags, author, category } = data
 const authors = await getCollection('author')
 
-const currentAuthor = authors.find((a) => a.id === author?.id)
+const currentAuthor = authors.find((a) => a.slug === author?.id)
 
 const articleDate = pubDate.toISOString()
 ---
@@ -66,9 +66,9 @@ const articleDate = pubDate.toISOString()
 		},
 		author: {
 			'@type': 'Person',
-			name: currentAuthor?.name,
-			description: currentAuthor?.bio,
-			url: `${Astro.site}/author/${currentAuthor?.slug}`
+			name: currentAuthor?.slug,
+			description: currentAuthor?.body,
+			url: `${Astro.site}/author${currentAuthor?.slug}`
 		}
 	})}
 />
