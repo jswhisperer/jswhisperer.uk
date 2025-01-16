@@ -2,13 +2,23 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import AstroPWA from '@vite-pwa/astro'
+import embeds from 'astro-embed/integration'
 import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
+
 // https://astro.build/config
 export default defineConfig({
 	vite: {
+		optimizeDeps: {
+			esbuildOptions: {
+				target: 'esnext'
+			}
+		},
+		build: {
+			target: 'esnext'
+		},
 		logLevel: 'info',
 		define: {
 			__DATE__: `'${new Date().toISOString()}'`
@@ -19,11 +29,11 @@ export default defineConfig({
 				allow: ['../..']
 			}
 		},
-		build: {
-			rollupOptions: {
-				external: ['workbox-window', 'virtual:pwa-register']
-			}
-		}
+		// build: {
+		// 	rollupOptions: {
+		// 		external: ['workbox-window', 'virtual:pwa-register']
+		// 	}
+		// }
 	},
 	prefetch: true,
 	site: siteConfig.site,
@@ -36,6 +46,7 @@ export default defineConfig({
 		}
 	},
 	integrations: [
+		embeds(),
 		AstroPWA({
 			srcDir: 'src',
 			base: '/',

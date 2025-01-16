@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 		props: post
 	}))
 }
-type Props = CollectionEntry<'blog'> & { slug: string; author: any; name: any }
+type Props = CollectionEntry<'blog'> & { blskyid: any; slug: string; author: any; name: any }
 
 const post = Astro.props
 const MAX_POSTS = 3
@@ -66,6 +66,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 	id={post.id}
 	slug={post.slug}
 	data={post.data}
+	blskyid={post?.data?.blskyid}
 	headings={headings}
 	readTime={remarkPluginFrontmatter.minutesRead}
 	author={post.author}
@@ -90,7 +91,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		</aside>
 
 		<!-- post -->
-		<article class='card max-w-full w-full'>
+		<article class='h-card card max-w-full w-full'>
 			<span class='main-content-shadow'></span>
 			<div
 				class='e-content prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'
@@ -107,14 +108,14 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 				</footer>
 			</div>
 		</article>
-		<form action='https://indielogin.com/auth' method='get'>
+		<!-- <form action='https://indielogin.com/auth' method='get'>
 			<label for='url'>Web Address:</label>
 			<input id='url' type='text' name='me' placeholder='yourdomain.com' />
 			<p><button type='submit'>Sign In</button></p>
 			<input type='hidden' name='client_id' value='https://jswhisperer.uk/' />
 			<input type='hidden' name='redirect_uri' value='https://jswhisperer.uk/redirect' />
 			<input type='hidden' name='state' value='jwiusuerujs' />
-		</form>
+		</form> -->
 		<!-- {disqusEnabled && <Disqus />} -->
 	</div>
 </BlogPost>

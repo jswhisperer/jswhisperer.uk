@@ -3,6 +3,7 @@ import { Image, Picture } from 'astro:assets'
 import FormattedDate from '@/components/FormattedDate'
 import ArrowUp from '@/components/icons/ArrowUp'
 import { fade, slide } from 'astro:transitions'
+import LinkUnderline from '@/components/LinkUnderline'
 
 const {
 	id,
@@ -17,11 +18,8 @@ const {
 	transition:animate={slide({ duration: '0.5s' })}
 	class='grid grid-rows-[300px_auto] md:grid-rows-[300px_220px] min-h-full group my-10'
 >
-	<a
-		transition:animate={slide({ duration: '0.5s' })}
-		class='relative overflow-hidden'
-		href={`/post/${slug}/`}
-	>
+	<!-- <a transition:animate={slide({ duration: '0.5s' })} class='relative overflow-hidden'> -->
+	<LinkUnderline link={`/post/${slug}/`}>
 		{
 			heroImage && (
 				<Picture
@@ -47,7 +45,7 @@ const {
 				<span class='pb-4'>{category}</span>
 			</div>
 		</div>
-	</a>
+	</LinkUnderline>
 
 	<div class='flex justify-between flex-col gap-4 md:gap-0 py-6 pl-1'>
 		<div class='flex flex-col gap-3'>

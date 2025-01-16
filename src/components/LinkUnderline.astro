@@ -1,0 +1,121 @@
+---
+const { link } = Astro.props
+---
+
+<li class='content__item'>
+	<a href={link} class='link link--iocaste'>
+		<span
+			><slot />
+			<svg
+				class='link__graphic link__graphic--slide'
+				width='300%'
+				height='100%'
+				viewBox='0 0 1200 60'
+				preserveAspectRatio='none'
+			>
+				<path
+					d='M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0'
+				></path>
+			</svg>
+		</span>
+	</a>
+	<style>
+		/*! CSS Used from: https://tympanus.net/Development/LineHoverStyles/css/base.css */
+		*,
+		*::after,
+		*::before {
+			box-sizing: border-box;
+		}
+		a {
+			text-decoration: none;
+			color: var(--color-link);
+			outline: none;
+		}
+		a:hover {
+			color: var(--color-link-hover);
+			outline: none;
+		}
+		a:focus {
+			outline: none;
+			background: lightgrey;
+		}
+		a:focus:not(:focus-visible) {
+			background: transparent;
+		}
+		.content__item {
+			margin: 0;
+			padding: 0;
+			counter-increment: itemcounter;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			position: relative;
+		}
+		.content__item::before {
+			color: var(--color-number);
+			position: absolute;
+			top: 0;
+			left: 0;
+			content: counters(itemcounter, '.', decimal-leading-zero);
+		}
+		.link {
+			cursor: pointer;
+			font-size: 18px;
+			position: relative;
+			white-space: nowrap;
+			color: var(--color-text);
+		}
+		.link::before,
+		.link::after {
+			position: absolute;
+			width: 100%;
+			height: 1px;
+			background: currentColor;
+			top: 100%;
+			left: 0;
+			pointer-events: none;
+		}
+		.link::before {
+			content: '';
+		}
+		.link--iocaste {
+			font-family: lust-fine, sans-serif;
+			overflow: hidden;
+			padding: 7px 0;
+		}
+		.link__graphic {
+			position: absolute;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+			fill: none;
+			stroke: #000;
+			stroke-width: 1px;
+		}
+		.link__graphic--slide {
+			top: -3px;
+			stroke-width: 2px;
+			transition: transform 0.7s;
+			transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
+		}
+		.link:hover .link__graphic--slide {
+			transform: translate3d(-66.6%, 0, 0);
+		}
+		/*! CSS Used fontfaces */
+		@font-face {
+			font-family: 'lust-fine';
+			src:
+				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
+					format('woff2'),
+				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
+					format('woff'),
+				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
+					format('opentype');
+			font-display: auto;
+			font-style: italic;
+			font-weight: 100;
+			font-stretch: normal;
+		}
+	</style>
+</li>

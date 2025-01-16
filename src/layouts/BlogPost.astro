@@ -8,6 +8,7 @@ import { Picture } from 'astro:assets'
 import { siteConfig } from '../data/site.config'
 import { getCollection } from 'astro:content'
 import WebMention from '@/components/WebMentions'
+import BlueSky from '@/components/BlueSky'
 import { slide } from 'astro:transitions'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
@@ -15,12 +16,12 @@ const webmentionsUrl =
 	'https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w'
 const response = await fetch(webmentionsUrl)
 const json = await response.json()
-const webmentions = json.children.filter(({ url }) => url.includes(pageUrl))
+const webmentions = json.children.filter(({ url }: { url: any }) => url.includes(pageUrl))
 
 // console.table({webmentions})
 
 if (webmentions) {
-	webmentions.map((webmention) => {
+	webmentions.map((webmention: any) => {
 		console.log(webmention)
 	})
 }
@@ -34,9 +35,10 @@ type Props = {
 	headings: MarkdownHeading[]
 	readTime: string
 	slug: string
+	blskyid: any
 }
 
-const { data, readTime, headings, id, slug } = Astro.props
+const { data, readTime, headings, id, slug, blskyid } = Astro.props
 const { title, description, pubDate, heroImage, tags, author, category } = data
 const authors = await getCollection('author')
 
@@ -118,6 +120,7 @@ const articleDate = pubDate.toISOString()
 						].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
 					}
 					<Picture
+						width={100}
 						formats={['avif', 'webp']}
 						class='u-photo'
 						src={import('../assets/images/greg.jpeg')}
@@ -156,6 +159,7 @@ const articleDate = pubDate.toISOString()
 		<div>
 			<slot />
 			<WebMention webmentions={webmentions} />
+			<BlueSky blskyid={blskyid || ''} />
 		</div>
 	</article>
 </BaseLayout>
