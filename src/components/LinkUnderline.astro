@@ -48,7 +48,7 @@ const { link } = Astro.props
 			counter-increment: itemcounter;
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			align-items: start;
 
 			position: relative;
 		}
@@ -57,13 +57,12 @@ const { link } = Astro.props
 			position: absolute;
 			top: 0;
 			left: 0;
-			content: counters(itemcounter, '.', decimal-leading-zero);
 		}
 		.link {
 			cursor: pointer;
-			font-size: 18px;
+			/* font-size: 18px; */
 			position: relative;
-			white-space: nowrap;
+			/* white-space: nowrap; */
 			color: var(--color-text);
 		}
 		.link::before,
@@ -80,7 +79,6 @@ const { link } = Astro.props
 			content: '';
 		}
 		.link--iocaste {
-			font-family: lust-fine, sans-serif;
 			overflow: hidden;
 			padding: 7px 0;
 		}
@@ -91,11 +89,11 @@ const { link } = Astro.props
 			pointer-events: none;
 			fill: none;
 			stroke: #000;
-			stroke-width: 1px;
+			stroke-width: 5px;
 		}
 		.link__graphic--slide {
-			top: -3px;
-			stroke-width: 2px;
+			top: 10px;
+			stroke-width: 5px;
 			transition: transform 0.7s;
 			transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
 		}
@@ -103,19 +101,5 @@ const { link } = Astro.props
 			transform: translate3d(-66.6%, 0, 0);
 		}
 		/*! CSS Used fontfaces */
-		@font-face {
-			font-family: 'lust-fine';
-			src:
-				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
-					format('woff2'),
-				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
-					format('woff'),
-				url('https://use.typekit.net/af/c55c05/00000000000000007735dbeb/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i1&v=3')
-					format('opentype');
-			font-display: auto;
-			font-style: italic;
-			font-weight: 100;
-			font-stretch: normal;
-		}
 	</style>
 </li>
