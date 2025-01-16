@@ -1,16 +1,14 @@
 ---
 import { siteConfig } from '@/site-config'
+import BuyCoffee from './BuyCoffee.astro'
 
 const today = new Date()
 ---
 
-<!-- <footer class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
-	&copy; {today.getFullYear()}
-	{siteConfig.author}. All rights reserved.
-</footer> -->
 <footer id='footer' class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
 	<span class='shadow-down'></span>
 	<div class='container'>
+		<BuyCoffee />
 		<div class='sixteen columns omega row'>
 			<p>
 				Written in HTML5
