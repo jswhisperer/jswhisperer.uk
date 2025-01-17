@@ -70,9 +70,10 @@ const showDate = (webmention: string) =>
 								</p>
 							)}
 
-							{Object.keys(webmention['content']).map((key) => (
-								<div key={key} set:html={sanitizeHTML(webmention['content'][key])} />
-							))}
+							{typeof webmention['content'] === 'object' &&
+								Object.keys(webmention['content']).map((key) => (
+									<div key={key} set:html={sanitizeHTML(webmention['content'][key])} />
+								))}
 							{webmention['wm-property'] === 'repost-of' ? (
 								<p>
 									Reposted on
