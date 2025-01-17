@@ -26,8 +26,8 @@ const webmentionsUrl =
 	'https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w'
 const response = await fetch(webmentionsUrl)
 const json = await response.json()
-const webmentions = json.children.filter((child: { [x: string]: URL[] }) =>
-	child['wm-target'].includes(pageUrl)
+const webmentions = json.children.filter((mention: { [x: string]: URL[] }) =>
+	mention['wm-target'].includes(pageUrl)
 )
 
 type Props = CollectionEntry<'blog'> & { blskyid: any; slug: string; author: any; name: any }

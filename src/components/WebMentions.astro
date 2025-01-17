@@ -1,6 +1,15 @@
 ---
 import { Image } from 'astro:assets'
 
+import sanitizeHTML from 'sanitize-html'
+const sanitize = (entry: { content: any }) => {
+	const { content } = entry
+	//if (content['content-type'] === 'text/html') {
+	content.value = sanitizeHTML(content.value)
+	//}
+	return entry
+}
+
 interface AuthorProps {
 	name: string
 	photo: string
@@ -11,6 +20,7 @@ interface WebmentionProps {
 	author: AuthorProps
 	'wm-received': string
 	'wm-property': string
+	content: any
 }
 
 interface Props {
@@ -51,14 +61,18 @@ const showDate = (webmention: string) =>
 							</a>
 						</div>
 						<div class='information'>
-							{webmention['wm-property'] === 'like-of' ? (
+							{webmention['wm-property'] === 'like-of' && (
 								<p>
 									Liked on
 									<time aria-hidden='true' datetime={webmention['wm-received']}>
 										{showDate(webmention['wm-received'])}
 									</time>
 								</p>
-							) : null}
+							)}
+
+							{Object.keys(webmention['content']).map((key) => (
+								<div key={key} set:html={sanitizeHTML(webmention['content'][key])} />
+							))}
 							{webmention['wm-property'] === 'repost-of' ? (
 								<p>
 									Reposted on
