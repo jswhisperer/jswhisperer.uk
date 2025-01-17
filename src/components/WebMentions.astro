@@ -35,16 +35,19 @@ const showDate = (webmention: string) =>
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li>
-						<div class='avatar-and-author'>
+						<div class='avatar-and-author '>
 							{console.log(webmention.author)}
-							{webmention.author.type}
-							{webmention.author.name}
-
-							{webmention.author.photo ? (
-								<Image alt='' height='50' src={webmention.author.photo} width='50' />
-							) : null}
 							<a href={webmention.author.url} rel='author'>
-								{webmention.author.name}
+								{webmention.author.photo ? (
+									<Image
+										alt={webmention.author.name}
+										title={webmention.author.name}
+										class='avatar'
+										height='50'
+										src={webmention.author.photo}
+										width='50'
+									/>
+								) : null}
 							</a>
 						</div>
 						<div class='information'>
@@ -71,3 +74,9 @@ const showDate = (webmention: string) =>
 		</section>
 	) : null
 }
+<style>
+	.avatar {
+		border-radius: 50%;
+		overflow: hidden;
+	}
+</style>

@@ -4,9 +4,11 @@ import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
 import Share from '@/components/Share'
 import TableOfContents from '@/components/TableOfContents'
+import WebMention from '@/components/WebMentions'
 import BlogPost from '@/layouts/BlogPost'
 import { getPosts } from '@/utils'
 import { Picture } from 'astro:assets'
+const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 import { type CollectionEntry, getCollection } from 'astro:content'
 
@@ -19,6 +21,15 @@ export async function getStaticPaths() {
 		props: post
 	}))
 }
+
+const webmentionsUrl =
+	'https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w'
+const response = await fetch(webmentionsUrl)
+const json = await response.json()
+const webmentions = json.children.filter((child: { [x: string]: URL[] }) =>
+	child['wm-target'].includes(pageUrl)
+)
+
 type Props = CollectionEntry<'blog'> & { blskyid: any; slug: string; author: any; name: any }
 
 const post = Astro.props
@@ -105,6 +116,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 				<footer>
 					<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
 					<ListRelatedPosts posts={relatedPosts} />
+					<WebMention webmentions={webmentions} />
 				</footer>
 			</div>
 		</article>

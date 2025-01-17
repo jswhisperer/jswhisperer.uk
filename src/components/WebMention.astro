@@ -28,7 +28,7 @@ const showDate = (webmention: string) =>
 ---
 
 {
-	webmentions.length > 0 ? (
+	webmentions && (
 		<section aria-label='Webmentions'>
 			<h2>Webmentions</h2>
 
@@ -36,9 +36,15 @@ const showDate = (webmention: string) =>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li>
 						A mention
-						<div class='avatar-and-author'>
+						<div class='avatar-and-author avatar'>
 							{webmention.author.photo ? (
-								<Image alt='' height='50' src={webmention.author.photo} width='50' />
+								<Image
+									class='avatars'
+									alt=''
+									height='50'
+									src={webmention.author.photo}
+									width='50'
+								/>
 							) : null}
 							<a href={webmention.author.url} rel='author'>
 								{webmention.author.name}
@@ -66,5 +72,12 @@ const showDate = (webmention: string) =>
 				))}
 			</ul>
 		</section>
-	) : null
+	)
 }
+
+<style>
+	.avatar {
+		border-radius: 50%;
+		overflow: hidden;
+	}
+</style>
