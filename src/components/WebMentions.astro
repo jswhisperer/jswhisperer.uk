@@ -70,7 +70,7 @@ const showDate = (webmention: string) =>
 								</p>
 							)}
 
-							{typeof webmention['content'] === 'object' &&
+							{Object.prototype.toString.call(webmention['content']) === '[object Object]' &&
 								Object.keys(webmention['content']).map((key) => (
 									<div key={key} set:html={sanitizeHTML(webmention['content'][key])} />
 								))}
