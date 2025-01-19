@@ -2,7 +2,6 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import AstroPWA from '@vite-pwa/astro'
-import embeds from 'astro-embed/integration'
 import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
@@ -46,7 +45,7 @@ export default defineConfig({
 		}
 	},
 	integrations: [
-		embeds(),
+		// embeds(),
 		AstroPWA({
 			srcDir: 'src',
 			base: '/',
