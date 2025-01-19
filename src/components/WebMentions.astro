@@ -114,10 +114,7 @@ const showDate = (webmention: string) =>
 		}
 
 		async function fetchInteractions(headerTitle: string | null) {
-			const response = await fetch(
-				'https://webmention.io/api/mentions.jf2?target=' +
-					'https://jswhisperer.uk/post/revisiting-my-first-homepage/'
-			) //document.URL)
+			const response = await fetch('https://webmention.io/api/mentions.jf2?target=' + document.URL) //document.URL)
 
 			const data = await response.json()
 			if (data && data.children.length > 0) {
