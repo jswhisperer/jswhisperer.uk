@@ -144,7 +144,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 			redirect_uri: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/${document.URL.split('/')[3]}/${document.URL.split('/')[4]}/`,
 			client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
 		})
-		loggedIn = await fetch('https://indieauth.com/auth', {
+		await fetch('https://indieauth.com/auth', {
 			method: 'POST',
 			headers: new Headers({
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -157,7 +157,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 			redirect: 'follow'
 		})
 			.then((response) => response.status)
-			.then((result) => console.log({ result }))
+			.then((result) => (loggedIn = result === 200 ? true : false))
 			.catch((error) => console.error({ error }))
 	}
 	if (code) {
