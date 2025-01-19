@@ -109,7 +109,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 					<label for='indie_auth_url'>Web Address:</label>
 					<input id='indie_auth_url' type='text' name='me' placeholder='yourdomain.com' />
 					<p><button type='submit'>Sign In</button></p>
-					<input type='hidden' name='client_id' value='https://jswhisperer.uk' />
+					<input type='hidden' name='client_id' value='https://jswhisperer.uk/' />
 					<input
 						type='hidden'
 						name='redirect_uri'
@@ -127,3 +127,28 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		</article>
 	</div>
 </BlogPost>
+
+<script>
+	const urlParams = new URLSearchParams(window.location.search)
+	const code = urlParams.get('code')
+	const checkCode = async (code: string) => {
+		fetch('https://indieauth.com/auth', {
+			method: 'POST',
+			headers: new Headers({
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}),
+			body: new URLSearchParams({
+				code,
+				redirect_uri: document.URL,
+				client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
+			}),
+			redirect: 'follow'
+		})
+			.then((response) => response.text())
+			.then((result) => console.log(result))
+			.catch((error) => console.error(error))
+	}
+	if (code) {
+		await checkCode(code)
+	}
+</script>
