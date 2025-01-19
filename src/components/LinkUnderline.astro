@@ -1,9 +1,9 @@
 ---
-const { link } = Astro.props
+const { link, href } = Astro.props
 ---
 
 <div class='content__item'>
-	<a href={link} class='link link--iocaste'>
+	<a href={link || href} class='link link--iocaste'>
 		<span
 			><slot />
 			<svg
