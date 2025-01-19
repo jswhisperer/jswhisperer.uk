@@ -137,7 +137,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 			redirect_uri: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/${document.URL.split('/')[3]}/${document.URL.split('/')[4]}/`,
 			client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
 		})
-		fetch('https://indieauth.com/auth', {
+		const loggedIn = await fetch('https://indieauth.com/auth', {
 			method: 'POST',
 			headers: new Headers({
 				'Content-Type': 'application/x-www-form-urlencoded'
@@ -149,11 +149,13 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 			}),
 			redirect: 'follow'
 		})
-			.then((response) => response.text())
+			.then((response) => response.status)
 			.then((result) => console.log(result))
 			.catch((error) => console.error(error))
+		return loggedIn
 	}
 	if (code) {
-		await checkCode(code)
+		console.log({ isloggedIn: await checkCode(code) })
+		//console.log(loggedIn)
 	}
 </script>
