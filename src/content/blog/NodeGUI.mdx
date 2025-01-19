@@ -12,13 +12,22 @@ author: greg
 title: Scratch the Surface of NodeGUI
 ---
 
+import nordvpnsr from '/src/assets/images/nordvpn-screenshot.png'
+
 I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it.
 
 There are some similarities with Proton Native like the layout engine (Yoga flexbox) but right now in my opinion NodeGUI is much more polished and finished. There were a few deal breakers for me with PN also like I wanted an event fired when the window closed so I can clean up any running processes. Luckily NG [provides](https://github.com/nodegui/nodegui/issues/658#event-3640138822). Again I won’t detail the getting started but cloning this [repo](https://github.com/nodegui/nodegui-starter), installing the dependencies then one shell npm run dev and another npm start. One last point for NG over PN is the final app is around 40mb bundled versus 120mb+.
 
 Below is the app I’m hacking together for fun:
 
-![](https://paper-attachments.dropbox.com/s_9D48D52E2A41BFE67D2B3925C3967573F29995713F016E8D85C26EA6C7190FB6_1597500816777_Screenshot+from+2020-08-15+10-13-23.png)
+<Picture
+	layout='responsive'
+	src={nordvpnsr}
+	alt="nordvpn'"
+	style='opacity: 1;'
+	decoding='async'
+	formats={['avif', 'webp']}
+/>
 
 I’m using some of nordvpn’s [undocumented](https://blog.sleeplessbeastie.eu/2019/02/18/how-to-use-public-nordvpn-api/) APIs and the official CLI tool to muddle this together. Things like connect and disconnect work, also the country flag emoji shows your current country connection. There is a custom icon in the dock and a statusbar icon.
 
