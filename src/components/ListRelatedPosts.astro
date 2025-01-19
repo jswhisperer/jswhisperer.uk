@@ -1,8 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 
-import { cn } from '@/utils'
-import { Image, Picture } from 'astro:assets'
+import { Picture } from 'astro:assets'
 
 type Props = {
 	posts: CollectionEntry<'blog'>[]
@@ -11,7 +10,7 @@ type Props = {
 const { posts } = Astro.props
 ---
 
-<section class={cn(`flex flex-col md:flex-row sm:justify-between gap-8`)}>
+<section>
 	{
 		posts.length > 0 ? (
 			posts.map((post) => {
