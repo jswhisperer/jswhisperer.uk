@@ -49,7 +49,7 @@ const atomFeed = '/atom.xml'
 		`https://dev.to/${username}`,
 		`mailto:hello@${username}`,
 		`https://x.com/${username}`
-	].map((social) => <link rel='me' href={social} />)
+	].map((social) => <link rel='me' href={social + '/'} />)
 }
 
 <!-- Canonical URL -->
