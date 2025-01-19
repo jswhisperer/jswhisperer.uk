@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets'
-
 import sanitizeHTML from 'sanitize-html'
 const sanitize = (entry: { content: any }) => {
 	const { content } = entry
@@ -37,8 +35,10 @@ const showDate = (webmention: string) =>
 	})
 ---
 
-{
-	webmentions.length > 0 ? (
+<div id='upvoteForm'></div>
+
+<!--
+	{webmentions.length && (
 		<section aria-label='Webmentions'>
 			<h2>Webmentions</h2>
 			<div id='upvote-form' />
@@ -89,8 +89,9 @@ const showDate = (webmention: string) =>
 				))}
 			</ul>
 		</section>
-	) : null
-}
+	)}
+	--
+-->
 <style>
 	.avatar {
 		border-radius: 50%;

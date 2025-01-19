@@ -1,4 +1,5 @@
 ---
+import LinkUnderline from '@/components/LinkUnderline'
 import ListRelatedPosts from '@/components/ListRelatedPosts'
 import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
@@ -82,16 +83,6 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 	readTime={remarkPluginFrontmatter.minutesRead}
 	author={post.author}
 >
-	<a href='https://brid.gy/publish/github'>x</a>
-	{
-		console.log({
-			webby: getWebmentionsForUrl(
-				[],
-				`https://webmention.io/api/mentions.jf2?domain=https://jswhisperer.uk/post/${post.slug}&token=S41J_UI23sPl4N4QtVtN8w`
-			)
-		})
-	}
-	{post.author?.name}
 	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
 		<!-- aside  -->
 		<aside class='md:flex flex-col gap-8 hidden'>
@@ -108,7 +99,9 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 				class='e-content prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'
 				itemprop='articleBody'
 			>
-				<a class='u-url' href=`https://jswhisperer.uk/${post.slug}`>…</a>
+				<LinkUnderline class='u-url' href=`https://jswhisperer.uk/${post.slug}`>
+					permalink
+				</LinkUnderline>
 
 				<Content components={{ Code, SButton, Picture }} />
 
@@ -120,14 +113,5 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 				</footer>
 			</div>
 		</article>
-		<!-- <form action='https://indielogin.com/auth' method='get'>
-			<label for='url'>Web Address:</label>
-			<input id='url' type='text' name='me' placeholder='yourdomain.com' />
-			<p><button type='submit'>Sign In</button></p>
-			<input type='hidden' name='client_id' value='https://jswhisperer.uk/' />
-			<input type='hidden' name='redirect_uri' value='https://jswhisperer.uk/redirect' />
-			<input type='hidden' name='state' value='jwiusuerujs' />
-		</form> -->
-		<!-- {disqusEnabled && <Disqus />} -->
 	</div>
 </BlogPost>
