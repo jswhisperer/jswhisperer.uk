@@ -1,7 +1,7 @@
 import BlueskyIcon from '@/components/icons/BlueskyIcon'
+import DevToIcon from '@/components/icons/DevtoIcon'
 import GithubIcon from '@/components/icons/GithubIcon'
 import TwitterIcon from '@/components/icons/TwitterIcon'
-import DevToIcon from '@/components/icons/devto'
 
 // ADD YOUR SOCIAL NETWORKS HERE
 export const SOCIALNETWORKS = [
