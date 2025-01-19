@@ -38,7 +38,7 @@ const showDate = (webmention: string) =>
 ---
 
 {
-	webmentions.length && (
+	webmentions.length ? (
 		<section aria-label='Webmentions'>
 			<h2>Webmentions</h2>
 			<div id='upvote-form' />
@@ -89,7 +89,7 @@ const showDate = (webmention: string) =>
 				))}
 			</ul>
 		</section>
-	)
+	) : null
 }
 <style>
 	.avatar {
