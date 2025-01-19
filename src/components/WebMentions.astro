@@ -126,7 +126,8 @@ const showDate = (webmention: string) =>
 
 					interaction.innerHTML = `
               <p>
-                  <strong><a href="${child.author.url}" target="_blank">${child.author.name}</a></strong>
+                  <strong>
+                    <a href="${child.author.url || 'https://jswhisperer.uk/author/greg'}" target="_blank">${child.author.name}</a></strong>
                   <small> - ${new Date(child['wm-received']).toLocaleString('en-US', {
 										month: 'short',
 										day: 'numeric',
