@@ -132,6 +132,11 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 	const urlParams = new URLSearchParams(window.location.search)
 	const code = urlParams.get('code')
 	const checkCode = async (code: string) => {
+		console.log({
+			code,
+			redirect_uri: document.URL,
+			client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
+		})
 		fetch('https://indieauth.com/auth', {
 			method: 'POST',
 			headers: new Headers({
