@@ -33,7 +33,7 @@ Hot reloading
 
 So PN had a very interesting beginning, it utilized a library called `libui-node` which was kinda neat. In my opinion it wasn’t ready for production; it didn’t even have the ability to include images. I believe Vuido still uses libui-node. Since then the author totally rewrote PN with [QT](https://www.qt.io/) bindings. Here’s a great [post](https://dev.to/kusti8/proton-native-v2-create-cross-platform-desktop-apps-with-react-2fdo) of the changes. There’s a lot of cool features now, like flexbox layout and images.
 
-PN utilizes react as the view layer and allows you to write node.js directly in those files. This library feels like a spiritual successor to now defunct React Native Desktop. I won’t go through the setup that’s [here](https://proton-native.js.org). Right now there is a lack of components but there is enough to get stuff done, numbering in at 9 right now.
+[PN utilizes react as the view layer and allows you to write node.js directly in those files. This library feels like a spiritual successor to now defunct React Native Desktop. I won’t go through the setup that’s](https://proton-native.js.org). Right now there is a lack of components but there is enough to get stuff done, numbering in at 9 right now.
 
 Ok some caveets I found was the documentation is pretty sparse again. It took me a lot of reading the source code and exploring issues to figure out some thing. For example there is an `< Picture> ` component and the extent of the docs is
 
@@ -158,7 +158,7 @@ Ok last step time to [package](https://proton-native.js.org) this bad boy for di
 npx nexe bin/index.js -o out/my-app # Create our binary
 ```
 
-If you are not using one of the available matching prebuilt binaries it tries to build locally, and for me it just failed hard; so check [here](https://github.com/nexe/nexe/releases/) and use nvm to adjust your node.js to a matching one.
+[If you are not using one of the available matching prebuilt binaries it tries to build locally, and for me it just failed hard; so check](https://github.com/nexe/nexe/releases/) and use nvm to adjust your node.js to a matching one.
 
 So my last surprise was the generated app was 170mb. I’m pretty sure that’s on-par with electron. I tried compiling the example caculator app also just to double check it was some weird dependancy I included. So yes you can get a 170mb calculator if you want.
 
