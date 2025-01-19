@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets'
+
 import sanitizeHTML from 'sanitize-html'
 const sanitize = (entry: { content: any }) => {
 	const { content } = entry
@@ -35,10 +37,8 @@ const showDate = (webmention: string) =>
 	})
 ---
 
-<div id='upvoteForm'></div>
-
-<!--
-	{webmentions.length && (
+{
+	webmentions.length && (
 		<section aria-label='Webmentions'>
 			<h2>Webmentions</h2>
 			<div id='upvote-form' />
@@ -46,7 +46,6 @@ const showDate = (webmention: string) =>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li>
 						<div class='avatar-and-author '>
-							{console.log(webmention.author)}
 							<a href={webmention.author.url} rel='author'>
 								{webmention.author.photo ? (
 									<Image
@@ -62,20 +61,21 @@ const showDate = (webmention: string) =>
 						</div>
 						<div class='information'>
 							{webmention['wm-property'] === 'like-of' && (
-								<p>
-									Liked on
+								<p class='flex'>
+									Liked on:
 									<time aria-hidden='true' datetime={webmention['wm-received']}>
 										{showDate(webmention['wm-received'])}
 									</time>
 								</p>
 							)}
 
-							{Object.prototype.toString.call(webmention['content']) === '[object Object]' &&
-								Object.keys(webmention['content']).map((key) => (
-									<Fragment key={key}>
-										<div set:html={sanitizeHTML(webmention['content'][key])} />
-									</Fragment>
-								))}
+							{webmention['wm-property'] === 'in-reply-to' && (
+								<div class='flex'>
+									<p>replied: </p>
+									<blockquote set:html={sanitizeHTML(webmention['content']['text'])} />
+								</div>
+							)}
+
 							{webmention['wm-property'] === 'repost-of' ? (
 								<p>
 									Reposted on
@@ -89,9 +89,8 @@ const showDate = (webmention: string) =>
 				))}
 			</ul>
 		</section>
-	)}
-	--
--->
+	)
+}
 <style>
 	.avatar {
 		border-radius: 50%;
@@ -147,6 +146,6 @@ const showDate = (webmention: string) =>
 			}
 		}
 
-		await fetchInteractions('bob')
+		await fetchInteractions('Webmentions')
 	}
 </script>
