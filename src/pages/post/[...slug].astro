@@ -99,11 +99,23 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 				class='e-content prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'
 				itemprop='articleBody'
 			>
-				<LinkUnderline class='u-url' href=`https://jswhisperer.uk/${post.slug}`>
+				<LinkUnderline class='u-url' href=`https://jswhisperer.uk/post/${post.slug}`>
 					permalink
 				</LinkUnderline>
 
 				<Content components={{ Code, SButton, Picture }} />
+
+				<form action='https://indieauth.com/auth' method='get'>
+					<label for='indie_auth_url'>Web Address:</label>
+					<input id='indie_auth_url' type='text' name='me' placeholder='yourdomain.com' />
+					<p><button type='submit'>Sign In</button></p>
+					<input type='hidden' name='client_id' value='https://jswhisperer.uk' />
+					<input
+						type='hidden'
+						name='redirect_uri'
+						value=`https://jswhisperer.uk/post/${post.slug}`
+					/>
+				</form>
 
 				<!-- related posts -->
 				<footer>
