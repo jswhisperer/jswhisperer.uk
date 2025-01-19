@@ -46,7 +46,7 @@ const showDate = (webmention: string) =>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li>
 						<div class='avatar-and-author '>
-							<a href={webmention.author.url} rel='author'>
+							<a href={webmention.author.url} rel='author' aria-label='author url'>
 								{webmention.author.photo ? (
 									<Image
 										alt={webmention.author.name}
