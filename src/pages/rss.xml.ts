@@ -1,6 +1,7 @@
 import { siteConfig } from '@/site-config'
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
+import sanitizeHtml from 'sanitize-html'
 
 export async function GET(context: any) {
 	const posts = await getCollection('blog')
@@ -14,7 +15,7 @@ export async function GET(context: any) {
 
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
-		//content: sanitizeHtml(parser.render(post.body)),
+		content: sanitizeHtml(post.body),
 
 		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
 	}))
