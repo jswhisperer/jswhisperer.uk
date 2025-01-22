@@ -8,7 +8,7 @@ export async function GET(context: any) {
 	const authors = await getCollection('author')
 	const currentAuthor = (post: any) =>
 		authors.find((author) => author.data.name === post.data.author.id)
-	const items = posts.map((post) => ({
+	const items = posts.map(async (post) => ({
 		...post.data,
 		title: post.data.title,
 		categories: post.data.tags,
@@ -16,8 +16,7 @@ export async function GET(context: any) {
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
 		content: sanitizeHtml(post.body),
-
-		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
+		author: 'hello@jswhisperer.uk'
 	}))
 
 	// await atom()
