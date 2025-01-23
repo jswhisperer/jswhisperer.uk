@@ -29,7 +29,15 @@ export async function GET(context: any) {
 				.slice(0, 50)
 				.join(' ')
 		),
-		content: sanitizeHtml(markdown.render(post.body)),
+		content: sanitizeHtml(
+			markdown
+				.render(post.body)
+				.replace('src="/', `src="${siteConfig.url}/`)
+				.replace('href="/', `href="${siteConfig.url}/`)
+				.split(' ')
+				.slice(0, 50)
+				.join(' ')
+		),
 		author: 'hello@jswhisperer.uk'
 	}))
 
