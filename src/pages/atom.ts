@@ -49,15 +49,7 @@ export default async function GET() {
 		categories: post.data.tags,
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
-		description: sanitizeHtml(
-			markdown
-				.render(post.body)
-				.replace('src="/', `src="${siteConfig.url}/`)
-				.replace('href="/', `href="${siteConfig.url}/`)
-				.split(' ')
-				.slice(0, 50)
-				.join(' ')
-		),
+		description: sanitizeHtml(markdown.render(post.data.description)),
 		content: sanitizeHtml(
 			markdown
 				.render(post.body)

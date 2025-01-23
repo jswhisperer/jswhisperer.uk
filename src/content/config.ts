@@ -55,4 +55,4 @@ const webmentions = defineCollection({
 	schema: z.array(webmentionsSchema)
 })
 
-export const collections = { blog, author }
+export const collections = { blog, author, webmentions }
