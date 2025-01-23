@@ -14,24 +14,27 @@ export async function GET(context: any) {
 	const authors = await getCollection('author')
 	const currentAuthor = (post: any) =>
 		authors.find((author) => author.data.name === post.data.author.id)
-	const items = posts.map(async (post) => ({
-		...post.data,
-		title: post.data.title,
-		categories: post.data.tags,
-		link: `/post/${post.slug}/`,
-		pubDate: post.data.pubDate,
-		description: post.data.description,
-		content: sanitizeHtml(
-			markdown
-				.render(post.body)
-				.replace('src="/', `src="${siteConfig.url}/`)
-				.replace('href="/', `href="${siteConfig.url}/`)
-				.split(' ')
-				.slice(0, 50)
-				.join(' ')
-		),
-		author: 'hello@jswhisperer.uk (jswhisperer)'
-	}))
+	const items = posts.map(async (post) => {
+		console.log({ rss: post.body })
+		return {
+			...post.data,
+			title: post.data.title,
+			categories: post.data.tags,
+			link: `/post/${post.slug}/`,
+			pubDate: post.data.pubDate,
+			description: post.data.description,
+			content: sanitizeHtml(
+				markdown
+					.render(post.body)
+					.replace('src="/', `src="${siteConfig.url}/`)
+					.replace('href="/', `href="${siteConfig.url}/`)
+					.split(' ')
+					.slice(0, 50)
+					.join(' ')
+			),
+			author: 'hello@jswhisperer.uk (jswhisperer)'
+		}
+	})
 
 	// await atom()
 	return await rss({
@@ -41,9 +44,9 @@ export async function GET(context: any) {
 		title: siteConfig.title,
 		description: siteConfig.description,
 		site: context.site,
-		items: await Promise.all(items),
-		customData: [
-			`<bob></bob><atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
-		].join('')
+		items: await Promise.all(items)
+		// customData: [
+		// 	`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
+		// ].join('')
 	})
 }
