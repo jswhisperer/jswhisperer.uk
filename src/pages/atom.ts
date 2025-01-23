@@ -38,65 +38,6 @@ const parser = new MarkdownIt()
 
 const year = +new Date().getFullYear()
 
-// export async function GET(context: any) {
-// 	const posts = await getCollection('blog')
-// 	const authors = await getCollection('author')
-// 	const currentAuthor = (post: any) =>
-// 		authors.find((author) => author.data.name === post.data.author.id)
-// 	const items = posts.map((post) => ({
-// 		...post.data,
-// 		title: post.data.title,
-// 		categories: post.data.tags,
-// 		link: `/post/${post.slug}/`,
-// 		pubDate: post.data.pubDate,
-// 		content: sanitizeHtml(parser.render(post.body)),
-// 		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
-// 	}))
-
-// }
-
-// export default async function(items: any) {
-// 	// Start time for cli stats
-// 	const start = +new Date()
-// 	// Find markdown files in blog
-// 	const files = await fg('src/content/blog/*.md')
-// 	// Map over array of blog post files
-// 	items = await Promise.all(
-// 		files.map(async (file_in) => {
-// 			const source = await fs.readFile(file_in, 'utf-8')
-// 			const { data, content } = matter(source)
-// 			const date = new Date(data.date)
-// 			const slugLink = `/${slugDate(date.toISOString())}${createSlug(data.title)}/`
-// 			// Generate excerpt from content
-// 			const excerpt = sanitizeHtml(
-// 				markdown
-// 					.render(content)
-// 					.replace('src="/', `src="${siteConfig.url}/`)
-// 					.replace('href="/', `href="${siteConfig.url}/`)
-// 					.split(' ')
-// 					.slice(0, 80)
-// 					.join(' ')
-// 			)
-// 			// Return data + add extra fields
-// 			return {
-// 				...data,
-// 				xmlns: { rel: 'self', atom: 'http://www.w3.org/2005/Atom' },
-// 				date: new Date(data.date),
-// 				id: siteConfig.url + slugLink,
-// 				link: '/',
-// 				description: excerpt,
-// 				customData: `<atom:link href="https://aritraroy.live/tutorial/blogs/rss.xml" rel="self" type="application/rss+xml" />`
-// 			}
-// 		})
-// 	)
-// Sort posts
-// items.sort(
-// 	(a: { date: string | number | Date }, b: { date: string | number | Date }) =>
-// 		+new Date(b.date) - +new Date(a.date)
-// )
-// Generate feed
-//const feed = new Feed(options)
-
 export default async function GET() {
 	const posts = await getCollection('blog')
 	const authors = await getCollection('author')
