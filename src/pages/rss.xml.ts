@@ -2,7 +2,6 @@ import { siteConfig } from '@/site-config'
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
 import MarkdownIt from 'markdown-it'
-import sanitizeHtml from 'sanitize-html'
 const markdown = MarkdownIt({
 	html: true,
 	breaks: true,
@@ -23,15 +22,7 @@ export async function GET(context: any) {
 			link: `/post/${post.slug}/`,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
-			content: sanitizeHtml(
-				markdown
-					.render(post.body)
-					.replace('src="/', `src="${siteConfig.url}/`)
-					.replace('href="/', `href="${siteConfig.url}/`)
-					.split(' ')
-					.slice(0, 50)
-					.join(' ')
-			),
+			content: post.body,
 			author: 'hello@jswhisperer.uk (jswhisperer)'
 		}
 	})
