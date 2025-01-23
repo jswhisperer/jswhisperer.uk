@@ -43,16 +43,16 @@ export async function GET(context: any) {
 
 	// await atom()
 	return await rss({
-		xmlns: {
-			atom: 'http://www.w3.org/2005/Atom'
-		},
+		// xmlns: {
+		// 	atom: 'http://www.w3.org/2005/Atom'
+		// },
 		title: siteConfig.title,
 		description: siteConfig.description,
 		site: context.site,
-		items: await Promise.all(items),
-		customData: [
-			'en-us',
-			`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
-		].join('')
+		items: await Promise.all(items)
+		// customData: [
+		// 	'en-us',
+		// 	`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
+		// ].join('')
 	})
 }
