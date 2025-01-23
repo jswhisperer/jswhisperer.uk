@@ -3,6 +3,15 @@ import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
 import { default as moment } from 'moment'
 
+import MarkdownIt from 'markdown-it'
+import sanitizeHtml from 'sanitize-html'
+
+const markdown = MarkdownIt({
+	html: true,
+	breaks: true,
+	linkify: true
+})
+
 const slugDate = function (date: string) {
 	const m = moment(date)
 	date = `${m.format('YYYY')}/${m.format('MM')}/${m.format('DD')}/`
@@ -25,16 +34,9 @@ const createSlug = function (title: string) {
 	)
 }
 
-import MarkdownIt from 'markdown-it'
 const parser = new MarkdownIt()
 
 const year = +new Date().getFullYear()
-
-const markdown = MarkdownIt({
-	html: true,
-	breaks: true,
-	linkify: true
-})
 
 // export async function GET(context: any) {
 // 	const posts = await getCollection('blog')
@@ -106,7 +108,24 @@ export default async function GET() {
 		categories: post.data.tags,
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
-		// content: sanitizeHtml(parser.render(post.body)),
+		description: sanitizeHtml(
+			markdown
+				.render(post.body)
+				.replace('src="/', `src="${siteConfig.url}/`)
+				.replace('href="/', `href="${siteConfig.url}/`)
+				.split(' ')
+				.slice(0, 50)
+				.join(' ')
+		),
+		content: sanitizeHtml(
+			markdown
+				.render(post.body)
+				.replace('src="/', `src="${siteConfig.url}/`)
+				.replace('href="/', `href="${siteConfig.url}/`)
+				.split(' ')
+				.slice(0, 50)
+				.join(' ')
+		),
 		author: 'hello@jswhisperer.uk (jswhisperer)' // currentAuthor(post)?.email
 	}))
 
