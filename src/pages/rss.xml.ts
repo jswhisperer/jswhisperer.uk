@@ -20,7 +20,7 @@ export async function GET(context: any) {
 		categories: post.data.tags,
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
-		description: sanitizeHtml(markdown.render(post.data.description)),
+		description: post.data.description,
 		content: sanitizeHtml(
 			markdown
 				.render(post.body)
