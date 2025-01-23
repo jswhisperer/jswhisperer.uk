@@ -38,7 +38,7 @@ export async function GET(context: any) {
 				.slice(0, 50)
 				.join(' ')
 		),
-		author: 'hello@jswhisperer.uk'
+		author: 'hello@jswhisperer.uk (jswhisperer)'
 	}))
 
 	// await atom()
