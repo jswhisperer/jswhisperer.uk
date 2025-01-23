@@ -14,7 +14,7 @@ export async function GET(context: any) {
 	const currentAuthor = (post: any) =>
 		authors.find((author) => author.data.name === post.data.author.id)
 	const items = posts.map(async (post) => {
-		console.log({ rss: post.body })
+		// console.log({ rss: post.body })
 		return {
 			...post.data,
 			title: post.data.title,
