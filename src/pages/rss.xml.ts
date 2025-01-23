@@ -1,7 +1,13 @@
 import { siteConfig } from '@/site-config'
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
+import MarkdownIt from 'markdown-it'
 import sanitizeHtml from 'sanitize-html'
+const markdown = MarkdownIt({
+	html: true,
+	breaks: true,
+	linkify: true
+})
 
 export async function GET(context: any) {
 	const posts = await getCollection('blog')
@@ -12,10 +18,9 @@ export async function GET(context: any) {
 		...post.data,
 		title: post.data.title,
 		categories: post.data.tags,
-
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
-		content: sanitizeHtml(post.body),
+		content: sanitizeHtml(markdown.render(post.body)),
 		author: 'hello@jswhisperer.uk'
 	}))
 
