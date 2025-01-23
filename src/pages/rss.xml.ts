@@ -20,6 +20,15 @@ export async function GET(context: any) {
 		categories: post.data.tags,
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
+		description: sanitizeHtml(
+			markdown
+				.render(post.body)
+				.replace('src="/', `src="${siteConfig.url}/`)
+				.replace('href="/', `href="${siteConfig.url}/`)
+				.split(' ')
+				.slice(0, 50)
+				.join(' ')
+		),
 		content: sanitizeHtml(markdown.render(post.body)),
 		author: 'hello@jswhisperer.uk'
 	}))
