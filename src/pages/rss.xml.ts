@@ -43,7 +43,7 @@ export async function GET(context: any) {
 		site: context.site,
 		items: await Promise.all(items),
 		customData: [
-			`<atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
+			`<bob></bob><atom:link rel="self" type="application/rss+xml" href="${siteConfig.site}/rss.xml" />`
 		].join('')
 	})
 }
