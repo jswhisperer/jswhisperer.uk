@@ -107,7 +107,7 @@ export default async function GET() {
 		link: `/post/${post.slug}/`,
 		pubDate: post.data.pubDate,
 		// content: sanitizeHtml(parser.render(post.body)),
-		author: 'hello@jswhisperer.uk' // currentAuthor(post)?.email
+		author: 'hello@jswhisperer.uk (jswhisperer)' // currentAuthor(post)?.email
 	}))
 
 	//await atom(items)
