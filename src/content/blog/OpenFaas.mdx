@@ -8,6 +8,7 @@ tags:
   - lambda
 author: greg
 title: OpenFaas
+canonical_url: 'https://jswhisperer.uk/post/open-faas/'
 ---
 
 # OpenFaas
@@ -26,16 +27,18 @@ As per the docs (please refer to the official docs for up to date instructions)
 
 (You'll have some feedback in the terminal to action during these commands.)
 
-`# For MacOS / Linux:`
-`curl -SLsf https://dl.get-arkade.dev/ | sudo sh`
-`# For Windows (using Git Bash)`
-`curl -SLsf https://dl.get-arkade.dev/ | sh`
-`arkade get kubectl`
-`arkade get kind`
-`kind create cluster`
-`arkade install openfaas --gateways 2 --load-balancer false`
-`# Get the faas-cli`
-`curl -SLsf https://cli.openfaas.com | sudo sh`
+```bash
+# For MacOS / Linux:
+curl -SLsf https://dl.get-arkade.dev/ | sudo sh
+# For Windows (using Git Bash)
+curl -SLsf https://dl.get-arkade.dev/ | sh
+arkade get kubect`
+arkade get kind
+kind create cluster
+arkade install openfaas --gateways 2 --load-balancer false
+# Get the faas-cli
+curl -SLsf https://cli.openfaas.com | sudo sh
+```
 
 At this point you should follow this [guide](https://itnext.io/kubernetes-apps-the-easy-way-f06d9e5cad3c) for port forwarding and getting your openfaas credentials . Now to deploy an openfaas such as the demo one figlet it’s as easy as
 
@@ -74,5 +77,3 @@ To test out your new function head to [http://localhost:8080/ui/](http://localho
 `kubectl logs -n openfaas-fn deploy/node12func`
 
 Hopefully you found this whirlwind intro useful, for sure check out the many guides and official docs too!
-
-Comments, likes, questions [https://twitter.com/cactusanddove/status/1291399503816396801](https://twitter.com/cactusanddove/status/1291399503816396801)
