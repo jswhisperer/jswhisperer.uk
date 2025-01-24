@@ -128,13 +128,15 @@ const showDate = (webmention: string) =>
               <p>
                   <strong>
                     <a href="${child.author.url}" target="_blank">
-                      <img src="${child.author.photo}" title="${child.author.name}" />
+                      <img class='avatar' width="50" height="50" src="${child.author.photo}" title="${child.author.name}" />
                       </a></strong>
-                  <small> - ${new Date(child['wm-received']).toLocaleString('en-US', {
+                  <small> - <time aria-hidden='true' datetime={webmention['wm-received']}>${new Date(
+										child['wm-received']
+									).toLocaleString('en-US', {
 										month: 'short',
 										day: 'numeric',
 										year: 'numeric'
-									})}</small>
+									})}</time></small>
               </p>
               <blockquote>${setContent(child)}</blockquote>
           `
