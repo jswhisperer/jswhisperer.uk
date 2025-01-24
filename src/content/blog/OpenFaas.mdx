@@ -75,9 +75,11 @@ faas-cli up -f node18func.yml
 
 this is running all these commands for you
 
-`- faas-cli build - build an image into the local Docker library`
-`- faas-cli push - push that image to a remote container registry`
-`- faas-cli deploy - deploy your function into a cluster`
+```bash
+- faas-cli build - build an image into the local Docker library
+- faas-cli push - push that image to a remote container registry
+- faas-cli deploy - deploy your function into a cluster
+```
 
 To test out your new function head to [http://localhost:8080/ui/](http://localhost:8080/ui/) select the function from the list on the left, and hit invoke! If invoke is grayed out it is either still being deployed, or possibly broken. If it takes more than 5 minutes it’s time to investigate. Hopefully it didn’t break but here’s a useful debugging command to check
 
