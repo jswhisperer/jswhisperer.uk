@@ -2,9 +2,11 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import AstroPWA from '@vite-pwa/astro'
+import { astroImageTools } from 'astro-imagetools'
 import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
+
 
 
 // https://astro.build/config
@@ -46,6 +48,7 @@ export default defineConfig({
 	},
 	integrations: [
 		// embeds(),
+    astroImageTools,
 		AstroPWA({
 			srcDir: 'src',
 			base: '/',
