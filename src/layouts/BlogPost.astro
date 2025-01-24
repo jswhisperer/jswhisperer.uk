@@ -69,7 +69,7 @@ const articleDate = pubDate.toISOString()
 >
 	<article
 		transition:animate={slide({ duration: '0.5s' })}
-		class='post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
+		class='h-card post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
 		role='article'
 		itemscope
 		itemtype='http://schema.org/BlogPosting'
@@ -90,7 +90,11 @@ const articleDate = pubDate.toISOString()
 
 					<div class='text-center text-sm text-opacity-50'>
 						Published <FormattedDate date={pubDate} />
-					</div> by <a class='h-card p-author' rel='author' href={currentAuthor?.data.url}>
+					</div> by <a
+						class='p-author class="u-url u-uid"'
+						rel='author'
+						href={currentAuthor?.data.url}
+					>
 						Published by
 						{currentAuthor?.slug}</a
 					>
