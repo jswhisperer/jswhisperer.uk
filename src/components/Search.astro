@@ -80,7 +80,10 @@ import SearchIcon from '@/components/icons/SearchIcon'
 
 				if (this.querySelector('input')) {
 					this.querySelector('input')?.focus()
-					this.querySelector('input').name = 'search'
+					const inputElement = this.querySelector('input')
+					if (inputElement) {
+						inputElement.name = 'search'
+					}
 				}
 
 				event?.stopPropagation()
