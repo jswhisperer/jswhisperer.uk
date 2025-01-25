@@ -87,7 +87,7 @@ const showDate = (webmention: string) =>
 							)}
 
 							{webmention['wm-property'] === 'in-reply-to' && (
-								<li class='flexx r' style='align-items: center;'>
+								<div class='flexx r' style='align-items: center;'>
 									<p>
 										replied on:
 										<small>
@@ -97,7 +97,7 @@ const showDate = (webmention: string) =>
 										</small>
 									</p>
 									<blockquote set:html={sanitizeHTML(webmention['content']['text'])} />
-								</li>
+								</div>
 							)}
 
 							{webmention['wm-property'] === 'repost-of' ? (
