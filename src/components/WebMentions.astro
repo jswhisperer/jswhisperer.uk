@@ -46,7 +46,12 @@ const showDate = (webmention: string) =>
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li class='flexx r' style='align-items: center;'>
-						<div class='avatar-and-author '>
+						<div
+							itemprop='author'
+							itemscope
+							itemtype='https://schema.org/Person'
+							class='avatar-and-author author u-author h-card'
+						>
 							<a href={webmention.author.url} rel='author' aria-label='author url'>
 								{webmention.author.photo ? (
 									<Picture
@@ -79,7 +84,7 @@ const showDate = (webmention: string) =>
 								<div class='flexx'>
 									Liked on:
 									<small>
-										<time datetime={webmention['wm-received']}>
+										<time itemprop='datePublished' datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
 										</time>
 									</small>
@@ -91,7 +96,7 @@ const showDate = (webmention: string) =>
 									<p>
 										replied on:
 										<small>
-											<time datetime={webmention['wm-received']}>
+											<time itemprop='datePublished' datetime={webmention['wm-received']}>
 												{showDate(webmention['wm-received'])}
 											</time>
 										</small>
@@ -107,7 +112,7 @@ const showDate = (webmention: string) =>
 								<p>
 									Reposted on
 									<small>
-										<time datetime={webmention['wm-received']}>
+										<time itemprop='datePublished' datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
 										</time>
 									</small>
