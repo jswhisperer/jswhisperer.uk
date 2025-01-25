@@ -24,7 +24,7 @@ const structuredData = {
 }
 ---
 
-<html lang='en' class='scroll-smooth'>
+<html itemscope itemtype='http://www.schema.org/CollectionPage' lang='en' class='scroll-smooth'>
 	<Head>
 		<head>
 			<meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -38,6 +38,8 @@ const structuredData = {
 		<!-- <Header /> -->
 		<NewHeader />
 		<main
+			itemscope
+			itemtype='http://schema.org/ItemList'
 			class='px-5 sm:mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 overflow-hidden md:overflow-visible'
 		>
 			<slot />

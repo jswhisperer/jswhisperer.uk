@@ -92,11 +92,18 @@ const articleDate = pubDate.toISOString()
 
 					<div class='text-center text-sm text-opacity-50'>
 						Published <FormattedDate date={pubDate} />
-						<div class='author u-author h-card'>
+						<div
+							itemprop='author'
+							itemscope
+							itemtype='https://schema.org/Person'
+							class='author u-author h-card'
+						>
 							<div class='author-name'>
 								by
-								<a href='https://jswhisperer.uk/author/greg' class='name p-name'>Gregory Benner</a>
-								<a href='https://jswhisperer.uk/author/greg' class='url u-url'
+								<a itemprop='name' href='https://jswhisperer.uk/author/greg' class='name p-name'
+									>Gregory Benner</a
+								>
+								<a itemprop='url' href='https://jswhisperer.uk/author/greg' class='url u-url'
 									>jswhisperer.uk/author/greg</a
 								>
 							</div>
