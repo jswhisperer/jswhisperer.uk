@@ -78,87 +78,91 @@ const articleDate = pubDate.toISOString()
 		aria-labelledby={title}
 		-title'
 	>
-		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
-			<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
+		<div itemprop='articleBody'>
+			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
+				<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
 
-			<div class='flex flex-col gap-2'>
-				<div class='flex items-center justify-center gap-x-1'>
-					<h1
-						itemprop='headline'
-						class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'
-					>
-						{title}
-					</h1>
-
-					<div class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-						<div
-							itemprop='author'
-							itemscope
-							itemtype='https://schema.org/Person'
-							class='author u-author h-card'
+				<div class='flex flex-col gap-2'>
+					<div class='flex items-center justify-center gap-x-1'>
+						<h1
+							itemprop='headline'
+							class='p-name text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'
 						>
-							<div class='author-name'>
-								by
-								<a itemprop='name' href='https://jswhisperer.uk/author/greg' class='name p-name'
-									>Gregory Benner</a
-								>
-								<a itemprop='url' href='https://jswhisperer.uk/author/greg' class='url u-url'
-									>jswhisperer.uk/author/greg</a
-								>
+							{title}
+						</h1>
+
+						<div class='text-center text-sm text-opacity-50'>
+							Published <FormattedDate date={pubDate} />
+							<div
+								itemprop='author'
+								itemscope
+								itemtype='https://schema.org/Person'
+								class='author u-author h-card'
+							>
+								<div class='author-name'>
+									by
+									<a itemprop='name' href='https://jswhisperer.uk/author/greg' class='name p-name'
+										>Gregory Benner</a
+									>
+									<a itemprop='url' href='https://jswhisperer.uk/author/greg' class='url u-url'
+										>jswhisperer.uk/author/greg</a
+									>
+								</div>
+								{
+									[
+										`https://github.com/${username}`,
+										`https://www.linkedin.com/in/${username}`,
+										`https://bsky.app/profile/${username}.bsky.social`,
+										`https://www.linkedin.com/in/${username}`,
+										`https://dev.to/${username}`,
+										`mailto:hello@${username}`,
+										`https://x.com/${username}`
+									].map((social) => (
+										<a rel='me' href={social} class='u-url' style='display:none;' />
+									))
+								}
+								<Picture
+									width={100}
+									formats={['avif', 'webp']}
+									class='u-photo'
+									src={import('../assets/images/greg.jpeg')}
+									alt='Gregory Benner'
+									style='display:none;'
+								/>
+								<p class='text-center text-sm text-opacity-50 font-bold'>
+									- {readTime}
+								</p>
 							</div>
-							{
-								[
-									`https://github.com/${username}`,
-									`https://www.linkedin.com/in/${username}`,
-									`https://bsky.app/profile/${username}.bsky.social`,
-									`https://www.linkedin.com/in/${username}`,
-									`https://dev.to/${username}`,
-									`mailto:hello@${username}`,
-									`https://x.com/${username}`
-								].map((social) => <a rel='me' href={social} class='u-url' style='display:none;' />)
-							}
-							<Picture
-								width={100}
-								formats={['avif', 'webp']}
-								class='u-photo'
-								src={import('../assets/images/greg.jpeg')}
-								alt='Gregory Benner'
-								style='display:none;'
-							/>
-							<p class='text-center text-sm text-opacity-50 font-bold'>
-								- {readTime}
-							</p>
 						</div>
+					</div>
+
+					<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
+						{tags?.map((tag) => <Tag tag={tag} />)}
 					</div>
 				</div>
 
-				<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
-					{tags?.map((tag) => <Tag tag={tag} />)}
+				<>
+					{
+						heroImage && (
+							<Picture
+								src={heroImage}
+								class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
+								alt={`img of ${title}`}
+								decoding='async'
+								loading='eager'
+								formats={['avif', 'webp']}
+							/>
+						)
+					}
+				</>
+
+				<hr />
+
+				<div>
+					<slot />
 				</div>
-			</div>
-
-			<>
-				{
-					heroImage && (
-						<Picture
-							src={heroImage}
-							class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
-							alt={`img of ${title}`}
-							decoding='async'
-							loading='eager'
-							formats={['avif', 'webp']}
-						/>
-					)
-				}
-			</>
-
-			<hr />
-
-			<div>
-				<slot />
-			</div>
-		</header>
+			</header>
+		</div>
 	</article>
 
 	<script>

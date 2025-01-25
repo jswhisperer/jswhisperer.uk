@@ -40,7 +40,7 @@ const showDate = (webmention: string) =>
 
 {
 	webmentions.length ? (
-		<section aria-label='Webmentions'>
+		<section aria-label='Webmentions' itemscope itemtype='https://schema.org/Comment'>
 			<h2>Webmentions</h2>
 			<div id='upvote-form' />
 			<ul>
@@ -96,7 +96,10 @@ const showDate = (webmention: string) =>
 											</time>
 										</small>
 									</p>
-									<blockquote set:html={sanitizeHTML(webmention['content']['text'])} />
+									<blockquote
+										itemprop='text'
+										set:html={sanitizeHTML(webmention['content']['text'])}
+									/>
 								</div>
 							)}
 
