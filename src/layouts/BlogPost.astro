@@ -22,9 +22,10 @@ type Props = {
 	readTime: string
 	slug: string
 	blskyid: any
+	body: any
 }
 
-const { data, readTime, headings, id, slug, blskyid } = Astro.props
+const { data, readTime, headings, id, slug, blskyid, body } = Astro.props
 const { title, description, pubDate, heroImage, tags, author, category } = data
 const authors = await getCollection('author')
 
@@ -41,6 +42,7 @@ const articleDate = pubDate.toISOString()
 		headline: title,
 		keywords: tags,
 		description,
+		articleBody: body,
 		datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
@@ -56,7 +58,7 @@ const articleDate = pubDate.toISOString()
 			'@type': 'Person',
 			name: currentAuthor?.slug,
 			description: currentAuthor?.body,
-			url: `${Astro.site}/author${currentAuthor?.slug}`
+			url: `${Astro.site}/author/${currentAuthor?.slug}`
 		}
 	})}
 />

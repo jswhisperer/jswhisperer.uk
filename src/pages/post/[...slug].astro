@@ -51,7 +51,6 @@ const { Content, headings, remarkPluginFrontmatter } = await post.render()
 import sanitizeHTML from 'sanitize-html'
 
 function getWebmentionsForUrl(webmentions: any[], url: any) {
-	console.log({ url })
 	const allowedTypes = ['mention-of', 'in-reply-to']
 
 	const hasRequiredFields = (entry: { author: any; published: any; content: any }) => {
@@ -75,6 +74,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 ---
 
 <BlogPost
+	body={post.body}
 	id={post.id}
 	slug={post.slug}
 	data={post.data}
