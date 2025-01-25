@@ -85,7 +85,7 @@ const showDate = (webmention: string) =>
 						</div>
 						<div class='information'>
 							{webmention['wm-property'] === 'like-of' && (
-								<div class='flexx'>
+								<div class='flexx' itemprop='text'>
 									Liked on:
 									<small>
 										<time itemprop='datePublished' datetime={webmention['wm-received']}>
