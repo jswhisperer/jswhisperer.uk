@@ -77,7 +77,12 @@ import SearchIcon from '@/components/icons/SearchIcon'
 					{ duration: 0.2 }
 				)
 				document.body.classList.add('overflow-hidden')
-				this.querySelector('input')?.focus()
+
+				if (this.querySelector('input')) {
+					this.querySelector('input')?.focus()
+					this.querySelector('input').name = 'search'
+				}
+
 				event?.stopPropagation()
 				window.addEventListener('click', onWindowClick)
 				window.addEventListener('keydown', handleEscKey)
