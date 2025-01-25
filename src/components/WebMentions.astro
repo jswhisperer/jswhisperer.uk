@@ -45,7 +45,7 @@ const showDate = (webmention: string) =>
 			<div id='upvote-form' />
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
-					<li>
+					<li class='flexx r' style='align-items: center;'>
 						<div class='avatar-and-author '>
 							<a href={webmention.author.url} rel='author' aria-label='author url'>
 								{webmention.author.photo ? (
@@ -57,7 +57,10 @@ const showDate = (webmention: string) =>
 										src={webmention.author.photo}
 										fit='cover'
 										attributes={{
-											img: { style: 'width:50px; border-radius:50%; overflow:hidden;' }
+											picture: {
+												style: 'margin: 0 20px 0 0;'
+											},
+											img: { style: ' width:50px; border-radius:50%; overflow:hidden;' }
 										}}
 									/>
 								) : // <Image
@@ -73,29 +76,38 @@ const showDate = (webmention: string) =>
 						</div>
 						<div class='information'>
 							{webmention['wm-property'] === 'like-of' && (
-								<p class='flex'>
+								<div class='flexx'>
 									Liked on:
 									<small>
 										<time datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
 										</time>
 									</small>
-								</p>
+								</div>
 							)}
 
 							{webmention['wm-property'] === 'in-reply-to' && (
-								<div class='flex'>
-									<p>replied: </p>
+								<li class='flexx r' style='align-items: center;'>
+									<p>
+										replied on:
+										<small>
+											<time datetime={webmention['wm-received']}>
+												{showDate(webmention['wm-received'])}
+											</time>
+										</small>
+									</p>
 									<blockquote set:html={sanitizeHTML(webmention['content']['text'])} />
-								</div>
+								</li>
 							)}
 
 							{webmention['wm-property'] === 'repost-of' ? (
 								<p>
 									Reposted on
-									<time aria-hidden='true' datetime={webmention['wm-received']}>
-										{showDate(webmention['wm-received'])}
-									</time>
+									<small>
+										<time datetime={webmention['wm-received']}>
+											{showDate(webmention['wm-received'])}
+										</time>
+									</small>
 								</p>
 							) : null}
 						</div>
