@@ -113,7 +113,7 @@ const showDate = (webmention: string) =>
 							)}
 
 							{webmention['wm-property'] === 'repost-of' ? (
-								<p>
+								<p itemprop='text'>
 									Reposted on
 									<small>
 										<time itemprop='datePublished' datetime={webmention['wm-received']}>
