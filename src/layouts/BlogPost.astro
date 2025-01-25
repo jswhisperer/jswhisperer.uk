@@ -92,11 +92,7 @@ const articleDate = pubDate.toISOString()
 
 					<div class='text-center text-sm text-opacity-50'>
 						Published <FormattedDate date={pubDate} />
-					</div> by <a
-						class='p-author class="u-url u-uid"'
-						rel='author'
-						href={currentAuthor?.data.url}
-					>
+					</div> by <a class='p-author u-url u-uid' rel='author' href={currentAuthor?.data.url}>
 						Published by
 						{currentAuthor?.slug}</a
 					>
