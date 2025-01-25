@@ -46,9 +46,9 @@ const showDate = (webmention: string) =>
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li class='flexx r' style='align-items: center;'>
-						<time aria-hidden='true' itemprop='datePublished' datetime={webmention['wm-received']}>
+						{/* <time aria-hidden='true' itemprop='datePublished' datetime={webmention['wm-received']}>
 							{showDate(webmention['wm-received'])}
-						</time>
+						</time> */}
 						<div
 							itemprop='author'
 							itemscope
