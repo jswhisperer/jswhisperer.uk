@@ -11,7 +11,7 @@ const date_format_str = `${fdate} ${ftime}`
 <time
 	itemprop='datePublished'
 	class='dt-published text-sm font-bold text-opacity-60'
-	datetime={date_format_str}
+	datetime={date.toISOString()}
 >
 	{
 		date.toLocaleDateString('en-us', {
