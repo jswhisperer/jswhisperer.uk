@@ -47,6 +47,7 @@
 		"astro-imagetools": "^0.9.0",
 		"components\n": "link:astro-imagetools/components\n",
 		"feed": "^4.2.2",
+		"html2canvas": "^1.4.1",
 		"markdown-it": "^14.1.0",
 		"sanitize-html": "^2.14.0",
 		"vite": "6.0.6"

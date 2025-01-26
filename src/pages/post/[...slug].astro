@@ -1,6 +1,7 @@
 ---
 import LinkUnderline from '@/components/LinkUnderline'
 import ListRelatedPosts from '@/components/ListRelatedPosts'
+
 import Code from '@/components/mdx/Code'
 import SButton from '@/components/mdx/SButton'
 import Share from '@/components/Share'
@@ -72,6 +73,19 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		.map(sanitize)
 }
 ---
+
+<script>
+	import html2canvas from 'html2canvas'
+	const blueSkyEl = document.querySelector('.bluesky-post-container')
+	if (blueSkyEl) {
+		html2canvas(blueSkyEl, {
+			allowTaint: true
+		}).then((canvas) => {
+			blueSkyEl.after(canvas)
+			blueSkyEl.remove()
+		})
+	}
+</script>
 
 <BlogPost
 	body={post.body}
