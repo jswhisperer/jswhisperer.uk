@@ -8,7 +8,6 @@ import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
 
-
 // https://astro.build/config
 export default defineConfig({
 	vite: {
@@ -29,7 +28,7 @@ export default defineConfig({
 				// Allow serving files from hoisted root node_modules
 				allow: ['../..']
 			}
-		},
+		}
 		// build: {
 		// 	rollupOptions: {
 		// 		external: ['workbox-window', 'virtual:pwa-register']
@@ -48,7 +47,8 @@ export default defineConfig({
 	},
 	integrations: [
 		// embeds(),
-    astroImageTools,
+
+		astroImageTools,
 		AstroPWA({
 			srcDir: 'src',
 			base: '/',
@@ -115,6 +115,6 @@ export default defineConfig({
 			drafts: true
 		}),
 		sitemap(),
-		tailwind()
+		tailwind(),
 	]
 })

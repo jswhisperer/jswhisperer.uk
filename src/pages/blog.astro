@@ -5,7 +5,8 @@ import BaseLayout from '@/layouts/BaseLayout'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
-const posts = await getCollection('blog', { limit: MAX_POSTS })
+const allPosts = await getCollection('blog')
+const posts = allPosts.slice(0, MAX_POSTS)
 ---
 
 <BaseLayout title='Blog'>

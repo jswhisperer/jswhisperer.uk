@@ -76,7 +76,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 
 <script>
 	import html2canvas from 'html2canvas'
-	const blueSkyEl = document.querySelector('.bluesky-post-container')
+	const blueSkyEl: any = document.querySelector('.bluesky-post-container')
 	if (blueSkyEl) {
 		html2canvas(blueSkyEl, {
 			allowTaint: true
