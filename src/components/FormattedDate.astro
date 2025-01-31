@@ -8,11 +8,7 @@ const [fdate, ftime] = date.toISOString().substring(0, 19).split('T')
 const date_format_str = `${fdate} ${ftime}`
 ---
 
-<time
-	itemprop='datePublished'
-	class='dt-published text-sm font-bold text-opacity-60'
-	datetime={date.toISOString()}
->
+<time class='dt-published text-sm font-bold text-opacity-60' datetime={date.toISOString()}>
 	{
 		date.toLocaleDateString('en-us', {
 			year: 'numeric',
