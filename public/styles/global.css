@@ -27,13 +27,17 @@
 		background-color: theme(colors.gray.900) !important;
 	}
 }
-
-.post-overview-holder {
-  /* overflow: hidden; */
-  &:hover .glass {
-        opacity: 1;
-        height: 100%;
+.sixy-five-percent {
+  height: 65%;
 }
+.post-overview-holder {
+  overflow: hidden;
+}
+
+.post-overview-holder:hover .glass {
+        opacity: 1;
+        height: 75%;
+
 }
 
 .glass {

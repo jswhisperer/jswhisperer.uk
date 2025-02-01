@@ -1,5 +1,5 @@
 ---
-const { link, href } = Astro.props
+const { link, href, underlinecolor, strokewidth } = Astro.props
 ---
 
 <div class='content__item'>
@@ -19,7 +19,7 @@ const { link, href } = Astro.props
 			</svg>
 		</span>
 	</a>
-	<style>
+	<style define:vars={{ underlinecolor, strokewidth }}>
 		/*! CSS Used from: https://tympanus.net/Development/LineHoverStyles/css/base.css */
 		*,
 		*::after,
@@ -43,12 +43,14 @@ const { link, href } = Astro.props
 			background: transparent;
 		}
 		.content__item {
+			width: 100%;
 			margin: 0;
+			margin-right: 20px;
 			padding: 0;
 			counter-increment: itemcounter;
 			display: flex;
 			flex-direction: column;
-			align-items: start;
+			align-items: end;
 
 			position: relative;
 		}
@@ -65,19 +67,7 @@ const { link, href } = Astro.props
 			/* white-space: nowrap; */
 			color: var(--color-text);
 		}
-		.link::before,
-		.link::after {
-			position: absolute;
-			width: 100%;
-			height: 1px;
-			background: currentColor;
-			top: 100%;
-			left: 0;
-			pointer-events: none;
-		}
-		.link::before {
-			content: '';
-		}
+
 		.link--iocaste {
 			overflow: hidden;
 			padding: 7px 0;
@@ -88,12 +78,12 @@ const { link, href } = Astro.props
 			left: 0;
 			pointer-events: none;
 			fill: none;
-			stroke: #000;
-			stroke-width: 5px;
+			stroke: var(--underlinecolor, #000);
+			stroke-width: var(--strokewidth, 5px);
 		}
 		.link__graphic--slide {
 			top: 10px;
-			stroke-width: 5px;
+			stroke-width: var(--strokewidth, 5px);
 			transition: transform 0.7s;
 			transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1);
 		}
