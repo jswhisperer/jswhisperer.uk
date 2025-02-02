@@ -43,7 +43,7 @@ const articleDate = pubDate.toISOString()
 		keywords: tags,
 		description,
 		articleBody: body.renderedOutput,
-		// datePublished: pubDate.toISOString(),
+		datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
 		thumbnailUrl: heroImage?.src || '/public/open-graph.png',
@@ -75,8 +75,7 @@ const articleDate = pubDate.toISOString()
 		role='article'
 		itemscope
 		itemtype='http://schema.org/BlogPosting'
-		aria-labelledby={title}
-		-title'
+		aria-labelledby={title + '-title'}
 	>
 		<div itemprop='articleBody'>
 			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
@@ -144,14 +143,20 @@ const articleDate = pubDate.toISOString()
 				<>
 					{
 						heroImage && (
-							<Picture
-								src={heroImage}
-								class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
-								alt={`img of ${title}`}
-								decoding='async'
-								loading='eager'
-								formats={['avif', 'webp']}
-							/>
+							<div itemscope itemtype='https://schema.org/ImageObject'>
+								<Picture
+									itemprop='contentUrl'
+									src={heroImage}
+									class='rounded-md w-full max-h-[300px] border-4 md:border-t-4  md:max-h-[500px] my-8 object-cover border-white-900'
+									alt={`img of ${title}`}
+									decoding='async'
+									loading='eager'
+									formats={['avif', 'webp']}
+								/>
+								<span itemprop='caption' class='text-center text-sm text-opacity-50'>
+									{title}
+								</span>
+							</div>
 						)
 					}
 				</>
