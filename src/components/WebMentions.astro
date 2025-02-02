@@ -52,7 +52,7 @@ const showDate = (webmention: string) =>
 							itemtype='https://schema.org/Person'
 							class='avatar-and-author author u-author h-card'
 						>
-							<div itemprop='name'>{webmention.author.name}</div>
+							<div itemprop='name'>{webmention.author.name || 'greg'}</div>
 							<a
 								itemprop='url'
 								href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
