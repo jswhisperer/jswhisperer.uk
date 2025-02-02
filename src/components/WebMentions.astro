@@ -42,7 +42,6 @@ const showDate = (webmention: string) =>
 	webmentions.length ? (
 		<section aria-label='Webmentions'>
 			<h2 id='webmentions'>Webmentions</h2>
-			<div id='upvote-form' />
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li
@@ -57,6 +56,11 @@ const showDate = (webmention: string) =>
 							itemtype='https://schema.org/Person'
 							class='avatar-and-author author u-author h-card'
 						>
+							<small>
+								<time itemprop='datePublished' datetime={webmention['wm-received']}>
+									{showDate(webmention['wm-received'])}
+								</time>
+							</small>
 							<div itemprop='name'>{webmention.author.name || 'greg'}</div>
 							<a
 								itemprop='url'
@@ -78,15 +82,7 @@ const showDate = (webmention: string) =>
 											img: { style: ' width:50px; border-radius:50%; overflow:hidden;' }
 										}}
 									/>
-								) : // <Image
-								// 	alt={webmention.author.name}
-								// 	title={webmention.author.name}
-								// 	class='avatar'
-								// 	height='50'
-								// 	src={webmention.author.photo}
-								// 	width='50'
-								// />
-								null}
+								) : null}
 							</a>
 						</div>
 						<div class='information'>
