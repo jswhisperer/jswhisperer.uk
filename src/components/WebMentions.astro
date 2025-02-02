@@ -91,43 +91,24 @@ const showDate = (webmention: string) =>
 							</a>
 						</div>
 						<div class='information'>
-							{webmention['wm-property'] === 'like-of' && (
+							{webmention['wm-property'] === 'like-of' ? (
 								<div class='flexx' itemprop='text'>
 									Liked on:
-									{/* <small>
-										<time itemprop='datePublished' datetime={webmention['wm-received']}>
-											{showDate(webmention['wm-received'])}
-										</time>
-									</small> */}
 								</div>
-							)}
+							) : null}
 
-							{webmention['wm-property'] === 'in-reply-to' && (
+							{webmention['wm-property'] === 'in-reply-to' ? (
 								<div class='flexx r' style='align-items: center;'>
-									<p itemprop='text'>
-										replied on:
-										{/* <small>
-											<time itemprop='datePublished' datetime={webmention['wm-received']}>
-												{showDate(webmention['wm-received'])}
-											</time>
-										</small> */}
-									</p>
+									<p>replied on:</p>
 									<blockquote
 										itemprop='text'
 										set:html={sanitizeHTML(webmention['content']['text'])}
 									/>
 								</div>
-							)}
+							) : null}
 
 							{webmention['wm-property'] === 'repost-of' ? (
-								<p itemprop='text'>
-									Reposted on
-									{/* <small>
-										<time itemprop='datePublished' datetime={webmention['wm-received']}>
-											{showDate(webmention['wm-received'])}
-										</time>
-									</small> */}
-								</p>
+								<p itemprop='text'>Reposted on</p>
 							) : null}
 						</div>
 					</li>
