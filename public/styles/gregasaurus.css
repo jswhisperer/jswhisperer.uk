@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
 	font-family: 'gregasaurus';
 	src: url('/fonts/gregasaurus.eot');
 	src:
@@ -8,7 +8,7 @@
 		url('/fonts/gregasaurus.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-}
+} */
 .gregasarus {
 	font-family: 'gregasaurus';
 }
