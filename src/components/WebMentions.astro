@@ -40,12 +40,17 @@ const showDate = (webmention: string) =>
 
 {
 	webmentions.length ? (
-		<section aria-label='Webmentions' itemscope itemtype='https://schema.org/Comment'>
+		<section aria-label='Webmentions'>
 			<h2 id='webmentions'>Webmentions</h2>
 			<div id='upvote-form' />
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
-					<li class='flexx r' style='align-items: center;'>
+					<li
+						itemscope
+						itemtype='https://schema.org/Comment'
+						class='flexx r'
+						style='align-items: center;'
+					>
 						<div
 							itemprop='author'
 							itemscope
