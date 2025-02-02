@@ -42,7 +42,7 @@ const articleDate = pubDate.toISOString()
 		headline: title,
 		keywords: tags,
 		description,
-		articleBody: body,
+		articleBody: body.renderedOutput,
 		datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
