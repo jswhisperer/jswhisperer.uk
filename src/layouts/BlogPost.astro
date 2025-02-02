@@ -43,7 +43,7 @@ const articleDate = pubDate.toISOString()
 		keywords: tags,
 		description,
 		articleBody: body.renderedOutput,
-		datePublished: pubDate.toISOString(),
+		// datePublished: pubDate.toISOString(),
 		dateModified: pubDate?.toISOString() ?? undefined,
 		url: pageUrl, //`${siteConfig.site}post/${slug}`,
 		thumbnailUrl: heroImage?.src || '/public/open-graph.png',
