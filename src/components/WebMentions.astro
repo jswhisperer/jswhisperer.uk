@@ -50,6 +50,11 @@ const showDate = (webmention: string) =>
 						class='flexx r'
 						style='align-items: center;'
 					>
+						<small>
+							<time itemprop='datePublished' datetime={webmention['wm-received']}>
+								{showDate(webmention['wm-received'])}
+							</time>
+						</small>
 						<div
 							itemprop='author'
 							itemscope
@@ -99,7 +104,7 @@ const showDate = (webmention: string) =>
 
 							{webmention['wm-property'] === 'in-reply-to' && (
 								<div class='flexx r' style='align-items: center;'>
-									<p>
+									<p itemprop='text'>
 										replied on:
 										<small>
 											<time itemprop='datePublished' datetime={webmention['wm-received']}>
