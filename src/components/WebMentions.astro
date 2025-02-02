@@ -172,6 +172,7 @@ const showDate = (webmention: string) =>
                     <a href="${child.author.url || 'https://jswhisperer.uk/author/greg'}" itemprop="url" target="_blank">
                       <img class='avatar' width="50" height="50" src="${child.author.photo}" title="${child.author.name}" />
                       </a></strong>
+                      <span itemprop="name">${child.author.name || 'greg'}</span>
                   <small> - <time aria-hidden='true' datetime={webmention['wm-received']}>${new Date(
 										child['wm-received']
 									).toLocaleString('en-US', {
