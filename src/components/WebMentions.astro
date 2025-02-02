@@ -91,12 +91,12 @@ const showDate = (webmention: string) =>
 							</a>
 						</div>
 						<div class='information'>
+							{webmention['wm-property']} property
 							{webmention['wm-property'] === 'like-of' ? (
 								<div class='flexx' itemprop='text'>
 									Liked on:
 								</div>
 							) : null}
-
 							{webmention['wm-property'] === 'in-reply-to' ? (
 								<div class='flexx r' style='align-items: center;'>
 									<p>replied on:</p>
@@ -106,9 +106,11 @@ const showDate = (webmention: string) =>
 									/>
 								</div>
 							) : null}
-
 							{webmention['wm-property'] === 'repost-of' ? (
 								<p itemprop='text'>Reposted on</p>
+							) : null}
+							{webmention['wm-property'] === 'mention-of' ? (
+								<p itemprop='text'>mentioned on</p>
 							) : null}
 						</div>
 					</li>
