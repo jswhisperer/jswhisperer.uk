@@ -53,7 +53,11 @@ const showDate = (webmention: string) =>
 							class='avatar-and-author author u-author h-card'
 						>
 							<div itemprop='name'>{webmention.author.name}</div>
-							<a itemprop='url' href={webmention.author.url} aria-label='author url'>
+							<a
+								itemprop='url'
+								href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
+								aria-label='author url'
+							>
 								{webmention.author.photo ? (
 									<Picture
 										alt={webmention.author.name}
@@ -165,7 +169,7 @@ const showDate = (webmention: string) =>
 					interaction.innerHTML = `
               <p>
                   <strong>
-                    <a href="${child.author.url}" target="_blank">
+                    <a href="${child.author.url || 'https://jswhisperer.uk/author/greg'}" itemprop="url" target="_blank">
                       <img class='avatar' width="50" height="50" src="${child.author.photo}" title="${child.author.name}" />
                       </a></strong>
                   <small> - <time aria-hidden='true' datetime={webmention['wm-received']}>${new Date(
