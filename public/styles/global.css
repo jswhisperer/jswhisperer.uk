@@ -1,33 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer base {
-	/* body {
-		transition: background-color 0.5s ease;
-	} */
-/*
-	.prose code {
-		@apply text-base;
-	} */
-
-	/* prose styles here */
-	/* .prose h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-zinc-800 dark:text-zinc-100   !important;
-	} */
-
 	html.dark .shiki,
 	html.dark .shiki span {
 		color: var(--shiki-dark) !important;
 		background-color: theme(colors.gray.900) !important;
 	}
 }
-.sixy-five-percent {
+
+.sixty-five-percent {
   height: 65%;
 }
 .post-overview-holder {
@@ -124,13 +106,17 @@ html {
 
 }
 
+
 body {
   min-height: calc(100vh + 200px);
   padding-bottom: 200px;
 }
 main {
+  margin-top: 150px;
   padding-bottom: 300px;
-  margin-top: 100px;
+  @media screen and (min-width: 768px) {
+  margin-top: 150px
+}
 }
 h2 {
       color: #847e70;
