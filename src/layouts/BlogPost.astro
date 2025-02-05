@@ -80,6 +80,9 @@ const articleDate = pubDate.toISOString()
 		<div itemprop='articleBody'>
 			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 				<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
+				<div itemscope itemtype='https://schema.org/ImageObject'>
+					<img src={heroImage?.src} alt='image' itemprop='contentUrl' />
+				</div>
 
 				<div class='flex flex-col gap-2'>
 					<div class='lg:flex items-center justify-center gap-x-1'>

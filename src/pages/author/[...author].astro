@@ -23,12 +23,10 @@ type Props = CollectionEntry<'author'> & { name: string; author: any }
 
 //const name = Astro.params
 const { author } = Astro.props
-
-console.table(author.data.avatar)
 ---
 
 <BaseLayout title='Author'>
-	<div itemtype='https://schema.org/ProfilePage' itemscope key={'index'}>
+	<div itemtype='https://schema.org/ProfilePage' itemscope>
 		<div itemprop=''>
 			<time itemprop='dateCreated' datetime={new Date().toISOString()}> </time>
 		</div>
