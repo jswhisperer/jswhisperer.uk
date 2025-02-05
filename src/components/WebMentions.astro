@@ -40,77 +40,80 @@ const showDate = (webmention: string) =>
 
 {
 	webmentions.length ? (
-		<section aria-label='Webmentions' itemscope itemtype='http://schema.org/UserComments'>
-			<h2 id='webmentions'>Webmentions</h2>
-			<ul>
-				{webmentions.map((webmention: WebmentionProps) => (
-					<li style='align-items: center;'>
-						<small>
-							<time itemprop='commentTime' datetime={webmention['wm-received']}>
-								{showDate(webmention['wm-received'])}
-							</time>
-						</small>
-						<div
-							itemprop='creator'
-							itemscope
-							itemtype='https://schema.org/Person'
-							class='avatar-and-author author u-author h-card'
-						>
-							{/* <small>
+		<>
+			<span itemprop='commentCount'>{webmentions.length}</span>
+			<section aria-label='Webmentions' itemscope itemtype='http://schema.org/UserComments'>
+				<h2 id='webmentions'>Webmentions</h2>
+				<ul>
+					{webmentions.map((webmention: WebmentionProps) => (
+						<li style='align-items: center;'>
+							<small>
+								<time itemprop='commentTime' datetime={webmention['wm-received']}>
+									{showDate(webmention['wm-received'])}
+								</time>
+							</small>
+							<div
+								itemprop='creator'
+								itemscope
+								itemtype='https://schema.org/Person'
+								class='avatar-and-author author u-author h-card'
+							>
+								{/* <small>
 								<time itemprop='datePublished' datetime={webmention['wm-received']}>
 									{showDate(webmention['wm-received'])}
 								</time>
 							</small> */}
-							<div itemprop='name'>{webmention.author.name || 'greg'}</div>
-							<a
-								itemprop='url'
-								href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
-								aria-label='author url'
-							>
-								{webmention.author.photo ? (
-									<Picture
-										alt={webmention.author.name}
-										height='50'
-										width='50'
-										src={webmention.author.photo}
-										fit='cover'
-										attributes={{
-											picture: {
-												style: 'margin: 0 20px 0 0;'
-											},
-											img: { style: ' width:50px; border-radius:50%; overflow:hidden;' }
-										}}
-									/>
+								<div itemprop='name'>{webmention.author.name || 'greg'}</div>
+								<a
+									itemprop='url'
+									href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
+									aria-label='author url'
+								>
+									{webmention.author.photo ? (
+										<Picture
+											alt={webmention.author.name}
+											height='50'
+											width='50'
+											src={webmention.author.photo}
+											fit='cover'
+											attributes={{
+												picture: {
+													style: 'margin: 0 20px 0 0;'
+												},
+												img: { style: ' width:50px; border-radius:50%; overflow:hidden;' }
+											}}
+										/>
+									) : null}
+								</a>
+							</div>
+							<div class='information'>
+								{webmention['wm-property']} property
+								{webmention['wm-property'] === 'like-of' ? (
+									<div class='flexx' itemprop='commentText'>
+										Liked on:
+									</div>
 								) : null}
-							</a>
-						</div>
-						<div class='information'>
-							{webmention['wm-property']} property
-							{webmention['wm-property'] === 'like-of' ? (
-								<div class='flexx' itemprop='commentText'>
-									Liked on:
-								</div>
-							) : null}
-							{webmention['wm-property'] === 'in-reply-to' ? (
-								<div class='flexx r' style='align-items: center;'>
-									<p>replied on:</p>
-									<blockquote
-										itemprop='commentText'
-										set:html={sanitizeHTML(webmention['content']['text'])}
-									/>
-								</div>
-							) : null}
-							{webmention['wm-property'] === 'repost-of' ? (
-								<p itemprop='commentText'>Reposted on</p>
-							) : null}
-							{webmention['wm-property'] === 'mention-of' ? (
-								<p itemprop='commentText'>mentioned on</p>
-							) : null}
-						</div>
-					</li>
-				))}
-			</ul>
-		</section>
+								{webmention['wm-property'] === 'in-reply-to' ? (
+									<div class='flexx r' style='align-items: center;'>
+										<p>replied on:</p>
+										<blockquote
+											itemprop='commentText'
+											set:html={sanitizeHTML(webmention['content']['text'])}
+										/>
+									</div>
+								) : null}
+								{webmention['wm-property'] === 'repost-of' ? (
+									<p itemprop='commentText'>Reposted on</p>
+								) : null}
+								{webmention['wm-property'] === 'mention-of' ? (
+									<p itemprop='commentText'>mentioned on</p>
+								) : null}
+							</div>
+						</li>
+					))}
+				</ul>
+			</section>
+		</>
 	) : null
 }
 <style>
