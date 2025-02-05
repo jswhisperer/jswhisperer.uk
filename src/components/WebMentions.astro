@@ -46,12 +46,12 @@ const showDate = (webmention: string) =>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li style='align-items: center;'>
 						<small>
-							<time itemprop='datePublished' datetime={webmention['wm-received']}>
+							<time itemprop='commentTime' datetime={webmention['wm-received']}>
 								{showDate(webmention['wm-received'])}
 							</time>
 						</small>
 						<div
-							itemprop='author'
+							itemprop='creator'
 							itemscope
 							itemtype='https://schema.org/Person'
 							class='avatar-and-author author u-author h-card'
@@ -87,7 +87,7 @@ const showDate = (webmention: string) =>
 						<div class='information'>
 							{webmention['wm-property']} property
 							{webmention['wm-property'] === 'like-of' ? (
-								<div class='flexx' itemprop='text'>
+								<div class='flexx' itemprop='commentText'>
 									Liked on:
 								</div>
 							) : null}
@@ -101,10 +101,10 @@ const showDate = (webmention: string) =>
 								</div>
 							) : null}
 							{webmention['wm-property'] === 'repost-of' ? (
-								<p itemprop='text'>Reposted on</p>
+								<p itemprop='commentText'>Reposted on</p>
 							) : null}
 							{webmention['wm-property'] === 'mention-of' ? (
-								<p itemprop='text'>mentioned on</p>
+								<p itemprop='commentText'>mentioned on</p>
 							) : null}
 						</div>
 					</li>
