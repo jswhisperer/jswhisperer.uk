@@ -95,7 +95,7 @@ const showDate = (webmention: string) =>
 								<div class='flexx r' style='align-items: center;'>
 									<p>replied on:</p>
 									<blockquote
-										itemprop='text'
+										itemprop='commentText'
 										set:html={sanitizeHTML(webmention['content']['text'])}
 									/>
 								</div>
