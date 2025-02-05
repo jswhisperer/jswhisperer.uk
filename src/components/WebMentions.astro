@@ -41,7 +41,7 @@ const showDate = (webmention: string) =>
 {
 	webmentions.length ? (
 		<section aria-label='Webmentions' itemscope itemtype='http://schema.org/UserComments'>
-			><h2 id='webmentions'>Webmentions</h2>
+			<h2 id='webmentions'>Webmentions</h2>
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li
@@ -61,11 +61,11 @@ const showDate = (webmention: string) =>
 							itemtype='https://schema.org/Person'
 							class='avatar-and-author author u-author h-card'
 						>
-							<small>
+							{/* <small>
 								<time itemprop='datePublished' datetime={webmention['wm-received']}>
 									{showDate(webmention['wm-received'])}
 								</time>
-							</small>
+							</small> */}
 							<div itemprop='name'>{webmention.author.name || 'greg'}</div>
 							<a
 								itemprop='url'
