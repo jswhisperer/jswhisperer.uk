@@ -30,7 +30,7 @@ console.table(author.data.avatar)
 <BaseLayout title='Author'>
 	<div itemtype='https://schema.org/ProfilePage' itemscope key={'index'}>
 		<div itemprop=''>
-			<time itemprop='dateCreated' datetime={Date.now().toString()}> </time>
+			<time itemprop='dateCreated' datetime={new Date().toISOString()}> </time>
 		</div>
 		<div itemprop='mainEntity' itemtype='https://schema.org/Person' itemscope>
 			<h1 itemprop='name'>{author.data.name}</h1>
