@@ -171,6 +171,13 @@ const articleDate = pubDate.toISOString()
 				</div>
 			</header>
 		</div>
+		{
+			tags && tags.length > 0 && (
+				<p>
+					Tagged with: <span itemprop={tags.join(' ')}>{tags.join(', ')}</span>
+				</p>
+			)
+		}
 	</article>
 
 	<script>
