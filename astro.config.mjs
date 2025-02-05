@@ -8,6 +8,9 @@ import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 
 
+import partytown from '@astrojs/partytown'
+
+
 // https://astro.build/config
 export default defineConfig({
 	vite: {
@@ -116,5 +119,11 @@ export default defineConfig({
 		}),
 		sitemap(),
 		tailwind(),
+		partytown({
+			config: {
+        debug: true,
+				forward: [['html2canvas', { preserveBehavior: false }]]
+			}
+		})
 	]
 })

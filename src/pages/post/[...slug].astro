@@ -74,19 +74,8 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 }
 ---
 
-<script>
-	import html2canvas from 'html2canvas'
-	const blueSkyEl: any = document.querySelector('.bluesky-post-container')
-	if (blueSkyEl) {
-		html2canvas(blueSkyEl, {
-			allowTaint: true
-		}).then((canvas) => {
-			blueSkyEl.after(canvas)
-			blueSkyEl.remove()
-		})
-	}
-</script>
-
+<!--
+<script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'></script> -->
 <BlogPost
 	body={post.body}
 	id={post.id}
@@ -146,6 +135,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 			</div>
 		</article>
 	</div>
+	<canvas width='500' height='200'></canvas>
 </BlogPost>
 
 <script>
@@ -178,5 +168,35 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		await checkCode(code)
 		console.log({ loggedIn })
 		//console.log(loggedIn)
+	}
+</script>
+<script
+	type='text/partytown'
+	src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'></script>
+<script type='text/partytown'>
+	window.partytown = {
+		debug: true
+	}
+	const blueSkyEl = document.querySelector('.bluesky-post-container')
+	var canvasEl = document.querySelector('canvas')
+
+	console.log('xxx', { blueSkyEl })
+	if (blueSkyEl) {
+		setTimeout(() => {
+			window
+				.html2canvas(document.body.querySelector('.bluesky-post-container'), {
+					allowTaint: true,
+					canvas: canvasEl
+					// onrendered: function (canvas) {
+					// 	console.log('canvas', { canvas })
+					// }
+				})
+				.then((canvas) => {
+					console.log('canvas', { canvas })
+					blueSkyEl.after(canvas)
+					blueSkyEl.remove()
+				})
+				.catch((error) => console.error({ error }))
+		}, 1000)
 	}
 </script>

@@ -40,14 +40,14 @@ const showDate = (webmention: string) =>
 
 {
 	webmentions.length ? (
-		<section aria-label='Webmentions'>
-			<h2 id='webmentions'>Webmentions</h2>
+		<section aria-label='Webmentions' itemscope itemtype='http://schema.org/UserComments'>
+			><h2 id='webmentions'>Webmentions</h2>
 			<ul>
 				{webmentions.map((webmention: WebmentionProps) => (
 					<li
+						itemprop='comment'
 						itemscope
-						itemtype='https://schema.org/Comment'
-						class='flexx r'
+						itemtype='http://schema.org/Comment'
 						style='align-items: center;'
 					>
 						<small>
@@ -75,7 +75,6 @@ const showDate = (webmention: string) =>
 								{webmention.author.photo ? (
 									<Picture
 										alt={webmention.author.name}
-										title={webmention.author.name}
 										height='50'
 										width='50'
 										src={webmention.author.photo}
