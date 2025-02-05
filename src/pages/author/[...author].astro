@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout'
+import { Picture } from 'astro:assets'
 import { getCollection, type CollectionEntry } from 'astro:content'
-import { Image, Picture } from 'astro:assets'
 
 const authors = await getCollection('author')
 
@@ -28,11 +28,16 @@ console.table(author.data.avatar)
 ---
 
 <BaseLayout title='Author'>
-	<div key={'index'}>
-		<h1>{author.data.name}</h1>
-		<p>{author.data.bio}</p>
-		<p>{author.data.url}</p>
-		<p>{author.data.avatar.src}</p>
-		<Picture alt='x' src={author.data.avatar} decoding='async' loading='lazy' />
+	<div itemtype='https://schema.org/ProfilePage' itemscope key={'index'}>
+		<div itemprop=''>
+			<time itemprop='dateCreated' datetime={Date.now().toString()}> </time>
+		</div>
+		<div itemprop='mainEntity' itemtype='https://schema.org/Person' itemscope>
+			<h1 itemprop='name'>{author.data.name}</h1>
+			<p>{author.data.bio}</p>
+			<p itemprop='url'>{author.data.url}</p>
+			<p>{author.data.avatar.src}</p>
+			<Picture alt='x' src={author.data.avatar} decoding='async' loading='lazy' />
+		</div>
 	</div>
 </BaseLayout>
