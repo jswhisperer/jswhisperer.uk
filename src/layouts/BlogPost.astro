@@ -27,6 +27,7 @@ type Props = {
 
 const { data, readTime, headings, id, slug, blskyid, body } = Astro.props
 const { title, description, pubDate, heroImage, tags, author, category } = data
+const heroImageSrc = heroImage ?? '/public/open-graph.png'
 const authors = await getCollection('author')
 
 const currentAuthor = authors.find((a) => a.slug === author?.id)
@@ -79,7 +80,14 @@ const articleDate = pubDate.toISOString()
 		<!-- <div itemscope itemtype='https://schema.org/ImageObject'>
 			<img src={heroImage?.src} alt='image' itemprop='url' />
 		</div> -->
-		<img src={heroImage?.src} alt='image' itemprop='image' />
+		<Picture
+			src={heroImageSrc}
+			alt='image'
+			style='opacity: 1;'
+			decoding='async'
+			formats={['avif', 'webp']}
+			itemprop='image'
+		/>
 
 		<div itemprop='articleBody'>
 			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
