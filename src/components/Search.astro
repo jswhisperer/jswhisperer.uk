@@ -5,7 +5,7 @@ import '@pagefind/default-ui/css/ui.css'
 import SearchIcon from '@/components/icons/SearchIcon'
 ---
 
-<site-search id='search' class='ms-auto'>
+<site-search id='search' class='ms-auto' data-html2canvas-ignore>
 	<button data-open-modal disabled class='flex items-center justify-center rounded-md gap-1'>
 		<SearchIcon />
 		<!-- <span class='md:hidden text-2xl'> Search</span> -->
@@ -98,9 +98,9 @@ import SearchIcon from '@/components/icons/SearchIcon'
 				window.addEventListener('keydown', handleEscKey)
 			}
 
-			openBtn.addEventListener('click', openModal)
+			openBtn?.addEventListener('click', openModal)
 			openBtn.disabled = false
-			closeBtn.addEventListener('click', closeModal)
+			closeBtn?.addEventListener('click', closeModal)
 			document.addEventListener('astro:after-swap', closeModal)
 
 			// Listen for `/` keyboard shortcut

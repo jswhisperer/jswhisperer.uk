@@ -122,7 +122,7 @@ export default defineConfig({
 		partytown({
 			config: {
         debug: true,
-				forward: [['html2canvas', { preserveBehavior: false }]]
+				forward: [['html2canvas', { preserveBehavior: true }]]
 			}
 		})
 	]
