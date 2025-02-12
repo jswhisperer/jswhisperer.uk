@@ -5,7 +5,13 @@ import BuyCoffee from './BuyCoffee.astro'
 const today = new Date()
 ---
 
-<footer id='footer' class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
+<footer
+	id='footer'
+	class='flex justify-center items-center w-full px-16 h-28 border-t-2'
+	role='contentinfo'
+	itemscope
+	itemtype='http://schema.org/WPFooter'
+>
 	<span class='shadow-down'></span>
 	<div class='container'>
 		<BuyCoffee />
