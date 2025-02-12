@@ -341,21 +341,6 @@ input[type='reset']:hover,
 input[type='button']:hover {
 	color: #222;
 	background: #ddd;
-	background: #ddd -moz-linear-gradient(top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
-	background: #ddd -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(255, 255, 255, 0.3)),
-			color-stop(100%, rgba(0, 0, 0, 0.3))
-		);
-	background: #ddd -webkit-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0.3) 0%,
-			rgba(0, 0, 0, 0.3) 100%
-		);
-	background: #ddd -o-linear-gradient(top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
-	background: #ddd -ms-linear-gradient(top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
 	background: #ddd linear-gradient(top, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%);
 	border: 1px solid #888;
 	border-top: 1px solid #aaa;
@@ -368,29 +353,6 @@ input[type='reset']:active,
 input[type='button']:active {
 	border: 1px solid #666;
 	background: #ccc;
-	background: #ccc -moz-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0.35) 0%,
-			rgba(10, 10, 10, 0.4) 100%
-		);
-	background: #ccc -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(255, 255, 255, 0.35)),
-			color-stop(100%, rgba(10, 10, 10, 0.4))
-		);
-	background: #ccc -webkit-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0.35) 0%,
-			rgba(10, 10, 10, 0.4) 100%
-		);
-	background: #ccc -o-linear-gradient(top, rgba(255, 255, 255, 0.35) 0%, rgba(10, 10, 10, 0.4) 100%);
-	background: #ccc -ms-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0.35) 0%,
-			rgba(10, 10, 10, 0.4) 100%
-		);
 	background: #ccc linear-gradient(top, rgba(255, 255, 255, 0.35) 0%, rgba(10, 10, 10, 0.4) 100%);
 }
 .button.full-width,
@@ -436,38 +398,7 @@ ul.tabs li a {
 	font-size: 13px;
 	text-shadow: 0px 2px 3px #fff;
 	background: rgba(0, 0, 0, 0.1);
-	background: -moz-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(246, 246, 246, 0) 92%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0%, rgba(145, 145, 145, 0.3)),
-		color-stop(92%, rgba(246, 246, 246, 0)),
-		color-stop(100%, rgba(255, 255, 255, 0))
-	);
-	background: -webkit-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(246, 246, 246, 0) 92%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -o-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(246, 246, 246, 0) 92%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -ms-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(246, 246, 246, 0) 92%,
-		rgba(255, 255, 255, 0) 100%
-	);
+
 	background: linear-gradient(
 		top,
 		rgba(145, 145, 145, 0.3) 0%,
@@ -477,38 +408,7 @@ ul.tabs li a {
 }
 ul.tabs li a.active {
 	background: rgba(255, 255, 255, 0.5);
-	background: -moz-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(254, 254, 254, 0.5) 73%,
-		rgba(255, 255, 255, 0.5) 74%
-	);
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0%, rgba(145, 145, 145, 0.3)),
-		color-stop(73%, rgba(254, 254, 254, 0.5)),
-		color-stop(74%, rgba(255, 255, 255, 0.5))
-	);
-	background: -webkit-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(254, 254, 254, 0.5) 73%,
-		rgba(255, 255, 255, 0.5) 74%
-	);
-	background: -o-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(254, 254, 254, 0.5) 73%,
-		rgba(255, 255, 255, 0.5) 74%
-	);
-	background: -ms-linear-gradient(
-		top,
-		rgba(145, 145, 145, 0.3) 0%,
-		rgba(254, 254, 254, 0.5) 73%,
-		rgba(255, 255, 255, 0.5) 74%
-	);
+
 	background: linear-gradient(
 		top,
 		rgba(145, 145, 145, 0.3) 0%,

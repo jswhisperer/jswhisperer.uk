@@ -59,8 +59,8 @@ export default defineConfig({
 
 			includeAssets: ['**/*'],
 			manifest: {
-				name: 'Astro PWA',
-				short_name: 'Astro PWA',
+				name: 'jswhisperer blog',
+				short_name: 'jswhisperer',
 				theme_color: '#ffffff',
 				icons: [
 					{
@@ -117,10 +117,10 @@ export default defineConfig({
 			drafts: true
 		}),
 		sitemap(),
-		tailwind(),
+		tailwind()
 		// partytown({
 		// 	config: {
-    //     debug: true,
+		//     debug: true,
 		// 		forward: [['html2canvas', { preserveBehavior: true }]]
 		// 	}
 		// })

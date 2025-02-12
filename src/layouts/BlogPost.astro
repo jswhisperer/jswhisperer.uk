@@ -85,7 +85,9 @@ const articleDate = pubDate.toISOString()
 			alt='image'
 			decoding='async'
 			formats={['avif', 'webp']}
-			itemprop='image'
+			attributes={{
+				itemprop: 'image'
+			}}
 		/>
 
 		<div itemprop='articleBody'>
