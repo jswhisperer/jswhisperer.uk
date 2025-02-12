@@ -46,7 +46,12 @@ const showDate = (webmention: string) =>
 				<h2 id='webmentions'>Webmentions</h2>
 				<ul>
 					{webmentions.map((webmention: WebmentionProps) => (
-						<li style='align-items: center;'>
+						<li
+							style='align-items: center;'
+							itemprop='comment'
+							itemscope
+							itemtype='http://schema.org/Comment'
+						>
 							<small>
 								<time itemprop='commentTime' datetime={webmention['wm-received']}>
 									{showDate(webmention['wm-received'])}

@@ -74,11 +74,10 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 }
 ---
 
-<script src='https://unpkg.com/modern-screenshot'></script>
+<!-- <script src='https://unpkg.com/modern-screenshot'></script>
 <script
 	type='text/partytown'
-	src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.js'></script>
-<!--
+	src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.js'></script> --><!--
 <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'></script> -->
 <BlogPost
 	body={post.body}
@@ -171,21 +170,7 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 	}
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js'></script>
-<!-- <script is:inline type='text/javascript'>
-  setTimeout(() => {
-  window.modernScreenshot.domToPng(document.querySelector('.bluesky-post-container')).then(dataUrl => {
-    const link = document.createElement('a')
-    link.download = 'screenshot.png'
-    link.href = dataUrl
-    link.click()
-  })}, 1000)
-</script> -->
 
-<!--
-<script
-	type='text/partytown'
-	src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/lib/core/cache-storage.js'
-></script> -->
 <script>
 	// const html2canvas = require('html2canvas')
 	// //
@@ -204,27 +189,27 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		allowTaint: true
 	})
 	if (blueSkyEl) {
-		setTimeout(async () => {
-			// console.log({ html2canvas: html2canvas })
-			twoCan = await html2canvas(blueSkyEl, {
-				scale: 2,
-				allowTaint: true,
-				imageTimeout: 10000,
-				removeContainer: false,
-				cache,
-				onclone: function (clonedDoc) {
-					console.log('clonedDoc', { clonedDoc })
-				}
-				// canvas: canvasEl
-			})
-				.then((canvas) => {
-					blueSkyEl.after(canvas)
-					console.log({ canvas })
+		//setTimeout(async () => {
+		// console.log({ html2canvas: html2canvas })
+		twoCan = await html2canvas(blueSkyEl, {
+			scale: 2,
+			allowTaint: true,
+			imageTimeout: 10000,
+			removeContainer: false,
+			cache,
+			onclone: function (clonedDoc) {
+				console.log('clonedDoc', { clonedDoc })
+			}
+			// canvas: canvasEl
+		})
+			.then((canvas) => {
+				blueSkyEl.after(canvas)
+				console.log({ canvas })
 
-					//blueSkyEl.remove()
-				})
-				.catch((error) => console.error({ error }))
-			console.log({ cache })
-		}, 1000)
+				blueSkyEl.remove()
+			})
+			.catch((error) => console.error({ error }))
+		console.log({ cache })
+		//, 1000)
 	}
 </script>

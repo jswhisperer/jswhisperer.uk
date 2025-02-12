@@ -1,5 +1,7 @@
 ---
-import { Image, Picture } from 'astro:assets'
+// import { Image, Picture } from 'astro:assets'
+import { Img, Picture, BackgroundPicture } from 'astro-imagetools/components'
+
 import FormattedDate from '@/components/FormattedDate'
 import ArrowUp from '@/components/icons/ArrowUp'
 import { fade, slide } from 'astro:transitions'
@@ -22,14 +24,18 @@ const {
 		<a href={`/post/${slug}/`} aria-label={'read more about' + title}>
 			{
 				heroImage && (
-					<Picture
+					<Img
 						layout='responsive'
-						src={heroImage}
+						src={heroImage.src || '/public/open-graph.png'}
 						formats={['avif', 'webp']}
-						class='h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
+						class='opacity-0 h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
 						alt={`img of ${title}`}
-						decoding='async'
-						loading={index < 3 ? 'eager' : 'lazy'}
+						attributes={{
+							picture: {
+								style: 'margin: 0 20px 0 0;'
+							},
+							img: { class: 'opacity-0', style: ' width:50px; border-radius:50%; overflow:hidden;' }
+						}}
 					/>
 				)
 			}
@@ -91,20 +97,20 @@ const {
 	const images = document.querySelectorAll('img')
 
 	document.addEventListener('DOMContentLoaded', function () {
-		const showAnimations = localStorage.getItem('animations') === 'true'
+		const showAnimations = true // localStorage.getItem('animations') === 'true'
 
 		if (showAnimations) {
 			animate(
-				'.effect',
+				images,
 				{
 					opacity: [0, 1],
 					clipPath: ['circle(0% at 0% 0%)', 'circle(100% at 50% 50%)']
 				},
-				{ duration: 2, easing: 'ease' }
+				{ duration: 2.0, easing: 'ease' }
 			)
 		} else {
 			images.forEach((img) => {
-				img.classList.remove('opacity-0')
+				//	img.classList.remove('opacity-0')
 			})
 		}
 	})
