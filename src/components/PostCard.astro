@@ -6,6 +6,7 @@ import FormattedDate from '@/components/FormattedDate'
 import ArrowUp from '@/components/icons/ArrowUp'
 import { fade, slide } from 'astro:transitions'
 import LinkUnderline from '@/components/LinkUnderline'
+import type { animate } from 'motion'
 
 const {
 	id,
@@ -24,19 +25,16 @@ const {
 		<a href={`/post/${slug}/`} aria-label={'read more about' + title}>
 			{
 				heroImage && (
-					<Img
-						layout='responsive'
-						src={heroImage.src || '/public/open-graph.png'}
-						formats={['avif', 'webp']}
-						class='opacity-0 h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
-						alt={`img of ${title}`}
-						attributes={{
-							picture: {
-								style: 'margin: 0 20px 0 0;'
-							},
-							img: { class: 'opacity-0', style: ' width:50px; border-radius:50%; overflow:hidden;' }
-						}}
-					/>
+					<>
+						<div />
+						<Img src={heroImage.src || '/public/open-graph.png'} />
+					</>
+					// format='webp'
+					// alt={`img of ${title}`}
+					// attributes={{
+					// 	class:
+					// 		'opacity-0 h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
+					// }}
 				)
 			}
 
