@@ -38,86 +38,85 @@ const structuredData = {
 		<!-- <Header /> -->
 		<NewHeader />
 		<main
-			itemscope
-			itemtype='http://schema.org/ItemList'
+			itemprop='mainContentOfPage'
 			class='px-5 mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 overflow-hidden md:overflow-visible main'
 		>
-			<slot />
+			<div itemscope itemtype='http://schema.org/ItemList'><slot /></div>
+			<TwSizeIndicator />
+			<EditBlog />
+
+			<Footer />
+			<style>
+				#body,
+				html,
+				body {
+					font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+					font-size: 19px;
+					line-height: 31px;
+				}
+				[data-astro-image] {
+					width: 100%;
+					height: auto;
+					object-fit: var(--fit);
+					object-position: var(--pos);
+					aspect-ratio: var(--w) / var(--h);
+				}
+
+				[data-astro-image='responsive'] {
+					max-width: calc(var(--w) * 1px);
+					max-height: calc(var(--h) * 1px);
+				}
+
+				[data-astro-image='fixed'] {
+					width: calc(var(--w) * 1px);
+					height: calc(var(--h) * 1px);
+				}
+				.tothetop {
+					z-index: 2;
+					right: 10px;
+					top: 5px;
+					position: absolute;
+					color: #847e70;
+					opacity: 0.1;
+				}
+				.tothetop:hover {
+					color: #847e70;
+					opacity: 0.9;
+				}
+				.tothetop {
+					z-index: 2;
+					right: 10px;
+					top: 5px;
+					position: absolute;
+					color: #847e70;
+					opacity: 0.1;
+					zoom: 1;
+					-ms-filter: 'alpha(opacity=10)';
+					*filter: alpha(opacity=10);
+				}
+				.tothetop:hover {
+					color: #847e70;
+					opacity: 0.9;
+					zoom: 1;
+					-ms-filter: 'alpha(opacity=90)';
+					*filter: alpha(opacity=90);
+				}
+
+				[class^='icon-']:before {
+					font-family: 'gregasaurus';
+					font-style: normal;
+					speak: none;
+				}
+				.icon-cannon:before {
+					content: '\0032';
+				}
+				.icon-arrow-up:before {
+					content: '\0043';
+				}
+				.hide {
+					display: none;
+				}
+			</style>
 		</main>
-		<TwSizeIndicator />
-		<EditBlog />
-
-		<Footer />
-		<style>
-			#body,
-			html,
-			body {
-				font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
-				font-size: 19px;
-				line-height: 31px;
-			}
-			[data-astro-image] {
-				width: 100%;
-				height: auto;
-				object-fit: var(--fit);
-				object-position: var(--pos);
-				aspect-ratio: var(--w) / var(--h);
-			}
-
-			[data-astro-image='responsive'] {
-				max-width: calc(var(--w) * 1px);
-				max-height: calc(var(--h) * 1px);
-			}
-
-			[data-astro-image='fixed'] {
-				width: calc(var(--w) * 1px);
-				height: calc(var(--h) * 1px);
-			}
-			.tothetop {
-				z-index: 2;
-				right: 10px;
-				top: 5px;
-				position: absolute;
-				color: #847e70;
-				opacity: 0.1;
-			}
-			.tothetop:hover {
-				color: #847e70;
-				opacity: 0.9;
-			}
-			.tothetop {
-				z-index: 2;
-				right: 10px;
-				top: 5px;
-				position: absolute;
-				color: #847e70;
-				opacity: 0.1;
-				zoom: 1;
-				-ms-filter: 'alpha(opacity=10)';
-				*filter: alpha(opacity=10);
-			}
-			.tothetop:hover {
-				color: #847e70;
-				opacity: 0.9;
-				zoom: 1;
-				-ms-filter: 'alpha(opacity=90)';
-				*filter: alpha(opacity=90);
-			}
-
-			[class^='icon-']:before {
-				font-family: 'gregasaurus';
-				font-style: normal;
-				speak: none;
-			}
-			.icon-cannon:before {
-				content: '\0032';
-			}
-			.icon-arrow-up:before {
-				content: '\0043';
-			}
-			.hide {
-				display: none;
-			}
-		</style>
 	</body>
 </html>
