@@ -76,13 +76,17 @@ console.log({ bgImg })
 		<a href={`/post/${slug}/`} aria-label={'read more about' + title}>
 			{
 				heroImage && (
-					<Picture
-						src={bgImg.src}
-						alt='image 1'
-						inferSize={true}
-						width={bgImg.options.width}
-						height={bgImg.options.height}
+					<div
+						class='heroImgBg'
+						style={`width=${bgImg.options.width};height=${bgImg.options.height};background-image: url(${bgImg.src});`}
 					/>
+					// <Picture
+					// 	src={bgImg.src}
+					// 	alt='image 1'
+					// 	inferSize={true}
+					// 	width={bgImg.options.width}
+					// 	height={bgImg.options.height}
+					// />
 				)
 			}
 
@@ -136,7 +140,13 @@ console.log({ bgImg })
 		</footer>
 	</div>
 </article>
-
+<style>
+	.heroImgBg {
+		height: 100%;
+		width: auto;
+		background-size: cover;
+	}
+</style>
 <script>
 	import { animate } from 'motion'
 
