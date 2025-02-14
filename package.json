@@ -55,6 +55,7 @@
 		"vite": "6.0.6"
 	},
 	"devDependencies": {
+		"@ampproject/toolbox-optimizer": "^2.10.1",
 		"@astrojs/mdx": "4.0.3",
 		"@astrojs/sitemap": "3.0.4",
 		"@astrojs/tailwind": "5.1.0",
@@ -85,6 +86,7 @@
 		"tailwindcss": "3.3.5",
 		"tinacms": "^1.5.21",
 		"typescript": "^5.2.2",
+		"vite-plugin-amp": "^1.2.3",
 		"vite-plugin-pwa": "^0.21.1",
 		"workbox-window": "^7.3.0"
 	},

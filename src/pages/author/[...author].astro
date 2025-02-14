@@ -35,7 +35,7 @@ const { author } = Astro.props
 			<p>{author.data.bio}</p>
 			<p itemprop='url'>{author.data.url}</p>
 			<p>{author.data.avatar.src}</p>
-			<Picture alt='x' src={author.data.avatar} decoding='async' loading='lazy' />
+			<Picture alt='x' src={author.data.avatar} decoding='async' />
 		</div>
 	</div>
 </BaseLayout>

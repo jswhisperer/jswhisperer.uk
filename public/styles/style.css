@@ -59,40 +59,9 @@ body {
 	height: 17px;
 	bottom: 0;
 	position: absolute;
-	background: -moz-linear-gradient(
-		top,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(252, 252, 252, 0) 4%,
-		rgba(191, 191, 191, 0.3) 100%
-	);
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0%, rgba(255, 255, 255, 0)),
-		color-stop(4%, rgba(252, 252, 252, 0)),
-		color-stop(100%, rgba(191, 191, 191, 0.3))
-	);
-	background: -webkit-linear-gradient(
-		top,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(252, 252, 252, 0) 4%,
-		rgba(191, 191, 191, 0.3) 100%
-	);
-	background: -o-linear-gradient(
-		top,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(252, 252, 252, 0) 4%,
-		rgba(191, 191, 191, 0.3) 100%
-	);
-	background: -ms-linear-gradient(
-		top,
-		rgba(255, 255, 255, 0) 0%,
-		rgba(252, 252, 252, 0) 4%,
-		rgba(191, 191, 191, 0.3) 100%
-	);
+
 	background: linear-gradient(
-		top,
+		to top,
 		rgba(255, 255, 255, 0) 0%,
 		rgba(252, 252, 252, 0) 4%,
 		rgba(191, 191, 191, 0.3) 100%
@@ -101,40 +70,9 @@ body {
 .shadow-down {
 	top: 0;
 	position: absolute;
-	background: -moz-linear-gradient(
-		top,
-		rgba(191, 191, 191, 0.3) 0%,
-		rgba(252, 252, 252, 0) 96%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0%, rgba(191, 191, 191, 0.3)),
-		color-stop(96%, rgba(252, 252, 252, 0)),
-		color-stop(100%, rgba(255, 255, 255, 0))
-	);
-	background: -webkit-linear-gradient(
-		top,
-		rgba(191, 191, 191, 0.3) 0%,
-		rgba(252, 252, 252, 0) 96%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -o-linear-gradient(
-		top,
-		rgba(191, 191, 191, 0.3) 0%,
-		rgba(252, 252, 252, 0) 96%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -ms-linear-gradient(
-		top,
-		rgba(191, 191, 191, 0.3) 0%,
-		rgba(252, 252, 252, 0) 96%,
-		rgba(255, 255, 255, 0) 100%
-	);
+
 	background: linear-gradient(
-		top,
+		to top,
 		rgba(191, 191, 191, 0.3) 0%,
 		rgba(252, 252, 252, 0) 96%,
 		rgba(255, 255, 255, 0) 100%
@@ -145,22 +83,8 @@ body {
 	width: 100%;
 	height: 29px;
 	border-top: 1px solid #f8f7f5;
-	background: -moz-linear-gradient(top, rgba(165, 157, 139, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
-	background: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		color-stop(0%, rgba(165, 157, 139, 0.3)),
-		color-stop(100%, rgba(255, 255, 255, 0))
-	);
-	background: -webkit-linear-gradient(
-		top,
-		rgba(165, 157, 139, 0.3) 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	background: -o-linear-gradient(top, rgba(165, 157, 139, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
-	background: -ms-linear-gradient(top, rgba(165, 157, 139, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
-	background: linear-gradient(top, rgba(165, 157, 139, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+
+	background: linear-gradient(to top, rgba(165, 157, 139, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
 }
 #main .inner {
 	background: url(../images/vertical-retro-header-texture.png);

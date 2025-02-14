@@ -174,18 +174,18 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 		//console.log(loggedIn)
 	}
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js'></script>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js'></script> -->
 
 <script>
 	// const html2canvas = require('html2canvas')
 	// //
 	// const { Cache } = require('html2canvas/dist/lib/core/cache-storage.js')
 	// const { Context } = require('html2canvas/dist/lib/core/context.js')
-	//	import html2canvas from 'html2canvas'
+	import html2canvas from 'html2canvas'
 	import { Cache } from 'html2canvas/dist/lib/core/cache-storage.js'
 	import { Context } from 'html2canvas/dist/lib/core/context.js'
 
-	const blueSkyEl = document.querySelector('.bluesky-post-container')
+	const blueSkyEl = document.querySelector('.bluesky-post-container') as HTMLElement
 	var canvasEl = document.querySelector('canvas')
 	let twoCan
 	const cache = new Cache(new Context({ allowTaint: true, scale: 2, removeContainer: false }), {

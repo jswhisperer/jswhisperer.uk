@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets'
-import { Picture, BackgroundPicture } from 'astro-imagetools/components'
+import { Image, Picture } from 'astro:assets'
 
+import authorphoto from '@/assets/images/greg.jpeg'
 import sanitizeHTML from 'sanitize-html'
 const sanitize = (entry: { content: any }) => {
 	const { content } = entry
@@ -69,34 +69,27 @@ const showDate = (webmention: string) =>
 									href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
 									aria-label='author url'
 								>
-									{webmention.author.photo ? (
+									{webmention?.author?.photo && (
 										<Picture
 											alt={webmention.author.name}
-											height='50'
-											width='50'
-											src={webmention.author.photo}
+											width={authorphoto.width}
+											height={authorphoto.height}
+											src={authorphoto.src}
 											fit='cover'
-											attributes={{
-												itemprop: 'image',
-												picture: {
-													style: 'margin: 0 20px 0 0;'
-												},
-												img: { style: ' width:50px; border-radius:50%; overflow:hidden;' }
-											}}
 										/>
-									) : null}
+									)}
 								</a>
 							</div>
 							<div class='information'>
 								{/* {webmention['wm-property']} */}
-								{webmention['wm-property'] === 'like-of' ? (
+								{webmention['wm-property'] === 'like-of' && (
 									<div class='flexx' itemprop='commentText'>
 										Liked on:
 										<time datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
 										</time>
 									</div>
-								) : null}
+								)}
 								{webmention['wm-property'] === 'in-reply-to' ? (
 									<div class='flexx r' style='align-items: center;'>
 										<p>

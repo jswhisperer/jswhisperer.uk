@@ -4,6 +4,7 @@ import ListPosts from '@/components/ListPosts'
 import BaseLayout from '@/layouts/BaseLayout'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
+import gregImg from '../assets/images/greg.jpeg'
 
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
@@ -19,8 +20,9 @@ const posts = allPosts.slice(0, MAX_POSTS)
 		<Picture
 			formats={['avif', 'webp']}
 			class='u-photo'
-			layout='responsive'
-			src={import('../assets/images/greg.jpeg')}
+			src={gregImg}
+			width={gregImg.width}
+			height={gregImg.height}
 			alt='Gregory Benner'
 		/>
 		<a class='p-org h-card' href='https://jswhisperer.uk/'>jswhisperer</a>

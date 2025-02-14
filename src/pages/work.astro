@@ -1,7 +1,21 @@
 ---
-import { Image, Picture } from 'astro:assets'
+import { Picture } from 'astro:assets'
 import BaseLayout from '@/layouts/BaseLayout'
-import angela from '../assets/images/portfolio/angela-jeweller.jpg'
+// const renderroom = import('../../assets/images/portfolio/the-render-room.jpg')
+import renderroom from '@/assets/images/portfolio/the-render-room.jpg'
+// (await import('../../assets/images/portfolio/the-render-room.jpg')).default
+import green from '@/assets/images/portfolio/the-green-house.jpg'
+// (await import('@/assets/images/portfolio/the-green-house.jpg')).default
+import auret from '@/assets/images/portfolio/olivari-auret.jpg'
+// (await import('@/assets/images/portfolio/olivari-auret.jpg')).default
+import angela from '@/assets/images/portfolio/angela-jeweller.jpg'
+// (await import('@/assets/images/portfolio/angela-jeweller.jpg')).default
+import freedom from '@/assets/images/portfolio/freedom-hill-restaurant.jpg'
+import mercer from '@/assets/images/portfolio/mecer-express.jpg'
+//  (await import('@/assets/images/portfolio/mecer-express.jpg')).default
+import dvmakeup from '@/assets/images/portfolio/dvmakeup.jpg'
+import pxsecurity from '@/assets/images/portfolio/pxsecurity.jpg'
+import simapro from '@/assets/images/portfolio/simapro.jpg'
 ---
 
 <BaseLayout title='Work'>
@@ -31,12 +45,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={angela}
+						src={angela.src}
+						width={angela.width}
+						height={angela.height}
 						alt='angela jeweller'
 						style='opacity: 1;'
-						decoding='async'
-						loading='lazy'
 						formats={['avif', 'webp']}
+						inferSize={true}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -54,12 +69,12 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						layout='responsive'
-						src={import('../assets/images/portfolio/dvmakeup.jpg')}
+						inferSize={true}
+						src={dvmakeup.src}
 						alt="dvmakeup'"
-						style='opacity: 1;'
-						decoding='async'
 						formats={['avif', 'webp']}
+						width={dvmakeup.width}
+						height={dvmakeup.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -77,11 +92,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						layout='responsive'
-						src={import('../assets/images/portfolio/freedom-hill-restaurant.jpg')}
+						inferSize={true}
+						src={freedom.src}
 						alt='freedom hill restaurant'
 						style='opacity: 1;'
 						formats={['avif', 'webp']}
+						width={freedom.width}
+						height={freedom.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -100,11 +117,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 				>
 					<Picture
 						layout='responsive'
-						src={import('../assets/images/portfolio/mecer-express.jpg')}
+						src={mercer}
 						alt='mecer express'
 						style='opacity: 1;'
 						formats={['avif', 'webp']}
 						loading='lazy'
+						width={mercer.width}
+						height={mercer.height}
 					/>
 					<ul class='theoverlay'>
 						<li>Joomla CMS</li>
@@ -122,10 +141,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/olivari-auret.jpg')}
+						src={auret.src}
 						alt='olivari auret'
 						style='opacity: 1;'
-						loading='lazy'
+						formats={['avif', 'webp']}
+						inferSize={true}
+						width={auret.width}
+						height={auret.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -143,11 +165,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/pxsecurity.jpg')}
+						src={pxsecurity.src}
 						alt='pxsecurity'
 						style='opacity: 1;'
 						formats={['avif', 'webp']}
-						loading='lazy'
+						inferSize={true}
+						width={pxsecurity.width}
+						height={pxsecurity.height}
 					/>
 					<ul class='theoverlay'>
 						<li>HTML5, CSS3</li>
@@ -164,10 +188,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/simapro.jpg')}
+						inferSize={true}
+						src={simapro.src}
 						alt='simapro'
 						formats={['avif', 'webp']}
 						style='opacity: 1;'
+						width={simapro.width}
+						height={simapro.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -185,9 +212,12 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/the-green-house.jpg')}
+						inferSize={true}
+						src={green.src}
 						alt='the green house'
 						style='opacity: 1;'
+						width={green.width}
+						height={green.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -205,10 +235,13 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 					style='float: none; position: absolute; opacity: 0; z-index: 1; display: list-item; transition: opacity 1000ms ease-in-out;'
 				>
 					<Picture
-						src={import('../assets/images/portfolio/the-render-room.jpg')}
+						src={renderroom.src}
+						inferSize={true}
 						alt='the render room'
 						formats={['avif', 'webp']}
 						style='opacity: 1;'
+						width={renderroom.width}
+						height={renderroom.height}
 					/>
 					<ul class='theoverlay'>
 						<li>WordPress CMS</li>
@@ -248,7 +281,7 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 	}, 5000)
 </script>
 
-<style media='none' onload="if(media!='all')media='all'" loading='lazy'>
+<style>
 	div,
 	span,
 	h2,
@@ -339,64 +372,9 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 		text-shadow: 0 2px 3px #fff;
 		background: rgb(0, 0, 0);
 		background: rgba(0, 0, 0, 0.1);
-		background: -moz-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(145, 145, 145, 0.3)),
-			color-stop(92%, rgba(246, 246, 246, 0)),
-			color-stop(100%, rgba(255, 255, 255, 0))
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -moz-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(246, 246, 246, 0) 92%,
-			rgba(255, 255, 255, 0) 100%
-		);
+
 		background: linear-gradient(
-			top,
+			to top,
 			rgba(145, 145, 145, 0.3) 0%,
 			rgba(246, 246, 246, 0) 92%,
 			rgba(255, 255, 255, 0) 100%
@@ -405,64 +383,9 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 	ul.tabs li a.active {
 		background: rgb(255, 255, 255);
 		background: rgba(255, 255, 255, 0.5);
-		background: -moz-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(145, 145, 145, 0.3)),
-			color-stop(73%, rgba(254, 254, 254, 0.5)),
-			color-stop(74%, rgba(255, 255, 255, 0.5))
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -moz-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(145, 145, 145, 0.3) 0%,
-			rgba(254, 254, 254, 0.5) 73%,
-			rgba(255, 255, 255, 0.5) 74%
-		);
+
 		background: linear-gradient(
-			top,
+			to top,
 			rgba(145, 145, 145, 0.3) 0%,
 			rgba(254, 254, 254, 0.5) 73%,
 			rgba(255, 255, 255, 0.5) 74%
@@ -505,8 +428,6 @@ import angela from '../assets/images/portfolio/angela-jeweller.jpg'
 	img {
 		opacity: 0;
 		zoom: 1;
-		-ms-filter: 'alpha(opacity=0)';
-		*filter: alpha(opacity=0);
 	}
 	[class^='icon-']:before {
 		font-family: 'gregasaurus';

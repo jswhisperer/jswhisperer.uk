@@ -1,6 +1,5 @@
 ---
-heroImage: >-
-  /src/assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_tc5vcx1t4kfoget0917e.png
+heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_tc5vcx1t4kfoget0917e.png'
 category: JavaScript
 description: revisit my first homepage from 2009
 pubDate: 2022-07-01T23:00:00.000Z
@@ -13,20 +12,19 @@ blskyid: 3lfdi6k3guk2v
 ---
 
 import { BlueskyPost } from 'astro-embed'
-import perf from '/src/assets/images/perf scores.png'
 
 I had to the [wayback internet archive](https://web.archive.org/) to find a snapshot from 2009.
 
 I left it as is and check the lighthouse scores I was happily surprised.
 
-<Picture
-	layout='responsive'
-	src={perf}
-	alt="nordvpn'"
-	style='opacity: 1;'
-	decoding='async'
-	formats={['avif', 'webp']}
-/>
+{/_ <Picture
+layout='responsive'
+src={(import'/src/assets/images/perf scores.png')}
+alt="nordvpn'"
+style='opacity: 1;'
+decoding='async'
+formats={['avif', 'webp']}
+/> _/}
 
 A lot of the best practises I preached back in Cape Town 15 years ago are still applicable. Albeit there are new and better ones, but some of the classics still apply!
 

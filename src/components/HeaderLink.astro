@@ -16,5 +16,5 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '')
 	rel='noopener noreferrer '
 	{...props}
 >
-	<slot />
+	<span itemprop='name'><slot /></span>
 </a>

@@ -1,12 +1,15 @@
 ---
 // import { Image, Picture } from 'astro:assets'
-import { Img, Picture, BackgroundPicture } from 'astro-imagetools/components'
+import { Picture, getImage } from 'astro:assets'
 
 import FormattedDate from '@/components/FormattedDate'
 import ArrowUp from '@/components/icons/ArrowUp'
 import { fade, slide } from 'astro:transitions'
 import LinkUnderline from '@/components/LinkUnderline'
 import type { animate } from 'motion'
+import type { ImageMetadata } from 'astro'
+
+const images = await import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*/**')
 
 const {
 	id,
@@ -15,6 +18,54 @@ const {
 	slug,
 	index
 } = Astro.props
+
+const createFile = (blob: any) =>
+	new File([blob], 'image.jpeg', {
+		type: blob.type
+	})
+
+// await fetch(heroImage.src)
+// 	.then(async (res) => (heroImageOBj = await res.blob()))
+// 	//.then(() => (heroImageOBj = createFile(heroImageOBj)))
+// 	.catch((err) => console.log({ err }))
+// console.log({ heroImage, heroImageOBj })
+
+// if (!images[heroImage]) {
+// 	throw new Error(`"${heroImage.src}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`)
+// }\\
+
+let bgImg = await getImage({ src: heroImage, formats: ['webp', 'avif'] })
+console.log({ bgImg })
+
+// let heroResolved
+// const findKey = (obj: { [x: string]: any }, fn: (arg0: any, arg1: string, arg2: any) => unknown) =>
+// 	Object.keys(obj).find((key) => fn(obj[key], key, obj))
+// const findKeys = (obj: { [x: string]: any }, fn: (arg0: any, arg1: string, arg2: any) => unknown) =>
+// 	Object.keys(obj).filter((key) => fn(obj[key], key, obj))
+// const containsKey = (
+// 	obj: Record<string, () => Promise<{ default: ImageMetadata }>>,
+// 	searchString: string
+// ) => {
+// 	return Object.keys(obj).some((key) => key.includes(searchString))
+// }
+// try {
+// 	let url = heroImage.src
+// 		.replace('/@fs/Users/carflow/Sites/astro-dec', '')
+// 		.replace('/_astro', '')
+// 		.split('?')[0]
+// 	console.log({ images, url })
+
+// 	// url = findKeys(images, (img) => {
+// 	// 	console.log('fddfg', img)
+// 	// 	img.includes(url)
+// 	// })
+// 	// console.log('containsKey', containsKey(images, url)) // true
+
+// 	heroResolved = (await images[`${url}`]()).default
+// 	console.log({ heroResolved })
+// } catch (eee) {
+// 	console.log({ eee })
+// }
 ---
 
 <article
@@ -25,16 +76,13 @@ const {
 		<a href={`/post/${slug}/`} aria-label={'read more about' + title}>
 			{
 				heroImage && (
-					<>
-						<div />
-						<img src={heroImage.src || '/public/open-graph.png'} alt='image' />
-					</>
-					// format='webp'
-					// alt={`img of ${title}`}
-					// attributes={{
-					// 	class:
-					// 		'opacity-0 h-full min-w-full object-cover hover:scale-[101%] transition-all duration-200 rounded-[2px]'
-					// }}
+					<Picture
+						src={bgImg.src}
+						alt='image 1'
+						inferSize={true}
+						width={bgImg.options.width}
+						height={bgImg.options.height}
+					/>
 				)
 			}
 

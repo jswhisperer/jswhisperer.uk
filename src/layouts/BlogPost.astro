@@ -26,8 +26,13 @@ type Props = {
 }
 
 const { data, readTime, headings, id, slug, blskyid, body } = Astro.props
-const { title, description, pubDate, heroImage, tags, author, category } = data
+const { title, description, pubDate, heroImage = { src: 'x' }, tags, author, category } = data
 const heroImageSrc = heroImage.src ?? '/public/open-graph.png'
+
+import gregImg from '@/assets/images/greg.jpeg'
+
+const heroImageJPG =
+	'https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz.jpg'
 const authors = await getCollection('author')
 
 const currentAuthor = authors.find((a) => a.slug === author?.id)
@@ -51,8 +56,7 @@ const articleDate = pubDate.toISOString()
 		image: {
 			'@type': 'ImageObject',
 			url: heroImage?.src,
-			width: heroImage?.width,
-			height: heroImage?.height,
+
 			caption: 'a banner image'
 		},
 		author: {
@@ -64,12 +68,7 @@ const articleDate = pubDate.toISOString()
 	})}
 />
 
-<BaseLayout
-	title={title}
-	description={description}
-	image={heroImage || '/public/open-graph.png'}
-	articleDate={articleDate}
->
+<BaseLayout title={title} description={description} image={heroImage} articleDate={articleDate}>
 	<article
 		transition:animate={slide({ duration: '0.5s' })}
 		class='entry h-entry post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
@@ -80,15 +79,7 @@ const articleDate = pubDate.toISOString()
 		<!-- <div itemscope itemtype='https://schema.org/ImageObject'>
 			<img src={heroImage?.src} alt='image' itemprop='url' />
 		</div> -->,
-		<Picture
-			src={heroImage}
-			alt='image'
-			decoding='async'
-			formats={['avif', 'webp']}
-			attributes={{
-				itemprop: 'image'
-			}}
-		/>
+		<Picture src={heroImageJPG} alt='image 2' formats={['avif', 'webp']} inferSize={true} />
 
 		<div itemprop='articleBody'>
 			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
@@ -132,10 +123,10 @@ const articleDate = pubDate.toISOString()
 									))
 								}
 								<Picture
-									width={100}
-									formats={['avif', 'webp']}
+									width={gregImg.width}
+									height={gregImg.height}
 									class='u-photo'
-									src={import('../assets/images/greg.jpeg')}
+									src={gregImg}
 									alt='Gregory Benner'
 									style='display:none;'
 								/>
@@ -156,13 +147,12 @@ const articleDate = pubDate.toISOString()
 						heroImage && (
 							<div itemscope itemtype='https://schema.org/ImageObject'>
 								<Picture
-									itemprop='url'
-									src={heroImage}
+									src={heroImageJPG}
 									class='rounded-md w-full max-h-[250px] border-4 md:border-t-4  md:max-h-[200px] my-8 object-cover border-white-900'
 									alt={`img of ${title}`}
-									decoding='async'
 									loading='eager'
 									formats={['avif', 'webp']}
+									inferSize={true}
 								/>
 								<span itemprop='caption' class='text-center text-sm text-opacity-50'>
 									{title}

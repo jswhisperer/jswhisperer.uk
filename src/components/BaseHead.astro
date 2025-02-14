@@ -10,8 +10,6 @@ const {
 	articleDate = new Date()
 } = Astro.props
 
-import { ImageSupportDetection } from 'astro-imagetools/components'
-
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
@@ -53,7 +51,6 @@ const atomFeed = '/atom.xml'
 		`https://x.com/${username}`
 	].map((social) => <link rel='me' href={social + '/'} />)
 }
-<ImageSupportDetection />
 <!-- Canonical URL -->
 <link rel='canonical' href={canonicalURL.toString()} />
 

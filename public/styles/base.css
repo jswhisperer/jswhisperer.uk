@@ -400,7 +400,7 @@ ul.tabs li a {
 	background: rgba(0, 0, 0, 0.1);
 
 	background: linear-gradient(
-		top,
+		to top,
 		rgba(145, 145, 145, 0.3) 0%,
 		rgba(246, 246, 246, 0) 92%,
 		rgba(255, 255, 255, 0) 100%
@@ -410,7 +410,7 @@ ul.tabs li a.active {
 	background: rgba(255, 255, 255, 0.5);
 
 	background: linear-gradient(
-		top,
+		to top,
 		rgba(145, 145, 145, 0.3) 0%,
 		rgba(254, 254, 254, 0.5) 73%,
 		rgba(255, 255, 255, 0.5) 74%

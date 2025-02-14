@@ -2,7 +2,6 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import AstroPWA from '@vite-pwa/astro'
-import { astroImageTools } from 'astro-imagetools'
 import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
 import { remarkReadingTime } from './src/utils/readTime.ts'
@@ -12,6 +11,16 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
+	// image: {
+	// 	// service: {
+	// 	// 	entrypoint: 'astro/assets/services/squoosh'
+	// 	// },
+	// 	remotePatterns: [
+	// 		{
+	// 			protocol: 'https'
+	// 		}
+	// 	]
+	// },
 	vite: {
 		optimizeDeps: {
 			esbuildOptions: {
@@ -30,11 +39,12 @@ export default defineConfig({
 				// Allow serving files from hoisted root node_modules
 				allow: ['../..']
 			}
-		}
+		},
 		// build: {
-		// 	rollupOptions: {
-		// 		external: ['workbox-window', 'virtual:pwa-register']
-		// 	}
+		// 	emitAssets: true
+		// 	// 	rollupOptions: {
+		// 	// 		external: ['workbox-window', 'virtual:pwa-register']
+		// 	// 	}
 		// }
 	},
 	prefetch: true,
@@ -50,7 +60,7 @@ export default defineConfig({
 	integrations: [
 		// embeds(),
 
-		astroImageTools,
+		// astroImageTools,
 		AstroPWA({
 			srcDir: 'src',
 			base: '/',
