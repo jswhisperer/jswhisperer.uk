@@ -40,6 +40,7 @@
 		"@astrojs/partytown": "^2.1.3",
 		"@astrojs/prism": "^3.2.0",
 		"@astrojs/rss": "4.0.1",
+		"@tailwindcss/postcss": "^4.0.6",
 		"astro": "5.1.3",
 		"astro-analytics": "^2.7.0",
 		"astro-capo": "^0.0.1",
