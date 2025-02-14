@@ -24,7 +24,7 @@
 
 .glass {
   transition: all 0.3s ease-in-out;
-  opacity: .65;
+  opacity: .75;
 	background: rgba(57, 56, 56, 0.52);
 	backdrop-filter: blur(13px) saturate(150%);
 	-webkit-backdrop-filter: blur(13px) saturate(150%);
