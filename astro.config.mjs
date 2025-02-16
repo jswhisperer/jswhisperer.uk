@@ -110,7 +110,7 @@ export default defineConfig({
 				navigateFallbackAllowlist: [/^\//]
 			},
 			experimental: {
-				responsiveImages: true,
+				// responsiveImages: true,
 				directoryAndTrailingSlashHandler: true,
 				assets: true
 			}
