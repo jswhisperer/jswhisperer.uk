@@ -8,7 +8,6 @@ import gregImg from '../assets/images/greg.jpeg'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
 const posts = allPosts.slice(0, MAX_POSTS)
-console.log({ gregImg })
 ---
 
 <BaseLayout title='Blog'>
@@ -22,9 +21,10 @@ console.log({ gregImg })
 			width={gregImg.width}
 			height={gregImg.height}
 			inferSize={true}
-			src={gregImg}
+			src={gregImg.src}
 			alt='Gregory Benner'
 			layout='responsive'
+			loading={'eager'}
 		/>
 		<a class='p-org h-card' href='https://jswhisperer.uk/'>jswhisperer</a>
 	</div>
