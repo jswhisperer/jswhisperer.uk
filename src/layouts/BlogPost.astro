@@ -79,7 +79,13 @@ const articleDate = pubDate.toISOString()
 		<!-- <div itemscope itemtype='https://schema.org/ImageObject'>
 			<img src={heroImage?.src} alt='image' itemprop='url' />
 		</div> -->,
-		<Picture src={heroImageJPG} alt='image 2' formats={['avif', 'webp']} inferSize={true} />
+		<Picture
+			src={heroImageJPG}
+			alt='image 2'
+			formats={['avif', 'webp']}
+			inferSize={true}
+			loading='eager'
+		/>
 
 		<div itemprop='articleBody'>
 			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
