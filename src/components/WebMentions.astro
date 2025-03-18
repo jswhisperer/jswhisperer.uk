@@ -44,9 +44,9 @@ const showDate = (webmention: string) =>
 			<span itemprop='commentCount'>{webmentions.length}</span>
 			<section aria-label='Webmentions'>
 				<h2 id='webmentions'>Webmentions</h2>
-				<ul>
+				<ul itemscope itemtype='http://schema.org/UserComments'>
 					{webmentions.map((webmention: WebmentionProps) => (
-						<li style='align-items: center;' itemscope itemtype='http://schema.org/UserComments'>
+						<li style='align-items: center;'>
 							<small>
 								<time itemprop='commentTime' datetime={webmention['wm-received']}>
 									{showDate(webmention['wm-received'])}
