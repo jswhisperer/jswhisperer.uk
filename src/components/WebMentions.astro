@@ -48,6 +48,12 @@ const showDate = (webmention: string) =>
 				itemscope
 			>
 				<h2 id='webmentions'>Webmentions</h2>
+				<div itemprop='mainEntity' itemtype='https://schema.org/Person' itemscope class='hidden'>
+					<h1 itemprop='name'>Greg</h1>
+
+					<p itemprop='url'>http://blah.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz</p>
+				</div>
+				<meta itemprop='datePublished' content='2009-05-08' />{' '}
 				<ul>
 					{webmentions.map((webmention: WebmentionProps) => (
 						<li style='align-items: center;' itemscope itemtype='http://schema.org/Comment'>
