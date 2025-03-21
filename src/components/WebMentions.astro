@@ -53,12 +53,12 @@ const showDate = (webmention: string) =>
 
 					<p itemprop='url'>http://blah.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz</p>
 				</div>
-				<meta itemprop='datePublished' content='2009-05-08' />{' '}
+				<div itemprop='datePublished' content='2009-05-08' />
 				<ul>
 					{webmentions.map((webmention: WebmentionProps) => (
 						<li style='align-items: center;' itemscope itemtype='http://schema.org/Comment'>
 							<small>
-								<time itemprop='commentTime' datetime={webmention['wm-received']}>
+								<time itemprop='datePublushed' datetime={webmention['wm-received']}>
 									{showDate(webmention['wm-received'])}
 								</time>
 							</small>
@@ -88,7 +88,7 @@ const showDate = (webmention: string) =>
 							<div class='information'>
 								{/* {webmention['wm-property']} */}
 								{webmention['wm-property'] === 'like-of' && (
-									<div class='flexx' itemprop='commentText'>
+									<div class='flexx' itemprop='text'>
 										Liked on:
 										<time datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
@@ -104,13 +104,13 @@ const showDate = (webmention: string) =>
 											</time>
 										</p>
 										<blockquote
-											itemprop='commentText'
+											itemprop='text'
 											set:html={sanitizeHTML(webmention['content']['text'])}
 										/>
 									</div>
 								) : null}
 								{webmention['wm-property'] === 'repost-of' ? (
-									<p itemprop='commentText'>
+									<p itemprop='text'>
 										Reposted on{' '}
 										<time datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
@@ -118,7 +118,7 @@ const showDate = (webmention: string) =>
 									</p>
 								) : null}
 								{webmention['wm-property'] === 'mention-of' ? (
-									<p itemprop='commentText'>
+									<p itemprop='text'>
 										mentioned on{' '}
 										<time datetime={webmention['wm-received']}>
 											{showDate(webmention['wm-received'])}
