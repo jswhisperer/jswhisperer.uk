@@ -3,6 +3,9 @@ import { Image, Picture } from 'astro:assets'
 
 import authorphoto from '@/assets/images/greg.jpeg'
 import sanitizeHTML from 'sanitize-html'
+
+const theUrl = Astro.url
+
 const sanitize = (entry: { content: any }) => {
 	const { content } = entry
 	//if (content['content-type'] === 'text/html') {
@@ -47,7 +50,7 @@ const showDate = (webmention: string) =>
 				itemtype='https://schema.org/DiscussionForumPosting'
 				itemscope
 			>
-				<meta itemprop='mainEntityOfPage' content={window.location.href} />
+				<meta itemprop='mainEntityOfPage' content={theUrl} />
 				<time itemprop='datePublushed' datetime='2025-01-24T10:15:16Z' data-astro-cid-qesbhxo5>
 					January 24, 2025
 				</time>
