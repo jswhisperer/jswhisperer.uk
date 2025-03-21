@@ -51,7 +51,7 @@ const showDate = (webmention: string) =>
 				itemscope
 			>
 				<meta itemprop='mainEntityOfPage' content={theUrl} />
-				<time itemprop='datePublushed' datetime='2025-01-24T10:15:16Z' data-astro-cid-qesbhxo5>
+				<time itemprop='datePublished' datetime='2025-01-24T10:15:16Z' data-astro-cid-qesbhxo5>
 					January 24, 2025
 				</time>
 				<h2 id='webmentions'>Webmentions</h2>
@@ -80,7 +80,7 @@ const showDate = (webmention: string) =>
 						<li style='align-items: center;' itemscope itemtype='http://schema.org/Comment'>
 							<small>
 								<time
-									itemprop='datePublushed'
+									itemprop='datePublished'
 									content={webmention['wm-received']}
 									datetime={webmention['wm-received']}
 								>
