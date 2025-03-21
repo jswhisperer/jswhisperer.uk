@@ -58,11 +58,6 @@ const showDate = (webmention: string) =>
 								itemtype='https://schema.org/Person'
 								class='avatar-and-author author u-author h-card'
 							>
-								{/* <small>
-								<time itemprop='datePublished' datetime={webmention['wm-received']}>
-									{showDate(webmention['wm-received'])}
-								</time>
-							</small> */}
 								<div itemprop='name'>{webmention.author.name || 'greg'}</div>
 								<a
 									itemprop='url'
