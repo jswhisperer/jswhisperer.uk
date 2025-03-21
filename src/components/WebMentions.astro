@@ -51,16 +51,35 @@ const showDate = (webmention: string) =>
 					January 24, 2025
 				</time>
 				<h2 id='webmentions'>Webmentions</h2>
-				<div itemprop='mainEntity' itemtype='https://schema.org/Person' itemscope class='hidden'>
-					<h1 itemprop='name'>Greg</h1>
-
-					<p itemprop='url'>http://blah.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz</p>
+				<span itemprop='text'>lorem ipsum</span>
+				<div
+					itemprop='author'
+					itemscope
+					itemtype='https://schema.org/Person'
+					class='avatar-and-author author u-author h-card'
+				>
+					<div itemprop='name'>{webmention.author.name || 'greg'}</div>
+					<a itemprop='url' href='https://jswhisperer.uk/author/greg' aria-label='author url'>
+						{/* {webmention?.author?.photo && (
+										<Picture
+											alt={webmention.author.name}
+											width={authorphoto.width}
+											height={authorphoto.height}
+											src={authorphoto.src}
+											fit='cover'
+										/>
+									)} */}
+					</a>
 				</div>
 				<ul>
 					{webmentions.map((webmention: WebmentionProps) => (
 						<li style='align-items: center;' itemscope itemtype='http://schema.org/Comment'>
 							<small>
-								<time itemprop='datePublushed' datetime={webmention['wm-received']}>
+								<time
+									itemprop='datePublushed'
+									content={webmention['wm-received']}
+									datetime={webmention['wm-received']}
+								>
 									{showDate(webmention['wm-received'])}
 								</time>
 							</small>
