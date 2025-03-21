@@ -42,7 +42,11 @@ const showDate = (webmention: string) =>
 	webmentions.length ? (
 		<>
 			<span itemprop='commentCount'>{webmentions.length}</span>
-			<section aria-label='Webmentions'>
+			<section
+				aria-label='Webmentions'
+				itemtype='https://schema.org/DiscussionForumPosting'
+				itemscope
+			>
 				<h2 id='webmentions'>Webmentions</h2>
 				<ul>
 					{webmentions.map((webmention: WebmentionProps) => (
