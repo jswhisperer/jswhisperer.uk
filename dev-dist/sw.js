@@ -71,5 +71,5 @@ define(['./workbox-627753d5'], function (workbox) {
 
 	self.skipWaiting()
 	workbox.clientsClaim()
-	workbox.registerRoute(/\.(?:png|jpg|jpeg|svg|html|js)$/, new workbox.CacheFirst(), 'GET')
+	workbox.registerRoute(/\.(?:png|jpg|jpeg|svg|html|js|json)$/, new workbox.CacheFirst(), 'GET')
 })

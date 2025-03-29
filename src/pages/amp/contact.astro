@@ -1,0 +1,249 @@
+---
+import AmpLayout from '@/layouts/AmpLayout'
+---
+
+<AmpLayout title='Contact'>
+	<div class='card'>
+		<div class='insidecolumn'>
+			<a href='#top' aria-label='scroll to the top' class='top tothetop small-mobile-hide'>
+				<span aria-hidden='true' class='icon-arrow-up'></span>
+			</a>
+			<h2>
+				Contact
+				<span aria-hidden='true' class='icon-really-old-telephone'></span>
+			</h2>
+			<p>
+				Want to say hi, Need a quote?<br />
+				Let's be friends.
+			</p>
+			<ul class='left alpha'>
+				<li>
+					<a href='mailto:hello@jswhisperer.uk'
+						><span aria-hidden='true' class='icon-mail'> </span>Email</a
+					>
+				</li>
+				<li>
+					<a href='https://twitter.com/jswhisperer'
+						><span aria-hidden='true' class='icon-twitter'></span>
+						Twitter</a
+					>
+				</li>
+
+				<li>
+					<a href='https://github.com/jswhisperer'
+						><span aria-hidden='true' class='icon-github'></span>
+						Github</a
+					>
+				</li>
+			</ul>
+			<ul class='right omega'>
+				<li>
+					<a href='https://www.linkedin.com/in/jswhisperer/'
+						><span aria-hidden='true' class='icon-linkedin'></span>
+						LinkedIn</a
+					>
+				</li>
+				<!-- <li>
+				<a href='https://www.facebook.com/pages/Gregory-Nathan-Benner/22949374395'
+					><span aria-hidden='true' class='icon-facebook'></span>
+					 Facebook</a
+				>
+			</li> -->
+			</ul>
+			<br class='clear' />
+		</div>
+	</div>
+</AmpLayout>
+
+<style>
+	div,
+	span,
+	h2,
+	p,
+	a,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	ul {
+		list-style: none;
+	}
+	h2 {
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 10px;
+	}
+	p {
+		margin: 0 0 20px 0;
+	}
+	a,
+	a:visited {
+		color: #444;
+		text-decoration: none;
+		outline: 0;
+	}
+	a:hover,
+	a:focus {
+		color: #555;
+	}
+	ul {
+		margin-bottom: 20px;
+	}
+	ul {
+		list-style: none outside;
+	}
+	li {
+		line-height: 1.5em;
+	}
+	.alpha {
+		margin-left: 0 !important;
+	}
+	.omega {
+		margin-right: 0 !important;
+	}
+	.clear {
+		clear: both;
+		display: block;
+		overflow: hidden;
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+	[class^='icon-']:before {
+		font-family: 'gregasaurus';
+		font-style: normal;
+		speak: none;
+	}
+	.icon-really-old-telephone:before {
+		content: '\0026';
+	}
+	.icon-arrow-up:before {
+		content: '\0043';
+	}
+	.icon-google-plus:before {
+		content: '\0045';
+	}
+	.icon-facebook:before {
+		content: '\0046';
+	}
+	.icon-twitter:before {
+		content: '\0047';
+	}
+	.icon-forrst:before {
+		content: '\004a';
+	}
+	.icon-github:before {
+		content: '\004b';
+	}
+	.icon-linkedin:before {
+		content: '\0050';
+	}
+	.icon-mail:before {
+		content: '\0062';
+	}
+	p {
+		letter-spacing: 1px;
+		text-align: justify;
+	}
+	h2 {
+		font-family: 'MuncieRegular';
+		color: #847e70;
+	}
+	h2 {
+		font-size: 45px;
+		margin-bottom: 25px;
+		margin-top: 20px;
+	}
+	* {
+		position: relative;
+	}
+	.container .insidecolumn {
+		border: solid 1px #ccc;
+		-webkit-border-radius: 10px 2px 10px 2px;
+		-moz-border-radius: 10px 2px 10px 2px;
+		border-radius: 10px 2px 10px 2px;
+		background: rgb(255, 255, 255);
+		background: rgba(255, 255, 255, 0.2);
+		padding: 10px 15px;
+		-webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+	.tothetop {
+		z-index: 2;
+		right: 10px;
+		top: 5px;
+		position: absolute;
+		color: #847e70;
+		opacity: 0.1;
+		zoom: 1;
+	}
+	.tothetop:hover {
+		color: #847e70;
+		opacity: 0.9;
+		zoom: 1;
+	}
+	.left {
+		float: left;
+	}
+	.right {
+		float: right;
+	}
+	.left,
+	.right {
+		width: 50%;
+	}
+	ul.left li,
+	ul.right li {
+		line-height: 30px;
+	}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		p {
+			font-size: 16px;
+			line-height: 26px;
+		}
+	}
+	@media only screen and (max-width: 479px) {
+		p {
+			font-size: 14px;
+			line-height: 23px;
+		}
+		.container .insidecolumn {
+			padding-top: 10px;
+		}
+	}
+	/*! CSS Used fontfaces */
+	/* @font-face {
+		font-family: 'gregasaurus';
+		src: url('https://gregbenner-classic-2009.netlify.app/fonts/gregasaurus.eot');
+		src:
+			url('https://gregbenner-classic-2009.netlify.app/fonts/gregasaurus.eot#iefix')
+				format('embedded-opentype'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/gregasaurus.svg') format('svg'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/gregasaurus.woff') format('woff'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/gregasaurus.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	} */
+	/* @font-face {
+		font-family: 'MuncieRegular';
+		src: url('https://gregbenner-classic-2009.netlify.app/fonts/muncie-webfont.eot');
+		src:
+			url('https://gregbenner-classic-2009.netlify.app/fonts/muncie-webfont.eot#iefix')
+				format('embedded-opentype'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/muncie-webfont.woff') format('woff'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/muncie-webfont.ttf') format('truetype'),
+			url('https://gregbenner-classic-2009.netlify.app/fonts/muncie-webfont.svg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	} */
+</style>

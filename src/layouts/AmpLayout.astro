@@ -1,0 +1,182 @@
+---
+import BaseHead from '@/components/BaseHead'
+import Footer from '@/components/Footer'
+import NewHeader from '@/components/Header'
+import ProviderAnimations from '@/components/ProviderAnimations'
+import ProviderTheme from '@/components/ProviderTheme'
+import TwSizeIndicator from '@/components/TwSizeIndicator'
+import EditBlog from '@/components/editBlog'
+import { Head } from 'astro-capo'
+
+const {
+	title = 'js whisperer',
+	description = 'Specialist in performance oriented javascript architecture for web, mobile, client and server side. Passionate about realtime web.',
+	image = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png',
+	articleDate = new Date()
+} = Astro.props
+const pageUrl = new URL(Astro.url.pathname, Astro.site) || 'https://jswhisperer.uk'
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: title,
+	url: pageUrl
+}
+---
+
+<html ⚡ lang='en'>
+	<meta charset='utf-8' />
+	<Head>
+		<head>
+			<script async src='https://cdn.ampproject.org/v0.js'></script>
+			<meta name='viewport' content='width=device-width, initial-scale=1' />
+			<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+			<ProviderTheme />
+			<ProviderAnimations />
+			<style amp-custom>
+				h1 {
+					color: red;
+				}
+			</style>
+			<style amp-boilerplate>
+				body {
+					-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+					-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+					-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+					animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+				}
+				@-webkit-keyframes -amp-start {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+				@-moz-keyframes -amp-start {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+				@-ms-keyframes -amp-start {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+				@-o-keyframes -amp-start {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+				@keyframes -amp-start {
+					from {
+						visibility: hidden;
+					}
+					to {
+						visibility: visible;
+					}
+				}
+			</style><noscript
+				><style amp-boilerplate>
+					body {
+						-webkit-animation: none;
+						-moz-animation: none;
+						-ms-animation: none;
+						animation: none;
+					}
+				</style></noscript
+			>
+		</head>
+	</Head>
+
+	<body id='body' itemscope itemtype='http://schema.org/WebPage'>
+		<!-- <Header /> -->
+		<NewHeader />
+		<main
+			itemprop='mainContentOfPage'
+			class='px-5 mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 overflow-hidden md:overflow-visible main'
+		>
+			<div itemscope itemtype='http://schema.org/ItemList'><slot /></div>
+			<TwSizeIndicator />
+			<EditBlog />
+
+			<Footer />
+			<style>
+				#body,
+				html,
+				body {
+					font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+					font-size: 19px;
+					line-height: 31px;
+				}
+				[data-astro-image] {
+					width: 100%;
+					height: auto;
+					object-fit: var(--fit);
+					object-position: var(--pos);
+					aspect-ratio: var(--w) / var(--h);
+				}
+
+				[data-astro-image='responsive'] {
+					max-width: calc(var(--w) * 1px);
+					max-height: calc(var(--h) * 1px);
+				}
+
+				[data-astro-image='fixed'] {
+					width: calc(var(--w) * 1px);
+					height: calc(var(--h) * 1px);
+				}
+				.tothetop {
+					z-index: 2;
+					right: 10px;
+					top: 5px;
+					position: absolute;
+					color: #847e70;
+					opacity: 0.1;
+				}
+				.tothetop:hover {
+					color: #847e70;
+					opacity: 0.9;
+				}
+				.tothetop {
+					z-index: 2;
+					right: 10px;
+					top: 5px;
+					position: absolute;
+					color: #847e70;
+					opacity: 0.1;
+					zoom: 1;
+				}
+				.tothetop:hover {
+					color: #847e70;
+					opacity: 0.9;
+					zoom: 1;
+				}
+
+				[class^='icon-']:before {
+					font-family: 'gregasaurus';
+					font-style: normal;
+					speak: none;
+				}
+				.icon-cannon:before {
+					content: '\0032';
+				}
+				.icon-arrow-up:before {
+					content: '\0043';
+				}
+				.hide {
+					display: none;
+				}
+			</style>
+		</main>
+	</body>
+</html>

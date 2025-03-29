@@ -1,0 +1,38 @@
+---
+import ListCategories from '@/components/ListCategories'
+import ListPosts from '@/components/ListPosts'
+import AmpLayout from '@/layouts/AmpLayout'
+import { Picture } from 'astro:assets'
+import { getCollection } from 'astro:content'
+import gregImg from '../assets/images/greg.jpeg'
+const MAX_POSTS = 1005 // max number of posts to show on the home page
+const allPosts = await getCollection('blog')
+const posts = allPosts.slice(0, MAX_POSTS)
+---
+
+<AmpLayout title='Blog'>
+	<div class='p-author h-card' style='display: none;'>
+		<a rel='author' class='p-name u-url' href=`https://jswhisperer.uk/author/greg`>Gregory Benner</a
+		>
+
+		<Picture
+			formats={['avif', 'webp']}
+			class='u-photo'
+			width={gregImg.width}
+			height={gregImg.height}
+			inferSize={true}
+			src={gregImg.src}
+			alt='Gregory Benner'
+			layout='responsive'
+			loading={'eager'}
+		/>
+		<a class='p-org h-card' href='https://jswhisperer.uk/'>jswhisperer</a>
+	</div>
+	<ListCategories />
+
+	<div class='h-feed'>
+		<h2 class=''>Latest Posts</h2>
+
+		<ListPosts FirstBig={false} posts={posts} />
+	</div>
+</AmpLayout>

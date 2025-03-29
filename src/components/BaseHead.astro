@@ -54,7 +54,7 @@ const atomFeed = '/atom.xml'
 	].map((social) => <link rel='me' href={social + '/'} />)
 }
 <!-- Canonical URL -->
-<link rel='canonical' href={canonicalURL.toString()} />
+<link rel='canonical' href={canonicalURL.toString().replace('/amp', '')} />
 
 {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
 

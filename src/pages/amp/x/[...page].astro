@@ -1,0 +1,46 @@
+---
+import ListCategories from '@/components/ListCategories'
+import ListPosts from '@/components/ListPosts'
+import Pagination from '@/components/Pagination'
+import TitlePage from '@/components/TitlePage'
+import { siteConfig } from '@/data/site.config'
+import AmpLayout from '@/layouts/AmpLayout'
+import { getCategories, getPosts, sluglify, unsluglify } from '@/utils'
+
+export async function getStaticPaths({ paginate }: any) {
+	const categories = await getCategories()
+	const allPosts = await getPosts()
+
+	return categories.flatMap((category = 'JavaScript') => {
+		const unsluglifyNameCategory = unsluglify(category!.toLowerCase())
+		const filteredPosts = allPosts.filter(
+			(post) => post.data?.category?.toLowerCase() === unsluglifyNameCategory
+		)
+
+		return paginate(filteredPosts, {
+			params: {
+				category: sluglify(category?.toLowerCase())
+			},
+			pageSize: siteConfig.paginationSize
+		})
+	})
+}
+const params = Astro.params
+const { page } = Astro.props
+
+let unsluglifyNameCategory = ''
+try {
+	unsluglify(params?.category?.toLowerCase())
+} catch (error) {
+	unsluglifyNameCategory = 'View All'
+}
+const posts = page.data
+---
+
+<AmpLayout title={params.category}>
+	<TitlePage title={unsluglifyNameCategory} />
+	HIIIIII
+	<ListCategories activeCategory={params.category} />
+	<ListPosts posts={posts} />
+	<Pagination page={page} />
+</AmpLayout>
