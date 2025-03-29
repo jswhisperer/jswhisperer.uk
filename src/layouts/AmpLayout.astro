@@ -1,5 +1,5 @@
 ---
-import BaseHead from '@/components/BaseHead'
+import AmpHead from '@/components/AmpHead'
 import Footer from '@/components/Footer'
 import NewHeader from '@/components/Header'
 import ProviderAnimations from '@/components/ProviderAnimations'
@@ -30,7 +30,7 @@ const structuredData = {
 		<head>
 			<script async src='https://cdn.ampproject.org/v0.js'></script>
 			<meta name='viewport' content='width=device-width, initial-scale=1' />
-			<BaseHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+			<AmpHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 			<ProviderTheme />
 			<ProviderAnimations />
 			<style amp-custom>
