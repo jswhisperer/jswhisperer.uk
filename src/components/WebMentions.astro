@@ -51,9 +51,9 @@ const showDate = (webmention: string) =>
 				itemscope
 			>
 				<div
-					itemprop='agentInteractionStatistic'
-					itemtype='https://schema.org/InteractionCounter'
+					itemprop='interactionStatistic'
 					itemscope
+					itemtype='https://schema.org/InteractionCounter'
 				>
 					<span itemprop='userInteractionCount'>{webmentions.length}</span>{' '}
 					<span itemprop='interactionType' content='https://schema.org/LikeAction'>
