@@ -12,6 +12,7 @@ const {
 } = Astro.props
 
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
+const ampURL = new URL('amp/' + Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
 export interface Props {
@@ -34,7 +35,7 @@ const atomFeed = '/atom.xml'
 
 <!-- Global Metadata -->
 <meta name='viewport' content='width=device-width, initial-scale=1' />
-
+<link rel='”amphtml”' href={ampURL} />
 <link rel='icon' href='/favicon.ico' />
 <meta name='generator' content={Astro.generator} />
 <link rel='pingback' href='https://webmention.io/jswhisperer.uk/xmlrpc' />
