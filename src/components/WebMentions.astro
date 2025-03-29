@@ -44,12 +44,22 @@ const showDate = (webmention: string) =>
 {
 	webmentions.length ? (
 		<>
-			<span itemprop='commentCount'>{webmentions.length}</span>
+			{/* <span itemprop='commentCount'>{webmentions.length}</span> */}
 			<section
 				aria-label='Webmentions'
 				itemtype='https://schema.org/DiscussionForumPosting'
 				itemscope
 			>
+				<div
+					itemprop='agentInteractionStatistic'
+					itemtype='https://schema.org/InteractionCounter'
+					itemscope
+				>
+					<span itemprop='userInteractionCount'>{webmentions.length}</span>{' '}
+					<span itemprop='interactionType' content='https://schema.org/LikeAction'>
+						likes
+					</span>
+				</div>
 				<meta itemprop='mainEntityOfPage' content={theUrl} />
 				<meta itemprop='url' content={theUrl} />
 				<time itemprop='datePublished' datetime='2025-01-24T10:15:16Z' data-astro-cid-qesbhxo5>
