@@ -28,8 +28,70 @@ const structuredData = {
 	<AmpHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 
 	<style amp-custom>
-		h1 {
-			color: red;
+		#body,
+		html,
+		body {
+			font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+			font-size: 19px;
+			line-height: 31px;
+		}
+		[data-astro-image] {
+			width: 100%;
+			height: auto;
+			object-fit: var(--fit);
+			object-position: var(--pos);
+			aspect-ratio: var(--w) / var(--h);
+		}
+
+		[data-astro-image='responsive'] {
+			max-width: calc(var(--w) * 1px);
+			max-height: calc(var(--h) * 1px);
+		}
+
+		[data-astro-image='fixed'] {
+			width: calc(var(--w) * 1px);
+			height: calc(var(--h) * 1px);
+		}
+		.tothetop {
+			z-index: 2;
+			right: 10px;
+			top: 5px;
+			position: absolute;
+			color: #847e70;
+			opacity: 0.1;
+		}
+		.tothetop:hover {
+			color: #847e70;
+			opacity: 0.9;
+		}
+		.tothetop {
+			z-index: 2;
+			right: 10px;
+			top: 5px;
+			position: absolute;
+			color: #847e70;
+			opacity: 0.1;
+			zoom: 1;
+		}
+		.tothetop:hover {
+			color: #847e70;
+			opacity: 0.9;
+			zoom: 1;
+		}
+
+		[class^='icon-']:before {
+			font-family: 'gregasaurus';
+			font-style: normal;
+			speak: none;
+		}
+		.icon-cannon:before {
+			content: '\0032';
+		}
+		.icon-arrow-up:before {
+			content: '\0043';
+		}
+		.hide {
+			display: none;
 		}
 	</style>
 	<style is:inline amp-boilerplate>
@@ -93,73 +155,6 @@ const structuredData = {
 			<EditBlog />
 
 			<!-- <Footer /> -->
-			<style>
-				#body,
-				html,
-				body {
-					font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
-					font-size: 19px;
-					line-height: 31px;
-				}
-				[data-astro-image] {
-					width: 100%;
-					height: auto;
-					object-fit: var(--fit);
-					object-position: var(--pos);
-					aspect-ratio: var(--w) / var(--h);
-				}
-
-				[data-astro-image='responsive'] {
-					max-width: calc(var(--w) * 1px);
-					max-height: calc(var(--h) * 1px);
-				}
-
-				[data-astro-image='fixed'] {
-					width: calc(var(--w) * 1px);
-					height: calc(var(--h) * 1px);
-				}
-				.tothetop {
-					z-index: 2;
-					right: 10px;
-					top: 5px;
-					position: absolute;
-					color: #847e70;
-					opacity: 0.1;
-				}
-				.tothetop:hover {
-					color: #847e70;
-					opacity: 0.9;
-				}
-				.tothetop {
-					z-index: 2;
-					right: 10px;
-					top: 5px;
-					position: absolute;
-					color: #847e70;
-					opacity: 0.1;
-					zoom: 1;
-				}
-				.tothetop:hover {
-					color: #847e70;
-					opacity: 0.9;
-					zoom: 1;
-				}
-
-				[class^='icon-']:before {
-					font-family: 'gregasaurus';
-					font-style: normal;
-					speak: none;
-				}
-				.icon-cannon:before {
-					content: '\0032';
-				}
-				.icon-arrow-up:before {
-					content: '\0043';
-				}
-				.hide {
-					display: none;
-				}
-			</style>
 		</main>
 	</body>
 </html>
