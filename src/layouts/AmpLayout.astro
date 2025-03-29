@@ -94,7 +94,7 @@ const structuredData = {
 			display: none;
 		}
 	</style>
-	<style is:inline amp-boilerplate>
+	<style amp-boilerplate=''>
 		body {
 			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
 			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -141,7 +141,16 @@ const structuredData = {
 				visibility: visible;
 			}
 		}
-	</style>
+	</style><noscript
+		><style amp-boilerplate=''>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none;
+			}
+		</style></noscript
+	>
 
 	<body id='body' itemscope itemtype='http://schema.org/WebPage'>
 		<!-- <Header /> -->
