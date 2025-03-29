@@ -2,6 +2,7 @@
 import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
 import { pwaInfo } from 'virtual:pwa-info'
+import { SEO } from 'astro-seo'
 
 const {
 	title = siteConfig.title,
@@ -39,6 +40,7 @@ const atomFeed = '/atom.xml'
 <link rel='pingback' href='https://webmention.io/jswhisperer.uk/xmlrpc' />
 <link rel='webmention' href='https://webmention.io/jswhisperer.uk/webmention' />
 <link rel='preconnect' href='https://api-gateway.umami.dev' />
+<meta name='keywords' content='software development, engineering, javascript, node, vue' />
 
 {
 	[
@@ -59,6 +61,8 @@ const atomFeed = '/atom.xml'
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
+<SEO title={siteTitle} description={description} />
+
 <!-- ViewTransitions  -->
 
 <!-- SEO -->
@@ -66,6 +70,10 @@ const atomFeed = '/atom.xml'
 <meta name='description' content={description} />
 <meta name='author' content={siteConfig.author} />
 <!-- <script type='module' src='/sw.js'></script> -->
+<meta
+	name='googlebot-news'
+	content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+/>
 
 <script>
 	if ('serviceWorker' in navigator) {

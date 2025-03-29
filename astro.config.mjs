@@ -40,12 +40,7 @@ export default defineConfig({
 				allow: ['../..']
 			}
 		},
-		// build: {
-		// 	emitAssets: true
-		// 	// 	rollupOptions: {
-		// 	// 		external: ['workbox-window', 'virtual:pwa-register']
-		// 	// 	}
-		// }
+
 	},
 	prefetch: true,
 	site: siteConfig.site,
@@ -95,7 +90,7 @@ export default defineConfig({
 			workbox: {
 				runtimeCaching: [
 					{
-						urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
+						urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|json)$/,
 						handler: 'CacheFirst'
 					}
 				],
@@ -110,7 +105,7 @@ export default defineConfig({
 				navigateFallbackAllowlist: [/^\//]
 			},
 			experimental: {
-				// responsiveImages: true,
+				responsiveImages: true,
 				directoryAndTrailingSlashHandler: true,
 				assets: true
 			}
