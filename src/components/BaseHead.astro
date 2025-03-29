@@ -12,7 +12,7 @@ const {
 } = Astro.props
 
 const canonicalURL = new URL(Astro?.url?.pathname, Astro.site)
-const ampURL = new URL('amp/' + Astro?.url?.pathname, Astro.site)
+const ampURL = new URL('amp' + Astro?.url?.pathname, Astro.site)
 const socialImageURL = 'https://jswhisperer.uk/assets/images/7b6ld2c3bl65co0l6d5t.png'
 
 export interface Props {
