@@ -1,11 +1,8 @@
 ---
 import AmpHead from '@/components/AmpHead'
-import NewHeader from '@/components/AmpHeader'
-import ProviderAnimations from '@/components/ProviderAnimations'
-import ProviderTheme from '@/components/ProviderTheme'
+import AmpHeader from '@/components/AmpHeader'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
 import EditBlog from '@/components/editBlog'
-import { Head } from 'astro-capo'
 
 const {
 	title = 'js whisperer',
@@ -25,81 +22,78 @@ const structuredData = {
 
 <html ⚡ lang='en'>
 	<meta charset='utf-8' />
-	<Head>
-		<head>
-			<script is:raw async src='https://cdn.ampproject.org/v0.js'></script>
-			<meta name='viewport' content='width=device-width, initial-scale=1' />
-			<AmpHead title={title} description={description} ogImage={image} articleDate={articleDate} />
-			<ProviderTheme />
-			<ProviderAnimations />
-			<style amp-custom>
-				h1 {
-					color: red;
-				}
-			</style>
-			<style amp-boilerplate>
-				body {
-					-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-					-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-					-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-					animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-				}
-				@-webkit-keyframes -amp-start {
-					from {
-						visibility: hidden;
-					}
-					to {
-						visibility: visible;
-					}
-				}
-				@-moz-keyframes -amp-start {
-					from {
-						visibility: hidden;
-					}
-					to {
-						visibility: visible;
-					}
-				}
-				@-ms-keyframes -amp-start {
-					from {
-						visibility: hidden;
-					}
-					to {
-						visibility: visible;
-					}
-				}
-				@-o-keyframes -amp-start {
-					from {
-						visibility: hidden;
-					}
-					to {
-						visibility: visible;
-					}
-				}
-				@keyframes -amp-start {
-					from {
-						visibility: hidden;
-					}
-					to {
-						visibility: visible;
-					}
-				}
-			</style><noscript
-				><style amp-boilerplate>
-					body {
-						-webkit-animation: none;
-						-moz-animation: none;
-						-ms-animation: none;
-						animation: none;
-					}
-				</style></noscript
-			>
-		</head>
-	</Head>
+
+	<script is:raw async src='https://cdn.ampproject.org/v0.js'></script>
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<AmpHead title={title} description={description} ogImage={image} articleDate={articleDate} />
+
+	<style amp-custom>
+		h1 {
+			color: red;
+		}
+	</style>
+	<style amp-boilerplate>
+		body {
+			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			-ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+			animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+		}
+		@-webkit-keyframes -amp-start {
+			from {
+				visibility: hidden;
+			}
+			to {
+				visibility: visible;
+			}
+		}
+		@-moz-keyframes -amp-start {
+			from {
+				visibility: hidden;
+			}
+			to {
+				visibility: visible;
+			}
+		}
+		@-ms-keyframes -amp-start {
+			from {
+				visibility: hidden;
+			}
+			to {
+				visibility: visible;
+			}
+		}
+		@-o-keyframes -amp-start {
+			from {
+				visibility: hidden;
+			}
+			to {
+				visibility: visible;
+			}
+		}
+		@keyframes -amp-start {
+			from {
+				visibility: hidden;
+			}
+			to {
+				visibility: visible;
+			}
+		}
+	</style><noscript
+		><style amp-boilerplate>
+			body {
+				-webkit-animation: none;
+				-moz-animation: none;
+				-ms-animation: none;
+				animation: none;
+			}
+		</style></noscript
+	>
+
 
 	<body id='body' itemscope itemtype='http://schema.org/WebPage'>
 		<!-- <Header /> -->
-		<NewHeader />
+		<AmpHeader />
 		<main
 			itemprop='mainContentOfPage'
 			class='px-5 mx-auto sm:max-w-2xl sm:px-8 lg:px-0 antialiased md:max-w-6xl grid gap-12 overflow-hidden md:overflow-visible main'
@@ -177,5 +171,6 @@ const structuredData = {
 				}
 			</style>
 		</main>
+
 	</body>
 </html>
