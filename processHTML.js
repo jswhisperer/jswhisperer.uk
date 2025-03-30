@@ -25,13 +25,20 @@ await Promise.all(
 	files.map(async (file) => {
 		console.log('Processing file:', file)
 		let html = await fs.readFile(file, 'utf-8')
+		// console.log(html)
 		const $ = cheerio.load(html)
 		const scripts = $('script').get()
-		const styles = $('style').get()
-		styles.map((style) => {
-			if (style.attribs['amp-custom'] === true || style.attribs['amp-boilerplate']) {
+		const styles = $('head').find('style')
+
+		//console.log({styles})
+
+		styles.map((i, style) => {
+			console.log(style)
+			if (style.attribs['amp-custom'] === true || style.attribs['amp-boilerplate'] === true) {
+				console.log({ style })
 				return
 			} else {
+				console.log({ style })
 				$(style).remove()
 			}
 		})
