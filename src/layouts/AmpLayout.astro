@@ -27,7 +27,7 @@ const structuredData = {
 
 	<AmpHead title={title} description={description} ogImage={image} articleDate={articleDate} />
 	<!-- test 1 -->
-	<style amp-custom>
+	<style is:inline amp-custom>
 		#body,
 		html,
 		body {
@@ -95,7 +95,7 @@ const structuredData = {
 		}
 	</style>
 	<!-- test 2 -->
-	<style amp-boilerplate=''>
+	<style is:inline amp-boilerplate=''>
 		body {
 			-webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
 			-moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -143,7 +143,7 @@ const structuredData = {
 			}
 		}
 	</style><noscript
-		><style amp-boilerplate=''>
+		><style is:inline amp-boilerplate=''>
 			body {
 				-webkit-animation: none;
 				-moz-animation: none;
