@@ -56,7 +56,7 @@
 		"html2canvas": "^1.4.1",
 		"jsdom": "^26.0.0",
 		"markdown-it": "^14.1.0",
-		"modern-screenshot": "^4.5.5",
+		"modern-screenshot": "^4.6.0",
 		"sanitize-html": "^2.14.0",
 		"vite": "6.0.6"
 	},
