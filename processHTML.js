@@ -27,6 +27,15 @@ await Promise.all(
 		let html = await fs.readFile(file, 'utf-8')
 		const $ = cheerio.load(html)
 		const scripts = $('script').get()
+		const styles = $('style').get()
+		styles.map((style) => {
+			if (style.attribs['amp-custom'] === true || style.attribs['amp-boilerplate']) {
+				return
+			} else {
+				$(style).remove()
+			}
+		})
+
 		scripts.map((script) =>
 			script.attribs?.src === 'https://cdn.ampproject.org/v0.js'
 				? console.log('yes')
