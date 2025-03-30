@@ -1,6 +1,6 @@
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import tailwind from '@astrojs/tailwind'
+// import tailwind from '@astrojs/tailwind'
 import AstroPWA from '@vite-pwa/astro'
 import { defineConfig } from 'astro/config'
 import { siteConfig } from './src/data/site.config'
@@ -12,6 +12,9 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 // https://astro.build/config
 export default defineConfig({
 	prefetch: false,
+	prefetch: {
+		prefetchAll: false
+	  },
 	// image: {
 	// 	// service: {
 	// 	// 	entrypoint: 'astro/assets/services/squoosh'
@@ -43,7 +46,6 @@ export default defineConfig({
 		},
 
 	},
-	prefetch: false ,
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
@@ -123,7 +125,7 @@ export default defineConfig({
 			drafts: true
 		}),
 		sitemap(),
-		tailwind()
+		// tailwind()
 		// partytown({
 		// 	config: {
 		//     debug: true,
