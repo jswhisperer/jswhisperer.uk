@@ -11,9 +11,7 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
-	prefetch: {
-		defaultStrategy: 'hover'
-	  },
+	prefetch: false,
 	// image: {
 	// 	// service: {
 	// 	// 	entrypoint: 'astro/assets/services/squoosh'
@@ -45,7 +43,7 @@ export default defineConfig({
 		},
 
 	},
-	prefetch: true,
+	prefetch: false ,
 	site: siteConfig.site,
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
