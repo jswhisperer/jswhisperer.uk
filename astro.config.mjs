@@ -11,6 +11,9 @@ import { remarkReadingTime } from './src/utils/readTime.ts'
 
 // https://astro.build/config
 export default defineConfig({
+	prefetch: {
+		defaultStrategy: 'viewport'
+	  },
 	// image: {
 	// 	// service: {
 	// 	// 	entrypoint: 'astro/assets/services/squoosh'
