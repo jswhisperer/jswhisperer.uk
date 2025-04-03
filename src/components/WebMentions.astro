@@ -45,12 +45,13 @@ const showDate = (webmention: string) =>
 	webmentions.length ? (
 		<>
 			{/* <span itemprop='commentCount'>{webmentions.length}</span> */}
-			<div itemscope itemtype='https://schema.org/CreativeWork'>
-				<section
-					aria-label='Webmentions'
-					itemtype='https://schema.org/DiscussionForumPosting'
-					itemscope
-				>
+
+			<section
+				aria-label='Webmentions'
+				itemtype='https://schema.org/DiscussionForumPosting'
+				itemscope
+			>
+				<div itemscope itemtype='https://schema.org/CreativeWork'>
 					<div
 						itemprop='interactionStatistic'
 						itemscope
@@ -174,8 +175,8 @@ const showDate = (webmention: string) =>
 							</li>
 						))}
 					</ul>
-				</section>
-			</div>
+				</div>
+			</section>
 		</>
 	) : null
 }
