@@ -26,21 +26,24 @@ await Promise.all(
 		console.log('Processing file:', file)
 		let html = await fs.readFile(file, 'utf-8')
 		// console.log(html)
-		const $ = cheerio.load(html)
+		const $ = cheerio.load(html, { useHtmlParser2: true })
+		console.log($.text())
 		const scripts = $('script').get()
-		const styles = $('head').find('style')
+		const styles = $('style').html()
+		const xx = $.root().html().find('style').html()
+		const yy = $(xx).find('style').get()
+		// console.log({xx, yy})
+		//console.log({yy})
 
-		//console.log({styles})
-
-		styles.map((i, style) => {
+		xx.map((i, style) => {
 			console.log(style)
-			if (style.attribs['amp-custom'] === true || style.attribs['amp-boilerplate'] === true) {
-				console.log({ style })
-				return
-			} else {
-				console.log({ style })
-				$(style).remove()
-			}
+			// if (style.attribs['amp-custom'] === true || style.attribs['amp-boilerplate'] === true) {
+			// 	console.log({ style })
+			// 	return
+			// } else {
+			// 	console.log({ style })
+			// 	//$(style).remove()
+			// }
 		})
 
 		scripts.map((script) =>
