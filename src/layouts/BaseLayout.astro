@@ -3,7 +3,6 @@ import BaseHead from '@/components/BaseHead'
 import Footer from '@/components/Footer'
 import NewHeader from '@/components/Header'
 // import ProviderAnimations from '@/components/ProviderAnimations'
-import ProviderTheme from '@/components/ProviderTheme'
 import TwSizeIndicator from '@/components/TwSizeIndicator'
 import EditBlog from '@/components/editBlog'
 import { Head } from 'astro-capo'
@@ -47,7 +46,7 @@ const structuredData = {
 			<EditBlog />
 
 			<Footer />
-			<style is:inline>
+			<style>
 				#body,
 				html,
 				body {

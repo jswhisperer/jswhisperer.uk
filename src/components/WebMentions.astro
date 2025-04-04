@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from 'astro:assets'
+import { Picture } from 'astro:assets'
 
 import authorphoto from '@/assets/images/greg.jpeg'
 import sanitizeHTML from 'sanitize-html'
@@ -14,30 +14,32 @@ const sanitize = (entry: { content: { value: string; 'content-type'?: string } }
 	return entry
 }
 
-interface AuthorProps {
-	name: string
-	photo: string
-	url: string
-}
+/**
+ * @typedef {Object} AuthorProps
+ * @property {string} name
+ * @property {string} photo
+ * @property {string} url
+ */
 
-interface WebmentionProps {
-	author: AuthorProps
-	'wm-received': string
-	'wm-property': string
-	content: {
-		text?: string
-		value?: string
-		'content-type'?: string
-	}
-}
+/**
+ * @typedef {Object} WebmentionProps
+ * @property {AuthorProps} author
+ * @property {string} wm-received
+ * @property {string} wm-property
+ * @property {Object} content
+ * @property {string} [content.text]
+ * @property {string} [content.value]
+ * @property {string} [content['content-type']]
+ */
 
-interface Props {
-	webmentions: WebmentionProps[]
-}
+/**
+ * @typedef {Object} Props
+ * @property {WebmentionProps[]} webmentions
+ */
 
 const { webmentions } = Astro.props
 
-const showDate = (webmention: string) =>
+const showDate = (webmention: string | number | Date) =>
 	new Date(webmention).toLocaleDateString(undefined, {
 		day: 'numeric',
 		month: 'long',
@@ -61,7 +63,7 @@ const showDate = (webmention: string) =>
 					itemtype='https://schema.org/InteractionCounter'
 				>
 					<span itemprop='userInteractionCount'>{webmentions.length}</span>{' '}
-					<span itemprop='interactionType' content='https://schema.org/LikeAction'>
+					<span itemprop='interactionType' data-content='https://schema.org/LikeAction'>
 						likes
 					</span>
 				</div>
@@ -95,95 +97,100 @@ const showDate = (webmention: string) =>
 					</a>
 				</div>
 
-				<ul itemscope itemtype='https://schema.org/CreativeWork'>
-					{webmentions.map((webmention: WebmentionProps) => (
-						<li
-							aria-label='Comment'
-							style='align-items: center;'
-							itemscope
-							itemtype='http://schema.org/Comment'
-						>
-							<small>
-								<time
-									itemprop='datePublished'
-									content={webmention['wm-received']}
-									datetime={webmention['wm-received']}
-								>
-									{showDate(webmention['wm-received'])}
-								</time>
-							</small>
-							<div
-								itemprop='author'
+				<ul>
+					{webmentions.map(
+						(webmention: {
+							[x: string]: any
+							author: { name: string | null; url: any; photo: any }
+						}) => (
+							<li
+								aria-label='Comment'
+								style='align-items: center;'
 								itemscope
-								itemtype='https://schema.org/Person'
-								class='avatar-and-author author u-author h-card'
+								itemtype='http://schema.org/Comment'
 							>
-								<div itemprop='name'>{webmention.author.name || 'greg'}</div>
-								<a
-									itemprop='url'
-									href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
-									aria-label='author url'
+								<small>
+									<time
+										itemprop='datePublished'
+										data-content={webmention['wm-received']}
+										datetime={webmention['wm-received']}
+									>
+										{showDate(webmention['wm-received'])}
+									</time>
+								</small>
+								<div
+									itemprop='author'
+									itemscope
+									itemtype='https://schema.org/Person'
+									class='avatar-and-author author u-author h-card'
 								>
-									{webmention?.author?.photo && (
-										<Picture
-											alt={webmention.author.name}
-											width={authorphoto.width}
-											height={authorphoto.height}
-											src={authorphoto.src}
-											fit='cover'
-										/>
+									<div itemprop='name'>{webmention.author.name || 'greg'}</div>
+									<a
+										itemprop='url'
+										href={webmention.author.url || 'https://jswhisperer.uk/author/greg'}
+										aria-label='author url'
+									>
+										{webmention?.author?.photo && (
+											<Picture
+												alt={webmention.author.name}
+												width={authorphoto.width}
+												height={authorphoto.height}
+												src={authorphoto.src}
+												fit='cover'
+											/>
+										)}
+									</a>
+								</div>
+								<div class='information'>
+									{/* {webmention['wm-property']} */}
+									{webmention['wm-property'] === 'like-of' && (
+										<div class='flexx' itemprop='text'>
+											Liked on:
+											<time datetime={webmention['wm-received']}>
+												{showDate(webmention['wm-received'])}
+											</time>
+										</div>
 									)}
-								</a>
-							</div>
-							<div class='information'>
-								{/* {webmention['wm-property']} */}
-								{webmention['wm-property'] === 'like-of' && (
-									<div class='flexx' itemprop='text'>
-										Liked on:
-										<time datetime={webmention['wm-received']}>
-											{showDate(webmention['wm-received'])}
-										</time>
-									</div>
-								)}
-								{webmention['wm-property'] === 'in-reply-to' ? (
-									<div class='flexx r' style='align-items: center;'>
-										<p>
-											replied on:{' '}
+									{webmention['wm-property'] === 'in-reply-to' ? (
+										<div class='flexx r' style='align-items: center;'>
+											<p>
+												replied on:{' '}
+												<time datetime={webmention['wm-received']}>
+													{showDate(webmention['wm-received'])}
+												</time>
+											</p>
+											<blockquote
+												itemprop='text'
+												set:html={sanitizeHTML(webmention['content']['text'])}
+											/>
+										</div>
+									) : null}
+									{webmention['wm-property'] === 'repost-of' ? (
+										<p itemprop='text'>
+											Reposted on{' '}
 											<time datetime={webmention['wm-received']}>
 												{showDate(webmention['wm-received'])}
 											</time>
 										</p>
-										<blockquote
-											itemprop='text'
-											set:html={sanitizeHTML(webmention['content']['text'])}
-										/>
-									</div>
-								) : null}
-								{webmention['wm-property'] === 'repost-of' ? (
-									<p itemprop='text'>
-										Reposted on{' '}
-										<time datetime={webmention['wm-received']}>
-											{showDate(webmention['wm-received'])}
-										</time>
-									</p>
-								) : null}
-								{webmention['wm-property'] === 'mention-of' ? (
-									<p itemprop='text'>
-										mentioned on{' '}
-										<time datetime={webmention['wm-received']}>
-											{showDate(webmention['wm-received'])}
-										</time>
-									</p>
-								) : null}
-							</div>
-						</li>
-					))}
+									) : null}
+									{webmention['wm-property'] === 'mention-of' ? (
+										<p itemprop='text'>
+											mentioned on{' '}
+											<time datetime={webmention['wm-received']}>
+												{showDate(webmention['wm-received'])}
+											</time>
+										</p>
+									) : null}
+								</div>
+							</li>
+						)
+					)}
 				</ul>
 			</section>
 		</>
 	) : null
 }
-<style is:inline>
+<style>
 	.avatar {
 		width: 50px;
 

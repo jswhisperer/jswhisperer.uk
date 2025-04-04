@@ -1,7 +1,7 @@
 ---
-import { siteConfig } from '@/site-config'
 import { ViewTransitions } from 'astro:transitions'
 import { pwaInfo } from 'virtual:pwa-info'
+import { siteConfig } from '@/site-config'
 import { SEO } from 'astro-seo'
 
 const {
@@ -28,8 +28,8 @@ const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 
 const username = 'jswhisperer'
 
-import { AstroFont } from 'astro-font'
 import { join } from 'path'
+import { AstroFont } from 'astro-font'
 const atomFeed = '/atom.xml'
 ---
 
@@ -123,7 +123,7 @@ const atomFeed = '/atom.xml'
 	integrity='sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=='
 	crossorigin='anonymous'></script> -->
 
-<style is:inline>
+<style is:global>
 	@import url('/styles/global.css');
 </style>
 

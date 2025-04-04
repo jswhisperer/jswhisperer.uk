@@ -3,16 +3,16 @@ import ArrowLeft from './icons/ArrowLeft.astro'
 import ArrowRight from './icons/ArrowRight.astro'
 
 type PageProps = {
-	currentPage?: number
-	lastPage?: number
-	url?: {
+	currentPage: number
+	lastPage: number
+	url: {
 		prev: string
 		next: string
 	}
 	start: number
 }
 
-const page: any = Astro.props
+const page = Astro.props as PageProps
 ---
 
 <div class='flex gap-5 md:gap-1 justify-around md:justify-end'>
