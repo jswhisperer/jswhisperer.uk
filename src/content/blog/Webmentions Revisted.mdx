@@ -1,0 +1,90 @@
+---
+heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg'
+category: JavaScript
+description: what do you need for an effective indexable "google-able" site
+pubDate: 2023-01-01T00:00:00.000Z
+tags:
+  - Webmentions
+  - beginners
+  - html
+title: Webmentions Revisted
+author: greg
+---
+
+When writing your blog, many, like myself,f would like comments from our readers. Comments, likes, reposts and similar let the author know what readers think and cultivate great new conversations or provide invaluable feedback and even criticism on which we can learn from and grow.
+
+I first wrote a very light article on the implementation of Webmentions 5 years ago [here](https://dev.to/jswhisperer/you-dont-mention-webmentions-20be).
+
+I'd say, to my knowledge, there haven't been huge strides or adaptation of them in the mainstream web. There does seem to be traction in the FED web.
+
+What is the FED web? from [brid.gy fed](https://fed.brid.gy/docs#web-get-started) and here [fediverse](https://en.wikipedia.org/wiki/Fediverse) and [here on the verge](https://www.theverge.com/24063290/fediverse-explained-activitypub-social-media-open-protocol)
+
+<blockquote>Bridgy Fed is a decentralized social network bridge. It connects the Fediverse, the web, and [bluesky]("https://bsky.app/profile/jswhisperer.bsky.social") . If you're on one of these networks, you can use Bridgy Fed to follow people on other networks, see their posts, and reply, like and repost them. Likewise, they'll be able to see you and your posts, too.
+
+Click here to get started, or read on for more information and setup details.</blockquote>
+
+So last time I wrote about integrating with [Gridsome](https://github.com/gridsome/gridsome) "The Jamstack framework for Vue.js" and a GrapQL solution; I've since moved my blog to [Astro](https://astro.build/)
+
+Astro is pretty cool, but this article isn't about it right now. It is another important Static Site generation tool.
+
+```js
+const webmentionsUrl =
+	'https://webmention.io/api/mentions.jf2?domain=example.uk&token=token'
+const response = await fetch(webmentionsUrl)
+const json = await response.json()
+const webmentions = json.children.filter((mention: { [x: string]: URL[] }) =>
+	mention['wm-target'].includes(pageUrl)
+)
+```
+
+You might then render the results in your framework of choice as below. I've added rich data or [microformats2](https://validator.schema.org/#url=https%3A%2F%2Fjswhisperer.uk%2Fpost%2Fcaddy-2%2F) [Microformat](https://en.wikipedia.org/wiki/Microformat) Microdata[](https://html.spec.whatwg.org/multipage/microdata.html#microdata) covered in my [SEO starter article](https://dev.to/jswhisperer/seo-starter-kit-1n2c)
+
+```html
+<html>
+	<ul>
+		<li itemscope="" itemtype="http://schema.org/UserComments" data-astro-cid-qesbhxo5="">
+			<small>
+				<time itemprop="commentTime" datetime="2025-01-24T10:15:16Z">January 24, 2025</time>
+			</small>
+			<div
+				itemprop="creator"
+				itemscope=""
+				itemtype="https://schema.org/Person"
+				class="u-author h-card"
+			>
+				<div itemprop="name">Gregory</div>
+				<a itemprop="url" href="https://jswhisperer.uk/author/greg" aria-label="author url">
+					<picture>
+						<source srcset="greg.CZmlD_1D.jpeg" type="image/webp" />
+						<img
+							src="greg.CZmlD_1D.jpeg"
+							alt="Gmoney"
+							data-astro-cid-qesbhxo5="true"
+							width="800"
+							height="800"
+							loading="lazy"
+							decoding="async"
+						/>
+					</picture>
+				</a>
+			</div>
+			<div class="information" data-astro-cid-qesbhxo5="">
+				<div>
+					<p>replied on: <time datetime="2025-01-24T10:15:16Z">January 24, 2025</time></p>
+					<blockquote itemprop="commentText">Wicked cool</blockquote>
+				</div>
+			</div>
+		</li>
+	</ul>
+</html>
+```
+
+The last step for me is having my static blog trigger a build for new Webmentions. I'm using Cloudflare Workers, but it's the same process for Github Pages / Workers, Vercel etc.
+
+Take your webmention.io webhook
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ve19f86hcdrbtdv5n5zo.png)
+
+plug it into your static host
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/byx4vvc3kgmbg40q36xa.png)
+
+and Enjoy
