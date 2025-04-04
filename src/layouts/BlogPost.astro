@@ -1,15 +1,15 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import FormattedDate from '@/components/FormattedDate'
-import BaseLayout from '@/layouts/BaseLayout'
-import Tag from '@/components/Tag'
-import type { MarkdownHeading } from 'astro'
 import { Picture } from 'astro:assets'
-import { siteConfig } from '../data/site.config'
+import type { CollectionEntry } from 'astro:content'
 import { getCollection } from 'astro:content'
-import WebMention from '@/components/WebMentions'
-import BlueSky from '@/components/BlueSky'
 import { slide } from 'astro:transitions'
+import BlueSky from '@/components/BlueSky'
+import FormattedDate from '@/components/FormattedDate'
+import Tag from '@/components/Tag'
+import WebMention from '@/components/WebMentions'
+import BaseLayout from '@/layouts/BaseLayout'
+import type { MarkdownHeading } from 'astro'
+import { siteConfig } from '../data/site.config'
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 
 const username = 'jswhisperer'

@@ -48,25 +48,56 @@ const showDate = (webmention: string) =>
 {
 	webmentions.length ? (
 		<>
-			<section aria-label='Webmentions' itemscope itemtype='https://schema.org/ItemList'>
-				<meta itemprop='mainEntityOfPage' content={theUrl} />
-				<meta itemprop='url' content={theUrl} />
+			{/* <span itemprop='commentCount'>{webmentions.length}</span> */}
+
+			<section
+				aria-label='Webmentions'
+				itemtype='https://schema.org/DiscussionForumPosting'
+				itemscope
+			>
 				<div
 					itemprop='interactionStatistic'
 					itemscope
 					itemtype='https://schema.org/InteractionCounter'
 				>
-					<span itemprop='userInteractionCount'>{webmentions.length}</span>
+					<span itemprop='userInteractionCount'>{webmentions.length}</span>{' '}
+					<span itemprop='interactionType' content='https://schema.org/LikeAction'>
+						likes
+					</span>
 				</div>
-				<span itemprop='commentCount'>{webmentions.length}</span>
+				<meta itemprop='mainEntityOfPage' content={theUrl} />
+				<meta itemprop='url' content={theUrl} />
+				<time itemprop='datePublished' datetime='2025-01-24T10:15:16Z' data-astro-cid-qesbhxo5>
+					January 24, 2025
+				</time>
 				<h2 id='webmentions' itemprop='headline'>
 					Webmentions
 				</h2>
+
 				<span itemprop='text'>lorem ipsum</span>
-				<ul itemprop='itemListElement'>
+				<div
+					itemprop='author'
+					itemscope
+					itemtype='https://schema.org/Person'
+					class='avatar-and-author author u-author h-card'
+				>
+					<div itemprop='name'>greg</div>
+					<a itemprop='url' href='https://jswhisperer.uk/author/greg' aria-label='author url'>
+						{/* {webmention?.author?.photo && (
+										<Picture
+											alt={webmention.author.name}
+											width={authorphoto.width}
+											height={authorphoto.height}
+											src={authorphoto.src}
+											fit='cover'
+										/>
+									)} */}
+					</a>
+				</div>
+
+				<ul itemscope itemtype='https://schema.org/CreativeWork'>
 					{webmentions.map((webmention: WebmentionProps) => (
 						<li
-							itemprop='comment'
 							aria-label='Comment'
 							style='align-items: center;'
 							itemscope
