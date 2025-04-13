@@ -9,6 +9,8 @@ type Props = {
 }
 
 const { posts, FirstBig = false } = Astro.props
+const sorted = posts.sort(({ date: date1 }, { date: date2 }) => date1 - date2)
+//console.log({sorted})
 ---
 
 <section
@@ -18,7 +20,7 @@ const { posts, FirstBig = false } = Astro.props
 	)}
 >
 	{
-		posts.map(async (post, index) => {
+		sorted.map(async (post, index) => {
 			const { remarkPluginFrontmatter } = await post.render()
 
 			return (

@@ -7,7 +7,7 @@ import { getCollection } from 'astro:content'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
 const posts = allPosts.slice(0, MAX_POSTS)
-import author from '../assets/images/greg.jpeg'
+import authorImg from '../assets/images/greg.jpeg'
 ---
 
 <BaseLayout title='Blog'>

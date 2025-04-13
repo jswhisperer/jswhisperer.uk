@@ -9,6 +9,9 @@ import authorImg from '../assets/images/greg.jpeg'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
 const posts = allPosts.slice(0, MAX_POSTS)
+const sorted = posts.sort(
+	(post1, post2) => new Date(post2.data.pubDate) - new Date(post1.data.pubDate)
+)
 ---
 
 <BaseLayout title='Home'>
@@ -23,6 +26,6 @@ const posts = allPosts.slice(0, MAX_POSTS)
 
 	<div class='h-feed'>
 		<h2 class=''>Latest Posts</h2>
-		<ListPosts FirstBig={false} posts={posts} />
+		<ListPosts FirstBig={false} posts={sorted} />
 	</div>
 </BaseLayout>
