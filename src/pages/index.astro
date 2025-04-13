@@ -14,9 +14,6 @@ const posts = allPosts
 		({ data: { pubDate: pubDate1 } }, { data: { pubDate: pubDate2 } }) =>
 			new Date(pubDate2) - new Date(pubDate1)
 	)
-// const sorted = posts.sort(
-// 	({data : {pubDate: pubDate1}}, {data : {pubDate: pubDate2}}) => new Date(pubDate2) - new Date(pubDate1)
-// )
 ---
 
 <BaseLayout title='Home'>

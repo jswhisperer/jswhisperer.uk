@@ -6,7 +6,13 @@ import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
-const posts = allPosts.slice(0, MAX_POSTS)
+const posts = allPosts
+	.slice(0, MAX_POSTS)
+	.sort(
+		({ data: { pubDate: pubDate1 } }, { data: { pubDate: pubDate2 } }) =>
+			new Date(pubDate2) - new Date(pubDate1)
+	)
+
 import authorImg from '../assets/images/greg.jpeg'
 ---
 
@@ -19,7 +25,7 @@ import authorImg from '../assets/images/greg.jpeg'
 			formats={['avif', 'webp']}
 			class='u-photo'
 			inferSize={true}
-			src={author}
+			src={authorImg}
 			alt='Gregory Benner'
 			layout='responsive'
 			loading={'eager'}
