@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+	html.dark .shiki,
+	html.dark .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: #1a202c !important; /* equivalent to gray.900 in Tailwind CSS */
+	}
+}
+
+.sixty-five-percent {
+  height: 65%;
+}
+.post-overview-holder {
+  overflow: hidden;
+}
+
+.post-overview-holder:hover .glass {
+        opacity: 1;
+        height: 75%;
+
+}
+
+.glass {
+  transition: all 0.3s ease-in-out;
+  opacity: .85;
+	background: rgb(0, 0, 0);
+	backdrop-filter: blur(13px) saturate(150%);
+  height: 65%;
+
+}
+
+.shadow {
+	box-shadow: -5px 3px 8px 1px rgba(0, 0, 0, 0.12);
+}
+
+.card {
+	div {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	* {
+		position: relative;
+	}
+	.container .insidecolumn {
+		border: solid 1px #ccc;
+		-webkit-border-radius: 10px 2px 10px 2px;
+		-moz-border-radius: 10px 2px 10px 2px;
+		border-radius: 10px 2px 10px 2px;
+		background: rgb(255, 255, 255);
+		background: rgba(255, 255, 255, 0.2);
+		padding: 10px 15px;
+		-webkit-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		-moz-box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+	@media only screen and (max-width: 479px) {
+		.container .insidecolumn {
+			padding-top: 10px;
+		}
+	}
+}
+.card {
+	border: solid 1px #ccc;
+	border-radius: 10px;
+	background: rgb(255, 255, 255);
+	background: rgba(255, 255, 255, 0.2);
+	padding: 10px 15px;
+	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
+}
+
+.main-content-shadow {
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid #f8f7f5;
+	background: linear-gradient(180deg, rgba(165, 157, 139, 0.3) 0%, rgba(165, 157, 139, 0) 100%);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.card code {
+	text-shadow: none;
+}
+@import './prism.css';
+
+#body, html, body {
+    font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+    font-size: 19px;
+    line-height: 31px;
+    color: #444;
+}
+
+
+html {
+	font-family: 'Goudy Bookletter 1911', Georgia, Times, serif !important;
+
+}
+
+
+body {
+  min-height: calc(100vh + 200px);
+  padding-bottom: 200px;
+}
+main {
+  margin-top: 150px;
+  padding-bottom: 300px;
+  @media screen and (min-width: 768px) {
+  margin-top: 150px
+}
+}
+h2 {
+      color: #847e70;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		text-shadow: 1px 1px 5px #fff;
+	}
+	h2 {
+		font-weight: normal;
+	}
+	h2 {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 10px;
+	}
+	[class^='icon-']:before {
+		font-family: 'gregasaurus';
+		font-style: normal;
+		speak: none;
+	}
+	.icon-tux:before {
+		content: '\005b';
+	}
+	h2 {
+		font-family: 'MuncieRegular';
+		color: #847e70;
+	}
+	h2 {
+		font-size: 45px;
+		margin-bottom: 25px;
+		margin-top: 20px;
+	}
+
+  /*! CSS Used from: https://gregbenner-classic-2009.netlify.app/stylesheets/mini.min.crush.css */
+p{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;text-shadow:1px 1px 5px #FFF;}
+p{margin:0 0 20px 0;}
+p{letter-spacing:1px;text-align:justify;}
+*{position:relative;}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+p{font-size:16px;line-height:26px;}
+}
+@media only screen and (max-width: 479px){
+p{font-size:14px;line-height:23px;}
+}

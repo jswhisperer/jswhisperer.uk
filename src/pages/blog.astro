@@ -4,10 +4,10 @@ import ListPosts from '@/components/ListPosts'
 import BaseLayout from '@/layouts/BaseLayout'
 import { Picture } from 'astro:assets'
 import { getCollection } from 'astro:content'
-import gregImg from '../assets/images/greg.jpeg'
 const MAX_POSTS = 1005 // max number of posts to show on the home page
 const allPosts = await getCollection('blog')
 const posts = allPosts.slice(0, MAX_POSTS)
+import author from '../assets/images/greg.jpeg'
 ---
 
 <BaseLayout title='Blog'>
@@ -18,10 +18,8 @@ const posts = allPosts.slice(0, MAX_POSTS)
 		<Picture
 			formats={['avif', 'webp']}
 			class='u-photo'
-			width={gregImg.width}
-			height={gregImg.height}
 			inferSize={true}
-			src={gregImg}
+			src={author}
 			alt='Gregory Benner'
 			layout='responsive'
 			loading={'eager'}

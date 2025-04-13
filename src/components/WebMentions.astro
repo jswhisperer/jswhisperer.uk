@@ -1,10 +1,11 @@
 ---
 import { Picture } from 'astro:assets'
 
-import authorphoto from '@/assets/images/greg.jpeg'
 import sanitizeHTML from 'sanitize-html'
 
 const theUrl = Astro.url
+
+import authorImg from '../assets/images/greg.jpeg'
 
 const sanitize = (entry: { content: { value: string; 'content-type'?: string } }) => {
 	const { content } = entry
@@ -131,13 +132,7 @@ const showDate = (webmention: string | number | Date) =>
 										aria-label='author url'
 									>
 										{webmention?.author?.photo && (
-											<Picture
-												alt={webmention.author.name}
-												width={authorphoto.width}
-												height={authorphoto.height}
-												src={authorphoto.src}
-												fit='cover'
-											/>
+											<Picture alt={webmention.author.name} src={authorImg} fit='cover' />
 										)}
 									</a>
 								</div>
