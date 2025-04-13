@@ -43,7 +43,7 @@
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
-		text-shadow: 1px 1px 5px #fff;
+		/* text-shadow: 1px 1px 5px #fff; */
 	}
 	* {
 		position: relative;
@@ -87,6 +87,10 @@
 	top: 0;
 	left: 0;
 }
+
+* {
+	text-shadow: none!important;
+}
 .card code {
 	text-shadow: none;
 }
@@ -125,7 +129,7 @@ h2 {
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
-		text-shadow: 1px 1px 5px #fff;
+		/* text-shadow: 1px 1px 5px #fff; */
 	}
 	h2 {
 		font-weight: normal;
