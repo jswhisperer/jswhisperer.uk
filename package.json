@@ -63,7 +63,7 @@
 	"devDependencies": {
 		"@ampproject/toolbox-optimizer": "^2.10.1",
 		"@astrojs/mdx": "4.0.3",
-		"@astrojs/sitemap": "3.0.4",
+		"@astrojs/sitemap": "3.3.0",
 		"@astrojs/tailwind": "6.0.0",
 		"@pagefind/default-ui": "^1.0.4",
 		"@tailwindcss/typography": "0.5.10",
