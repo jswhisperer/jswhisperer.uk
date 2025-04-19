@@ -12,7 +12,6 @@ author: greg
 ---
 
 import { Picture } from "astro:assets";
-import pwaBuilderLogo from "../../assets/images/uploads/pwa-builder-logo.svg";
 import pwaBuilderScreenshot from "../../assets/images/uploads/pwa-builder-screenshot.png";
 import pwaBuilderScreenshot2 from "../../assets/images/uploads/pwa-builder-screenshot2.png";
 
@@ -20,14 +19,7 @@ In my last [post](/post/web-view-apps-on-your-os/) I explored a few ideas for us
 
 So let's explore an interesting tool I found that might be the right solution for your use case.
 
-<Picture
-  formats={["avif", "webp"]}
-  src={pwaBuilderLogo}
-  alt="PWA Builder logo"
-  width={200}
-  height={50}
-/>
-
+![pwa builder](https://www.pwabuilder.com/_nuxt/img/new-logo.39c5508.svg) is a tool that will take any url and create a PWA for you.
 From what I gather is using a somewhat similar approach, using native code like swift on macos to power a view on the os. It's pretty nifty that you can go to the site enter any url and poof you get a PWA for desktop or android.
 
 Well not exactly, you will get varying mileage from the url you enter depending on how well it's setup as a PWA. something like mobile.twitter.com will work very well, where other sites will need some help. I won't cover too much of setting up a PWA in this post but something like this [https://tomitm.github.io/appmanifest/](https://tomitm.github.io/appmanifest/) will get you most of the way; plus serving your site over https and having a [service worker.](https://developers.google.com/web/tools/workbox)
