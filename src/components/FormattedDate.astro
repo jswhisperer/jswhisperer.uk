@@ -1,19 +1,22 @@
 ---
 export interface Props {
-	date: Date
+  date: Date;
 }
 
-const { date } = Astro.props
-const [fdate, ftime] = date.toISOString().substring(0, 19).split('T')
-const date_format_str = `${fdate} ${ftime}`
+const { date } = Astro.props;
+const [fdate, ftime] = date.toISOString().substring(0, 19).split("T");
+const date_format_str = `${fdate} ${ftime}`;
 ---
 
-<time class='dt-published text-sm font-bold text-opacity-60' datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric'
-		})
-	}
+<time
+  class="dt-published text-sm font-bold text-opacity-60"
+  datetime={date.toISOString()}
+>
+  {
+    date.toLocaleDateString("en-us", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  }
 </time>

@@ -1,35 +1,35 @@
 {
-	"extends": "astro/tsconfigs/strict",
-	"compilerOptions": {
-		"strictNullChecks": true,
-		"baseUrl": ".",
-		"verbatimModuleSyntax": true,
-		"paths": {
-			"@/components/*": ["src/components/*.astro"],
-			"@/layouts/*": ["src/layouts/*.astro"],
-			"@/utils": ["src/utils/index.ts"],
-			"@/data/*": ["src/data/*"],
-			"@/site-config": ["src/data/site.config.ts"],
-			"@/styles": ["src/styles/"],
-			"@/assets/*": ["src/assets/*"],
-			"@/*": ["./src/*"]
-		},
-		"types": [
-			"astro/client",
-			"vite-plugin-pwa/client",
-			"vite-plugin-pwa/vanillajs.d.ts",
-			"vite-plugin-pwa/info.d.ts",
-			"vite-plugin-pwa/client.d.ts"
-		]
-	},
-	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.astro",
-		"src/env.d.ts",
-		"vite-plugin-pwa/client",
-		"vite-plugin-pwa/vanillajs",
-		"vite-plugin-pwa/info"
-	]
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/components/*": ["src/components/*.astro"],
+      "@/layouts/*": ["src/layouts/*.astro"],
+      "@/utils": ["src/utils/index.ts"],
+      "@/data/*": ["src/data/*"],
+      "@/site-config": ["src/data/site.config.ts"],
+      "@/styles": ["src/styles/"],
+      "@/assets/*": ["src/assets/*"],
+      "@/*": ["./src/*"]
+    },
+    "types": [
+      "astro/client",
+      "vite-plugin-pwa/client",
+      "vite-plugin-pwa/vanillajs.d.ts",
+      "vite-plugin-pwa/info.d.ts",
+      "vite-plugin-pwa/client.d.ts"
+    ]
+  },
+  "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro",
+    "src/env.d.ts",
+    "vite-plugin-pwa/client",
+    "vite-plugin-pwa/vanillajs",
+    "vite-plugin-pwa/info"
+  ]
 }

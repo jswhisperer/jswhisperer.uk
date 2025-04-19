@@ -1,28 +1,30 @@
 ---
 // import { Image, Picture } from 'astro:assets'
-import { Picture, getImage } from 'astro:assets'
+import { Picture, getImage } from "astro:assets";
 
-import FormattedDate from '@/components/FormattedDate'
-import ArrowUp from '@/components/icons/ArrowUp'
-import { fade, slide } from 'astro:transitions'
-import LinkUnderline from '@/components/LinkUnderline'
-import type { animate } from 'motion'
-import type { ImageMetadata } from 'astro'
+import FormattedDate from "@/components/FormattedDate";
+import ArrowUp from "@/components/icons/ArrowUp";
+import { fade, slide } from "astro:transitions";
+import LinkUnderline from "@/components/LinkUnderline";
+import type { animate } from "motion";
+import type { ImageMetadata } from "astro";
 
-const images = await import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*/**')
+const images = await import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*/**",
+);
 
 const {
-	id,
-	data: { title, description, pubDate, heroImage, category },
-	readTime,
-	slug,
-	index
-} = Astro.props
+  id,
+  data: { title, description, pubDate, heroImage, category },
+  readTime,
+  slug,
+  index,
+} = Astro.props;
 
 const createFile = (blob: any) =>
-	new File([blob], 'image.jpeg', {
-		type: blob.type
-	})
+  new File([blob], "image.jpeg", {
+    type: blob.type,
+  });
 
 // await fetch(heroImage.src)
 // 	.then(async (res) => (heroImageOBj = await res.blob()))
@@ -34,7 +36,7 @@ const createFile = (blob: any) =>
 // 	throw new Error(`"${heroImage.src}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`)
 // }\\
 
-let bgImg = await getImage({ src: heroImage, formats: ['webp', 'avif'] })
+let bgImg = await getImage({ src: heroImage, formats: ["webp", "avif"] });
 
 // let heroResolved
 // const findKey = (obj: { [x: string]: any }, fn: (arg0: any, arg1: string, arg2: any) => unknown) =>
@@ -68,105 +70,110 @@ let bgImg = await getImage({ src: heroImage, formats: ['webp', 'avif'] })
 ---
 
 <article
-	transition:animate={slide({ duration: '0.5s' })}
-	class='h-entry grid grid-rows-[300px_auto] md:grid-rows-[300px_220px] min-h-full group my-10'
+  transition:animate={slide({ duration: "0.5s" })}
+  class="h-entry grid grid-rows-[300px_auto] md:grid-rows-[300px_220px] min-h-full group my-10"
 >
-	<div class='post-overview-holder relative'>
-		<a href={`/post/${slug}/`} aria-label={'read more about' + title}>
-			{
-				heroImage && (
-					<div
-						class='heroImgBg'
-						style={`width=${bgImg.options.width};height=${bgImg.options.height};background-image: url(${bgImg.src});`}
-					/>
-					// <Picture
-					// 	src={bgImg.src}
-					// 	alt='image 1'
-					// 	inferSize={true}
-					// 	width={bgImg.options.width}
-					// 	height={bgImg.options.height}
-					// />
-				)
-			}
+  <div class="post-overview-holder relative">
+    <a href={`/post/${slug}/`} aria-label={"read more about" + title}>
+      {
+        heroImage && (
+          <div
+            class="heroImgBg"
+            style={`width=${bgImg.options.width};height=${bgImg.options.height};background-image: url(${bgImg.src});`}
+          />
+          // <Picture
+          // 	src={bgImg.src}
+          // 	alt='image 1'
+          // 	inferSize={true}
+          // 	width={bgImg.options.width}
+          // 	height={bgImg.options.height}
+          // />
+        )
+      }
 
-			<div class='z-30 absolute bottom-0 w-full sixty-five-percent'>
-				<div class='-z-10 absolute bottom-0 glass w-full'>
-					<div class='flex items-center justify-between gap-x-1 text-white px-6 py-4'>
-						<div class='flex flex-col gap-1 items-center justify-center'>
-							<FormattedDate date={pubDate} />
-							<span class='text-sm'> {readTime}</span>
-						</div>
+      <div class="z-30 absolute bottom-0 w-full sixty-five-percent">
+        <div class="-z-10 absolute bottom-0 glass w-full">
+          <div
+            class="flex items-center justify-between gap-x-1 text-white px-6 py-4"
+          >
+            <div class="flex flex-col gap-1 items-center justify-center">
+              <FormattedDate date={pubDate} />
+              <span class="text-sm"> {readTime}</span>
+            </div>
 
-						<span class='pb-4'
-							><LinkUnderline
-								strokewidth='2px'
-								underlinecolor='white'
-								href={'/category/' + category.toLowerCase() + '/1'}
-							>
-								#{category}
-							</LinkUnderline></span
-						>
-					</div>
-				</div>
-			</div>
-		</a>
-	</div>
-	<div class='flex justify-between flex-col gap-4 md:gap-0 py-6 pl-1'>
-		<div class='flex flex-col gap-3'>
-			<div class='e-content p-name flex flex-col gap-2'>
-				<a class='u-url text-2xl font-semibold -tracking-wider' href={`/post/${slug}/`}>
-					{title}
-				</a>
-			</div>
+            <span class="pb-4"
+              ><LinkUnderline
+                strokewidth="2px"
+                underlinecolor="white"
+                href={"/category/" + category.toLowerCase() + "/1"}
+              >
+                #{category}
+              </LinkUnderline></span
+            >
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="flex justify-between flex-col gap-4 md:gap-0 py-6 pl-1">
+    <div class="flex flex-col gap-3">
+      <div class="e-content p-name flex flex-col gap-2">
+        <a
+          class="u-url text-2xl font-semibold -tracking-wider"
+          href={`/post/${slug}/`}
+        >
+          {title}
+        </a>
+      </div>
 
-			<p
-				class='overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-5 font-[400] md:pr-[15%]'
-			>
-				{description}
-			</p>
-		</div>
+      <p
+        class="overflow-hidden line-clamp-3 text-gray-700 dark:text-white mb-5 font-[400] md:pr-[15%]"
+      >
+        {description}
+      </p>
+    </div>
 
-		<footer class='flex justify-between items-end'>
-			<LinkUnderline
-				link={`/post/${slug}/`}
-				class='mt-4 p-4 flex justify-center items-center dark:text-white rounded-full hover:translate-x-1 transition-transform duration-150 ease-in-out font-semibold gap-1 group'
-				aria-label={`go to ${title}`}
-			>
-				Read Post <span
-					class='mt-[1px] group-hover:rotate-45 transition-transform duration-250 ease-in-out'
-				></span>
-			</LinkUnderline>
-		</footer>
-	</div>
+    <footer class="flex justify-between items-end">
+      <LinkUnderline
+        link={`/post/${slug}/`}
+        class="mt-4 p-4 flex justify-center items-center dark:text-white rounded-full hover:translate-x-1 transition-transform duration-150 ease-in-out font-semibold gap-1 group"
+        aria-label={`go to ${title}`}
+      >
+        Read Post <span
+          class="mt-[1px] group-hover:rotate-45 transition-transform duration-250 ease-in-out"
+        ></span>
+      </LinkUnderline>
+    </footer>
+  </div>
 </article>
 <style>
-	.heroImgBg {
-		height: 100%;
-		width: auto;
-		background-size: cover;
-	}
+  .heroImgBg {
+    height: 100%;
+    width: auto;
+    background-size: cover;
+  }
 </style>
 <script>
-	import { animate } from 'motion'
+  import { animate } from "motion";
 
-	const images = document.querySelectorAll('img')
+  const images = document.querySelectorAll("img");
 
-	document.addEventListener('DOMContentLoaded', function () {
-		const showAnimations = true // localStorage.getItem('animations') === 'true'
+  document.addEventListener("DOMContentLoaded", function () {
+    const showAnimations = true; // localStorage.getItem('animations') === 'true'
 
-		if (showAnimations) {
-			animate(
-				images,
-				{
-					opacity: [0, 1],
-					clipPath: ['circle(0% at 0% 0%)', 'circle(100% at 50% 50%)']
-				},
-				{ duration: 2.0, easing: 'ease' }
-			)
-		} else {
-			images.forEach((img) => {
-				//	img.classList.remove('opacity-0')
-			})
-		}
-	})
+    if (showAnimations) {
+      animate(
+        images,
+        {
+          opacity: [0, 1],
+          clipPath: ["circle(0% at 0% 0%)", "circle(100% at 50% 50%)"],
+        },
+        { duration: 2.0, easing: "ease" },
+      );
+    } else {
+      images.forEach((img) => {
+        //	img.classList.remove('opacity-0')
+      });
+    }
+  });
 </script>

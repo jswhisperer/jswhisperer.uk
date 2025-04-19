@@ -1,37 +1,37 @@
 ---
-import PostCard from '@/components/PostCard'
-import { cn } from '@/utils'
-import type { CollectionEntry } from 'astro:content'
+import PostCard from "@/components/PostCard";
+import { cn } from "@/utils";
+import type { CollectionEntry } from "astro:content";
 
 type Props = {
-	posts: CollectionEntry<'blog'>[]
-	FirstBig?: boolean
-}
+  posts: CollectionEntry<"blog">[];
+  FirstBig?: boolean;
+};
 
-const { posts, FirstBig = false } = Astro.props
-const sorted = posts.sort(({ date: date1 }, { date: date2 }) => date1 - date2)
+const { posts, FirstBig = false } = Astro.props;
+const sorted = posts.sort(({ date: date1 }, { date: date2 }) => date1 - date2);
 //console.log({sorted})
 ---
 
 <section
-	class={cn(
-		`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 mt-3`,
-		FirstBig && `md:[&>*:first-child]:col-span-2`
-	)}
+  class={cn(
+    `grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 mt-3`,
+    FirstBig && `md:[&>*:first-child]:col-span-2`,
+  )}
 >
-	{
-		sorted.map(async (post, index) => {
-			const { remarkPluginFrontmatter } = await post.render()
+  {
+    sorted.map(async (post, index) => {
+      const { remarkPluginFrontmatter } = await post.render();
 
-			return (
-				<PostCard
-					index={index}
-					id={post.id}
-					data={post.data}
-					slug={post.slug}
-					readTime={remarkPluginFrontmatter.minutesRead}
-				/>
-			)
-		})
-	}
+      return (
+        <PostCard
+          index={index}
+          id={post.id}
+          data={post.data}
+          slug={post.slug}
+          readTime={remarkPluginFrontmatter.minutesRead}
+        />
+      );
+    })
+  }
 </section>

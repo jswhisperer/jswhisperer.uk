@@ -1,45 +1,48 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from "astro:content";
 
-import { Picture } from 'astro:assets'
+import { Picture } from "astro:assets";
 
 type Props = {
-	posts: CollectionEntry<'blog'>[]
-}
+  posts: CollectionEntry<"blog">[];
+};
 
-const { posts } = Astro.props
+const { posts } = Astro.props;
 ---
 
 <section>
-	{
-		posts.length > 0 ? (
-			posts.map((post) => {
-				return (
-					<div class='flex flex-wrap gap-2'>
-						<div class='min-h-full'>
-							{post.data.heroImage && (
-								<Picture
-									src={post.data.heroImage}
-									width={200}
-									height={200}
-									format='webp'
-									class='w-16 h-16 object-cover rounded-full  '
-									alt={`img of ${post.data.title}`}
-									decoding='async'
-									loading='eager'
-								/>
-							)}
-						</div>
-						<header class='flex justify-center items-center'>
-							<a class='font-medium  hover:underline' href={`/post/${post.slug}/`}>
-								{post.data.title}
-							</a>
-						</header>
-					</div>
-				)
-			})
-		) : (
-			<span class='text-gray-500'>There are no related posts yet. 😢</span>
-		)
-	}
+  {
+    posts.length > 0 ? (
+      posts.map((post) => {
+        return (
+          <div class="flex flex-wrap gap-2">
+            <div class="min-h-full">
+              {post.data.heroImage && (
+                <Picture
+                  src={post.data.heroImage}
+                  width={200}
+                  height={200}
+                  format="webp"
+                  class="w-16 h-16 object-cover rounded-full  "
+                  alt={`img of ${post.data.title}`}
+                  decoding="async"
+                  loading="eager"
+                />
+              )}
+            </div>
+            <header class="flex justify-center items-center">
+              <a
+                class="font-medium  hover:underline"
+                href={`/post/${post.slug}/`}
+              >
+                {post.data.title}
+              </a>
+            </header>
+          </div>
+        );
+      })
+    ) : (
+      <span class="text-gray-500">There are no related posts yet. 😢</span>
+    )
+  }
 </section>

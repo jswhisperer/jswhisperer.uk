@@ -1,76 +1,88 @@
 ---
-import LinkUnderline from '@/components/LinkUnderline'
-import ListRelatedPosts from '@/components/ListRelatedPosts'
+import LinkUnderline from "@/components/LinkUnderline";
+import ListRelatedPosts from "@/components/ListRelatedPosts";
 
-import Code from '@/components/mdx/Code'
-import SButton from '@/components/mdx/SButton'
-import Share from '@/components/Share'
-import TableOfContents from '@/components/TableOfContents'
-import WebMention from '@/components/WebMentions'
-import BlogPost from '@/layouts/BlogPost'
-import { getPosts } from '@/utils'
-import { Picture } from 'astro:assets'
-const pageUrl = new URL(Astro.url.pathname, Astro.site)
+import Code from "@/components/mdx/Code";
+import SButton from "@/components/mdx/SButton";
+import Share from "@/components/Share";
+import TableOfContents from "@/components/TableOfContents";
+import WebMention from "@/components/WebMentions";
+import BlogPost from "@/layouts/BlogPost";
+import { getPosts } from "@/utils";
+import { Picture } from "astro:assets";
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
 
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from "astro:content";
 
-const posts = await getCollection('blog')
+const posts = await getCollection("blog");
 export async function getStaticPaths() {
-	const posts = await getPosts()
+  const posts = await getPosts();
 
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post
-	}))
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
 }
 
 const webmentionsUrl =
-	'https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w'
-const response = await fetch(webmentionsUrl)
-const json = await response.json()
+  "https://webmention.io/api/mentions.jf2?domain=jswhisperer.uk&token=S41J_UI23sPl4N4QtVtN8w";
+const response = await fetch(webmentionsUrl);
+const json = await response.json();
 const webmentions = json.children.filter((mention: { [x: string]: URL[] }) =>
-	mention['wm-target'].includes(pageUrl)
-)
+  mention["wm-target"].includes(pageUrl),
+);
 
-type Props = CollectionEntry<'blog'> & { blskyid: any; slug: string; author: any; name: any }
+type Props = CollectionEntry<"blog"> & {
+  blskyid: any;
+  slug: string;
+  author: any;
+  name: any;
+};
 
-const post = Astro.props
-const MAX_POSTS = 3
+const post = Astro.props;
+const MAX_POSTS = 3;
 const getRelatedPosts = (post: Props) => {
-	const lowercaseTags = post?.data?.tags?.map((tag) => tag.toLowerCase())
-	const relatedPosts = posts.filter(
-		(p) =>
-			p.slug !== post.slug && p.data?.tags?.some((t) => lowercaseTags?.includes(t.toLowerCase()))
-	)
-	return relatedPosts.slice(0, MAX_POSTS)
-}
+  const lowercaseTags = post?.data?.tags?.map((tag) => tag.toLowerCase());
+  const relatedPosts = posts.filter(
+    (p) =>
+      p.slug !== post.slug &&
+      p.data?.tags?.some((t) => lowercaseTags?.includes(t.toLowerCase())),
+  );
+  return relatedPosts.slice(0, MAX_POSTS);
+};
 
-const relatedPosts = getRelatedPosts(post)
+const relatedPosts = getRelatedPosts(post);
 
-const { Content, headings, remarkPluginFrontmatter } = await post.render()
+const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
-import sanitizeHTML from 'sanitize-html'
+import sanitizeHTML from "sanitize-html";
 
 function getWebmentionsForUrl(webmentions: any[], url: any) {
-	const allowedTypes = ['mention-of', 'in-reply-to']
+  const allowedTypes = ["mention-of", "in-reply-to"];
 
-	const hasRequiredFields = (entry: { author: any; published: any; content: any }) => {
-		const { author, published, content } = entry
-		return author.name && published && content
-	}
-	const sanitize = (entry: { content: any }) => {
-		const { content } = entry
-		if (content['content-type'] === 'text/html') {
-			content.value = sanitizeHTML(content.value)
-		}
-		return entry
-	}
+  const hasRequiredFields = (entry: {
+    author: any;
+    published: any;
+    content: any;
+  }) => {
+    const { author, published, content } = entry;
+    return author.name && published && content;
+  };
+  const sanitize = (entry: { content: any }) => {
+    const { content } = entry;
+    if (content["content-type"] === "text/html") {
+      content.value = sanitizeHTML(content.value);
+    }
+    return entry;
+  };
 
-	return webmentions
-		.filter((entry: { [x: string]: any }) => entry['wm-target'] === url)
-		.filter((entry: { [x: string]: string }) => allowedTypes.includes(entry['wm-property']))
-		.filter(hasRequiredFields)
-		.map(sanitize)
+  return webmentions
+    .filter((entry: { [x: string]: any }) => entry["wm-target"] === url)
+    .filter((entry: { [x: string]: string }) =>
+      allowedTypes.includes(entry["wm-property"]),
+    )
+    .filter(hasRequiredFields)
+    .map(sanitize);
 }
 ---
 
@@ -80,40 +92,47 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 	src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.js'></script> --><!--
 <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'></script> -->
 <BlogPost
-	body={post.body}
-	id={post.id}
-	slug={post.slug}
-	data={post.data}
-	blskyid={post?.data?.blskyid}
-	headings={headings}
-	readTime={remarkPluginFrontmatter.minutesRead}
-	author={post.author}
+  body={post.body}
+  id={post.id}
+  slug={post.slug}
+  data={post.data}
+  blskyid={post?.data?.blskyid}
+  headings={headings}
+  readTime={remarkPluginFrontmatter.minutesRead}
+  author={post.author}
 >
-	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
-		<!-- aside  -->
-		<aside
-			class='md:flex flex-col gap-8 hidden'
-			role='complementary'
-			itemscope
-			itemtype='http://schema.org/WPSideBar'
-		>
-			<Share />
-			<div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
-				{headings && headings.length > 0 && <TableOfContents {headings} />}
-			</div>
-		</aside>
+  <div class="grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8">
+    <!-- aside  -->
+    <aside
+      class="md:flex flex-col gap-8 hidden"
+      role="complementary"
+      itemscope
+      itemtype="http://schema.org/WPSideBar"
+    >
+      <Share />
+      <div
+        class="sticky top-24 self-start hidden md:block transition-all duration-200"
+      >
+        {headings && headings.length > 0 && <TableOfContents {headings} />}
+      </div>
+    </aside>
 
-		<!-- post -->
-		<article class='h-card card max-w-full w-full'>
-			<span class='main-content-shadow'></span>
-			<div class='e-content prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
-				<LinkUnderline class='u-url' href=`https://jswhisperer.uk/post/${post.slug}`>
-					permalink
-				</LinkUnderline>
+    <!-- post -->
+    <article class="h-card card max-w-full w-full">
+      <span class="main-content-shadow"></span>
+      <div
+        class="e-content prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full"
+      >
+        <LinkUnderline
+          class="u-url"
+          href=`https://jswhisperer.uk/post/${post.slug}`
+        >
+          permalink
+        </LinkUnderline>
 
-				<Content components={{ Code, SButton, Picture }} />
+        <Content components={{ Code, SButton, Picture }} />
 
-				<!-- <form action='https://indieauth.com/auth' method='get'>
+        <!-- <form action='https://indieauth.com/auth' method='get'>
 					<label for='indie_auth_url'>Web Address:</label>
 					<input
 						id='indie_auth_url'
@@ -131,90 +150,95 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 					/>
 				</form> -->
 
-				<!-- related posts -->
-				<footer>
-					<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
-					<ListRelatedPosts posts={relatedPosts} />
-					<WebMention webmentions={webmentions} />
-				</footer>
-			</div>
-		</article>
-	</div>
+        <!-- related posts -->
+        <footer>
+          <h2 class="font-bold text-lg dark:text-white mb-6">Related Posts</h2>
+          <ListRelatedPosts posts={relatedPosts} />
+          <WebMention webmentions={webmentions} />
+        </footer>
+      </div>
+    </article>
+  </div>
 </BlogPost>
 
 <script>
-	const urlParams = new URLSearchParams(window.location.search)
-	const code = urlParams.get('code')
-	let loggedIn
-	const checkCode = async (code: string) => {
-		console.log({
-			code,
-			redirect_uri: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/${document.URL.split('/')[3]}/${document.URL.split('/')[4]}/`,
-			client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
-		})
-		await fetch('https://indieauth.com/auth', {
-			method: 'POST',
-			headers: new Headers({
-				'Content-Type': 'application/x-www-form-urlencoded'
-			}),
-			body: new URLSearchParams({
-				code,
-				redirect_uri: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/${document.URL.split('/')[3]}/${document.URL.split('/')[4]}/`,
-				client_id: `${document.URL.split('/')[0]}//${document.URL.split('/')[2]}/`
-			}),
-			redirect: 'follow'
-		})
-			.then((response) => response.status)
-			.then((result) => (loggedIn = result === 200 ? true : false))
-			.catch((error) => console.error({ error }))
-	}
-	if (code) {
-		await checkCode(code)
-		console.log({ loggedIn })
-		//console.log(loggedIn)
-	}
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
+  let loggedIn;
+  const checkCode = async (code: string) => {
+    console.log({
+      code,
+      redirect_uri: `${document.URL.split("/")[0]}//${document.URL.split("/")[2]}/${document.URL.split("/")[3]}/${document.URL.split("/")[4]}/`,
+      client_id: `${document.URL.split("/")[0]}//${document.URL.split("/")[2]}/`,
+    });
+    await fetch("https://indieauth.com/auth", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/x-www-form-urlencoded",
+      }),
+      body: new URLSearchParams({
+        code,
+        redirect_uri: `${document.URL.split("/")[0]}//${document.URL.split("/")[2]}/${document.URL.split("/")[3]}/${document.URL.split("/")[4]}/`,
+        client_id: `${document.URL.split("/")[0]}//${document.URL.split("/")[2]}/`,
+      }),
+      redirect: "follow",
+    })
+      .then((response) => response.status)
+      .then((result) => (loggedIn = result === 200 ? true : false))
+      .catch((error) => console.error({ error }));
+  };
+  if (code) {
+    await checkCode(code);
+    console.log({ loggedIn });
+    //console.log(loggedIn)
+  }
 </script>
 <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.js'></script> -->
 
 <script>
-	// const html2canvas = require('html2canvas')
-	// //
-	// const { Cache } = require('html2canvas/dist/lib/core/cache-storage.js')
-	// const { Context } = require('html2canvas/dist/lib/core/context.js')
-	import html2canvas from 'html2canvas'
-	import { Cache } from 'html2canvas/dist/lib/core/cache-storage.js'
-	import { Context } from 'html2canvas/dist/lib/core/context.js'
+  // const html2canvas = require('html2canvas')
+  // //
+  // const { Cache } = require('html2canvas/dist/lib/core/cache-storage.js')
+  // const { Context } = require('html2canvas/dist/lib/core/context.js')
+  import html2canvas from "html2canvas";
+  import { Cache } from "html2canvas/dist/lib/core/cache-storage.js";
+  import { Context } from "html2canvas/dist/lib/core/context.js";
 
-	const blueSkyEl = document.querySelector('.bluesky-post-container') as HTMLElement
-	var canvasEl = document.querySelector('canvas')
-	let twoCan
-	const cache = new Cache(new Context({ allowTaint: true, scale: 2, removeContainer: false }), {
-		logger: console,
-		removeContainer: false,
-		allowTaint: true
-	})
-	if (blueSkyEl) {
-		//setTimeout(async () => {
-		// console.log({ html2canvas: html2canvas })
-		twoCan = await html2canvas(blueSkyEl, {
-			scale: 2,
-			allowTaint: true,
-			imageTimeout: 10000,
-			removeContainer: false,
-			cache,
-			onclone: function (clonedDoc) {
-				console.log('clonedDoc', { clonedDoc })
-			}
-			// canvas: canvasEl
-		})
-			.then((canvas) => {
-				blueSkyEl.after(canvas)
-				console.log({ canvas })
+  const blueSkyEl = document.querySelector(
+    ".bluesky-post-container",
+  ) as HTMLElement;
+  var canvasEl = document.querySelector("canvas");
+  let twoCan;
+  const cache = new Cache(
+    new Context({ allowTaint: true, scale: 2, removeContainer: false }),
+    {
+      logger: console,
+      removeContainer: false,
+      allowTaint: true,
+    },
+  );
+  if (blueSkyEl) {
+    //setTimeout(async () => {
+    // console.log({ html2canvas: html2canvas })
+    twoCan = await html2canvas(blueSkyEl, {
+      scale: 2,
+      allowTaint: true,
+      imageTimeout: 10000,
+      removeContainer: false,
+      cache,
+      onclone: function (clonedDoc) {
+        console.log("clonedDoc", { clonedDoc });
+      },
+      // canvas: canvasEl
+    })
+      .then((canvas) => {
+        blueSkyEl.after(canvas);
+        console.log({ canvas });
 
-				blueSkyEl.remove()
-			})
-			.catch((error) => console.error({ error }))
-		console.log({ cache })
-		//, 1000)
-	}
+        blueSkyEl.remove();
+      })
+      .catch((error) => console.error({ error }));
+    console.log({ cache });
+    //, 1000)
+  }
 </script>

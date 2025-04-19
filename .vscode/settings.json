@@ -1,7 +1,7 @@
 {
-	"editor.gotoLocation.multipleDefinitions": "goto",
-	"files.associations": {
-		"*.astro": "astro"
-	},
-	"git.ignoreLimitWarning": true
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "files.associations": {
+    "*.astro": "astro"
+  },
+  "git.ignoreLimitWarning": true
 }

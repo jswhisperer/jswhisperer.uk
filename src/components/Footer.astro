@@ -1,362 +1,364 @@
 ---
-import { siteConfig } from '@/site-config'
-import BuyCoffee from './BuyCoffee.astro'
+import { siteConfig } from "@/site-config";
+import BuyCoffee from "./BuyCoffee.astro";
 
-const today = new Date()
+const today = new Date();
 ---
 
 <footer
-	id='footer'
-	class='flex justify-center items-center w-full px-16 h-28 border-t-2'
-	role='contentinfo'
-	itemscope
-	itemtype='http://schema.org/WPFooter'
+  id="footer"
+  class="flex justify-center items-center w-full px-16 h-28 border-t-2"
+  role="contentinfo"
+  itemscope
+  itemtype="http://schema.org/WPFooter"
 >
-	<span class='shadow-down'></span>
-	<div class='container'>
-		<BuyCoffee />
-		<div class='sixteen columns omega row'>
-			<p>
-				Written in HTML5
-				<span aria-hidden='true' class='icon-html5'></span> and CSS3
-				<span aria-hidden='true' class='icon-css3'></span><br />
-				tested on Windows,
-				<span aria-hidden='true' class='icon-windows'></span> and of course Mac. <span
-					aria-hidden='true'
-					class='icon-apple'></span>
-				<br />
-				Built by a Canadian;
-				<span aria-hidden='true' class='icon-maple-leaf'></span> for the world. <span
-					aria-hidden='true'
-					class='icon-globe'></span>
-				<br />
-				<a href=''><span aria-hidden='true' class='icon-address'></span>Sitemap</a>
+  <span class="shadow-down"></span>
+  <div class="container">
+    <BuyCoffee />
+    <div class="sixteen columns omega row">
+      <p>
+        Written in HTML5
+        <span aria-hidden="true" class="icon-html5"></span> and CSS3
+        <span aria-hidden="true" class="icon-css3"></span><br />
+        tested on Windows,
+        <span aria-hidden="true" class="icon-windows"></span> and of course Mac.
+        <span aria-hidden="true" class="icon-apple"></span>
+        <br />
+        Built by a Canadian;
+        <span aria-hidden="true" class="icon-maple-leaf"></span> for the world. <span
+          aria-hidden="true"
+          class="icon-globe"></span>
+        <br />
+        <a href=""
+          ><span aria-hidden="true" class="icon-address"></span>Sitemap</a
+        >
 
-				<a href='/copyright'>
-					&copy; {today.getFullYear()} {siteConfig.author}. All rights reserved.</a
-				>
-				<br />
-			</p>
-		</div>
-	</div>
+        <a href="/copyright">
+          &copy; {today.getFullYear()}
+          {siteConfig.author}. All rights reserved.</a
+        >
+        <br />
+      </p>
+    </div>
+  </div>
 </footer>
 
 <style is:inline>
-	/*! CSS Used from: https://gregbenner-classic-2009.netlify.app/stylesheets/mini.min.crush.css */
-	div,
-	span,
-	p,
-	a {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: inherit;
-		vertical-align: baseline;
-		text-shadow: 1px 1px 5px #fff;
-	}
-	p {
-		margin: 0 0 20px 0;
-	}
-	a,
-	a:visited {
-		color: #444;
-		text-decoration: none;
-		outline: 0;
-	}
-	a:hover,
-	a:focus {
-		color: #555;
-	}
-	p a,
-	p a:visited {
-		line-height: inherit;
-	}
-	.container {
-		position: relative;
-		width: 960px;
-		margin: 0 auto;
-		padding: 0;
-		padding-top: 50px;
-	}
-	.container .columns {
-		float: left;
-		display: inline;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-	.row {
-		margin-bottom: 20px;
-	}
-	.omega {
-		margin-right: 0 !important;
-	}
-	.container .sixteen.columns {
-		width: 940px;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 959px) {
-		.container {
-			width: 768px;
-		}
-		.container .columns {
-			margin-left: 10px;
-			margin-right: 10px;
-		}
-		.columns.omega {
-			margin-right: 0;
-			margin-left: 10px;
-		}
-		.container .sixteen.columns {
-			width: 748px;
-		}
-	}
-	@media only screen and (max-width: 767px) {
-		.container {
-			width: 300px;
-		}
-		.container .columns {
-			margin: 0;
-		}
-		.container .sixteen.columns {
-			width: 300px;
-		}
-	}
-	@media only screen and (min-width: 480px) and (max-width: 767px) {
-		.container {
-			width: 420px;
-		}
-		.container .columns {
-			margin: 0;
-		}
-		.container .sixteen.columns {
-			width: 420px;
-		}
-	}
-	.container:after {
-		content: '\0020';
-		display: block;
-		height: 0;
-		clear: both;
-		visibility: hidden;
-	}
-	.row:before,
-	.row:after {
-		content: '\0020';
-		display: block;
-		overflow: hidden;
-		visibility: hidden;
-		width: 0;
-		height: 0;
-	}
-	.row:after {
-		clear: both;
-	}
-	.row {
-		zoom: 1;
-	}
-	[class^='icon-']:before {
-		font-family: 'gregasaurus';
-		font-style: normal;
-		speak: none;
-	}
-	.icon-maple-leaf:before {
-		content: '\002a';
-	}
-	.icon-globe:before {
-		content: '\002f';
-	}
-	.icon-apple:before {
-		content: '\004d';
-	}
-	.icon-windows:before {
-		content: '\004f';
-	}
-	.icon-html5:before {
-		content: '\0054';
-	}
-	.icon-css3:before {
-		content: '\0055';
-	}
-	.icon-address:before {
-		content: '\0058';
-	}
-	p {
-		letter-spacing: 1px;
-		text-align: justify;
-	}
-	* {
-		position: relative;
-	}
-	.columns {
-		margin-bottom: 20px;
-	}
-	.shadow-down {
-		display: block;
-		width: 100%;
-		height: 17px;
-		bottom: 0;
-		position: absolute;
-		background: -moz-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(255, 255, 255, 0)),
-			color-stop(4%, rgba(252, 252, 252, 0)),
-			color-stop(100%, rgba(191, 191, 191, 0.3))
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -moz-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-		background: linear-gradient(
-			top,
-			rgba(255, 255, 255, 0) 0%,
-			rgba(252, 252, 252, 0) 4%,
-			rgba(191, 191, 191, 0.3) 100%
-		);
-	}
-	.shadow-down {
-		top: 0;
-		position: absolute;
-		background: -moz-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -webkit-gradient(
-			linear,
-			left top,
-			left bottom,
-			color-stop(0%, rgba(191, 191, 191, 0.3)),
-			color-stop(96%, rgba(252, 252, 252, 0)),
-			color-stop(100%, rgba(255, 255, 255, 0))
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -webkit-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -moz-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -ms-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: -o-linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-		background: linear-gradient(
-			top,
-			rgba(191, 191, 191, 0.3) 0%,
-			rgba(252, 252, 252, 0) 96%,
-			rgba(255, 255, 255, 0) 100%
-		);
-	}
-	#footer {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		border-top: 1px solid #f8f7f5;
-		background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAA2ElEQVQYV11Qyw6CQAycsjw0iPz/n3gzxGiMaIzGg/+xQBAWaruCBybpZTppZ4aOxY7TzQZRFMEEARS2qpAJ55xDL0NEoNul4PVqhWASqbBuGiw5ej3O3Pe9X8xww4AlR+9XyZ+u8+cDGRUpeBxhwhCxWFJ44SCktRZpmiI0BjydVi7fbjEyg+7Xg+edvM+y7P9el1VlJWT8C6MX27b1byKZGUuOnvcTC5DE8V/UyfUlR+V5z9qZfy+daZimrpHnOYz4neF7TJIEowhIutQw2mMoNlSodtTvF7RUd3Pd0rPCAAAAAElFTkSuQmCC);
-	}
-	@media only screen and (min-width: 768px) and (max-width: 959px) {
-		.container .columns {
-			margin-bottom: 15px;
-		}
-	}
-	@media only screen and (min-width: 480px) and (max-width: 767px) {
-		.container .columns {
-			margin-bottom: 15px;
-		}
-		p {
-			font-size: 16px;
-			line-height: 26px;
-		}
-	}
-	@media only screen and (max-width: 479px) {
-		.container .columns {
-			margin-bottom: 10px;
-		}
-		p {
-			font-size: 14px;
-			line-height: 23px;
-		}
-	}
-	/*! CSS Used fontfaces */
-	footer {
-		z-index: 999;
-	}
+  /*! CSS Used from: https://gregbenner-classic-2009.netlify.app/stylesheets/mini.min.crush.css */
+  div,
+  span,
+  p,
+  a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-shadow: 1px 1px 5px #fff;
+  }
+  p {
+    margin: 0 0 20px 0;
+  }
+  a,
+  a:visited {
+    color: #444;
+    text-decoration: none;
+    outline: 0;
+  }
+  a:hover,
+  a:focus {
+    color: #555;
+  }
+  p a,
+  p a:visited {
+    line-height: inherit;
+  }
+  .container {
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 50px;
+  }
+  .container .columns {
+    float: left;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .row {
+    margin-bottom: 20px;
+  }
+  .omega {
+    margin-right: 0 !important;
+  }
+  .container .sixteen.columns {
+    width: 940px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    .container {
+      width: 768px;
+    }
+    .container .columns {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .columns.omega {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+    .container .sixteen.columns {
+      width: 748px;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .container {
+      width: 300px;
+    }
+    .container .columns {
+      margin: 0;
+    }
+    .container .sixteen.columns {
+      width: 300px;
+    }
+  }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .container {
+      width: 420px;
+    }
+    .container .columns {
+      margin: 0;
+    }
+    .container .sixteen.columns {
+      width: 420px;
+    }
+  }
+  .container:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .row:before,
+  .row:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  .row:after {
+    clear: both;
+  }
+  .row {
+    zoom: 1;
+  }
+  [class^="icon-"]:before {
+    font-family: "gregasaurus";
+    font-style: normal;
+    speak: none;
+  }
+  .icon-maple-leaf:before {
+    content: "\002a";
+  }
+  .icon-globe:before {
+    content: "\002f";
+  }
+  .icon-apple:before {
+    content: "\004d";
+  }
+  .icon-windows:before {
+    content: "\004f";
+  }
+  .icon-html5:before {
+    content: "\0054";
+  }
+  .icon-css3:before {
+    content: "\0055";
+  }
+  .icon-address:before {
+    content: "\0058";
+  }
+  p {
+    letter-spacing: 1px;
+    text-align: justify;
+  }
+  * {
+    position: relative;
+  }
+  .columns {
+    margin-bottom: 20px;
+  }
+  .shadow-down {
+    display: block;
+    width: 100%;
+    height: 17px;
+    bottom: 0;
+    position: absolute;
+    background: -moz-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, rgba(255, 255, 255, 0)),
+      color-stop(4%, rgba(252, 252, 252, 0)),
+      color-stop(100%, rgba(191, 191, 191, 0.3))
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -o-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -ms-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -moz-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -ms-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: -o-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+    background: linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(252, 252, 252, 0) 4%,
+      rgba(191, 191, 191, 0.3) 100%
+    );
+  }
+  .shadow-down {
+    top: 0;
+    position: absolute;
+    background: -moz-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, rgba(191, 191, 191, 0.3)),
+      color-stop(96%, rgba(252, 252, 252, 0)),
+      color-stop(100%, rgba(255, 255, 255, 0))
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -o-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -ms-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -webkit-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -moz-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -ms-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: -o-linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background: linear-gradient(
+      top,
+      rgba(191, 191, 191, 0.3) 0%,
+      rgba(252, 252, 252, 0) 96%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+  #footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #f8f7f5;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAA2ElEQVQYV11Qyw6CQAycsjw0iPz/n3gzxGiMaIzGg/+xQBAWaruCBybpZTppZ4aOxY7TzQZRFMEEARS2qpAJ55xDL0NEoNul4PVqhWASqbBuGiw5ej3O3Pe9X8xww4AlR+9XyZ+u8+cDGRUpeBxhwhCxWFJ44SCktRZpmiI0BjydVi7fbjEyg+7Xg+edvM+y7P9el1VlJWT8C6MX27b1byKZGUuOnvcTC5DE8V/UyfUlR+V5z9qZfy+daZimrpHnOYz4neF7TJIEowhIutQw2mMoNlSodtTvF7RUd3Pd0rPCAAAAAElFTkSuQmCC);
+  }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    .container .columns {
+      margin-bottom: 15px;
+    }
+  }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    .container .columns {
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+  @media only screen and (max-width: 479px) {
+    .container .columns {
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 23px;
+    }
+  }
+  /*! CSS Used fontfaces */
+  footer {
+    z-index: 999;
+  }
 </style>

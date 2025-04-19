@@ -1,41 +1,41 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout'
-import { Picture } from 'astro:assets'
-import { getCollection, type CollectionEntry } from 'astro:content'
-import authorphoto from '../../assets/images/greg.jpeg'
-const authors = await getCollection('author')
+import BaseLayout from "@/layouts/BaseLayout";
+import { Picture } from "astro:assets";
+import { getCollection, type CollectionEntry } from "astro:content";
+import authorphoto from "../../assets/images/greg.jpeg";
+const authors = await getCollection("author");
 
 export async function getStaticPaths() {
-	// const authors = await getAuthor()
-	const authors = await getCollection('author')
+  // const authors = await getAuthor()
+  const authors = await getCollection("author");
 
-	// const disqusEnabled = disqusConfig.enabled authors = Object.values(import.meta.glob('../author/*.md', { eager: true }))
+  // const disqusEnabled = disqusConfig.enabled authors = Object.values(import.meta.glob('../author/*.md', { eager: true }))
 
-	return authors.map((author: any) => {
-		return {
-			params: { author: author.data.name },
-			props: { author }
-		}
-	})
+  return authors.map((author: any) => {
+    return {
+      params: { author: author.data.name },
+      props: { author },
+    };
+  });
 }
 
-type Props = CollectionEntry<'author'> & { name: string; author: any }
+type Props = CollectionEntry<"author"> & { name: string; author: any };
 
 //const name = Astro.params
-const { author } = Astro.props
+const { author } = Astro.props;
 ---
 
-<BaseLayout title='Author'>
-	<div itemtype='https://schema.org/ProfilePage' itemscope>
-		<div itemprop=''>
-			<time itemprop='dateCreated' datetime={new Date().toISOString()}> </time>
-		</div>
-		<div itemprop='mainEntity' itemtype='https://schema.org/Person' itemscope>
-			<h1 itemprop='name'>{author.data.name}</h1>
-			<p>{author.data.bio}</p>
-			<p itemprop='url'>{author.data.url}</p>
+<BaseLayout title="Author">
+  <div itemtype="https://schema.org/ProfilePage" itemscope>
+    <div itemprop="">
+      <time itemprop="dateCreated" datetime={new Date().toISOString()}> </time>
+    </div>
+    <div itemprop="mainEntity" itemtype="https://schema.org/Person" itemscope>
+      <h1 itemprop="name">{author.data.name}</h1>
+      <p>{author.data.bio}</p>
+      <p itemprop="url">{author.data.url}</p>
 
-			<Picture alt='x' src={authorphoto} decoding='async' />
-		</div>
-	</div>
+      <Picture alt="x" src={authorphoto} decoding="async" />
+    </div>
+  </div>
 </BaseLayout>

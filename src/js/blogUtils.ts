@@ -1,7 +1,7 @@
-import { type CollectionEntry, getCollection, getEntry } from 'astro:content'
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 // utils
-import { slugify } from '../js/textUtils'
+import { slugify } from "../js/textUtils";
 
 // --------------------------------------------------------
 /**
@@ -11,17 +11,17 @@ import { slugify } from '../js/textUtils'
  */
 
 export function countItems(items: string[]): object {
-	// get counts of each item in the array
-	const countedItems = items.reduce((acc, item) => {
-		const val = acc[slugify(item)] || 0
+  // get counts of each item in the array
+  const countedItems = items.reduce((acc, item) => {
+    const val = acc[slugify(item)] || 0;
 
-		return {
-			...acc,
-			[slugify(item)]: val + 1
-		}
-	}, {})
+    return {
+      ...acc,
+      [slugify(item)]: val + 1,
+    };
+  }, {});
 
-	return countedItems
+  return countedItems;
 }
 
 // --------------------------------------------------------
@@ -32,17 +32,17 @@ export function countItems(items: string[]): object {
  * note: this is used for tag and category cloud ordering
  */
 export function sortByValue(jsObj: object): any[] {
-	var array: any[] = []
-	for (var i in jsObj) {
-		array.push([i, jsObj[i]])
-	}
+  var array: any[] = [];
+  for (var i in jsObj) {
+    array.push([i, jsObj[i]]);
+  }
 
-	const sorted = array.sort((a, b) => {
-		return b[1] - a[1]
-	})
+  const sorted = array.sort((a, b) => {
+    return b[1] - a[1];
+  });
 
-	// looks like [ [ 'productivity', 2 ], [ 'cool-code', 1 ] ]
-	return sorted
+  // looks like [ [ 'productivity', 2 ], [ 'cool-code', 1 ] ]
+  return sorted;
 }
 
 // --------------------------------------------------------
@@ -50,20 +50,20 @@ export function sortByValue(jsObj: object): any[] {
  * * returns all blog posts, filtered for drafts, sorted by date, and future posts removed
  * use like `const posts = await getAllPosts();`
  */
-export async function getAllPosts(): Promise<CollectionEntry<'blog'>[]> {
-	const posts = await getCollection('blog', ({ data }) => {
-		// filter out draft posts
-		return data.draft !== true
-	})
+export async function getAllPosts(): Promise<CollectionEntry<"blog">[]> {
+  const posts = await getCollection("blog", ({ data }) => {
+    // filter out draft posts
+    return data.draft !== true;
+  });
 
-	// filter out future posts and sort by date
-	const formattedPosts: CollectionEntry<'blog'>[] = formatPosts(posts, {
-		filterOutFuturePosts: true,
-		sortByDate: true,
-		limit: undefined
-	})
+  // filter out future posts and sort by date
+  const formattedPosts: CollectionEntry<"blog">[] = formatPosts(posts, {
+    filterOutFuturePosts: true,
+    sortByDate: true,
+    limit: undefined,
+  });
 
-	return formattedPosts
+  return formattedPosts;
 }
 
 // --------------------------------------------------------
@@ -76,43 +76,47 @@ export async function getAllPosts(): Promise<CollectionEntry<'blog'>[]> {
  * @param limit: number - if number is passed, limits the number of posts returned
  */
 interface FormatPostsOptions {
-	filterOutFuturePosts?: boolean
-	sortByDate?: boolean
-	limit?: number
+  filterOutFuturePosts?: boolean;
+  sortByDate?: boolean;
+  limit?: number;
 }
 
 export function formatPosts(
-	posts: CollectionEntry<'blog'>[],
-	{ filterOutFuturePosts = true, sortByDate = true, limit = undefined }: FormatPostsOptions = {}
-): CollectionEntry<'blog'>[] {
-	const filteredPosts = posts.reduce((acc: CollectionEntry<'blog'>[], post) => {
-		const { pubDate } = post.data
+  posts: CollectionEntry<"blog">[],
+  {
+    filterOutFuturePosts = true,
+    sortByDate = true,
+    limit = undefined,
+  }: FormatPostsOptions = {},
+): CollectionEntry<"blog">[] {
+  const filteredPosts = posts.reduce((acc: CollectionEntry<"blog">[], post) => {
+    const { pubDate } = post.data;
 
-		// filterOutFuturePosts if true
-		if (filterOutFuturePosts && new Date(pubDate) > new Date()) return acc
+    // filterOutFuturePosts if true
+    if (filterOutFuturePosts && new Date(pubDate) > new Date()) return acc;
 
-		// add post to acc
-		acc.push(post)
+    // add post to acc
+    acc.push(post);
 
-		return acc
-	}, [])
+    return acc;
+  }, []);
 
-	// now we have filteredPosts
-	// sortByDate or randomize
-	if (sortByDate) {
-		filteredPosts.sort(
-			(a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
-				new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-		)
-	} else {
-		filteredPosts.sort(() => Math.random() - 0.5)
-	}
+  // now we have filteredPosts
+  // sortByDate or randomize
+  if (sortByDate) {
+    filteredPosts.sort(
+      (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+        new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
+    );
+  } else {
+    filteredPosts.sort(() => Math.random() - 0.5);
+  }
 
-	// limit if number is passed
-	if (typeof limit === 'number') {
-		return filteredPosts.slice(0, limit)
-	}
-	return filteredPosts
+  // limit if number is passed
+  if (typeof limit === "number") {
+    return filteredPosts.slice(0, limit);
+  }
+  return filteredPosts;
 }
 
 // --------------------------------------------------------
@@ -122,18 +126,20 @@ export function formatPosts(
  * use like `const authorsData = await getAllAuthorsData();`
  */
 export async function getAllAuthorsData(
-	authors: CollectionEntry<'blog'>['data']['authors']
-): Promise<CollectionEntry<'authors'>[]> {
-	const authorsData = authors.map(async (author) => {
-		const authorData = await getEntry('authors', author.slug)
+  authors: CollectionEntry<"blog">["data"]["authors"],
+): Promise<CollectionEntry<"authors">[]> {
+  const authorsData = authors.map(async (author) => {
+    const authorData = await getEntry("authors", author.slug);
 
-		if (authorData === undefined) {
-			throw new Error(`Author "${author.slug}" not found in "authors" collection.`)
-		}
+    if (authorData === undefined) {
+      throw new Error(
+        `Author "${author.slug}" not found in "authors" collection.`,
+      );
+    }
 
-		return authorData
-	})
+    return authorData;
+  });
 
-	// return a promise that is resolved when all promises in the array have been resolved
-	return Promise.all(authorsData)
+  // return a promise that is resolved when all promises in the array have been resolved
+  return Promise.all(authorsData);
 }

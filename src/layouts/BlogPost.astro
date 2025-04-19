@@ -1,239 +1,272 @@
 ---
-import { Picture } from 'astro:assets'
-import type { CollectionEntry } from 'astro:content'
-import { getCollection } from 'astro:content'
-import { slide } from 'astro:transitions'
-import BlueSky from '@/components/BlueSky'
-import FormattedDate from '@/components/FormattedDate'
-import Tag from '@/components/Tag'
-import WebMention from '@/components/WebMentions'
-import BaseLayout from '@/layouts/BaseLayout'
-import type { MarkdownHeading } from 'astro'
-import { siteConfig } from '../data/site.config'
-import authorImg from '../assets/images/greg.jpeg'
+import { Picture } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { slide } from "astro:transitions";
+import BlueSky from "@/components/BlueSky";
+import FormattedDate from "@/components/FormattedDate";
+import Tag from "@/components/Tag";
+import WebMention from "@/components/WebMentions";
+import BaseLayout from "@/layouts/BaseLayout";
+import type { MarkdownHeading } from "astro";
+import { siteConfig } from "../data/site.config";
+import authorImg from "../assets/images/greg.jpeg";
 
-const pageUrl = new URL(Astro.url.pathname, Astro.site)
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
 
-const username = 'jswhisperer'
+const username = "jswhisperer";
 
 type Props = {
-	id: CollectionEntry<'blog'>['id']
-	data: CollectionEntry<'blog'>['data']
-	author: CollectionEntry<'author'>['data']
-	headings: MarkdownHeading[]
-	readTime: string
-	slug: string
-	blskyid: any
-	body: any
-}
+  id: CollectionEntry<"blog">["id"];
+  data: CollectionEntry<"blog">["data"];
+  author: CollectionEntry<"author">["data"];
+  headings: MarkdownHeading[];
+  readTime: string;
+  slug: string;
+  blskyid: any;
+  body: any;
+};
 
-const { data, readTime, headings, id, slug, blskyid, body } = Astro.props
-const { title, description, pubDate, heroImage = { src: 'x' }, tags, author, category } = data
-const heroImageSrc = heroImage.src ?? '/public/open-graph.png'
+const { data, readTime, headings, id, slug, blskyid, body } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  heroImage = { src: "x" },
+  tags,
+  author,
+  category,
+} = data;
+const heroImageSrc = heroImage.src ?? "/public/open-graph.png";
 
 const heroImageJPG =
-	'https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz.jpg'
-const authors = await getCollection('author')
+  "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0f0arenmyx88zjd8tvtz.jpg";
+const authors = await getCollection("author");
 
-const currentAuthor = authors.find((a) => a.slug === author?.id)
+const currentAuthor = authors.find((a) => a.slug === author?.id);
 
-const articleDate = pubDate.toISOString()
+const articleDate = pubDate.toISOString();
 ---
 
 <script
-	type='application/ld+json'
-	set:html={JSON.stringify({
-		'@context': 'https://schema.org',
-		'@type': 'Article',
-		headline: title,
-		keywords: tags,
-		description,
-		articleBody: body.renderedOutput,
-		datePublished: pubDate.toISOString(),
-		dateModified: pubDate?.toISOString() ?? undefined,
-		url: pageUrl, //`${siteConfig.site}post/${slug}`,
-		thumbnailUrl: heroImage?.src || '/public/open-graph.png',
-		image: {
-			'@type': 'ImageObject',
-			url: heroImage?.src,
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    keywords: tags,
+    description,
+    articleBody: body.renderedOutput,
+    datePublished: pubDate.toISOString(),
+    dateModified: pubDate?.toISOString() ?? undefined,
+    url: pageUrl, //`${siteConfig.site}post/${slug}`,
+    thumbnailUrl: heroImage?.src || "/public/open-graph.png",
+    image: {
+      "@type": "ImageObject",
+      url: heroImage?.src,
 
-			caption: 'a banner image'
-		},
-		author: {
-			'@type': 'Person',
-			name: currentAuthor?.slug,
-			description: currentAuthor?.body,
-			url: `${Astro.site}/author/${currentAuthor?.slug}`
-		}
-	})}
+      caption: "a banner image",
+    },
+    author: {
+      "@type": "Person",
+      name: currentAuthor?.slug,
+      description: currentAuthor?.body,
+      url: `${Astro.site}/author/${currentAuthor?.slug}`,
+    },
+  })}
 />
 
-<BaseLayout title={title} description={description} image={heroImage} articleDate={articleDate}>
-	<article
-		transition:animate={slide({ duration: '0.5s' })}
-		class='entry h-entry post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none'
-		itemscope
-		itemtype='http://schema.org/BlogPosting'
-		aria-labelledby={title + '-title'}
-	>
-		<!-- <div itemscope itemtype='https://schema.org/ImageObject'>
+<BaseLayout
+  title={title}
+  description={description}
+  image={heroImage}
+  articleDate={articleDate}
+>
+  <article
+    transition:animate={slide({ duration: "0.5s" })}
+    class="entry h-entry post h-entry min-w-full md:py-4 sm:max-w-none md:max-w-none"
+    itemscope
+    itemtype="http://schema.org/BlogPosting"
+    aria-labelledby={title + "-title"}
+  >
+    <!-- <div itemscope itemtype='https://schema.org/ImageObject'>
 			<img src={heroImage?.src} alt='image' itemprop='url' />
 		</div> -->,
-		<Picture
-			src={heroImageJPG}
-			alt='image 2'
-			formats={['avif', 'webp']}
-			inferSize={true}
-			loading='eager'
-		/>
+    <Picture
+      src={heroImageJPG}
+      alt="image 2"
+      formats={["avif", "webp"]}
+      inferSize={true}
+      loading="eager"
+    />
 
-		<div itemprop='articleBody'>
-			<header class='mb-3 flex flex-col justify-center items-center gap-6'>
-				<a class='u-url u-uid' href={pageUrl} style='display:none;'></a>
+    <div itemprop="articleBody">
+      <header class="mb-3 flex flex-col justify-center items-center gap-6">
+        <a class="u-url u-uid" href={pageUrl} style="display:none;"></a>
 
-				<div class='flex flex-col gap-2'>
-					<div class='lg:flex items-center justify-center gap-x-1'>
-						<h1
-							itemprop='headline'
-							class='p-name text-center text-xl md:text-6xl md:pb-2.5 font-semibold'
-						>
-							{title}
-						</h1>
+        <div class="flex flex-col gap-2">
+          <div class="lg:flex items-center justify-center gap-x-1">
+            <h1
+              itemprop="headline"
+              class="p-name text-center text-xl md:text-6xl md:pb-2.5 font-semibold"
+            >
+              {title}
+            </h1>
 
-						<div class='text-center text-sm text-opacity-50'>
-							Published <FormattedDate date={pubDate} />
-							<div
-								itemprop='author'
-								itemscope
-								itemtype='https://schema.org/Person'
-								class='author u-author h-card'
-							>
-								<div class='author-name'>
-									by
+            <div class="text-center text-sm text-opacity-50">
+              Published <FormattedDate date={pubDate} />
+              <div
+                itemprop="author"
+                itemscope
+                itemtype="https://schema.org/Person"
+                class="author u-author h-card"
+              >
+                <div class="author-name">
+                  by
 
-									<a itemprop='url' href='https://jswhisperer.uk/author/greg' class='url u-url'
-										><span itemprop='name' class='name p-name'>Gregory Benner</span></a
-									>
-								</div>
-								{
-									[
-										`https://github.com/${username}`,
-										`https://www.linkedin.com/in/${username}`,
-										`https://bsky.app/profile/${username}.bsky.social`,
-										`https://www.linkedin.com/in/${username}`,
-										`https://dev.to/${username}`,
-										`mailto:hello@${username}`,
-										`https://x.com/${username}`
-									].map((social) => (
-										<a rel='me' href={social} class='u-url' style='display:none;' />
-									))
-								}
-								<Picture
-									class='u-photo'
-									src={authorImg}
-									alt='Gregory Benner'
-									style='display:none;'
-								/>
-								<p class='text-center text-sm text-opacity-50 font-bold'>
-									- {readTime}
-								</p>
-							</div>
-						</div>
-					</div>
+                  <a
+                    itemprop="url"
+                    href="https://jswhisperer.uk/author/greg"
+                    class="url u-url"
+                    ><span itemprop="name" class="name p-name"
+                      >Gregory Benner</span
+                    ></a
+                  >
+                </div>
+                {
+                  [
+                    `https://github.com/${username}`,
+                    `https://www.linkedin.com/in/${username}`,
+                    `https://bsky.app/profile/${username}.bsky.social`,
+                    `https://www.linkedin.com/in/${username}`,
+                    `https://dev.to/${username}`,
+                    `mailto:hello@${username}`,
+                    `https://x.com/${username}`,
+                  ].map((social) => (
+                    <a
+                      rel="me"
+                      href={social}
+                      class="u-url"
+                      style="display:none;"
+                    />
+                  ))
+                }
+                <Picture
+                  class="u-photo"
+                  src={authorImg}
+                  alt="Gregory Benner"
+                  style="display:none;"
+                />
+                <p class="text-center text-sm text-opacity-50 font-bold">
+                  - {readTime}
+                </p>
+              </div>
+            </div>
+          </div>
 
-					<div class='flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5'>
-						{tags?.map((tag) => <Tag tag={tag} />)}
-					</div>
-				</div>
+          <div
+            class="flex flex-wrap justify-center items-center gap-2 gap-y-4 md:gap-5"
+          >
+            {tags?.map((tag) => <Tag tag={tag} />)}
+          </div>
+        </div>
 
-				<header>
-					{
-						heroImage && (
-							<div itemscope itemtype='https://schema.org/ImageObject'>
-								<Picture
-									src={heroImageJPG}
-									class='rounded-md w-full max-h-[250px] border-4 md:border-t-4  md:max-h-[200px] my-8 object-cover border-white-900'
-									alt={`img of ${title}`}
-									loading='eager'
-									formats={['avif', 'webp']}
-									inferSize={true}
-								/>
-								<span itemprop='caption' class='text-center text-sm text-opacity-50'>
-									{title}
-								</span>
-							</div>
-						)
-					}
-				</header>
+        <header>
+          {
+            heroImage && (
+              <div itemscope itemtype="https://schema.org/ImageObject">
+                <Picture
+                  src={heroImageJPG}
+                  class="rounded-md w-full max-h-[250px] border-4 md:border-t-4  md:max-h-[200px] my-8 object-cover border-white-900"
+                  alt={`img of ${title}`}
+                  loading="eager"
+                  formats={["avif", "webp"]}
+                  inferSize={true}
+                />
+                <span
+                  itemprop="caption"
+                  class="text-center text-sm text-opacity-50"
+                >
+                  {title}
+                </span>
+              </div>
+            )
+          }
+        </header>
 
-				<hr />
+        <hr />
 
-				<div>
-					<slot />
-				</div>
+        <div>
+          <slot />
+        </div>
 
-				{
-					tags && tags.length > 0 && (
-						<p>
-							Tagged with: <span itemprop='keywords'>{tags.join(', ')}</span>
-						</p>
-					)
-				}
-			</header>
+        {
+          tags && tags.length > 0 && (
+            <p>
+              Tagged with: <span itemprop="keywords">{tags.join(", ")}</span>
+            </p>
+          )
+        }
+      </header>
 
-			<script>
-				const fnObserver = () => {
-					function handleIntersection(
-						entries: IntersectionObserverEntry[],
-						observer: IntersectionObserver
-					) {
-						entries?.forEach((entry) => {
-							if (!entry?.isIntersecting) return
-							const index = document.querySelector(`aside a[href="#${entry.target.id}"]`)
+      <script>
+        const fnObserver = () => {
+          function handleIntersection(
+            entries: IntersectionObserverEntry[],
+            observer: IntersectionObserver,
+          ) {
+            entries?.forEach((entry) => {
+              if (!entry?.isIntersecting) return;
+              const index = document.querySelector(
+                `aside a[href="#${entry.target.id}"]`,
+              );
 
-							if (entry.isIntersecting) {
-								index?.classList.remove('bg-slate-200', 'dark:bg-slate-800') // remove bg
-								index?.classList.add(
-									'bg-indigo-600',
-									'dark:bg-indigo-700',
-									'text-white',
-									'font-bold',
-									'transition-colors',
-									'duration-200'
-								)
-							} else {
-								index?.classList.add('bg-slate-200', 'dark:bg-slate-800') // add bg
-								index?.classList.remove(
-									'bg-indigo-600',
-									'dark:bg-indigo-700',
-									'text-white',
-									'font-bold',
-									'transition-colors',
-									'duration-200'
-								)
-							}
-						})
-					}
+              if (entry.isIntersecting) {
+                index?.classList.remove("bg-slate-200", "dark:bg-slate-800"); // remove bg
+                index?.classList.add(
+                  "bg-indigo-600",
+                  "dark:bg-indigo-700",
+                  "text-white",
+                  "font-bold",
+                  "transition-colors",
+                  "duration-200",
+                );
+              } else {
+                index?.classList.add("bg-slate-200", "dark:bg-slate-800"); // add bg
+                index?.classList.remove(
+                  "bg-indigo-600",
+                  "dark:bg-indigo-700",
+                  "text-white",
+                  "font-bold",
+                  "transition-colors",
+                  "duration-200",
+                );
+              }
+            });
+          }
 
-					const headings = document.querySelectorAll(
-						'div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6'
-					)
+          const headings = document.querySelectorAll(
+            "div.prose h1, div.prose h2, div.prose h3, div.prose h4, div.prose h5, div.prose h6",
+          );
 
-					const options = {
-						root: null,
-						rootMargin: ' 15% 0px 0% 0px ',
-						threshold: 1
-					}
+          const options = {
+            root: null,
+            rootMargin: " 15% 0px 0% 0px ",
+            threshold: 1,
+          };
 
-					const observer = new IntersectionObserver(handleIntersection, options)
+          const observer = new IntersectionObserver(
+            handleIntersection,
+            options,
+          );
 
-					headings.forEach((heading) => {
-						observer.observe(heading)
-					})
-				}
-				fnObserver()
-				document.addEventListener('astro:after-swap', fnObserver)
-			</script>
-		</div>
-	</article>
+          headings.forEach((heading) => {
+            observer.observe(heading);
+          });
+        };
+        fnObserver();
+        document.addEventListener("astro:after-swap", fnObserver);
+      </script>
+    </div>
+  </article>
 </BaseLayout>

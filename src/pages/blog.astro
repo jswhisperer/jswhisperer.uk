@@ -1,42 +1,45 @@
 ---
-import ListCategories from '@/components/ListCategories'
-import ListPosts from '@/components/ListPosts'
-import BaseLayout from '@/layouts/BaseLayout'
-import { Picture } from 'astro:assets'
-import { getCollection } from 'astro:content'
-const MAX_POSTS = 1005 // max number of posts to show on the home page
-const allPosts = await getCollection('blog')
+import ListCategories from "@/components/ListCategories";
+import ListPosts from "@/components/ListPosts";
+import BaseLayout from "@/layouts/BaseLayout";
+import { Picture } from "astro:assets";
+import { getCollection } from "astro:content";
+const MAX_POSTS = 1005; // max number of posts to show on the home pagehttps://directus-999-8570599001.europe-west2.run.app/admin/login
+const allPosts = await getCollection("blog");
 const posts = allPosts
-	.slice(0, MAX_POSTS)
-	.sort(
-		({ data: { pubDate: pubDate1 } }, { data: { pubDate: pubDate2 } }) =>
-			new Date(pubDate2) - new Date(pubDate1)
-	)
+  .slice(0, MAX_POSTS)
+  .sort(
+    ({ data: { pubDate: pubDate1 } }, { data: { pubDate: pubDate2 } }) =>
+      new Date(pubDate2) - new Date(pubDate1),
+  );
 
-import authorImg from '../assets/images/greg.jpeg'
+import authorImg from "../assets/images/greg.jpeg";
 ---
 
-<BaseLayout title='Blog'>
-	<div class='p-author h-card' style='display: none;'>
-		<a rel='author' class='p-name u-url' href=`https://jswhisperer.uk/author/greg`>Gregory Benner</a
-		>
+<BaseLayout title="Blog">
+  <div class="p-author h-card" style="display: none;">
+    <a
+      rel="author"
+      class="p-name u-url"
+      href=`https://jswhisperer.uk/author/greg`>Gregory Benner</a
+    >
 
-		<Picture
-			formats={['avif', 'webp']}
-			class='u-photo'
-			inferSize={true}
-			src={authorImg}
-			alt='Gregory Benner'
-			layout='responsive'
-			loading={'eager'}
-		/>
-		<a class='p-org h-card' href='https://jswhisperer.uk/'>jswhisperer</a>
-	</div>
-	<ListCategories />
+    <Picture
+      formats={["avif", "webp"]}
+      class="u-photo"
+      inferSize={true}
+      src={authorImg}
+      alt="Gregory Benner"
+      layout="responsive"
+      loading={"eager"}
+    />
+    <a class="p-org h-card" href="https://jswhisperer.uk/">jswhisperer</a>
+  </div>
+  <ListCategories />
 
-	<div class='h-feed'>
-		<h2 class=''>Latest Posts</h2>
+  <div class="h-feed">
+    <h2 class="">Latest Posts</h2>
 
-		<ListPosts FirstBig={false} posts={posts} />
-	</div>
+    <ListPosts FirstBig={false} posts={posts} />
+  </div>
 </BaseLayout>

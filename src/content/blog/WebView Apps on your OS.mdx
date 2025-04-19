@@ -1,5 +1,5 @@
 ---
-heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg'
+heroImage: "../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg"
 category: JavaScript
 author: greg
 description: An exploration of webview apps for desktop
@@ -43,12 +43,12 @@ package.json
 index.js
 
 ```js
-const { app, BrowserWindow } = require('deskgap')
+const { app, BrowserWindow } = require("deskgap");
 
-app.once('ready', () => {
-	const win = new BrowserWindow()
-	win.loadFile('index.html')
-})
+app.once("ready", () => {
+  const win = new BrowserWindow();
+  win.loadFile("index.html");
+});
 ```
 
 index.html
@@ -56,14 +56,14 @@ index.html
 ```html
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Hello DeskGap</title>
-	</head>
-	<body>
-		<h1>Hello DeskGap</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hello DeskGap</title>
+  </head>
+  <body>
+    <h1>Hello DeskGap</h1>
+  </body>
 </html>
 ```
 
@@ -78,31 +78,31 @@ This is pretty powerful already you can imagine you can have you basic HTML call
 Simply adjusting a few lines from the example above we can make use of exec from node.js to spawn a child process and run our arbitrary command line code. I also researched the API documents of DeskGap to set a title and icon.
 
 ```js
-const { app, BrowserWindow } = require('deskgap')
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
+const { app, BrowserWindow } = require("deskgap");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 
 async function vueui() {
-	const { stdout, stderr } = await exec('./node_modules/.bin/vue ui -headless')
-	console.log('stdout:', stdout)
-	console.log('stderr:', stderr)
+  const { stdout, stderr } = await exec("./node_modules/.bin/vue ui -headless");
+  console.log("stdout:", stdout);
+  console.log("stderr:", stderr);
 }
 
-vueui()
+vueui();
 
-app.once('ready', () => {
-	const win = new BrowserWindow({
-		width: 1000,
-		height: 600,
-		title: 'Vue CLI',
-		icon: 'vue-logo.png',
-		titleBarStyle: 'hidden'
-	})
-	win.loadURL('http://localhost:8000')
-})
+app.once("ready", () => {
+  const win = new BrowserWindow({
+    width: 1000,
+    height: 600,
+    title: "Vue CLI",
+    icon: "vue-logo.png",
+    titleBarStyle: "hidden",
+  });
+  win.loadURL("http://localhost:8000");
+});
 ```
 
-<img src='https://res.cloudinary.com/https-gregbenner-life/image/upload/v1594764223/Screenshot_from_2020-07-12_21-43-10_luayzl.png' />
+<img src="https://res.cloudinary.com/https-gregbenner-life/image/upload/v1594764223/Screenshot_from_2020-07-12_21-43-10_luayzl.png" />
 
 All in all at this point I'm feeling pretty happy with myself and the world, everything. The next step ends in a cliffhanger so be forewarned. It's more of an exploration of what I imagine a separates a senior developer from a junior. I'm going to explore the build and package steps of releasing this app as an executable binary (double clickable app).
 
@@ -164,7 +164,7 @@ package.json
 }
 ```
 
-## Steps[¶](https://deskgap.com/building/#steps 'Permanent link')
+## Steps[¶](https://deskgap.com/building/#steps "Permanent link")
 
 1. Download the npm dependencies: `npm ci`
 2. Generate the buildsystem:

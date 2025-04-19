@@ -1,5 +1,5 @@
 ---
-heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg'
+heroImage: "../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg"
 category: JavaScript
 description: what do you need for an effective indexable "google-able" site
 pubDate: 2025-03-13T00:00:00.000Z
@@ -9,7 +9,7 @@ tags:
   - html
 title: Webmentions Revisted
 author: greg
-canonical_url: 'https://jswhisperer.uk/post/webmentions-revisted/'
+canonical_url: "https://jswhisperer.uk/post/webmentions-revisted/"
 ---
 
 When writing your blog, many, like myself,f would like comments from our readers. Comments, likes, reposts and similar let the author know what readers think and cultivate great new conversations or provide invaluable feedback and even criticism on which we can learn from and grow.
@@ -42,41 +42,54 @@ You might then render the results in your framework of choice as below. I've add
 
 ```html
 <html>
-	<ul>
-		<li itemscope="" itemtype="http://schema.org/UserComments" data-astro-cid-qesbhxo5="">
-			<small>
-				<time itemprop="commentTime" datetime="2025-01-24T10:15:16Z">January 24, 2025</time>
-			</small>
-			<div
-				itemprop="creator"
-				itemscope=""
-				itemtype="https://schema.org/Person"
-				class="u-author h-card"
-			>
-				<div itemprop="name">Gregory</div>
-				<a itemprop="url" href="https://jswhisperer.uk/author/greg" aria-label="author url">
-					<picture>
-						<source srcset="greg.CZmlD_1D.jpeg" type="image/webp" />
-						<img
-							src="greg.CZmlD_1D.jpeg"
-							alt="Gmoney"
-							data-astro-cid-qesbhxo5="true"
-							width="800"
-							height="800"
-							loading="lazy"
-							decoding="async"
-						/>
-					</picture>
-				</a>
-			</div>
-			<div class="information" data-astro-cid-qesbhxo5="">
-				<div>
-					<p>replied on: <time datetime="2025-01-24T10:15:16Z">January 24, 2025</time></p>
-					<blockquote itemprop="commentText">Wicked cool</blockquote>
-				</div>
-			</div>
-		</li>
-	</ul>
+  <ul>
+    <li
+      itemscope=""
+      itemtype="http://schema.org/UserComments"
+      data-astro-cid-qesbhxo5=""
+    >
+      <small>
+        <time itemprop="commentTime" datetime="2025-01-24T10:15:16Z"
+          >January 24, 2025</time
+        >
+      </small>
+      <div
+        itemprop="creator"
+        itemscope=""
+        itemtype="https://schema.org/Person"
+        class="u-author h-card"
+      >
+        <div itemprop="name">Gregory</div>
+        <a
+          itemprop="url"
+          href="https://jswhisperer.uk/author/greg"
+          aria-label="author url"
+        >
+          <picture>
+            <source srcset="greg.CZmlD_1D.jpeg" type="image/webp" />
+            <img
+              src="greg.CZmlD_1D.jpeg"
+              alt="Gmoney"
+              data-astro-cid-qesbhxo5="true"
+              width="800"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </a>
+      </div>
+      <div class="information" data-astro-cid-qesbhxo5="">
+        <div>
+          <p>
+            replied on:
+            <time datetime="2025-01-24T10:15:16Z">January 24, 2025</time>
+          </p>
+          <blockquote itemprop="commentText">Wicked cool</blockquote>
+        </div>
+      </div>
+    </li>
+  </ul>
 </html>
 ```
 

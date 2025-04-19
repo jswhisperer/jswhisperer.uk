@@ -1,5 +1,5 @@
 ---
-heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg'
+heroImage: "../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg"
 category: JavaScript
 description: what do you need for an effective indexable "google-able" site
 pubDate: 2023-01-01T00:00:00.000Z
@@ -29,7 +29,12 @@ Ok now the interesting stuff you should have a sitemap created at `/sitemap.xml`
 You also need to link to it in your `<head>`
 
 ```html
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+<link
+  rel="sitemap"
+  type="application/xml"
+  title="Sitemap"
+  href="/sitemap.xml"
+/>
 ```
 
 Now you need to sign up here at the [Search Console](https://search.google.com/search-console/about) and submit that sitemap to Google to let the indexing begin. You can repeat this process with Bing if you would like.
@@ -37,7 +42,8 @@ Now you need to sign up here at the [Search Console](https://search.google.com/s
 These two tags say hey, include me in the search results. Technically you can omit them unless you want to block them but better to be explicit and say “hey google I’m here, index me”
 
 ```html
-<meta name="googlebot" content="index,follow" /> <meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+<meta name="robots" content="index,follow" />
 ```
 
 ## An Aside - Social tags
@@ -75,40 +81,40 @@ I’m going to show the [amp](https://amp.dev/) example, amp is just a google th
 
 ```html
 <html amp>
-	<head>
-		<title>Article headline</title>
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "NewsArticle",
-				"mainEntityOfPage": {
-					"@type": "WebPage",
-					"@id": "https://google.com/article"
-				},
-				"headline": "Article headline",
-				"image": [
-					"https://example.com/photos/1x1/photo.jpg",
-					"https://example.com/photos/4x3/photo.jpg",
-					"https://example.com/photos/16x9/photo.jpg"
-				],
-				"datePublished": "2015-02-05T08:00:00+08:00",
-				"dateModified": "2015-02-05T09:20:00+08:00",
-				"author": {
-					"@type": "Person",
-					"name": "John Doe"
-				},
-				"publisher": {
-					"@type": "Organization",
-					"name": "Google",
-					"logo": {
-						"@type": "ImageObject",
-						"url": "https://google.com/logo.jpg"
-					}
-				}
-			}
-		</script>
-	</head>
-	<body></body>
+  <head>
+    <title>Article headline</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://google.com/article"
+        },
+        "headline": "Article headline",
+        "image": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+        ],
+        "datePublished": "2015-02-05T08:00:00+08:00",
+        "dateModified": "2015-02-05T09:20:00+08:00",
+        "author": {
+          "@type": "Person",
+          "name": "John Doe"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Google",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://google.com/logo.jpg"
+          }
+        }
+      }
+    </script>
+  </head>
+  <body></body>
 </html>
 ```
 

@@ -1,5 +1,5 @@
 ---
-heroImage: '../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg'
+heroImage: "../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg"
 category: JavaScript
 description: "Let's have a look at NodeGUI, NordVPN and Node.js"
 pubDate: 2022-07-01T23:00:00.000Z
@@ -11,7 +11,7 @@ author: greg
 title: Scratch the Surface of NodeGUI
 ---
 
-import nordvpnsr from '/src/assets/images/nordvpn-screenshot.png'
+import nordvpnsr from "/src/assets/images/nordvpn-screenshot.png";
 
 I’ve ported my little demo app from [Proton Native](http://proton-native.js.org/) to [NodeGUI](https://github.com/nodegui/awesome-nodegui/) to see what the API and ecosystem are like. First impressions are this is a very powerful framework with a plethora of possibilities. It comes in two flavours vanilla js and [react](http://react.nodegui.org/). I have a love hate with react right now but it makes a lot more sense and was actually pleasant to code with. The API reminds me a lot of React Native unsurprisingly it borrows some things from it.
 
@@ -20,12 +20,12 @@ There are some similarities with Proton Native like the layout engine (Yoga flex
 Below is the app I’m hacking together for fun:
 
 <Picture
-	layout='responsive'
-	src={nordvpnsr}
-	alt="nordvpn'"
-	style='opacity: 1;'
-	decoding='async'
-	formats={['avif', 'webp']}
+  layout="responsive"
+  src={nordvpnsr}
+  alt="nordvpn'"
+  style="opacity: 1;"
+  decoding="async"
+  formats={["avif", "webp"]}
 />
 
 I’m using some of nordvpn’s [undocumented](https://blog.sleeplessbeastie.eu/2019/02/18/how-to-use-public-nordvpn-api/) APIs and the official CLI tool to muddle this together. Things like connect and disconnect work, also the country flag emoji shows your current country connection. There is a custom icon in the dock and a statusbar icon.
@@ -34,12 +34,16 @@ Some of the non-typical React things I’ve got going on are making use of mobx 
 
 ```js
 const Toggle = observer(() => (
-	<View id='toggleContainer'>
-		<View id='toggle' style={backgroundToggleStyle()}>
-			<Button id='toggleButton' style={toggleStyle()} on={buttonHandler}></Button>
-		</View>
-	</View>
-))
+  <View id="toggleContainer">
+    <View id="toggle" style={backgroundToggleStyle()}>
+      <Button
+        id="toggleButton"
+        style={toggleStyle()}
+        on={buttonHandler}
+      ></Button>
+    </View>
+  </View>
+));
 ```
 
 I love [mobx](https://mobx.js.org/README.html) because like vue it has elegant computed properties like so
