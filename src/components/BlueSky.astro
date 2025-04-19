@@ -1,144 +1,161 @@
 ---
-import BlueskyIcon from '@/components/icons/BlueskyIcon'
+import BlueskyIcon from "@/components/icons/BlueskyIcon";
 type Props = {
-	blskyid: string
-}
-const { blskyid } = Astro.props
+  blskyid: string;
+};
+const { blskyid } = Astro.props;
 ---
 
 {
-	blskyid && (
-		<section class='post__likes' data-bsky-container>
-			<h3 class='post__likesTitle'>
-				<BlueskyIcon /> <span data-bsky-likes-count /> likes on Bluesky
-			</h3>
-			<a
-				class='post__likesCta'
-				href={`https://bsky.app/profile/jswhisperer.bsky.social/post/${blskyid}`}
-				target='_blank'
-			>
-				Like this post on Bluesky to see your face on this page
-			</a>
-			<ul data-bsky-likes class='post__likesList' />
-		</section>
-	)
+  blskyid && (
+    <section class="post__likes" data-bsky-container>
+      <h3 class="post__likesTitle">
+        <BlueskyIcon /> <span data-bsky-likes-count /> likes on Bluesky
+      </h3>
+      <a
+        class="post__likesCta"
+        href={`https://bsky.app/profile/jswhisperer.bsky.social/post/${blskyid}`}
+        rel="noopener"
+        target="_blank"
+      >
+        Like this post on Bluesky to see your face on this page
+      </a>
+      <ul data-bsky-likes class="post__likesList" />
+    </section>
+  )
 }
 <style>
-	.post__likes {
-		/* to avoid CLS as much as possible! */
-		min-height: 400px;
-		/* to prevent negative margin from allowing avatars to spill out of container */
-		padding-right: 1rem;
-	}
+  .post__likes {
+    /* to avoid CLS as much as possible! */
+    min-height: 400px;
+    /* to prevent negative margin from allowing avatars to spill out of container */
+    padding-right: 1rem;
+  }
 
-	.post__likesTitle {
-		font-size: 2rem;
-		color: #000;
-	}
+  .post__likesTitle {
+    font-size: 2rem;
+    color: #000;
+  }
 
-	.post__likesCta {
-		color: #000;
-		font-size: 1.25rem;
-		font-style: italic;
-		display: block;
-	}
+  .post__likesCta {
+    color: #000;
+    font-size: 1.25rem;
+    font-style: italic;
+    display: block;
+  }
 
-	.post__likesList {
-		list-style: none;
-		padding: 0;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
+  .post__likesList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-	.post__like {
-		width: 4rem;
-		aspect-ratio: 1/1;
-		margin-right: -1rem;
-		border-radius: 100%;
-		filter: drop-shadow(0px 0.125rem 0.125rem rgba(0, 0, 0, 0.25));
-	}
+  .post__like {
+    width: 4rem;
+    aspect-ratio: 1/1;
+    margin-right: -1rem;
+    border-radius: 100%;
+    filter: drop-shadow(0px 0.125rem 0.125rem rgba(0, 0, 0, 0.25));
+  }
 
-	.post__like__avatar {
-		border-radius: 100%;
-	}
+  .post__like__avatar {
+    border-radius: 100%;
+  }
 
-	.post__like--placeholder,
-	.post__like--howManyMore {
-		width: 4rem;
-		aspect-ratio: 1/1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 1rem;
-		font-weight: bold;
-		font-style: italic;
-		background-color: #208bfe; /* Bluesky blue */
-		color: #fff;
-	}
+  .post__like--placeholder,
+  .post__like--howManyMore {
+    width: 4rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: italic;
+    background-color: #208bfe; /* Bluesky blue */
+    color: #fff;
+  }
 </style>
 
 <script async define:vars={{ blskyid }}>
-	const LIMIT = 100
-	const container = document.querySelector('[data-bsky-container]')
-	const likesContainer = document.querySelector('[data-bsky-likes]')
-	const likesCount = document.querySelector('[data-bsky-likes-count]')
-	const myDid = 'did:plc:zdejbckdl35ffaq7oz7cmlcs'
-	const bskyAPI = 'https://public.api.bsky.app/xrpc/'
-	const getLikesURL = `${bskyAPI}app.bsky.feed.getLikes?limit=${LIMIT}&uri=`
-	const getPostURL = `${bskyAPI}app.bsky.feed.getPosts?uris=`
+  const LIMIT = 100;
+  const container = document.querySelector("[data-bsky-container]");
+  const likesContainer = document.querySelector("[data-bsky-likes]");
+  const likesCount = document.querySelector("[data-bsky-likes-count]");
+  const myDid = "did:plc:zdejbckdl35ffaq7oz7cmlcs";
+  const bskyAPI = "https://public.api.bsky.app/xrpc/";
+  const getLikesURL = `${bskyAPI}app.bsky.feed.getLikes?limit=${LIMIT}&uri=`;
+  const getPostURL = `${bskyAPI}app.bsky.feed.getPosts?uris=`;
 
-	const main = async () => {
-		function drawHowManyMore(postLikesCount, likesActorLength) {
-			if (postLikesCount > LIMIT) {
-				const likesMore = document.createElement('li')
-				likesMore.classList.add('post__like')
-				likesMore.classList.add('post__like--howManyMore')
-				likesMore.innerText = `+${postLikesCount - likesActorLength}`
-				likesContainer?.appendChild(likesMore)
-			}
-		}
+  const main = async () => {
+    function drawHowManyMore(postLikesCount, likesActorLength) {
+      if (postLikesCount > LIMIT) {
+        const likesMore = document.createElement("li");
+        likesMore.classList.add("post__like", "post__like--howManyMore");
+        likesMore.textContent = `+${postLikesCount - likesActorLength}`;
+        likesContainer?.appendChild(likesMore);
+      }
+    }
 
-		function drawLikes(likesActors, postLikesCount) {
-			for (const like of likesActors) {
-				const likeEl = document.createElement('li')
-				likeEl.classList.add('post__like')
+    function drawLikes(likesActors, postLikesCount) {
+      for (const like of likesActors) {
+        const likeEl = document.createElement("li");
+        likeEl.classList.add("post__like");
 
-				if (like.actor.avatar) {
-					likeEl.innerHTML = `
-      <img class="post__like__avatar" src="${like.actor.avatar.replace('avatar', 'avatar_thumbnail')}" alt="${
-				like.actor.displayName
-			}" />`
-				} else {
-					likeEl.classList.add('post__like--placeholder')
-					likeEl.innerHTML = `
-        <span aria-label="${like.actor.displayName}">@</span>
-      `
-				}
-				likesContainer?.appendChild(likeEl)
-			}
+        if (like.actor.avatar) {
+          const img = document.createElement("img");
+          img.classList.add("post__like__avatar");
+          img.src = like.actor.avatar.replace("avatar", "avatar_thumbnail");
+          img.alt = like.actor.displayName || "User avatar";
+          likeEl.appendChild(img);
+        } else {
+          likeEl.classList.add("post__like--placeholder");
+          const span = document.createElement("span");
+          span.setAttribute(
+            "aria-label",
+            like.actor.displayName || "Unknown user",
+          );
+          span.textContent = "@";
+          likeEl.c(span);
+        }
+        likesContainer?.appendChild(likeEl);
+      }
 
-			drawHowManyMore(postLikesCount, likesActors.length)
-		}
+      drawHowManyMore(postLikesCount, likesActors.length);
+    }
 
-		if (blskyid) {
-			const postUri = `at://did:plc:zdejbckdl35ffaq7oz7cmlcs/app.bsky.feed.post/` + blskyid // `at://did:plc:ar7c4by46qjdydhdevvrndac/app.bsky.feed.post/3lfdi6k3guk2v`
-			try {
-				const bskyPost = await fetch(getPostURL + postUri)
-				const bskyPostLikes = await fetch(getLikesURL + postUri)
-				const postData = await bskyPost.json()
-				const likesData = await bskyPostLikes.json()
+    if (blskyid) {
+      const postUri = `at://did:plc:${myDid}/app.bsky.feed.post/${blskyid}`;
+      try {
+        const [bskyPost, bskyPostLikes] = await Promise.all([
+          fetch(getPostURL + postUri),
+          fetch(getLikesURL + postUri),
+        ]);
 
-				const totalLikesCount = postData.posts[0].likeCount
+        if (!bskyPost.ok || !bskyPostLikes.ok) {
+          throw new Error("Failed to fetch post or likes data");
+        }
 
-				if (likesCount && likesData?.likes?.length > 0) {
-					likesCount.textContent = totalLikesCount
-					drawLikes(likesData.likes, totalLikesCount)
-				}
-			} catch (error) {
-				container?.remove()
-			}
-		}
-	}
-	main()
+        const postData = await bskyPost.json();
+        const likesData = await bskyPostLikes.json();
+
+        const totalLikesCount = postData.posts[0]?.likeCount || 0;
+
+        if (likesCount && likesData?.likes?.length > 0) {
+          likesCount.textContent = totalLikesCount;
+          drawLikes(likesData.likes, totalLikesCount);
+        }
+      } catch (error) {
+        console.error("Error fetching Bluesky data:", error);
+        if (container) {
+          container.innerHTML =
+            "<p>Unable to load likes. Please try again later.</p>";
+        }
+      }
+    }
+  };
+
+  main();
 </script>
