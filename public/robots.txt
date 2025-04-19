@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
 
-Sitemap: https://jswhisperer.uk/sitemap-0.xml
+Sitemap: https://jswhisperer.uk/sitemap-index.xml

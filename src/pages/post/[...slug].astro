@@ -86,11 +86,34 @@ function getWebmentionsForUrl(webmentions: any[], url: any) {
 }
 ---
 
-<!-- <script src='https://unpkg.com/modern-screenshot'></script>
+<!-- Breadcrumb Schema for SEO -->
 <script
-	type='text/partytown'
-	src='https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.js'></script> --><!--
-<script src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'></script> -->
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://jswhisperer.uk/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://jswhisperer.uk/blog/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.data.title,
+        item: pageUrl.toString(),
+      },
+    ],
+  })}
+/>
 <BlogPost
   body={post.body}
   id={post.id}

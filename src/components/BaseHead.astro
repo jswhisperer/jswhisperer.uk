@@ -41,10 +41,7 @@ const atomFeed = "/atom.xml";
 <link rel="pingback" href="https://webmention.io/jswhisperer.uk/xmlrpc" />
 <link rel="webmention" href="https://webmention.io/jswhisperer.uk/webmention" />
 <link rel="preconnect" href="https://api-gateway.umami.dev" />
-<meta
-  name="keywords"
-  content="software development, engineering, javascript, node, vue"
-/>
+<!-- Keywords are now handled by the SEO component -->
 
 {
   [
@@ -65,7 +62,69 @@ const atomFeed = "/atom.xml";
 <!-- Primary Meta Tags -->
 <title>{siteTitle}</title>
 
-<SEO title={siteTitle} description={description} />
+<SEO
+  title={siteTitle}
+  description={description}
+  openGraph={{
+    basic: {
+      title: title,
+      type: articleDate ? "article" : "website",
+      image: socialImageURL,
+      url: Astro.url,
+    },
+    optional: {
+      description: description,
+      locale: siteConfig.ogLocale,
+      siteName: siteConfig.title,
+    },
+    article: articleDate
+      ? {
+          publishedTime: articleDate.toString(),
+          authors: [siteConfig.author],
+        }
+      : undefined,
+    image: {
+      alt: `${title} - Featured image`,
+    },
+  }}
+  twitter={{
+    card: "summary_large_image",
+    site: `@${username}`,
+    creator: `@${username}`,
+    title: title,
+    description: description,
+    image: socialImageURL,
+    imageAlt: `${title} - Featured image`,
+  }}
+  extend={{
+    meta: [
+      {
+        name: "robots",
+        content:
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      {
+        name: "googlebot",
+        content:
+          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      {
+        name: "keywords",
+        content:
+          "software development, engineering, javascript, node, vue, web development",
+      },
+    ],
+    link: [
+      { rel: "sitemap", href: "/sitemap-index.xml" },
+      {
+        rel: "alternate",
+        type: "application/rss+xml",
+        href: "/rss.xml",
+        title: siteConfig.title,
+      },
+    ],
+  }}
+/>
 
 <!-- ViewTransitions  -->
 
@@ -74,10 +133,7 @@ const atomFeed = "/atom.xml";
 <meta name="description" content={description} />
 <meta name="author" content={siteConfig.author} />
 <!-- <script type='module' src='/sw.js'></script> -->
-<meta
-  name="googlebot-news"
-  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-/>
+<!-- SEO meta tags are now handled by the SEO component -->
 
 <script>
   if ("serviceWorker" in navigator) {

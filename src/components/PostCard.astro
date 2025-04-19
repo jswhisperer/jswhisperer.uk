@@ -77,17 +77,15 @@ let bgImg = await getImage({ src: heroImage, formats: ["webp", "avif"] });
     <a href={`/post/${slug}/`} aria-label={"read more about" + title}>
       {
         heroImage && (
-          <div
-            class="heroImgBg"
-            style={`width=${bgImg.options.width};height=${bgImg.options.height};background-image: url(${bgImg.src});`}
+          <Picture
+            src={heroImage}
+            alt={`Featured image for ${title}`}
+            formats={["avif", "webp"]}
+            width={600}
+            height={400}
+            class="heroImgBg object-cover w-full h-full rounded-t-lg"
+            loading="lazy"
           />
-          // <Picture
-          // 	src={bgImg.src}
-          // 	alt='image 1'
-          // 	inferSize={true}
-          // 	width={bgImg.options.width}
-          // 	height={bgImg.options.height}
-          // />
         )
       }
 

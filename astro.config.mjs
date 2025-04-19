@@ -8,16 +8,17 @@ import { remarkReadingTime } from "./src/utils/readTime.ts";
 
 // https://astro.build/config
 export default defineConfig({
-  // image: {
-  // 	// service: {
-  // 	// 	entrypoint: 'astro/assets/services/squoosh'
-  // 	// },
-  // 	remotePatterns: [
-  // 		{
-  // 			protocol: 'https'
-  // 		}
-  // 	]
-  // },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    remotePatterns: [
+      {
+        protocol: 'https'
+      }
+    ],
+    domains: ['res.cloudinary.com', 'dev-to-uploads.s3.amazonaws.com']
+  },
   vite: {
     optimizeDeps: {
       esbuildOptions: {
@@ -123,7 +124,11 @@ export default defineConfig({
       },
       drafts: true,
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/admin/'),
+      changefreq: 'weekly',
+      lastmod: new Date(),
+    }),
     tailwind(),
     // partytown({
     // 	config: {

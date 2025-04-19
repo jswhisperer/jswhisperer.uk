@@ -1,15 +1,16 @@
 ---
 cover_image: https://dev-to-uploads.s3.amazonaws.com/i/7b6ld2c3bl65co0l6d5t.png
-
 heroImage: "../../assets/images/uploads/https___dev-to-uploads.s3.amazonaws.com_uploads_articles_0f0arenmyx88zjd8tvtz.jpg"
 category: JavaScript
-description: "Quick tip to add awesome sharing to your app"
+description: "Quick tip to add awesome sharing to your app with the Web Share API for better user experience"
 pubDate: 2023-01-01T00:00:00.000Z
 tags: ["frontend", "webshare", "javascript", "pwa"]
 title: "Sharing is caring"
 author: greg
 canonical_url: "https://jswhisperer.uk/post/sharing-is-caring/"
 ---
+
+import { Picture } from "astro:assets";
 
 Wouldn't it be grand to click a button and have your mobile's native share dialog come up?
 This used to take funky third party js widgets, or registering for all the various site api's individual; I remember it could take a week to get it right with SEO back in the golden days.
@@ -20,7 +21,15 @@ Now hypothetically say you have a fullscreened progressive web app, looks slick 
 
 Example:
 
-![Image Alt](https://res.cloudinary.com/https-gregbenner-life/image/upload/v1597043661/share_nw2ssb.jpg)
+<Picture
+  src="https://res.cloudinary.com/https-gregbenner-life/image/upload/v1597043661/share_nw2ssb.jpg"
+  alt="Mobile share dialog example"
+  width="600"
+  height="400"
+  formats={["avif", "webp"]}
+  loading="lazy"
+  class="rounded-md w-full object-cover"
+/>
 
 Here's your solution in the form of a method. One caveat is this must be called on a user action like click.
 

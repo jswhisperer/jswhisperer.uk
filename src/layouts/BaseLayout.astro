@@ -41,6 +41,23 @@ const structuredData = {
   </Head>
 
   <body id="body" itemscope itemtype="http://schema.org/WebPage">
+    <!-- Website Schema -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "JavaScript Whisperer",
+        url: "https://jswhisperer.uk",
+        description:
+          "Specialist in performance oriented javascript architecture for web, mobile, client and server side. Passionate about realtime web.",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://jswhisperer.uk/search?q={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      })}
+    />
     <!-- <Header /> -->
     <NewHeader />
     <main

@@ -52,26 +52,47 @@ const articleDate = pubDate.toISOString();
   type="application/ld+json"
   set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl.toString(),
+    },
     headline: title,
-    keywords: tags,
-    description,
+    name: title,
+    description: description,
+    keywords: tags?.join(", "),
     articleBody: body.renderedOutput,
     datePublished: pubDate.toISOString(),
     dateModified: pubDate?.toISOString() ?? undefined,
-    url: pageUrl, //`${siteConfig.site}post/${slug}`,
-    thumbnailUrl: heroImage?.src || "/public/open-graph.png",
+    url: pageUrl.toString(),
     image: {
       "@type": "ImageObject",
-      url: heroImage?.src,
-
-      caption: "a banner image",
+      url: heroImage?.src || siteConfig.ogImage,
+      width: 1200,
+      height: 630,
+      caption: `Featured image for ${title}`,
     },
     author: {
       "@type": "Person",
-      name: currentAuthor?.slug,
-      description: currentAuthor?.body,
-      url: `${Astro.site}/author/${currentAuthor?.slug}`,
+      name: currentAuthor?.data?.name || "Gregory Benner",
+      url: `${Astro.site}author/${currentAuthor?.slug || "greg"}`,
+      image: {
+        "@type": "ImageObject",
+        url: `${Astro.site}assets/images/greg.jpeg`,
+        width: 400,
+        height: 400,
+      },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.title,
+      url: siteConfig.site,
+      logo: {
+        "@type": "ImageObject",
+        url: `${Astro.site}favicon.svg`,
+        width: 192,
+        height: 192,
+      },
     },
   })}
 />
