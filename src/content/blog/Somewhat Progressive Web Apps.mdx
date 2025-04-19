@@ -11,19 +11,46 @@ title: Somewhat Progressive Web Apps
 author: greg
 ---
 
+import { Picture } from "astro:assets";
+import pwaBuilderLogo from "../../assets/images/uploads/pwa-builder-logo.svg";
+import pwaBuilderScreenshot from "../../assets/images/uploads/pwa-builder-screenshot.png";
+import pwaBuilderScreenshot2 from "../../assets/images/uploads/pwa-builder-screenshot2.png";
+
 In my last [post](/post/web-view-apps-on-your-os/) I explored a few ideas for using desktop native webviews to contain a webapp. There are some pros and cons to said approach, off the top of my head I'd say the pros are smaller app sizes (than what I'm going to share later in the post) and portability of the app; you can distribute it. A con of that approach might be if you just need a PWA you can open chrome > click more tools > create shortcut. This approach will yield a very small app size, but no portability.
 
-So let's explore an interesting tool I found that might be the right solution for your use case. [PWABuilder](https://www.pwabuilder.com/)
-![pwa builder](https://www.pwabuilder.com/_nuxt/img/new-logo.39c5508.svg)
+So let's explore an interesting tool I found that might be the right solution for your use case.
+
+<Picture
+  formats={["avif", "webp"]}
+  src={pwaBuilderLogo}
+  alt="PWA Builder logo"
+  width={200}
+  height={50}
+/>
+
 From what I gather is using a somewhat similar approach, using native code like swift on macos to power a view on the os. It's pretty nifty that you can go to the site enter any url and poof you get a PWA for desktop or android.
 
 Well not exactly, you will get varying mileage from the url you enter depending on how well it's setup as a PWA. something like mobile.twitter.com will work very well, where other sites will need some help. I won't cover too much of setting up a PWA in this post but something like this [https://tomitm.github.io/appmanifest/](https://tomitm.github.io/appmanifest/) will get you most of the way; plus serving your site over https and having a [service worker.](https://developers.google.com/web/tools/workbox)
 
-![enter image description here](https://res.cloudinary.com/https-gregbenner-life/image/upload/v1596651485/Screenshot_from_2020-08-05_14-16-29_xftnxa.png)
+<Picture
+  formats={["avif", "webp"]}
+  src={pwaBuilderScreenshot}
+  alt="PWA Builder interface screenshot"
+  width={800}
+  height={450}
+  class="rounded-md w-full object-cover"
+/>
 
 Next steps are to Build your PWA!
 
-![enter image description here](https://res.cloudinary.com/https-gregbenner-life/image/upload/v1596651621/Screenshot_from_2020-08-05_14-20-01_xo6cuk.png)
+<Picture
+  formats={["avif", "webp"]}
+  src={pwaBuilderScreenshot2}
+  alt="PWA Builder download options"
+  width={800}
+  height={450}
+  class="rounded-md w-full object-cover"
+/>
 
 Well not exactly, whichever platform you choose to download, I tried android, windows, and macos; the instructions are kind of missing.
 
