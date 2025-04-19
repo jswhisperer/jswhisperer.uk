@@ -12,6 +12,10 @@ author: greg
 canonical_url: "https://jswhisperer.uk/post/webmentions-revisted/"
 ---
 
+import { Picture } from "astro:assets";
+
+import webhookImg from "../../assets/images/ve19f86hcdrbtdv5n5zo.png";
+
 When writing your blog, many, like myself,f would like comments from our readers. Comments, likes, reposts and similar let the author know what readers think and cultivate great new conversations or provide invaluable feedback and even criticism on which we can learn from and grow.
 
 I first wrote a very light article on the implementation of Webmentions 5 years ago [here](https://dev.to/jswhisperer/you-dont-mention-webmentions-20be).
@@ -96,9 +100,19 @@ You might then render the results in your framework of choice as below. I've add
 The last step for me is having my static blog trigger a build for new Webmentions. I'm using Cloudflare Workers, but it's the same process for Github Pages / Workers, Vercel etc.
 
 Take your webmention.io webhook
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ve19f86hcdrbtdv5n5zo.png)
+
+<Picture
+  formats={["avif", "webp"]}
+  src={webhookImg}
+  alt="webmention.io webhook"
+/>
 
 plug it into your static host
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/byx4vvc3kgmbg40q36xa.png)
+
+<Picture
+  formats={["avif", "webp"]}
+  src={import("../../assets/images/byx4vvc3kgmbg40q36xa.png")}
+  alt="webmention.io webhook"
+/>
 
 and Enjoy
