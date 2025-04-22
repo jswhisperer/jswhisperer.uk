@@ -144,6 +144,13 @@ const atomFeed = "/atom.xml";
   }
 </script>
 
+<!-- Cloudflare Web Analytics -->
+<script
+  defer
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "cbca560476c24c1e91d00c93a7f8501c"}'
+></script><!-- End Cloudflare Web Analytics -->
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={articleDate ? "article" : "website"} />
 <meta property="og:url" content={Astro.url} />
