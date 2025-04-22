@@ -133,6 +133,7 @@ export default defineConfig({
     }),
     tailwind(),
     compressor(),
+    (await import("@playform/compress")).default(),
     // partytown({
     // 	config: {
     //     debug: true,
