@@ -11,6 +11,12 @@ import { remarkReadingTime } from "./src/utils/readTime.ts";
 import purgecss from "astro-purgecss";
 
 
+import playformInline from "@playform/inline";
+
+
+import critters from "astro-critters";
+
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -130,9 +136,9 @@ export default defineConfig({
     filter: (page) => !page.includes('/admin/'),
     changefreq: 'weekly',
     lastmod: new Date(),
-  }), tailwind(), compressor(), // partytown({
-  // 	config: {
-  //     debug: true,
+  }), // partytown({
+  tailwind(), // 	config: {
+  compressor(), //     debug: true,
   // 		forward: [['html2canvas', { preserveBehavior: true }]]
   // 	}
   // })
@@ -141,5 +147,5 @@ export default defineConfig({
       './src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}'
       // Add any other template files that contain styles
     ]
-  })],
+  }), playformInline(), critters()],
 });

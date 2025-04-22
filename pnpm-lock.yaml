@@ -20,6 +20,9 @@ importers:
       '@playform/compress':
         specifier: ^0.1.9
         version: 0.1.9(@types/node@22.13.14)(jiti@2.4.2)(rollup@2.79.2)(typescript@5.7.3)(yaml@2.7.1)
+      '@playform/inline':
+        specifier: ^0.1.2
+        version: 0.1.2(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)
       '@tailwindcss/postcss':
         specifier: ^4.0.6
         version: 4.0.6
@@ -35,6 +38,9 @@ importers:
       astro-compressor:
         specifier: ^1.0.0
         version: 1.0.0
+      astro-critters:
+        specifier: ^2.2.1
+        version: 2.2.1(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)
       astro-embed:
         specifier: ^0.9.0
         version: 0.9.0(astro@5.1.3(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1))
@@ -2129,6 +2135,12 @@ packages:
   '@playform/compress@0.1.9':
     resolution: {integrity: sha512-UGM9hE/vxw4TaQ0vGLm+H8et9wkaYZ1GlC007GH+bbq2DToFWGK+Yi6ne0ycj+ASW675AQfHYp3MKPb8wOQK4Q==}
 
+  '@playform/inline@0.1.2':
+    resolution: {integrity: sha512-Eqk1FbKc1bNf5zyTBzrqeUvH0qExIzf6auw+yDXRl2MMZOt72FXQfnES1dtdxgjIEf4TDbPBtJ1rTofp52vDvQ==}
+
+  '@playform/pipe@0.1.2':
+    resolution: {integrity: sha512-fMZyPQXweet44Apz5F+9kAjrmy9RbMX7ajZJmw40lWarWI380D/b0bnJOvOmmZztx3pJZxbBMht2QLd8AG4V2w==}
+
   '@playform/pipe@0.1.3':
     resolution: {integrity: sha512-cjRcaj6b8XZMS+N51In78EuD9e0x0M3gYxi2g+qUGk1iya2uxcS+aSrXxfBUZueOjxADQwpyS4zLEhlbHCGcDA==}
 
@@ -3092,6 +3104,9 @@ packages:
   '@types/node@18.19.86':
     resolution: {integrity: sha512-fifKayi175wLyKyc5qUfyENhQ1dCNI1UNjp653d8kuYcPQN5JhX3dGuP/XmvPTg/xRBn1VTLpbmi+H/Mr7tLfQ==}
 
+  '@types/node@22.10.5':
+    resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
+
   '@types/node@22.13.14':
     resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
 
@@ -3929,6 +3944,9 @@ packages:
   astro-compressor@1.0.0:
     resolution: {integrity: sha512-MNGRmjIsb73BIJivbU/HnTbPu5CEFvXp1NCev0bpsuK/cp4cCPX6C1omUPXzw2oQbtKv0phTTTtEk+h20SrF1Q==}
 
+  astro-critters@2.2.1:
+    resolution: {integrity: sha512-C9wYbSWEqvBZ65/tarpR56GjuxH7psILuzwtV3MCHWfT5rfI3ESo8DfxQab1bTAjinBDla0ohAtM7GdXo/OJKQ==}
+
   astro-embed@0.9.0:
     resolution: {integrity: sha512-koBCZH8n1q7tyXW+s11mdwb5dFsv9kG8uMuF17CUIVFJWqwRxx7YCpa9o2P9PuPeWffsrwmdVJTl65kLLP2Uug==}
     peerDependencies:
@@ -4069,6 +4087,10 @@ packages:
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+
+  beasties@0.2.0:
+    resolution: {integrity: sha512-Ljqskqx/tbZagIglYoJIMzH5zgssyp+in9+9sAyh15N22AornBeIDnb8EZ6Rk+6ShfMxd92uO3gfpT0NtZbpow==}
+    engines: {node: '>=14.0.0'}
 
   better-sqlite3@11.7.2:
     resolution: {integrity: sha512-10a57cHVDmfNQS4jrZ9AH2t+2ekzYh5Rhbcnb4ytpmYweoLdogDmyTt5D+hLiY9b44Mx9foowb/4iXBTO2yP3Q==}
@@ -4471,6 +4493,10 @@ packages:
     engines: {node: '>=0.8'}
     hasBin: true
 
+  critters@0.0.25:
+    resolution: {integrity: sha512-ROF/tjJyyRdM8/6W0VqoN5Ql05xAGnkf5b7f3sTEl1bI5jTQQf8O918RD/V9tEb9pRY/TKcvJekDbJtniHyPtQ==}
+    deprecated: Ownership of Critters has moved to the Nuxt team, who will be maintaining the project going forward. If you'd like to keep using Critters, please switch to the actively-maintained fork at https://github.com/danielroe/beasties
+
   cross-fetch@3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
 
@@ -4760,6 +4786,10 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+
+  deepmerge-ts@7.1.3:
+    resolution: {integrity: sha512-qCSH6I0INPxd9Y1VtAiLpnYvz5O//6rCfJXKk0z66Up9/VOSr+1yS8XSKA5IWRxjocFGlzPyaZYe+jxq7OOLtQ==}
+    engines: {node: '>=16.0.0'}
 
   deepmerge-ts@7.1.5:
     resolution: {integrity: sha512-HOJkrhaYsweh+W+e74Yn7YStZOilkoPb6fycpwNLKzSPtruFs48nYis0zy5yJz1+ktUhHxoRDJ27RQAWLIJVJw==}
@@ -7523,6 +7553,9 @@ packages:
         optional: true
       ts-node:
         optional: true
+
+  postcss-media-query-parser@0.2.3:
+    resolution: {integrity: sha512-3sOlxmbKcSHMjlUXQZKQ06jOswE7oVkXPxmZdoB1r5l0q6gTFTQSHxNxOrCccElbW7dxNytifNEo8qidX2Vsig==}
 
   postcss-nested@6.2.0:
     resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
@@ -11975,6 +12008,52 @@ snapshots:
       - uploadthing
       - yaml
 
+  '@playform/inline@0.1.2(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)':
+    dependencies:
+      '@playform/pipe': 0.1.3
+      astro: 5.1.3(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)
+      beasties: 0.2.0
+      deepmerge-ts: 7.1.5
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@deno/kv'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@types/node'
+      - '@upstash/redis'
+      - '@vercel/blob'
+      - '@vercel/kv'
+      - aws4fetch
+      - db0
+      - idb-keyval
+      - ioredis
+      - jiti
+      - less
+      - lightningcss
+      - rollup
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - typescript
+      - uploadthing
+      - yaml
+
+  '@playform/pipe@0.1.2':
+    dependencies:
+      '@types/node': 22.10.5
+      deepmerge-ts: 7.1.3
+      fast-glob: 3.3.3
+
   '@playform/pipe@0.1.3':
     dependencies:
       '@types/node': 22.13.14
@@ -13267,6 +13346,10 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/node@22.10.5':
+    dependencies:
+      undici-types: 6.20.0
+
   '@types/node@22.13.14':
     dependencies:
       undici-types: 6.20.0
@@ -14270,6 +14353,46 @@ snapshots:
 
   astro-compressor@1.0.0: {}
 
+  astro-critters@2.2.1(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1):
+    dependencies:
+      '@playform/pipe': 0.1.2
+      astro: 5.1.3(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)
+      critters: 0.0.25
+      deepmerge-ts: 7.1.3
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@deno/kv'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@types/node'
+      - '@upstash/redis'
+      - '@vercel/blob'
+      - '@vercel/kv'
+      - aws4fetch
+      - db0
+      - idb-keyval
+      - ioredis
+      - jiti
+      - less
+      - lightningcss
+      - rollup
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - typescript
+      - uploadthing
+      - yaml
+
   astro-embed@0.9.0(astro@5.1.3(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1)):
     dependencies:
       '@astro-community/astro-embed-baseline-status': 0.1.2(astro@5.1.3(@types/node@22.13.14)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@2.79.2)(terser@5.39.0)(typescript@5.7.3)(yaml@2.7.1))
@@ -14553,6 +14676,17 @@ snapshots:
   base64-arraybuffer@1.0.2: {}
 
   base64-js@1.5.1: {}
+
+  beasties@0.2.0:
+    dependencies:
+      css-select: 5.1.0
+      css-what: 6.1.0
+      dom-serializer: 2.0.0
+      domhandler: 5.0.3
+      htmlparser2: 9.1.0
+      picocolors: 1.1.1
+      postcss: 8.5.2
+      postcss-media-query-parser: 0.2.3
 
   better-sqlite3@11.7.2:
     dependencies:
@@ -14999,6 +15133,16 @@ snapshots:
 
   crc-32@1.2.2: {}
 
+  critters@0.0.25:
+    dependencies:
+      chalk: 4.1.2
+      css-select: 5.1.0
+      dom-serializer: 2.0.0
+      domhandler: 5.0.3
+      htmlparser2: 8.0.2
+      postcss: 8.5.2
+      postcss-media-query-parser: 0.2.3
+
   cross-fetch@3.1.5:
     dependencies:
       node-fetch: 2.6.7
@@ -15317,6 +15461,8 @@ snapshots:
   deep-extend@0.6.0: {}
 
   deep-is@0.1.4: {}
+
+  deepmerge-ts@7.1.3: {}
 
   deepmerge-ts@7.1.5: {}
 
@@ -18953,6 +19099,8 @@ snapshots:
       yaml: 2.7.1
     optionalDependencies:
       postcss: 8.5.2
+
+  postcss-media-query-parser@0.2.3: {}
 
   postcss-nested@6.2.0(postcss@8.4.49):
     dependencies:
