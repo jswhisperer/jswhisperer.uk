@@ -19,7 +19,9 @@ const { link, href, underlinecolor, strokewidth } = Astro.props;
       </svg>
     </span>
   </a>
-  <style onload="this.media='all'" define:vars={{ underlinecolor, strokewidth }}
+  <style
+    onload="this.media='all'"
+    define:vars={{ underlinecolor: underlinecolor, strokewidth: strokewidth }}
   >
     /*! CSS Used from: https://tympanus.net/Development/LineHoverStyles/css/base.css */
     .content__item .content__item::after,
