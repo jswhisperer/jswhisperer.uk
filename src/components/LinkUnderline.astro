@@ -19,28 +19,29 @@ const { link, href, underlinecolor, strokewidth } = Astro.props;
       </svg>
     </span>
   </a>
-  <style is:inline define:vars={{ underlinecolor, strokewidth }}>
+  <style define:vars={{ underlinecolor, strokewidth }}>
     /*! CSS Used from: https://tympanus.net/Development/LineHoverStyles/css/base.css */
-    *,
-    *::after,
-    *::before {
+    .content__item .content__item::after,
+    .content__item::before {
       box-sizing: border-box;
     }
-    a {
-      text-decoration: none;
-      color: var(--color-link);
-      outline: none;
-    }
-    a:hover {
-      color: var(--color-link-hover);
-      outline: none;
-    }
-    a:focus {
-      outline: none;
-      background: lightgrey;
-    }
-    a:focus:not(:focus-visible) {
-      background: transparent;
+    .content__item {
+      a {
+        text-decoration: none;
+        color: var(--color-link);
+        outline: none;
+      }
+      a:hover {
+        color: var(--color-link-hover);
+        outline: none;
+      }
+      a:focus {
+        outline: none;
+        background: lightgrey;
+      }
+      a:focus:not(:focus-visible) {
+        background: transparent;
+      }
     }
     .content__item {
       width: 100%;
