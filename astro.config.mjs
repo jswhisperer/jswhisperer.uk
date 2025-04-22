@@ -2,9 +2,11 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
+import compressor from "astro-compressor";
 import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -130,6 +132,7 @@ export default defineConfig({
       lastmod: new Date(),
     }),
     tailwind(),
+    compressor(),
     // partytown({
     // 	config: {
     //     debug: true,
