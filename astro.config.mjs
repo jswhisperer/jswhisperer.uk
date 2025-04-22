@@ -8,6 +8,9 @@ import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
 
 
+import purgecss from "astro-purgecss";
+
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -57,88 +60,86 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [
-    // embeds(),
+  integrations: [// embeds(),
 
-    // astroImageTools,
-    AstroPWA({
-      srcDir: "src",
-      base: "/",
-      scope: "/",
-      registerType: "autoUpdate",
+  // astroImageTools,
+  AstroPWA({
+    srcDir: "src",
+    base: "/",
+    scope: "/",
+    registerType: "autoUpdate",
 
-      includeAssets: ["**/*"],
-      manifest: {
-        name: "jswhisperer blog",
-        short_name: "jswhisperer",
-        theme_color: "#ffffff",
-        icons: [
-          {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable",
-          },
-        ],
-      },
-      injectRegister: "auto",
-      workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
-            handler: "CacheFirst",
-          },
-        ],
-        globDirectory: "dist",
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        navigateFallback: null,
-        globPatterns: ["**/*"],
-      },
-      devOptions: {
-        type: "module",
-        enabled: true,
-        navigateFallbackAllowlist: [/^\//],
-      },
-      experimental: {
-        responsiveImages: true,
-        directoryAndTrailingSlashHandler: true,
-        assets: true,
-      },
-    }),
-    mdx({
-      syntaxHighlight: "shiki",
-      shikiConfig: {
-        experimentalThemes: {
-          light: "dracula",
-          dark: "material-theme-palenight",
+    includeAssets: ["**/*"],
+    manifest: {
+      name: "jswhisperer blog",
+      short_name: "jswhisperer",
+      theme_color: "#ffffff",
+      icons: [
+        {
+          src: "pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
         },
-        wrap: true,
+        {
+          src: "pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+      ],
+    },
+    injectRegister: "auto",
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
+          handler: "CacheFirst",
+        },
+      ],
+      globDirectory: "dist",
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
+      navigateFallback: null,
+      globPatterns: ["**/*"],
+    },
+    devOptions: {
+      type: "module",
+      enabled: true,
+      navigateFallbackAllowlist: [/^\//],
+    },
+    experimental: {
+      responsiveImages: true,
+      directoryAndTrailingSlashHandler: true,
+      assets: true,
+    },
+  }), mdx({
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      experimentalThemes: {
+        light: "dracula",
+        dark: "material-theme-palenight",
       },
-      drafts: true,
-    }),
-    sitemap({
-      filter: (page) => !page.includes('/admin/'),
-      changefreq: 'weekly',
-      lastmod: new Date(),
-    }),
-    tailwind(),
-    compressor(),
-    (await import("@playform/compress")).default(),
-    // partytown({
-    // 	config: {
-    //     debug: true,
-    // 		forward: [['html2canvas', { preserveBehavior: true }]]
-    // 	}
-    // })
-  ],
+      wrap: true,
+    },
+    drafts: true,
+  }), sitemap({
+    filter: (page) => !page.includes('/admin/'),
+    changefreq: 'weekly',
+    lastmod: new Date(),
+  }), tailwind(), compressor(), // partytown({
+  // 	config: {
+  //     debug: true,
+  // 		forward: [['html2canvas', { preserveBehavior: true }]]
+  // 	}
+  // })
+  (await import("@playform/compress")).default(), purgecss({
+    content: [
+      './src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}'
+      // Add any other template files that contain styles
+    ]
+  })],
 });
