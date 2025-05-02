@@ -107,7 +107,7 @@ export default defineConfig({
           handler: "CacheFirst",
         },
       ],
-      globDirectory: "dist",
+      globDirectory: ".",
       maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
       navigateFallback: null,
       globPatterns: ["**/*"],
