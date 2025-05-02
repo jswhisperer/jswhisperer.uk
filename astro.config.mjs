@@ -147,7 +147,8 @@ export default defineConfig({
         extensions: ['astro', 'html']
       }
     ]
-  })purgecss({
+  }),
+  purgecss({
       extractors: [
         {
           extractor: (content) =>
