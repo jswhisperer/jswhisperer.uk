@@ -14,7 +14,7 @@ import purgecss from "astro-purgecss";
 import playformInline from "@playform/inline";
 
 
-// import critters from "astro-critters";
+import critters from "astro-critters";
 
 
 // https://astro.build/config
@@ -56,7 +56,7 @@ export default defineConfig({
     		}
     }
   },
-  prefetch: true,
+  prefetch: false,
   site: siteConfig.site,
   markdown: {
     remarkPlugins: [remarkReadingTime],
@@ -157,6 +157,5 @@ export default defineConfig({
         }
       ]
     }),
-   playformInline()
-  ],
+   playformInline(), critters()],
 });
