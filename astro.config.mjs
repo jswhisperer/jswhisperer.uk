@@ -138,14 +138,23 @@ export default defineConfig({
     lastmod: new Date(),
   }), // partytown({
   tailwind(), // 	config: {
-  compressor(), //     debug: true,
-  // 		forward: [['html2canvas', { preserveBehavior: true }]]
-  // 	}
-  // })
-  (await import("@playform/compress")).default(), purgecss({
-    content: [
-      './src/**/*.{astro,js,jsx,ts,tsx,vue,svelte}'
-      // Add any other template files that contain styles
+  compressor(), 
+  (await import("@playform/compress")).default(),purgecss({
+    extractors: [
+      {
+        extractor: (content) =>
+          content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+        extensions: ['astro', 'html']
+      }
     ]
-  }), playformInline(), critters()],
+  })purgecss({
+      extractors: [
+        {
+          extractor: (content) =>
+            content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+          extensions: ['astro', 'html']
+        }
+      ]
+    }),
+   playformInline(), critters()],
 });

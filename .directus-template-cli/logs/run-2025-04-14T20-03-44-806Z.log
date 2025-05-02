@@ -1,4 +1,0 @@
-Log started at 2025-04-14T20-03-44-806Z
-2025-04-14T20:04:36.858Z - ERROR: Directus Error: Invalid user credentials. (Status: 401) {"code":"INVALID_CREDENTIALS"} Context: {"directusUrl":"https://directus-999-8570599001.europe-west2.run.app/","message":"Invalid token. Please try again.","operation":"getDirectusToken"}
-2025-04-14T20:04:48.989Z - ERROR: Directus Error: Invalid user credentials. (Status: 401) {"code":"INVALID_CREDENTIALS"} Context: {"directusUrl":"https://directus-999-8570599001.europe-west2.run.app/","message":"Invalid token. Please try again.","operation":"getDirectusToken"}
-2025-04-14T20:05:49.535Z - ERROR: Directus Error: Missing or invalid unit_price or quantity. (Status: 500) {"code":"INTERNAL_SERVER_ERROR"} Context: {}
