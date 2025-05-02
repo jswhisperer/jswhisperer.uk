@@ -1,13 +1,13 @@
 {
-	"folders": [
-		{
-			"path": "../../.."
-		}
-	],
-	"settings": {
-		"files.associations": {
-			"*.astro": "astro"
-		},
-		"git.ignoreLimitWarning": true
-	}
+  "folders": [
+    {
+      "path": "../../..",
+    },
+  ],
+  "settings": {
+    "files.associations": {
+      "*.astro": "astro",
+    },
+    "git.ignoreLimitWarning": true,
+  },
 }
