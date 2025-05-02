@@ -108,9 +108,7 @@ export default defineConfig({
         globDirectory: ".",
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
         navigateFallback: null,
-        globPatterns: ["**/*"],
-        cacheNamePrefix: new Date().toISOString(),
-        
+        globPatterns: ["**/*"],        
       },
       devOptions: {
         type: "module",
