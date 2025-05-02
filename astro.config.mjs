@@ -157,5 +157,6 @@ export default defineConfig({
         }
       ]
     }),
-   playformInline(), critters()],
+   playformInline()
+  ],
 });
