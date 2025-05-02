@@ -14,7 +14,7 @@ import purgecss from "astro-purgecss";
 import playformInline from "@playform/inline";
 
 
-import critters from "astro-critters";
+// import critters from "astro-critters";
 
 
 // https://astro.build/config
@@ -49,12 +49,12 @@ export default defineConfig({
         allow: ["../.."],
       },
     },
-    // build: {
-    // 	emitAssets: true
-    // 	// 	rollupOptions: {
-    // 	// 		external: ['workbox-window', 'virtual:pwa-register']
-    // 	// 	}
-    // }
+    build: {
+    	emitAssets: true,
+    		rollupOptions: {
+    			external: ['workbox-window', 'virtual:pwa-register']
+    		}
+    }
   },
   prefetch: true,
   site: siteConfig.site,
