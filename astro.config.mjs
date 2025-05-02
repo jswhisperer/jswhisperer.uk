@@ -102,7 +102,9 @@ export default defineConfig({
           {
             urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
             handler: "CacheFirst",
-            cacheName: new Date().toISOString(),
+            options: {
+              cacheName: new Date().toISOString(),
+            },
           },
         ],
         globDirectory: ".",
