@@ -100,6 +100,7 @@
     "typescript": "^5.2.2",
     "vite-plugin-amp": "^1.2.3",
     "vite-plugin-pwa": "^0.21.1",
+    "workbox-strategies": "^7.3.0",
     "workbox-window": "^7.3.0"
   },
   "lint-staged": {
