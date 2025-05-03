@@ -4,8 +4,10 @@ import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
 import compressor from "astro-compressor";
 import { defineConfig } from "astro/config";
+import { CacheFirst } from 'workbox-strategies';
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
+
 
 
 import purgecss from "astro-purgecss";
@@ -118,8 +120,9 @@ export default defineConfig({
         runtimeCaching: [
           {
           
+            
             urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
-            handler: "CacheFirst",
+            handler: CacheFirst,
             options: {
               cacheName: new Date().toISOString(),
               cacheableResponse: {
