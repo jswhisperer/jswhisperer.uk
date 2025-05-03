@@ -68,29 +68,29 @@ export default defineConfig({
 
     // astroImageTools,
     AstroPWA({
-      experimental: {
-        directoryAndTrailingSlashHandler: true,
-      },
-      filename: 'my-sw.js',
+      // experimental: {
+      //   directoryAndTrailingSlashHandler: true,
+      // },
+      filename: "my-sw.js",
       srcDir: "src",
       base: "/",
       scope: "/",
       registerType: "autoUpdate",
       includeManifestIcons: false,
-      globPatterns: ['**/*.{js,css,html, png, jpg, jpeg, svg}'],
+      globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
       globIgnores: [
-        'node_modules/**/*',
-        'manifest.webmanifest',
-        'sw.js',
-        'workbox-*.js',
-        '**/pwa-*.png', // the code to ignore caching the icon file
+        "node_modules/**/*",
+        "**/manifest.webmanifest",
+        "sw.js",
+        "workbox-*.js",
+        "**/pwa-*.png", // the code to ignore caching the icon file
       ],
       // includeAssets: ["**/*"],
       manifest: {
         name: "jswhisperer blog",
         short_name: "jswhisperer",
         theme_color: "#ffffff",
-      
+
         // icons: [
         //   {
         //     src: "pwa-192x192.png",
@@ -113,13 +113,11 @@ export default defineConfig({
       pwaAssets: {
         config: true,
       },
-      injectRegister: "auto",
+
       workbox: {
         runtimeCaching: [
           {
-          
-            
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
             handler: "CacheFirst",
             options: {
               cacheName: new Date().toISOString(),
