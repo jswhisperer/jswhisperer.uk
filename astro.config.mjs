@@ -46,12 +46,12 @@ export default defineConfig({
         allow: ["../.."],
       },
     },
-    build: {
-      emitAssets: true,
-      rollupOptions: {
-        external: ["workbox-window", "virtual:pwa-register"],
-      },
-    },
+    // build: {
+    //   emitAssets: true,
+    //   rollupOptions: {
+    //     external: ["workbox-window", "virtual:pwa-register"],
+    //   },
+    // },
   },
   prefetch: false,
   site: siteConfig.site,
@@ -76,7 +76,7 @@ export default defineConfig({
       // srcDir: "src",
       // base: "/",
       // scope: "/",
-      registerType: "autoUpdate",
+      // registerType: "autoUpdate",
       includeManifestIcons: false,
       includeAssets: ["favicon.svg"],
       // globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
@@ -119,7 +119,7 @@ export default defineConfig({
         // cleanupOutdatedCaches: true,
         // globDirectory: "dist",
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        globPatterns: ['**/*.{js,css,html, png, jpg, jpeg, svg}'],
+        globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg}'],
         globIgnores: [
           'node_modules/**/*',
           'manifest.webmanifest',
