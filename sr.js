@@ -15,8 +15,8 @@ const puppeteer = require("puppeteer");
   await page.screenshot({ path: screenshotPath });
 
   // Open the screenshot in a new tab
-  const newPage = await browser.newPage();
-  await newPage.goto(`file://${screenshotPath}`);
+  //   const newPage = await browser.newPage();
+  //   await newPage.goto(`file://${screenshotPath}`);
 
   await browser.close();
 })();
