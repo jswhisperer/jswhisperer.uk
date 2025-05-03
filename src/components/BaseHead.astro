@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import { pwaInfo } from "virtual:pwa-info";
 import { siteConfig } from "@/site-config";
 import { SEO } from "astro-seo";
+import { pwaAssetsHead } from "virtual:pwa-assets/head";
 
 const {
   title = siteConfig.title,
@@ -36,7 +37,7 @@ const atomFeed = "/atom.xml";
 
 <!-- Global Metadata -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="/favicon.ico" />
+<!-- <link rel="icon" href="/favicon.ico" /> -->
 <meta name="generator" content={Astro.generator} />
 <link rel="pingback" href="https://webmention.io/jswhisperer.uk/xmlrpc" />
 <link rel="webmention" href="https://webmention.io/jswhisperer.uk/webmention" />
@@ -132,7 +133,6 @@ const atomFeed = "/atom.xml";
 <meta name="title" content={siteTitle} />
 <meta name="description" content={description} />
 <meta name="author" content={siteConfig.author} />
-<!-- <script is:raw src='/my-sw.js'></script> -->
 <!-- SEO meta tags are now handled by the SEO component -->
 
 <script>
@@ -192,6 +192,12 @@ const atomFeed = "/atom.xml";
   src="https://cloud.umami.is/script.js"
   data-website-id="5d86b231-4cb5-49e5-8d7a-707e3f5ba0c7"></script>
 
+{
+  pwaAssetsHead.themeColor && (
+    <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
+  )
+}
+{pwaAssetsHead.links.map((link) => <link {...link} />)}
 <!-- <script
 	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'
 	integrity='sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=='

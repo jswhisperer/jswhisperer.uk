@@ -76,7 +76,8 @@ export default defineConfig({
       base: "/",
       scope: "/",
       registerType: "autoUpdate",
-      globPatterns: ["**/*"],
+      includeManifestIcons: false,
+      globPatterns: ['**/*.{js,css,html, png, jpg, jpeg, svg}'],
       globIgnores: [
         'node_modules/**/*',
         'manifest.webmanifest',
@@ -132,10 +133,16 @@ export default defineConfig({
           },
         ],
         cleanupOutdatedCaches: true,
-        globDirectory: "./dist",
+        globDirectory: "dist",
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        navigateFallback: '/',
-        globPatterns: ["**/*"],        
+        globPatterns: ['**/*.{js,css,html, png, jpg, jpeg, svg}'],
+        globIgnores: [
+          'node_modules/**/*',
+          'manifest.webmanifest',
+          'sw.js',
+          'workbox-*.js',
+          '**/pwa-*.png', // the code to ignore caching the icon file
+        ],   
       },
       devOptions: {
         type: "module",
