@@ -66,7 +66,6 @@
     "vite": "6.0.6"
   },
   "devDependencies": {
-    "@ampproject/toolbox-optimizer": "^2.10.1",
     "@astrojs/mdx": "4.0.3",
     "@astrojs/sitemap": "3.3.0",
     "@astrojs/tailwind": "6.0.0",
@@ -77,8 +76,8 @@
     "@types/markdown-it": "^14.1.2",
     "@types/sanitize-html": "^2.13.0",
     "@typescript-eslint/parser": "8.29.1",
-    "@vite-pwa/assets-generator": "^0.2.6",
-    "@vite-pwa/astro": "^0.5.0",
+    "@vite-pwa/assets-generator": "^0.2.7",
+    "@vite-pwa/astro": "^0.5.1",
     "astro-selfie": "^1.0.2",
     "clsx": "2.1.1",
     "eslint": "^8.56.0",
@@ -98,7 +97,6 @@
     "tailwindcss": "3.3.5",
     "tinacms": "^2.7.5",
     "typescript": "^5.2.2",
-    "vite-plugin-amp": "^1.2.3",
     "vite-plugin-pwa": "^0.21.1",
     "workbox-strategies": "^7.3.0",
     "workbox-window": "^7.3.0"
