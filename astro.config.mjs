@@ -7,12 +7,18 @@ import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
 
+import manifest from "./webmanifest.json";
+
+
+
 
 import purgecss from "astro-purgecss";
 
 import playformInline from "@playform/inline";
 
 import critters from "astro-critters";
+
+import selfie from 'astro-selfie';
 
 // https://astro.build/config
 export default defineConfig({
@@ -71,6 +77,7 @@ export default defineConfig({
       // experimental: {
       //   directoryAndTrailingSlashHandler: true,
       // },
+      manifest,
       mode: "production",
       // filename: "my-sw.js",
       // srcDir: "src",
@@ -158,15 +165,7 @@ export default defineConfig({
     tailwind(), // 	config: {
     compressor(),
     (await import("@playform/compress")).default(),
-    purgecss({
-      extractors: [
-        {
-          extractor: (content) =>
-            content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
-          extensions: ["astro", "html"],
-        },
-      ],
-    }),
+
     purgecss({
       extractors: [
         {
@@ -178,5 +177,6 @@ export default defineConfig({
     }),
     playformInline(),
     critters(),
+    selfie()
   ],
 });

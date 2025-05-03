@@ -4,6 +4,9 @@ import { pwaInfo } from "virtual:pwa-info";
 import { siteConfig } from "@/site-config";
 import { SEO } from "astro-seo";
 import { pwaAssetsHead } from "virtual:pwa-assets/head";
+import { selfieUrl } from "astro-selfie";
+
+const screenshotUrl = selfieUrl(Astro);
 
 const {
   title = siteConfig.title,
@@ -145,6 +148,7 @@ const atomFeed = "/atom.xml";
 </script> -->
 
 <script>
+  alert(screenshotUrl);
   import { registerSW } from "virtual:pwa-register";
 
   registerSW({
