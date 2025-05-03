@@ -59,7 +59,7 @@
     "globby": "^14.1.0",
     "html-minifier": "^4.0.0",
     "html2canvas": "^1.4.1",
-    "jsdom": "^26.0.0",
+    "jsdom": "^26.1.0",
     "markdown-it": "^14.1.0",
     "purgecss": "^7.0.2",
     "sanitize-html": "^2.14.0",
