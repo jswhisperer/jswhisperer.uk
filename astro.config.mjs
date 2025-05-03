@@ -7,6 +7,7 @@ import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
 
+
 import purgecss from "astro-purgecss";
 
 import playformInline from "@playform/inline";
@@ -67,49 +68,66 @@ export default defineConfig({
 
     // astroImageTools,
     AstroPWA({
+      experimental: {
+        directoryAndTrailingSlashHandler: true,
+      },
+        filename: 'my-sw.js',
       srcDir: "src",
       base: "/",
       scope: "/",
       registerType: "autoUpdate",
-
-      includeAssets: ["**/*"],
+      globPatterns: ["**/*"],
+      // includeAssets: ["**/*"],
       manifest: {
         name: "jswhisperer blog",
         short_name: "jswhisperer",
         theme_color: "#ffffff",
-        icons: [
-          {
-            src: "pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-          {
-            src: "pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable",
-          },
-        ],
+      
+        // icons: [
+        //   {
+        //     src: "pwa-192x192.png",
+        //     sizes: "192x192",
+        //     type: "image/png",
+        //   },
+        //   {
+        //     src: "pwa-512x512.png",
+        //     sizes: "512x512",
+        //     type: "image/png",
+        //   },
+        //   {
+        //     src: "pwa-512x512.png",
+        //     sizes: "512x512",
+        //     type: "image/png",
+        //     purpose: "any maskable",
+        //   },
+        // ],
+      },
+      pwaAssets: {
+        config: true,
       },
       injectRegister: "auto",
       workbox: {
         runtimeCaching: [
           {
+          
             urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/,
             handler: "CacheFirst",
             options: {
               cacheName: new Date().toISOString(),
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+              expiration: {
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
+           
             },
           },
         ],
-        globDirectory: ".",
+        cleanupOutdatedCaches: true,
+        globDirectory: "./dist",
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        navigateFallback: null,
+        navigateFallback: '/',
         globPatterns: ["**/*"],        
       },
       devOptions: {
