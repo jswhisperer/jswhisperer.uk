@@ -77,6 +77,13 @@ export default defineConfig({
       scope: "/",
       registerType: "autoUpdate",
       globPatterns: ["**/*"],
+      globIgnores: [
+        'node_modules/**/*',
+        'manifest.webmanifest',
+        'sw.js',
+        'workbox-*.js',
+        '**/pwa-*.png', // the code to ignore caching the icon file
+      ],
       // includeAssets: ["**/*"],
       manifest: {
         name: "jswhisperer blog",
