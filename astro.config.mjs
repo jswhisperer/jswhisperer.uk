@@ -71,7 +71,7 @@ export default defineConfig({
       experimental: {
         directoryAndTrailingSlashHandler: true,
       },
-        filename: 'my-sw.js',
+      filename: 'my-sw.js',
       srcDir: "src",
       base: "/",
       scope: "/",

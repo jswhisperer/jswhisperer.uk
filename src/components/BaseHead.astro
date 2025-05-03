@@ -132,17 +132,17 @@ const atomFeed = "/atom.xml";
 <meta name="title" content={siteTitle} />
 <meta name="description" content={description} />
 <meta name="author" content={siteConfig.author} />
-<!-- <script type='module' src='/sw.js'></script> -->
+<!-- <script is:raw src='/my-sw.js'></script> -->
 <!-- SEO meta tags are now handled by the SEO component -->
 
-<!-- <script>
+<script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register(
-      import.meta.env.MODE === "production" ? "/sw.js" : "/dev-sw.js?dev-sw",
+      import.meta.env.MODE === "production" ? "/my-sw.js" : "/dev-sw.js?dev-sw",
       { type: import.meta.env.MODE === "production" ? "classic" : "module" },
     );
   }
-</script> -->
+</script>
 
 <!-- Cloudflare Web Analytics -->
 <script
