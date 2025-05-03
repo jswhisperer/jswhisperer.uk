@@ -7,7 +7,7 @@ import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
 
-import manifest from "./webmanifest.json";
+import manifest from "./webmanifest.js";
 
 
 
@@ -77,7 +77,7 @@ export default defineConfig({
       // experimental: {
       //   directoryAndTrailingSlashHandler: true,
       // },
-      manifest,
+      manifest: manifest,
       mode: "production",
       // filename: "my-sw.js",
       // srcDir: "src",
@@ -85,7 +85,7 @@ export default defineConfig({
       // scope: "/",
       // registerType: "autoUpdate",
       includeManifestIcons: false,
-      includeAssets: ["favicon.svg"],
+      includeAssets: ["favicon.svg", "manifest.webmanifest"],
       // globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
       // globIgnores: [
       //   "node_modules/**/*",
@@ -103,7 +103,7 @@ export default defineConfig({
        
       // },
       pwaAssets: {
-        config: true,
+        config: false,
       },
 
       workbox: {

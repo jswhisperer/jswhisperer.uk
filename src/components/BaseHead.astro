@@ -210,13 +210,6 @@ const atomFeed = "/atom.xml";
   data-website-id="5d86b231-4cb5-49e5-8d7a-707e3f5ba0c7"></script>
 
 <!-- pwa assets -->
-{
-  pwaAssetsHead.themeColor && (
-    <meta name="theme-color" content={pwaAssetsHead.themeColor.content} />
-  )
-}
-{pwaAssetsHead.links.map((link) => <link {...link} />)}
-
 <style is:global>
   @import url("./styles/global.css");
 </style>
