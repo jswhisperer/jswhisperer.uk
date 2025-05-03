@@ -71,68 +71,53 @@ export default defineConfig({
       // experimental: {
       //   directoryAndTrailingSlashHandler: true,
       // },
-      filename: "my-sw.js",
-      srcDir: "src",
-      base: "/",
-      scope: "/",
+      mode: "production",
+      // filename: "my-sw.js",
+      // srcDir: "src",
+      // base: "/",
+      // scope: "/",
       registerType: "autoUpdate",
       includeManifestIcons: false,
-      globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
-      globIgnores: [
-        "node_modules/**/*",
-        "**/manifest.webmanifest",
-        "sw.js",
-        "workbox-*.js",
-        "**/pwa-*.png", // the code to ignore caching the icon file
-      ],
+      includeAssets: ["favicon.svg"],
+      // globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
+      // globIgnores: [
+      //   "node_modules/**/*",
+      //   "**/manifest.webmanifest",
+      //   "sw.js",
+      //   "workbox-*.js",
+      //   "**/pwa-*.png", // the code to ignore caching the icon file
+      // ],
       // includeAssets: ["**/*"],
-      manifest: {
-        name: "jswhisperer blog",
-        short_name: "jswhisperer",
-        theme_color: "#ffffff",
+      // manifest: {
+      //   name: "jswhisperer blog",
+      //   short_name: "jswhisperer",
+      //   theme_color: "#ffffff",
 
-        // icons: [
-        //   {
-        //     src: "pwa-192x192.png",
-        //     sizes: "192x192",
-        //     type: "image/png",
-        //   },
-        //   {
-        //     src: "pwa-512x512.png",
-        //     sizes: "512x512",
-        //     type: "image/png",
-        //   },
-        //   {
-        //     src: "pwa-512x512.png",
-        //     sizes: "512x512",
-        //     type: "image/png",
-        //     purpose: "any maskable",
-        //   },
-        // ],
-      },
+       
+      // },
       pwaAssets: {
         config: true,
       },
 
       workbox: {
-        runtimeCaching: [
-          {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: new Date().toISOString(),
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
-              expiration: {
-                maxAgeSeconds: 60 * 60 * 24 * 365,
-              },
+        // runtimeCaching: [
+        //   {
+        //     urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
+        //     handler: "CacheFirst",
+        //     options: {
+        //       cacheName: new Date().toISOString(),
+        //       cacheableResponse: {
+        //         statuses: [0, 200],
+        //       },
+        //       expiration: {
+        //         maxAgeSeconds: 60 * 60 * 24 * 365,
+        //       },
            
-            },
-          },
-        ],
-        cleanupOutdatedCaches: true,
-        globDirectory: "dist",
+        //     },
+        //   },
+        // ],
+        // cleanupOutdatedCaches: true,
+        // globDirectory: "dist",
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
         globPatterns: ['**/*.{js,css,html, png, jpg, jpeg, svg}'],
         globIgnores: [

@@ -135,13 +135,27 @@ const atomFeed = "/atom.xml";
 <meta name="author" content={siteConfig.author} />
 <!-- SEO meta tags are now handled by the SEO component -->
 
-<script>
+<!-- <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register(
       import.meta.env.MODE === "production" ? "/my-sw.js" : "/dev-sw.js?dev-sw",
       { type: import.meta.env.MODE === "production" ? "classic" : "module" },
     );
   }
+</script> -->
+
+<script>
+  import { registerSW } from "virtual:pwa-register";
+
+  registerSW({
+    immediate: true,
+    onRegisteredSW(swScriptUrl) {
+      console.log("SW registered: ", swScriptUrl);
+    },
+    onOfflineReady() {
+      console.log("PWA application ready to work offline");
+    },
+  });
 </script>
 
 <!-- Cloudflare Web Analytics -->

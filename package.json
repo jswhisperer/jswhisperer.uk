@@ -30,6 +30,7 @@
     "format": "prettier --plugin-search-dir=. --write .",
     "lint": "eslint .",
     "pre-commit": "lint-staged",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/favicon.svg",
     "prepare": "husky install"
   },
   "engines": {
