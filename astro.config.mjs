@@ -106,8 +106,8 @@ export default defineConfig({
         runtimeCaching: [
           {
        
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp)$/i,
-            handler: "NetworkFirst",
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp|js)$/i,
+            handler: "CacheFirst",
             options: {
               cacheName: 'main',
           
