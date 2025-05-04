@@ -46,7 +46,7 @@ export const webManifest = {
       src: "example.png",
       sizes: "1920x1080",
       label: "Home page",
-      "form-factor": "wide",
+      "form_factor": "wide",
       platform: "desktop",
     },
   
