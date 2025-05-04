@@ -40,14 +40,13 @@ export const webManifest = {
       src: "example.png",
       sizes: "1920x1080",
       label: "Home page",
-      platform: "android",
+  
     },
     {
       src: "example.png",
       sizes: "1920x1080",
       label: "Home page",
-      "form_factor": "wide",
-      platform: "desktop",
+      "form_factor": "wide"
     },
   
   
