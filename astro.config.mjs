@@ -18,7 +18,6 @@ import playformInline from "@playform/inline";
 
 import critters from "astro-critters";
 
-import selfie from 'astro-selfie';
 
 // https://astro.build/config
 export default defineConfig({
@@ -176,7 +175,6 @@ export default defineConfig({
       ],
     }),
     playformInline(),
-    critters(),
-    selfie()
+    critters()
   ],
 });
