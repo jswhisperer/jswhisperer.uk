@@ -18,7 +18,20 @@ import playformInline from "@playform/inline";
 
 import critters from "astro-critters";
 
-
+const getCache = ({ name, pattern }) => ({
+  urlPattern: pattern,
+  handler: "CacheFirst",
+  options: {
+    cacheName: name,
+    expiration: {
+      maxEntries: 500,
+      maxAgeSeconds: 60 * 60 * 24 * 365 * 2 // 2 years
+    },
+    cacheableResponse: {
+      statuses: [200]
+    }
+  }
+});
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -77,55 +90,43 @@ export default defineConfig({
       //   directoryAndTrailingSlashHandler: true,
       // },
       manifest: manifest,
-      mode: "production",
-      // filename: "my-sw.js",
-      // srcDir: "src",
-      // base: "/",
-      // scope: "/",
-      // registerType: "autoUpdate",
+     
       includeManifestIcons: false,
-      includeAssets: ["favicon.svg"],
-      globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
-      // globIgnores: [
-      //   "node_modules/**/*",
-      //   "**/manifest.webmanifest",
-      //   "sw.js",
-      //   "workbox-*.js",
-      //   "**/pwa-*.png", // the code to ignore caching the icon file
-      // ],
-      // includeAssets: ["**/*"],
-      // manifest: {
-      //   name: "jswhisperer blog",
-      //   short_name: "jswhisperer",
-      //   theme_color: "#ffffff",
-
-       
-      // },
+      includeAssets: [
+        "**/*",
+    ],
+    
       pwaAssets: {
-        config: false,
+        config: true,
       },
 
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff)$/i,
             handler: "CacheFirst",
             options: {
               cacheName: new Date().toISOString(),
-              cacheableResponse: {
-                statuses: [0, 200],
-              },
+          
               expiration: {
                 maxAgeSeconds: 60 * 60 * 24 * 365,
               },
-           
             },
           },
         ],
+        // runtimeCaching: [
+        //   getCache({ 
+        //     pattern: new RegExp(/\.[0-9a-z]+$/i),
+        //     name: "files" 
+        //   }),
+        //   // getCache({ 
+        //   //   pattern: /^https:\/\/my-library-cover-uploads.s3.amazonaws.com/, 
+        //   //   name: "local-images2" 
+        //   // })
+        // ],
         cleanupOutdatedCaches: true,
       
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg}'],
         globIgnores: [
           'node_modules/**/*',
           'manifest.webmanifest',
