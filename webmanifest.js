@@ -42,6 +42,13 @@ export const webManifest = {
       label: "Home page",
       platform: "android",
     },
+    {
+      src: "example.png",
+      sizes: "1920x1080",
+      label: "Home page",
+      "form-factor": "wide",
+      platform: "desktop",
+    },
   
   
   ],
