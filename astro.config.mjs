@@ -106,24 +106,24 @@ export default defineConfig({
       },
 
       workbox: {
-        // runtimeCaching: [
-        //   {
-        //     urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
-        //     handler: "CacheFirst",
-        //     options: {
-        //       cacheName: new Date().toISOString(),
-        //       cacheableResponse: {
-        //         statuses: [0, 200],
-        //       },
-        //       expiration: {
-        //         maxAgeSeconds: 60 * 60 * 24 * 365,
-        //       },
+        runtimeCaching: [
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js)$/i,
+            handler: "CacheFirst",
+            options: {
+              cacheName: new Date().toISOString(),
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+              expiration: {
+                maxAgeSeconds: 60 * 60 * 24 * 365,
+              },
            
-        //     },
-        //   },
-        // ],
-        // cleanupOutdatedCaches: true,
-        // globDirectory: "dist",
+            },
+          },
+        ],
+        cleanupOutdatedCaches: true,
+      
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
         globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg}'],
         globIgnores: [
