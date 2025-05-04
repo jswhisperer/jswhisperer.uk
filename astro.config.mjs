@@ -85,7 +85,7 @@ export default defineConfig({
       // registerType: "autoUpdate",
       includeManifestIcons: false,
       includeAssets: ["favicon.svg"],
-      // globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
+      globPatterns: ["**/*.{js,css,html, png, jpg, jpeg, svg}"],
       // globIgnores: [
       //   "node_modules/**/*",
       //   "**/manifest.webmanifest",
