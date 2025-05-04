@@ -90,7 +90,8 @@ export default defineConfig({
       //   directoryAndTrailingSlashHandler: true,
       // },
       manifest: manifest,
-     
+      
+      srcDir: "src",
       includeManifestIcons: false,
       includeAssets: [
         "**/*",
@@ -99,17 +100,20 @@ export default defineConfig({
       pwaAssets: {
         config: true,
       },
-
+      maxEntries: 500,
       workbox: {
+        globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg, webp}'],
         runtimeCaching: [
           {
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff)$/i,
-            handler: "CacheFirst",
+       
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp)$/i,
+            handler: "NetworkFirst",
             options: {
-              cacheName: new Date().toISOString(),
+              cacheName: 'main',
           
               expiration: {
                 maxAgeSeconds: 60 * 60 * 24 * 365,
+                maxEntries: 500,
               },
             },
           },
@@ -126,14 +130,8 @@ export default defineConfig({
         // ],
         cleanupOutdatedCaches: true,
       
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5,
-        globIgnores: [
-          'node_modules/**/*',
-          'manifest.webmanifest',
-          'sw.js',
-          'workbox-*.js',
-          '**/pwa-*.png', // the code to ignore caching the icon file
-        ],   
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5 * 99,
+      
       },
       devOptions: {
         type: "module",
