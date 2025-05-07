@@ -14,7 +14,6 @@ import manifest from "./webmanifest.js";
 
 import purgecss from "astro-purgecss";
 
-import playformInline from "@playform/inline";
 
 import critters from "astro-critters";
 
@@ -162,8 +161,6 @@ export default defineConfig({
     }), // partytown({
     tailwind(), // 	config: {
     compressor(),
-    (await import("@playform/compress")).default(),
-
     purgecss({
       extractors: [
         {
@@ -173,7 +170,7 @@ export default defineConfig({
         },
       ],
     }),
-    playformInline(),
+  
     critters()
   ],
 });
