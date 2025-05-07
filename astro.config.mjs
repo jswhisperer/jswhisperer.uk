@@ -101,11 +101,11 @@ export default defineConfig({
       },
       maxEntries: 500,
       workbox: {
-        globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg, webp, avif, js, woff, woff2}'],
+        globPatterns: ['**/*.{js,html, png, jpg, jpeg, svg, webp, avif, js, woff, woff2, txt, ttf }'],
         runtimeCaching: [
           {
        
-            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp|js)$/i,
+            urlPattern: /\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp|js|txt|ttf)$/i,
             handler: "CacheFirst",
             options: {
               cacheName: 'main',
