@@ -3,19 +3,12 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
 import compressor from "astro-compressor";
+import critters from "astro-critters";
+import purgecss from "astro-purgecss";
 import { defineConfig } from "astro/config";
 import { siteConfig } from "./src/data/site.config";
 import { remarkReadingTime } from "./src/utils/readTime.ts";
-
 import manifest from "./webmanifest.js";
-
-
-
-
-import purgecss from "astro-purgecss";
-
-
-import critters from "astro-critters";
 
 const getCache = ({ name, pattern }) => ({
   urlPattern: pattern,
@@ -109,7 +102,6 @@ export default defineConfig({
             handler: "CacheFirst",
             options: {
               cacheName: 'main',
-          
               expiration: {
                 maxAgeSeconds: 60 * 60 * 24 * 365,
                 maxEntries: 500,
@@ -117,18 +109,8 @@ export default defineConfig({
             },
           },
         ],
-        // runtimeCaching: [
-        //   getCache({ 
-        //     pattern: new RegExp(/\.[0-9a-z]+$/i),
-        //     name: "files" 
-        //   }),
-        //   // getCache({ 
-        //   //   pattern: /^https:\/\/my-library-cover-uploads.s3.amazonaws.com/, 
-        //   //   name: "local-images2" 
-        //   // })
-        // ],
+
         cleanupOutdatedCaches: true,
-      
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 * 5 * 99,
       
       },
