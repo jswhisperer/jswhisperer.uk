@@ -82,7 +82,7 @@ define(['./workbox-90117223'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "/",
-    "revision": "0.93uvhb3rimo"
+    "revision": "0.cumfcvndtto"
   }], {
     "directoryIndex": "index.html"
   });
@@ -90,7 +90,7 @@ define(['./workbox-90117223'], (function (workbox) { 'use strict';
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("/"), {
     allowlist: [/^\//]
   }));
-  workbox.registerRoute(/\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp|js)$/i, new workbox.CacheFirst({
+  workbox.registerRoute(/\.(?:png|jpg|jpeg|svg|html|js|avif|webp|woff2|woff|webp|js|txt|ttf)$/i, new workbox.CacheFirst({
     "cacheName": "main",
     plugins: [new workbox.ExpirationPlugin({
       maxAgeSeconds: 31536000,
