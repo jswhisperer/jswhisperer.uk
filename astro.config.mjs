@@ -76,7 +76,6 @@ export default defineConfig({
   integrations: [
     // embeds(),
 
-    // astroImageTools,
     AstroPWA({
       // experimental: {
       //   directoryAndTrailingSlashHandler: true,
@@ -85,9 +84,9 @@ export default defineConfig({
       
       srcDir: "src",
       includeManifestIcons: false,
-      includeAssets: [
-        "**/*",
-    ],
+    //   includeAssets: [
+    //     "**/*",
+    // ],
     
       pwaAssets: {
         config: true,
