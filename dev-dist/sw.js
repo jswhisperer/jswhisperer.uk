@@ -15,6 +15,13 @@
 if (!self.define) {
   let registry = {};
 
+  (await caches.keys()).map(async (cacheName) => {
+    console.log(cacheName);
+    const cache = await caches.open(cacheName);
+    cache.add(new Request('/'));
+    console.log(await cache.keys());
+ });
+
   // Used for `eval` and `importScripts` where we can't get script URL by other means.
   // In both cases, it's safe to use a global var because those functions are synchronous.
   let nextDefineUri;
